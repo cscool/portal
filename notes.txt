@@ -1,0 +1,12 @@
+camera anchored to player with bounds to move camera (not edges of screen)
+maybe take a non-industrialized approach to imagery
+wasd for movement, 2 r-hand keys to shoot different portals
+	need to diferentiate between left and right portals
+
+
+need a normal vector - calc with vector from 2 vers of object impacted
+
+need point of impact for new pos of center of portal
+
+need damage/death flag
+
