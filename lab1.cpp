@@ -22,8 +22,6 @@ using namespace std;
 int xres = 640;
 int yres = 480;
 int zres = 1;
-const float M2P = 20;
-const float P2M = 1/M2P;
 bool pauseGame = false;
 
 //Box2D
