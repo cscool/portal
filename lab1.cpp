@@ -15,6 +15,7 @@
 
 #include "log.h"
 #include "xwin.h"
+#include <const.h>
 
 using namespace std;
 
@@ -27,6 +28,13 @@ const float P2M = 1/M2P;
 
 //Box2D
 b2World* world;
+
+struct color
+{
+		  int x;
+		  int y;
+		  int z;
+};
 
 //macros
 #define rnd() (((double)rand())/(double)RAND_MAX)
@@ -127,6 +135,8 @@ int main(void)
 		  return 0;
 }
 
+int player_direction = 1; // right
+
 b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * udata = NULL)
 {
 		  //bodydef (pos, type)
@@ -164,6 +174,21 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								//Log("it is a platform , setting initial velocity\n");
 								body->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
 					 }
+					 if (udata == (char *)("bullet"))
+					 {
+								//Log("it is a platform , setting initial velocity\n");
+								b2Vec2 vp = myPlayer->GetLinearVelocity();
+								int x_dir = 1, y_dir = 1;
+								if (vp.x < 0)
+								{
+										  x_dir = -1;
+								}
+								if (vp.y < 0)
+								{
+										  y_dir = -1;
+								}
+								body->SetLinearVelocity(b2Vec2((float)player_direction * 10.0f, 0.0f));
+					 }
 		  }
 		  return body;
 }
@@ -198,7 +223,7 @@ void addFoot(int h)
 		  fixturedef.shape = &shape;
 		  fixturedef.density = 0.0f;
 		  fixturedef.isSensor = true;
-		  b2Fixture* footSensorFixture = myPlayer->CreateFixture(&fixturedef);
+		  myPlayer->CreateFixture(&fixturedef);
 }
 
 void addObstacles()
@@ -316,6 +341,36 @@ void check_keys(XEvent *e)
 		  }
 }
 
+void moveBullet (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f)
+{
+		  b2Vec2 pos = p->GetWorldCenter();
+		  if (pos.x+5.0f >= rmax)
+		  {
+					 b2Vec2 vel = p->GetLinearVelocity();
+					 vel.x = (0.0f);
+					 p->SetLinearVelocity(vel);
+		  }
+		  else if (pos.x-5.0f <= lmax)
+		  {
+					 b2Vec2 vel = p->GetLinearVelocity();
+					 vel.x = (0.0f);
+					 p->SetLinearVelocity(vel);
+		  }
+		  return;
+}
+
+void drawColorSquare(b2Vec2* points, b2Vec2 center, float angle, color c)
+{
+		  glColor3f(c.x, c.y, c.z);
+		  glPushMatrix();
+		  glTranslatef(center.x*M2P, center.y*M2P, 0);
+		  glRotatef(angle*180.0/M_PI, 0, 0, 1);
+		  glBegin(GL_QUADS);
+		  for(int i = 0; i < 4; i++)
+					 glVertex2f(points[i].x*M2P, points[i].y*M2P);
+		  glEnd();
+		  glPopMatrix();
+}
 
 void physics (void)
 {
@@ -354,6 +409,7 @@ void physics (void)
 													 vel.x += -1.0f;
 										  }
 								}
+								player_direction = -1;
 					 }
 					 if (keys[XK_Right] == 1 || keys[XK_d])
 					 {
@@ -375,6 +431,7 @@ void physics (void)
 													 vel.x += 1.0f;
 										  }
 								}
+								player_direction = 1;
 					 }
 					 if (keys[XK_space] == 1)
 					 {
@@ -390,6 +447,34 @@ void physics (void)
 					 }
 					 if(keys[XK_Left] == 0 && keys[XK_Right]==0 && keys[XK_a] ==0 && keys[XK_d] == 0){
 								vel.x *= 0.75f;
+					 }
+					 if (keys[RIGHT_PORTAL_KEY] || keys[XK_slash] || keys[LEFT_PORTAL_KEY] || keys[XK_period])
+					 {
+								/* create new body and small square fixture */
+								b2Body * p = addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 3, (char *)"bullet"); // make a bullet
+								color c;
+								b2Vec2 points[4];
+								b2Fixture * tmp = p->GetFixtureList();
+								for(int i=0; i < 4; i++)
+								{
+										  points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+								}
+								if (keys[LEFT_PORTAL_KEY] || keys[XK_period])
+								{
+										  /* add user data for color */
+										  c.x = 99;
+										  c.y = 20;
+										  c.z = 150;
+								}
+								if (keys[RIGHT_PORTAL_KEY] || keys[XK_slash])
+								{
+										  /* add user data for color */
+										  c.x = 150;
+										  c.y = 245;
+										  c.z = 1;
+								}
+								moveBullet(p);
+								drawColorSquare (points, p->GetWorldCenter(), p->GetAngle(), c);
 					 }
 
 					 myPlayer->SetLinearVelocity(vel);
@@ -440,7 +525,6 @@ void camera() {
 		  glMatrixMode(GL_MODELVIEW);
 		  glLoadIdentity();
 }
-
 
 void drawSquare(b2Vec2* points, b2Vec2 center, float angle)
 {
@@ -508,6 +592,31 @@ void render(void)
 								//Log("found platform\n");
 								movePlatform(tmp);
 					 }
+					 if ((char *)(tmp->GetUserData()) == (char *)("bullet"))
+					 {
+								Log("found bullet\n");
+								moveBullet(tmp);
+					 }
+					 /*
+						 if (((char *)(tmp->GetUserData()))[0] == ('b'))
+						 {
+						 color p;
+						 char a[2] = "\0";
+						 char b[2] = "\0";
+						 char c[2] = "\0";
+						 a[0] = (((char *)(tmp->GetUserData())))[1];
+						 b[0] = (((char *)(tmp->GetUserData())))[2];
+						 c[0] = (((char *)(tmp->GetUserData())))[3];
+						 p.x = atoi((const char *)a);
+						 p.y = atoi((const char *)b);
+						 p.z = atoi((const char *)c);
+
+						 for(int i=0; i < 4; i++)
+						 points[i] = ((b2PolygonShape*)tmp->GetFixtureList()->GetShape())->GetVertex(i);
+						 drawColorSquare(points, tmp->GetWorldCenter(), tmp->GetAngle(), p);
+						 continue;
+						 }
+						 */
 					 for(int i=0; i < 4; i++)
 								points[i] = ((b2PolygonShape*)tmp->GetFixtureList()->GetShape())->GetVertex(i);
 					 drawSquare(points, tmp->GetWorldCenter(), tmp->GetAngle());
