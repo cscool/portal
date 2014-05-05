@@ -178,7 +178,7 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								//Log("it is a platform , setting initial velocity\n");
 								body->SetLinearVelocity(b2Vec2(5.0f, 0.0f));
 					 }
-					 if (udata == (char *)("bullet"))
+					 if (contains(udata, (const char *)"bullet"))
 					 {
 								//Log("it is a platform , setting initial velocity\n");
 								b2Vec2 vp = myPlayer->GetLinearVelocity();
@@ -389,6 +389,7 @@ void physics (void)
 		  }
 		  else
 		  {
+					 Log("toDestroy = %p\n", toDestroy);
 					 if (toDestroy)
 					 {
 								world->DestroyBody(toDestroy);
@@ -472,22 +473,31 @@ void physics (void)
 										  if (bullet_ct > 2)
 										  {
 													 b2Body* tmp = world->GetBodyList();
+													 char * ud;
 													 while(tmp)
 													 {
-																if ((char *)(tmp->GetUserData()) == (char *)("bullet"))
+																ud = (char *)(tmp->GetUserData());
+																if (ud)
 																{
-																		  if (i == 0)
+																		  if (contains(ud, (const char *)"bullet"))
 																		  {
-																					 tmp = tmp->GetNext();
-																					 i++;
-																					 continue;
+																					 if (i == 0)
+																					 {
+																								tmp = tmp->GetNext();
+																								i++;
+																								continue;
+																					 }
+																					 else
+																					 {
+																								world->DestroyBody(tmp);
+																								tmp = NULL;
+																								break;
+																								bullet_ct--;
+																					 }
 																		  }
 																		  else
 																		  {
-																					 world->DestroyBody(tmp);
-																					 tmp = NULL;
-																					 break;
-																					 bullet_ct--;
+																					 tmp = tmp->GetNext();
 																		  }
 																}
 																else
@@ -497,37 +507,16 @@ void physics (void)
 													 }
 										  }
 										  /* create new body and small square fixture */
-										  b2Body * p = addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet"); // make a bullet
-										  /*
-										  color c;
-										  b2Vec2 points[4];
-										  b2Fixture * tmp = p->GetFixtureList();
-										  for(int i=0; i < 4; i++)
-										  {
-													 points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
-										  }
 										  if (keys[XK_z] || keys[XK_period])
 										  {
-										  */
-													 /* add user data for color */
-										  /*
-													 c.x = 99;
-													 c.y = 20;
-													 c.z = 150;
+													 addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet - left"); // make a bullet
+													 //										  moveBullet(p);
 										  }
-										  if (keys[XK_x] || keys[XK_slash])
+										  else
 										  {
-										  */
-													 /* add user data for color */
-										  /*
-													 c.x = 150;
-													 c.y = 245;
-													 c.z = 1;
+													 addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet - right"); // make a bullet
 										  }
-										  */
-										  moveBullet(p);
-//										  drawColorSquare (points, p->GetWorldCenter(), p->GetAngle(), c);
-										  timer = 5;
+										  timer = 10; // delay next shot
 								}
 								if (timer > 0)
 								{
@@ -643,38 +632,79 @@ void render(void)
 		  glLoadIdentity();
 		  b2Vec2 points[4];
 		  b2Body* tmp = world->GetBodyList();
+		  char * ud;
 		  while(tmp)
 		  {
-					 if ((char *)(tmp->GetUserData()) == (char *)("platform"))
+					 ud = (char *)(tmp->GetUserData());
+					 if (ud)
 					 {
-								//Log("found platform\n");
-								movePlatform(tmp);
-					 }
-					 if ((char *)(tmp->GetUserData()) == (char *)("bullet"))
-					 {
-								Log("found bullet\n");
-								moveBullet(tmp);
-					 }
-					 /*
-						 if (((char *)(tmp->GetUserData()))[0] == ('b'))
-						 {
-						 color p;
-						 char a[2] = "\0";
-						 char b[2] = "\0";
-						 char c[2] = "\0";
-						 a[0] = (((char *)(tmp->GetUserData())))[1];
-						 b[0] = (((char *)(tmp->GetUserData())))[2];
-						 c[0] = (((char *)(tmp->GetUserData())))[3];
-						 p.x = atoi((const char *)a);
-						 p.y = atoi((const char *)b);
-						 p.z = atoi((const char *)c);
+								if (ud == (char *)("platform"))
+								{
+										  //Log("found platform\n");
+										  movePlatform(tmp);
+								}
+								if (contains(ud, (const char *)"bullet") == 0)
+								{
+//										  Log("found bullet\n");
+										  if (contains(ud, (const char *)"left"))
+										  {
+//													 Log("LEFT!\n");
+										  }
+										  else
+										  {
+//													 Log("Didn't find left, so must be RIGHT\n");
+										  }
+										  /*
+											  color c;
+											  b2Vec2 points[4];
+											  b2Fixture * tmp = p->GetFixtureList();
+											  for(int i=0; i < 4; i++)
+											  {
+											  points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+											  }
+											  if (keys[XK_z] || keys[XK_period])
+											  {
+											  */
+										  /* add user data for color */
+										  /*
+											  c.x = 99;
+											  c.y = 20;
+											  c.z = 150;
+											  }
+											  if (keys[XK_x] || keys[XK_slash])
+											  {
+											  */
+										  /* add user data for color */
+										  /*
+											  c.x = 150;
+											  c.y = 245;
+											  c.z = 1;
+											  }
+											  */
+										  //										  drawColorSquare (points, p->GetWorldCenter(), p->GetAngle(), c);
+										  moveBullet(tmp);
+								}
+								/*
+									if (((char *)(tmp->GetUserData()))[0] == ('b'))
+									{
+									color p;
+									char a[2] = "\0";
+									char b[2] = "\0";
+									char c[2] = "\0";
+									a[0] = (((char *)(tmp->GetUserData())))[1];
+									b[0] = (((char *)(tmp->GetUserData())))[2];
+									c[0] = (((char *)(tmp->GetUserData())))[3];
+									p.x = atoi((const char *)a);
+									p.y = atoi((const char *)b);
+									p.z = atoi((const char *)c);
 
-						 for(int i=0; i < 4; i++)
-						 points[i] = ((b2PolygonShape*)tmp->GetFixtureList()->GetShape())->GetVertex(i);
-						 drawColorSquare(points, tmp->GetWorldCenter(), tmp->GetAngle(), p);
-						 continue;
-						 }
-						 */
+									for(int i=0; i < 4; i++)
+									points[i] = ((b2PolygonShape*)tmp->GetFixtureList()->GetShape())->GetVertex(i);
+									drawColorSquare(points, tmp->GetWorldCenter(), tmp->GetAngle(), p);
+									continue;
+									}
+									*/
+					 }
 					 for(int i=0; i < 4; i++)
 								points[i] = ((b2PolygonShape*)tmp->GetFixtureList()->GetShape())->GetVertex(i);
 					 drawSquare(points, tmp->GetWorldCenter(), tmp->GetAngle());

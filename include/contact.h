@@ -1,5 +1,6 @@
 #pragma once
 #include "log.h"
+#include "contains.h"
 #include <cstring>
 #include "Box2D/Box2D.h"
 
