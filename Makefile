@@ -6,7 +6,10 @@ LIBFNT = $(LIB)/libggfonts.so
 LFLAGS = -lrt -lX11 -lGLU -lGL -pthread -lm #-lXrandr
 EFLAGS = -Wall -Wextra
 
-all: log xwin lab1
+all: log contact xwin lab1
+
+contact: $(LOCINC)/contact.cpp
+	g++ $(LOCINC)/contact.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -lBox2D -c -o $(LIB)/contact.o
 
 log: $(LOCINC)/log.c
 	g++ $(LOCINC)/log.c $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/log.o
@@ -14,7 +17,7 @@ log: $(LOCINC)/log.c
 xwin: $(LOCINC)/xwin.c
 	g++ $(LOCINC)/xwin.c $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/xwin.o
 
-lab1: lab1.cpp $(LIB)/log.o $(LIB)/xwin.o
+lab1: lab1.cpp $(LIB)/log.o $(LIB)/xwin.o $(LIB)/contact.o
 	g++ $(LIB)/*.o lab1.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -lBox2D
 
 clean:

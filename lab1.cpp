@@ -16,6 +16,7 @@
 #include "log.h"
 #include "xwin.h"
 #include <const.h>
+#include "contact.h"
 
 using namespace std;
 
@@ -28,6 +29,9 @@ const float P2M = 1/M2P;
 
 //Box2D
 b2World* world;
+b2Body * toDestroy;
+contactListener contact_handler;
+int bullet_ct = 0;
 
 struct color
 {
@@ -128,6 +132,7 @@ int main(void)
 								XEvent e;
 								XNextEvent(dpy, &e);
 								check_keys(&e);
+								check_mouse(&e);
 					 }
 		  }
 		  cleanupXWindows();
@@ -165,7 +170,6 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 		  fixturedef.shape = &shape;
 		  fixturedef.density = 1.0;
 		  fixturedef.friction = f;
-		  body->CreateFixture(&fixturedef);
 		  if (udata)
 		  {
 					 body->SetUserData((void*)udata);
@@ -187,9 +191,11 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								{
 										  y_dir = -1;
 								}
-								body->SetLinearVelocity(b2Vec2((float)player_direction * 10.0f, 0.0f));
+								body->SetGravityScale(0);
+								body->SetLinearVelocity(b2Vec2((float)player_direction * 19.0f, 0.0f));
 					 }
 		  }
+		  body->CreateFixture(&fixturedef);
 		  return body;
 }
 
@@ -248,6 +254,8 @@ void init_opengl(void)
 		  glMatrixMode(GL_MODELVIEW);
 		  glClearColor(0,0,0,1);
 		  world=new b2World(b2Vec2(0.0,10.0f));
+		  toDestroy = NULL;
+		  world->SetContactListener(&contact_handler);
 		  gameFloor = addRect(xres*3/2, yres-50, xres*3, 50, 0.7f, 0.2f, 2);
 		  addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2);//left wall
 		  addRect(xres*3, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2);//right wall
@@ -374,12 +382,19 @@ void drawColorSquare(b2Vec2* points, b2Vec2 center, float angle, color c)
 
 void physics (void)
 {
+		  static int timer = 0;
 		  if (pauseGame)
 		  {
 					 /* do nothing */
 		  }
 		  else
 		  {
+					 if (toDestroy)
+					 {
+								world->DestroyBody(toDestroy);
+								toDestroy = NULL;
+								bullet_ct --;
+					 }
 					 b2Vec2 vel = myPlayer->GetLinearVelocity();
 					 if (keys[XK_Up] == 1 || keys[XK_w])
 					 {
@@ -448,33 +463,76 @@ void physics (void)
 					 if(keys[XK_Left] == 0 && keys[XK_Right]==0 && keys[XK_a] ==0 && keys[XK_d] == 0){
 								vel.x *= 0.75f;
 					 }
-					 if (keys[RIGHT_PORTAL_KEY] || keys[XK_slash] || keys[LEFT_PORTAL_KEY] || keys[XK_period])
+					 if (keys[XK_x] || keys[XK_slash] || keys[XK_z] || keys[XK_period])
 					 {
-								/* create new body and small square fixture */
-								b2Body * p = addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 3, (char *)"bullet"); // make a bullet
-								color c;
-								b2Vec2 points[4];
-								b2Fixture * tmp = p->GetFixtureList();
-								for(int i=0; i < 4; i++)
+								if (timer < 1)
 								{
-										  points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+										  bullet_ct ++;
+										  int i = 0;
+										  if (bullet_ct > 2)
+										  {
+													 b2Body* tmp = world->GetBodyList();
+													 while(tmp)
+													 {
+																if ((char *)(tmp->GetUserData()) == (char *)("bullet"))
+																{
+																		  if (i == 0)
+																		  {
+																					 tmp = tmp->GetNext();
+																					 i++;
+																					 continue;
+																		  }
+																		  else
+																		  {
+																					 world->DestroyBody(tmp);
+																					 tmp = NULL;
+																					 break;
+																					 bullet_ct--;
+																		  }
+																}
+																else
+																{
+																		  tmp = tmp->GetNext();
+																}
+													 }
+										  }
+										  /* create new body and small square fixture */
+										  b2Body * p = addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet"); // make a bullet
+										  /*
+										  color c;
+										  b2Vec2 points[4];
+										  b2Fixture * tmp = p->GetFixtureList();
+										  for(int i=0; i < 4; i++)
+										  {
+													 points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+										  }
+										  if (keys[XK_z] || keys[XK_period])
+										  {
+										  */
+													 /* add user data for color */
+										  /*
+													 c.x = 99;
+													 c.y = 20;
+													 c.z = 150;
+										  }
+										  if (keys[XK_x] || keys[XK_slash])
+										  {
+										  */
+													 /* add user data for color */
+										  /*
+													 c.x = 150;
+													 c.y = 245;
+													 c.z = 1;
+										  }
+										  */
+										  moveBullet(p);
+//										  drawColorSquare (points, p->GetWorldCenter(), p->GetAngle(), c);
+										  timer = 5;
 								}
-								if (keys[LEFT_PORTAL_KEY] || keys[XK_period])
+								if (timer > 0)
 								{
-										  /* add user data for color */
-										  c.x = 99;
-										  c.y = 20;
-										  c.z = 150;
+										  timer--;
 								}
-								if (keys[RIGHT_PORTAL_KEY] || keys[XK_slash])
-								{
-										  /* add user data for color */
-										  c.x = 150;
-										  c.y = 245;
-										  c.z = 1;
-								}
-								moveBullet(p);
-								drawColorSquare (points, p->GetWorldCenter(), p->GetAngle(), c);
 					 }
 
 					 myPlayer->SetLinearVelocity(vel);
@@ -484,7 +542,7 @@ void physics (void)
 void movePlatform (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f)
 {
 		  b2Vec2 pos = p->GetWorldCenter();
-		  Log("pos.x = %.2f, rmax = %.2f, lmax = %.2f\n", pos.x, rmax, lmax);
+		  //		  Log("pos.x = %.2f, rmax = %.2f, lmax = %.2f\n", pos.x, rmax, lmax);
 		  if (pos.x+250.0f >= rmax)
 		  {
 					 b2Vec2 vel = p->GetLinearVelocity();
@@ -583,8 +641,8 @@ void render(void)
 		  glClear(GL_COLOR_BUFFER_BIT);
 		  //glPushMatrix();
 		  glLoadIdentity();
-		  b2Body* tmp = world->GetBodyList();
 		  b2Vec2 points[4];
+		  b2Body* tmp = world->GetBodyList();
 		  while(tmp)
 		  {
 					 if ((char *)(tmp->GetUserData()) == (char *)("platform"))
