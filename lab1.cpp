@@ -28,10 +28,13 @@ const float M2P = 20;
 const float P2M = 1/M2P;
 
 //Box2D
-b2World* world;
+b2World * world;
 b2Body * toDestroy;
 contactListener contact_handler;
 int bullet_ct = 0;
+b2Body * myPlayer;
+b2Body * gameFloor;
+b2Body * platform;
 
 //macros
 #define rnd() (((double)rand())/(double)RAND_MAX)
@@ -63,7 +66,6 @@ void timeCopy(struct timespec *dest, struct timespec *source) {
 		  memcpy(dest, source, sizeof(struct timespec));
 }
 
-
 bool running = true;
 
 Display *dpy;
@@ -73,9 +75,6 @@ GLXContext glc;
 bool pauseGame = false;
 
 int keys[65536];
-
-b2Body * myPlayer;
-b2Body * gameFloor;
 
 enum _moveState {
 		  MS_STOP,
@@ -249,10 +248,10 @@ void init_opengl(void)
 		  world=new b2World(b2Vec2(0.0,10.0f));
 		  toDestroy = NULL;
 		  world->SetContactListener(&contact_handler);
-		  gameFloor = addRect(xres*3/2, yres-50, xres*3, 50, 0.7f, 0.2f, 2);
-		  addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall");//left wall
-		  addRect(xres*3, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall");//right wall
-		  addRect(0.5f*xres, 0.33f*yres, 250, 30, 100.0f, 0.0f, 3, (char *)"platform"); // platform
+		  gameFloor = addRect(xres*5, yres-50, xres*10, 50, 0.7f, 0.2f, 2, (char *)"floor portalable");
+		  addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable");//left wall
+		  addRect(xres*10, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable");//right wall
+		  platform = addRect(0.5f*xres, 0.33f*yres, 250, 30, 100.0f, 0.0f, 3, (char *)"platform"); // platform
 		  addObstacles();
 		  myPlayer = addPlayer(50, 50, 60, 60);
 		  addFoot(60);
@@ -507,7 +506,7 @@ void physics (void)
 								}
 					 }
 					 myPlayer->SetLinearVelocity(vel);
-					 Log("player velocity set\n");
+//					 Log("player velocity set\n");
 		  }
 }
 
@@ -558,7 +557,7 @@ void camera() {
 
 void drawSquare(b2Vec2* points, b2Vec2 center, float angle, int & color)
 {
-		  Log("color = %d\n", color);
+//		  Log("color = %d\n", color);
 		  if (color == 0)
 		  {
 					 glColor3f(1,1,1);
@@ -626,7 +625,7 @@ void drawPlayer()
 
 void render(void)
 {
-		  Log("in render\n");
+//		  Log("in render\n");
 		  glClear(GL_COLOR_BUFFER_BIT);
 		  //glPushMatrix();
 		  glLoadIdentity();

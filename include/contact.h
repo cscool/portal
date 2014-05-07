@@ -7,6 +7,9 @@
 using namespace std;
 
 extern b2World * world;
+extern b2Body * myPlayer;
+extern b2Body * gameFloor;
+extern b2Body * platform;
 extern b2Body * toDestroy;
 
 class contactListener : public b2ContactListener
