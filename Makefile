@@ -6,7 +6,13 @@ LIBFNT = $(LIB)/libggfonts.so
 LFLAGS = -lrt -lX11 -lGLU -lGL -pthread -lm #-lXrandr
 EFLAGS = -Wall -Wextra
 
-all: log contains contact xwin lab1
+all: log contains contact xwin createObjects timing lab1
+
+timing: $(LOCINC)/timing.c
+	g++ $(LOCINC)/timing.c $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/timing.o
+
+createObjects: $(LOCINC)/createObjects.cpp
+	g++ $(LOCINC)/createObjects.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -lBox2D -c -o $(LIB)/createObjects.o
 
 contains: $(LOCINC)/contains.cpp
 	g++ $(LOCINC)/contains.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -lBox2D -c -o $(LIB)/contains.o
@@ -20,7 +26,7 @@ log: $(LOCINC)/log.c
 xwin: $(LOCINC)/xwin.c
 	g++ $(LOCINC)/xwin.c $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/xwin.o
 
-lab1: lab1.cpp $(LIB)/log.o $(LIB)/xwin.o $(LIB)/contact.o $(LIB)/contains.o
+lab1: lab1.cpp $(LIB)/log.o $(LIB)/xwin.o $(LIB)/contact.o $(LIB)/contains.o $(LIB)/createObjects.o $(LIB)/timing.o
 	g++ $(LIB)/*.o lab1.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -lBox2D
 
 clean:

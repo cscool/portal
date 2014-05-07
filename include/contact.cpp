@@ -7,8 +7,8 @@ void contactListener::BeginContact (b2Contact * contact)
 		  char * ud;
 		  b2Vec2 createPortal;
 		  b2BodyType dyn = myPlayer->GetType();
-		  b2BodyType stat = gameFloor->GetType();
-		  b2BodyType kin = platform->GetType();
+//		  b2BodyType stat = gameFloor->GetType();
+//		  b2BodyType kin = platform->GetType();
 		  ud = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
 		  if (ud)
 		  {
@@ -25,6 +25,17 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  Log("you shot a portalable object!\n");
 										  createPortal = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetWorldCenter());
+										  b2Body * p;
+										  if (contains(ud, (const char *)"left"))
+										  {
+													 p = addRect(createPortal.x, createPortal.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
+													 p->SetTransform(createPortal, (contact->GetFixtureB()->GetBody()->GetAngle()));
+										  }
+										  else
+										  {
+													 p = addRect(createPortal.x, createPortal.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");
+													 p->SetTransform(createPortal, (contact->GetFixtureB()->GetBody()->GetAngle()));
+										  }
 								}
 								else
 								{

@@ -22,7 +22,8 @@ int contains (const char * a, const char * b)
 					 Log("first arg must be longer than second arg\n");
 					 return 0;
 		  }
-		  int good = 0, j = 0;
+		  int good = 0;
+		  unsigned int j = 0;
 		  for (unsigned int i = 0; i < a_len && j < b_len; i++)
 		  {
 					 if (a[i] != b[j])
