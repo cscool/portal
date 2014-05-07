@@ -5,6 +5,7 @@ using namespace std;
 void contactListener::BeginContact (b2Contact * contact)
 {
 		  char * ud;
+		  b2Vec2 createPortal;
 		  ud = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
 		  if (ud)
 		  {
@@ -15,6 +16,10 @@ void contactListener::BeginContact (b2Contact * contact)
 					 else if (contains(ud, (const char *)"bullet"))
 					 {
 								Log("bullet hit something\n");
+								if (contains((char *)(contact->GetFixtureB()->GetBody()->GetUserData()), "portalable"))
+								{
+										  createPortal = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetWorldCenter());
+								}
 								toDestroy = (b2Body *)(contact->GetFixtureA()->GetBody());
 					 }
 		  }
@@ -32,6 +37,7 @@ void contactListener::BeginContact (b2Contact * contact)
 					 }
 		  }
 }
+
 void contactListener::EndContact (b2Contact * contact)
 {
 		  char * ud;
