@@ -4,6 +4,7 @@ using namespace std;
 
 void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft)
 {
+		  Log("in createPortal, got angle = %.2f\n", angle);
 		  if (p1 && isleft)
 		  {
 					 world->DestroyBody(p1);
@@ -119,4 +120,8 @@ void addObstacles()
 		  addRect(1360, onFloor-45, 80, 90, 0.7f, 0.2f, 2);
 		  addRect(1440, onFloor-60, 80, 120, 0.7f, 0.2f, 2);
 		  addRect(1520, onFloor-75, 80, 150, 0.7f, 0.2f, 2);
+
+		  b2Body * awall;
+		  awall = addRect(2000, onFloor/2.0f, 50, 250, 0.7f, 0.7f, 2, (char *)"angled wall portalable");
+		  awall->SetTransform((awall->GetWorldCenter()), 45.0f);
 }

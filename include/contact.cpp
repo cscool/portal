@@ -26,17 +26,17 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 //										  Log("you shot a portalable object!\n");
 										  pos = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetWorldCenter());
-										  angle = (float)(contact->GetFixtureA()->GetBody()->GetAngle());
+										  angle = (float)(contact->GetFixtureB()->GetBody()->GetAngle());
 										  if (contains(ud, (const char *)"left"))
 										  {
-													 Log("creating left portal\n");
+//													 Log("storing left portal data with angle = %.2f\n", angle);
 													 p_pos = pos;
 													 p_angle = angle;
 													 p_isleft = 1;
 										  }
 										  else
 										  {
-													 Log("creating right portal\n");
+//													 Log("storing right portal data with angle = %.2f\n", angle);
 													 p_pos = pos;
 													 p_angle = angle;
 													 p_isleft = 0;
@@ -95,24 +95,24 @@ void contactListener::BeginContact (b2Contact * contact)
 					 }
 					 if (contains(ud, (const char *)"bullet"))
 					 {
-								Log("bullet hit something\n");
-								Log("FixtureA's user data:\n\t%s\n", ((char *)(contact->GetFixtureA()->GetBody()->GetUserData())));
-								Log("FixtureB's user data:\n\t%s\n", ((char *)(contact->GetFixtureB()->GetBody()->GetUserData())));
+//								Log("bullet hit something\n");
+//								Log("FixtureA's user data:\n\t%s\n", ((char *)(contact->GetFixtureA()->GetBody()->GetUserData())));
+//								Log("FixtureB's user data:\n\t%s\n", ((char *)(contact->GetFixtureB()->GetBody()->GetUserData())));
 								if (contains(((char *)(contact->GetFixtureA()->GetBody()->GetUserData())), "portalable"))
 								{
-										  Log("you shot a portalable object!\n");
+//										  Log("you shot a portalable object!\n");
 										  pos = (b2Vec2)(contact->GetFixtureB()->GetBody()->GetWorldCenter());
-										  angle = (float)(contact->GetFixtureB()->GetBody()->GetAngle());
+										  angle = (float)(contact->GetFixtureA()->GetBody()->GetAngle());
 										  if (contains(ud, (const char *)"left"))
 										  {
-													 Log("creating left portal\n");
+//													 Log("storing left portal data with angle = %.2f\n", angle);
 													 p_pos = pos;
 													 p_angle = angle;
 													 p_isleft = 1;
 										  }
 										  else
 										  {
-													 Log("creating right portal\n");
+//													 Log("storing right portal data with angle = %.2f\n", angle);
 													 p_pos = pos;
 													 p_angle = angle;
 													 p_isleft = 0;
@@ -140,6 +140,28 @@ void contactListener::BeginContact (b2Contact * contact)
 								}
 								toDestroy = (b2Body *)(contact->GetFixtureB()->GetBody());
 					 }
+					 else if (contains(ud, (const char *)"isportal"))
+					 {
+								Log("something hit a portal!\n");
+								if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
+								{
+										  Log("its a dynamic object\n");
+								}
+								/*
+								else if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == stat)
+								{
+										  Log("hit a static object\n");
+								}
+								else if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == kin)
+								{
+										  Log("hit a kinematic object\n");
+								}
+								*/
+								else
+								{
+										  Log("not a dynamic object, don't portal\n");
+								}
+					 }
 		  }
 }
 
@@ -155,7 +177,7 @@ void contactListener::EndContact (b2Contact * contact)
 					 }
 					 if (contains(ud, (const char *)"bullet"))
 					 {
-								Log("bullet hit something\n");
+//								Log("bullet hit something\n");
 								toDestroy = (b2Body *)(contact->GetFixtureA()->GetBody());
 					 }
 		  }
@@ -168,7 +190,7 @@ void contactListener::EndContact (b2Contact * contact)
 					 }
 					 if (contains(ud, (const char *)"bullet"))
 					 {
-								Log("bullet hit something\n");
+//								Log("bullet hit something\n");
 								toDestroy = (b2Body *)(contact->GetFixtureB()->GetBody());
 					 }
 		  }

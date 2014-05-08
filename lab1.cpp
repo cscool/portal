@@ -507,8 +507,9 @@ void drawPortal(b2Body * p)
 					 glColor3f(1,0,0);
 		  }
 		  glPushMatrix();
-		  glTranslatef(p->GetWorldCenter().x*M2P, p->GetWorldCenter().y*M2P, 0);
-		  glRotatef(p->GetAngle()*180.0/M_PI, 0, 0, 1);
+		  glTranslatef(p->GetWorldCenter().x*M2P, p->GetWorldCenter().y*M2P, 0.0f);
+//		  Log("in drawPortal, angle = %.2f\n", p->GetAngle());
+		  glRotatef((p->GetAngle())*D2R, 0.0f, 0.0f, 1.0f);
 		  b2Vec2 points[4];
 		  b2Fixture * tmp = p->GetFixtureList();
 		  while (tmp)
@@ -592,6 +593,8 @@ void render(void)
 					 drawSquare(points, tmp->GetWorldCenter(), tmp->GetAngle(), color);
 					 tmp = tmp->GetNext();
 		  }
+		  drawPlayer();
+		  drawFoot();
 		  if (p_isleft >= 0)
 		  {
 					 createPortal(p_pos, p_angle, p_isleft);
@@ -599,16 +602,14 @@ void render(void)
 		  }
 		  if (p1)
 		  {
-					 Log("drawing left portal\n");
+//					 Log("drawing left portal\n");
 					 drawPortal(p1);
 		  }
 		  if (p2)
 		  {
-					 Log("drawing right portal\n");
+//					 Log("drawing right portal\n");
 					 drawPortal(p2);
 		  }
 		  camera();
-		  drawPlayer();
-		  drawFoot();
 		  glXSwapBuffers(dpy, win);
 }
