@@ -5,7 +5,8 @@ using namespace std;
 void contactListener::BeginContact (b2Contact * contact)
 {
 		  char * ud;
-		  b2Vec2 createPortal;
+		  b2Vec2 pos;
+		  float angle = 0.0f;
 		  b2BodyType dyn = myPlayer->GetType();
 //		  b2BodyType stat = gameFloor->GetType();
 //		  b2BodyType kin = platform->GetType();
@@ -18,24 +19,43 @@ void contactListener::BeginContact (b2Contact * contact)
 					 }
 					 else if (contains(ud, (const char *)"bullet"))
 					 {
-								Log("bullet hit something\n");
-								Log("FixtureA's user data:\n\t%s\n", ((char *)(contact->GetFixtureA()->GetBody()->GetUserData())));
-								Log("FixtureB's user data:\n\t%s\n", ((char *)(contact->GetFixtureB()->GetBody()->GetUserData())));
+//								Log("bullet hit something\n");
+//								Log("FixtureA's user data:\n\t%s\n", ((char *)(contact->GetFixtureA()->GetBody()->GetUserData())));
+//								Log("FixtureB's user data:\n\t%s\n", ((char *)(contact->GetFixtureB()->GetBody()->GetUserData())));
 								if (contains(((char *)(contact->GetFixtureB()->GetBody()->GetUserData())), "portalable"))
 								{
-										  Log("you shot a portalable object!\n");
-										  createPortal = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetWorldCenter());
+//										  Log("you shot a portalable object!\n");
+										  pos = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetWorldCenter());
+										  angle = (float)(contact->GetFixtureA()->GetBody()->GetAngle());
+										  if (contains(ud, (const char *)"left"))
+										  {
+													 Log("creating left portal\n");
+													 p_pos = pos;
+													 p_angle = angle;
+													 p_isleft = 1;
+										  }
+										  else
+										  {
+													 Log("creating right portal\n");
+													 p_pos = pos;
+													 p_angle = angle;
+													 p_isleft = 0;
+										  }
+										  /*
 										  b2Body * p;
 										  if (contains(ud, (const char *)"left"))
 										  {
+													 Log("creating left portal\n");
 													 p = addRect(createPortal.x, createPortal.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
 													 p->SetTransform(createPortal, (contact->GetFixtureB()->GetBody()->GetAngle()));
 										  }
 										  else
 										  {
+													 Log("creating right portal\n");
 													 p = addRect(createPortal.x, createPortal.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");
 													 p->SetTransform(createPortal, (contact->GetFixtureB()->GetBody()->GetAngle()));
 										  }
+										  */
 								}
 								else
 								{
@@ -81,7 +101,38 @@ void contactListener::BeginContact (b2Contact * contact)
 								if (contains(((char *)(contact->GetFixtureA()->GetBody()->GetUserData())), "portalable"))
 								{
 										  Log("you shot a portalable object!\n");
-										  createPortal = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetWorldCenter());
+										  pos = (b2Vec2)(contact->GetFixtureB()->GetBody()->GetWorldCenter());
+										  angle = (float)(contact->GetFixtureB()->GetBody()->GetAngle());
+										  if (contains(ud, (const char *)"left"))
+										  {
+													 Log("creating left portal\n");
+													 p_pos = pos;
+													 p_angle = angle;
+													 p_isleft = 1;
+										  }
+										  else
+										  {
+													 Log("creating right portal\n");
+													 p_pos = pos;
+													 p_angle = angle;
+													 p_isleft = 0;
+										  }
+
+										  /*
+										  b2Body * p;
+										  if (contains(ud, (const char *)"left"))
+										  {
+													 Log("creating left portal\n");
+													 p = addRect(createPortal.x, createPortal.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
+													 p->SetTransform(createPortal, (contact->GetFixtureA()->GetBody()->GetAngle()));
+										  }
+										  else
+										  {
+													 Log("creating right portal\n");
+													 p = addRect(createPortal.x, createPortal.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");
+													 p->SetTransform(createPortal, (contact->GetFixtureA()->GetBody()->GetAngle()));
+										  }
+										  */
 								}
 								else
 								{

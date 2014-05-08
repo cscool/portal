@@ -8,6 +8,9 @@
 
 using namespace std;
 
+extern b2Vec2 p_pos;
+extern float p_angle;
+extern int p_isleft;
 extern b2World * world;
 extern b2Body * myPlayer;
 extern b2Body * gameFloor;

@@ -19,7 +19,7 @@ static const float gravity = -0.5f;
 static const float player_width = 15.0f;
 static const float player_height = 20.0f;
 
-static const float portal_width = 10.0f;
+static const float portal_width = 30.0f;
 static const float portal_height = 100.0f;
 
 static const float gun_width = 40.0f;

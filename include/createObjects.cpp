@@ -2,6 +2,30 @@
 
 using namespace std;
 
+void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft)
+{
+		  if (p1 && isleft)
+		  {
+					 world->DestroyBody(p1);
+		  }
+		  if (p2 && !isleft)
+		  {
+					 world->DestroyBody(p2);
+		  }
+		  if (isleft == 1)
+		  {
+					 Log("creating left portal\n");
+					 p1 = addRect(pos.x, pos.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
+					 p1->SetTransform(pos, angle);
+		  }
+		  else
+		  {
+					 Log("creating right portal\n");
+					 p2 = addRect(pos.x, pos.y, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");
+					 p2->SetTransform(pos, angle);
+		  }
+}
+
 b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * udata)
 {
 		  //bodydef (pos, type)

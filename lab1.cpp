@@ -21,6 +21,10 @@
 
 using namespace std;
 
+b2Vec2 p_pos;
+float p_angle = 0.0f;
+int p_isleft = -1;
+
 // X Windows variables
 int xres = 640;
 int yres = 480;
@@ -36,6 +40,8 @@ int bullet_ct = 0;
 b2Body * myPlayer;
 b2Body * gameFloor;
 b2Body * platform;
+b2Body * p1;
+b2Body * p2;
 
 //macros
 #define rnd() (((double)rand())/(double)RAND_MAX)
@@ -67,6 +73,8 @@ Window win;
 GLXContext glc;
 
 bool pauseGame = false;
+
+int player_direction = 1; // right
 
 int keys[65536];
 
@@ -124,8 +132,6 @@ int main(void)
 		  logClose();
 		  return 0;
 }
-
-int player_direction = 1; // right
 
 void init_opengl(void)
 {
@@ -376,17 +382,17 @@ void physics (void)
 										  /* create new body and small square fixture */
 										  if (keys[XK_z] || keys[XK_period])
 										  {
-													 Log("left portal\n");
+													 //													 Log("left portal\n");
 													 addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet left"); // make a bullet
 													 //										  moveBullet(p);
 										  }
 										  else
 										  {
-													 Log("right portal\n");
+													 //													 Log("right portal\n");
 													 addRect(M2P*myPlayer->GetWorldCenter().x + player_direction * 61, M2P*myPlayer->GetWorldCenter().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet right"); // make a bullet
 										  }
-										  Log("done making portal\n");
-										  timer = 8; // delay next shot
+										  //										  Log("done making portal\n");
+										  timer = 10; // delay next shot
 								}
 								if (timer > 0)
 								{
@@ -394,7 +400,7 @@ void physics (void)
 								}
 					 }
 					 myPlayer->SetLinearVelocity(vel);
-//					 Log("player velocity set\n");
+					 //					 Log("player velocity set\n");
 		  }
 }
 
@@ -445,7 +451,7 @@ void camera() {
 
 void drawSquare(b2Vec2* points, b2Vec2 center, float angle, int & color)
 {
-//		  Log("color = %d\n", color);
+		  //		  Log("color = %d\n", color);
 		  if (color == 0)
 		  {
 					 glColor3f(1,1,1);
@@ -490,6 +496,34 @@ void drawFoot()
 		  glPopMatrix();
 }
 
+void drawPortal(b2Body * p)
+{
+		  if (contains((char *)(p->GetUserData()), (char *)"left"))
+		  {
+					 glColor3f(0,0,1);
+		  }
+		  else
+		  {
+					 glColor3f(1,0,0);
+		  }
+		  glPushMatrix();
+		  glTranslatef(p->GetWorldCenter().x*M2P, p->GetWorldCenter().y*M2P, 0);
+		  glRotatef(p->GetAngle()*180.0/M_PI, 0, 0, 1);
+		  b2Vec2 points[4];
+		  b2Fixture * tmp = p->GetFixtureList();
+		  while (tmp)
+		  {
+					 for(int i=0; i < 4; i++)
+								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+					 glBegin(GL_QUADS);
+					 for(int i = 0; i < 4; i++)
+								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 glEnd();
+					 tmp = tmp->GetNext();
+		  }
+		  glPopMatrix();
+}
+
 void drawPlayer()
 {
 		  glColor3f(0,1,0);
@@ -513,9 +547,8 @@ void drawPlayer()
 
 void render(void)
 {
-//		  Log("in render\n");
+		  //		  Log("in render\n");
 		  glClear(GL_COLOR_BUFFER_BIT);
-		  //glPushMatrix();
 		  glLoadIdentity();
 		  b2Vec2 points[4];
 		  b2Body* tmp = world->GetBodyList();
@@ -523,7 +556,7 @@ void render(void)
 		  int color = 0;
 		  while(tmp)
 		  {
-//					 Log("in while loop\n");
+					 //					 Log("in while loop\n");
 					 for(int i=0; i < 4; i++)
 					 {
 								points[i] = ((b2PolygonShape*)tmp->GetFixtureList()->GetShape())->GetVertex(i);
@@ -536,36 +569,46 @@ void render(void)
 								{
 										  //Log("found platform\n");
 										  movePlatform(tmp);
-//										  drawSquare(points, tmp->GetWorldCenter(), tmp->GetAngle());
 								}
 								else if (contains(ud, (const char *)"bullet left"))
 								{
-													 Log("left portal\n");
-													 color = 1;
+										  //					 Log("left bullet\n");
+										  color = 1;
 								}
 								else if (contains(ud, (const char *)"bullet right"))
 								{
-													 Log("right portal\n");
-													 color = 2;
-										  //										  moveBullet(tmp);
+										  //					 Log("right bullet\n");
+										  color = 2;
 								}
-								else if (contains(ud, (const char *)"wall"))
+								else if (contains(ud, (const char *)"wall") || contains(ud, (const char *)"floor") || contains(ud, (const char *)"ceiling"))
 								{
 										  color = 0;
 								}
 								else
 								{
-										  color = 0;
+										  color = 3;
 								}
 					 }
 					 drawSquare(points, tmp->GetWorldCenter(), tmp->GetAngle(), color);
 					 tmp = tmp->GetNext();
-					 //					 drawSquare(points, tmp->GetWorldCenter(), tmp->GetAngle());
-					 //					 tmp = tmp->GetNext();
+		  }
+		  if (p_isleft >= 0)
+		  {
+					 createPortal(p_pos, p_angle, p_isleft);
+					 p_isleft = -1;
+		  }
+		  if (p1)
+		  {
+					 Log("drawing left portal\n");
+					 drawPortal(p1);
+		  }
+		  if (p2)
+		  {
+					 Log("drawing right portal\n");
+					 drawPortal(p2);
 		  }
 		  camera();
 		  drawPlayer();
 		  drawFoot();
-		  //glPopMatrix();
 		  glXSwapBuffers(dpy, win);
 }
