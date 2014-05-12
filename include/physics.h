@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
@@ -26,6 +27,9 @@ extern b2Vec2 p2_dir;
 extern int player_direction;
 extern bool pauseGame;
 extern char * p_dest;
+extern bool can_jump;
+extern int fix_vel;
+extern b2Vec2 mod_vel;
 
 void physics (void);
 void doPortal(b2Body *);

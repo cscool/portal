@@ -7,19 +7,19 @@ int contains (const char * a, const char * b)
 {
 		  if (a == NULL || b == NULL)
 		  {
-					 Log("contains received bad args\n");
+//					 Log("contains received bad args\n");
 					 return 0;
 		  }
 		  unsigned int a_len = strlen(a);
 		  unsigned int b_len = strlen(b);
 		  if (a_len < 1 || b_len < 1)
 		  {
-					 Log("contains received bad args\n");
+//					 Log("contains received bad args\n");
 					 return 0;
 		  }
 		  if (a_len < b_len)
 		  {
-					 Log("first arg must be longer than second arg\n");
+//					 Log("first arg must be longer than second arg\n");
 					 return 0;
 		  }
 		  int good = 0;

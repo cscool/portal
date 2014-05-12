@@ -5,7 +5,7 @@ static FILE *fpxx;
 
 void logOpen(void)
 {
-	fpxx = fopen("exe.log","w");
+	fpxx = fopen("game.log","w");
 }
 
 void logClose(void)

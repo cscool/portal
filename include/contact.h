@@ -22,6 +22,9 @@ extern b2Body * myPlayer;
 extern b2Body * gameFloor;
 extern b2Body * platform;
 extern b2Body * toDestroy;
+extern bool can_jump;
+extern int fix_vel;
+extern b2Vec2 mod_vel;
 
 class contactListener : public b2ContactListener
 {

@@ -26,9 +26,19 @@
 using namespace std;
 
 //PPM Images
+GLuint silhouetteTexture;
 Ppmimage * mineImage = NULL;
 GLuint mineTexture;
-GLuint silhouetteTexture;
+Ppmimage * playerLeftImage = NULL;
+GLuint playerLeftTexture;
+Ppmimage * playerRightImage = NULL;
+GLuint playerRightTexture;
+Ppmimage * gunLeftImage = NULL;
+GLuint gunLeftTexture;
+Ppmimage * gunRightImage = NULL;
+GLuint gunRightTexture;
+Ppmimage * labratImage = NULL;
+GLuint labratTexture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -71,25 +81,27 @@ struct timespec timeStart, timeCurrent;
 struct timespec timePause;
 double physicsCountdown=0.0;
 double timeSpan=0.0;
+double t_limit = 1.0/60.0;
 
 // other globals
 int keys[65536];
 bool running = true;
 bool pauseGame = false;
 int player_direction = 1; // right
+bool can_jump = false;
+int fix_vel = 0;
+b2Vec2 mod_vel;
 
 //macros
 #define rnd() (((double)rand())/(double)RAND_MAX)
 #define random(a) (rand()%a)
 
 //function prototypes
-void init_opengl(void);
 void check_mouse(XEvent *);
 void check_keys(XEvent *);
 void init(void);
 void step(void);
 void check_resize(void);
-void init_images(void);
 void init_b2d(void);
 void cleanup(void);
 
@@ -111,24 +123,21 @@ int main(void)
 		  {
 					 if(!pauseGame)
 					 {
-								while(XPending(dpy))
-								{
-										  XNextEvent(dpy, &e);
-										  check_mouse(&e);
-										  check_keys(&e);
-								}
 								clock_gettime(CLOCK_REALTIME, &timeCurrent);
-								timeSpan = timeDiff(&timeStart, &timeCurrent);
-								timeCopy(&timeStart, &timeCurrent);
-								physicsCountdown += timeSpan;
-								while(physicsCountdown >= physicsRate)
+								if (timeDiff(&timeStart, &timeCurrent) >= t_limit)
 								{
+										  while(XPending(dpy))
+										  {
+													 XNextEvent(dpy, &e);
+													 check_mouse(&e);
+													 check_keys(&e);
+										  }
 										  physics();
-										  physicsCountdown -= physicsRate;
+										  render();
+										  world->Step(1.0/30.0,8,3);
+										  world->ClearForces();
+										  timeCopy(&timeStart, &timeCurrent);
 								}
-								render();
-								world->Step(1.0/30.0,8,3);
-								world->ClearForces();
 					 }
 					 else if(pauseGame)
 					 {
@@ -154,46 +163,15 @@ void init(void)
 		  running = true;
 		  pauseGame = false;
 		  initXWindows();
+		  init_images();
 		  init_opengl();
 		  srand(time(NULL));
 		  clock_gettime(CLOCK_REALTIME, &timePause);
 		  clock_gettime(CLOCK_REALTIME, &timeStart);
+		  timeCopy(&timeStart, &timeCurrent);
 		  XAllowEvents(dpy, AsyncBoth, CurrentTime);
 		  XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
-		  init_images();
 		  init_b2d();
-}
-
-void init_images(void)
-{
-		  mineImage = ppm6GetImage((char *)"./images/mine2.ppm");
-		  glGenTextures(1, &mineTexture);
-		  glBindTexture(GL_TEXTURE_2D, mineTexture);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  glTexImage2D(GL_TEXTURE_2D, 0, 3, mineImage->width, mineImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, mineImage->data);
-}
-
-void init_b2d(void)
-{
-		  world=new b2World(b2Vec2(0.0,10.0f));
-		  toDestroy = NULL;
-		  world->SetContactListener(&contact_handler);
-		  gameFloor = addRect(xres*5, yres-50, xres*10, 50, 0.7f, 0.2f, 2, (char *)"floor portalable");
-		  addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable");//left wall
-		  addRect(xres*10, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable");//right wall
-		  platform = addRect(0.5f*xres, 0.33f*yres, 250, 30, 100.0f, 0.0f, 3, (char *)"platform"); // platform
-		  addObstacles();
-		  myPlayer = addPlayer(50, 50, 60, 60, world, myGun);
-		  addFoot(60);
-}
-
-void init_opengl(void)
-{
-		  glMatrixMode( GL_PROJECTION);
-		  glOrtho(0, xres, yres, 0, -1, 1);
-		  glMatrixMode(GL_MODELVIEW);
-		  glClearColor(0,0,0,1);
 }
 
 void check_mouse(XEvent *e)
@@ -295,6 +273,20 @@ void check_keys(XEvent * e)
 								}
 					 }
 		  }
+}
+
+void init_b2d(void)
+{
+		  world=new b2World(b2Vec2(0.0,10.0f));
+		  toDestroy = NULL;
+		  world->SetContactListener(&contact_handler);
+		  gameFloor = addRect(xres*5, yres-50, xres*10, 50, 0.7f, 0.2f, 2, (char *)"floor portalable");
+		  gameFloor->SetAwake(false);
+		  ((b2Body *)(addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);;//left wall
+		  ((b2Body *)(addRect(xres*10, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
+		  platform = addRect(0.5f*xres, 0.33f*yres, 250, 30, 0.7f, 0.9f, 3, (char *)"platform"); // platform
+		  addObstacles();
+		  myPlayer = addPlayer(50.0f, 50.0f, 60.0f, 100.0f, world, myGun);
 }
 
 void step(void)

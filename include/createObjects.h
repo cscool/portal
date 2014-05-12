@@ -15,11 +15,13 @@ extern const float P2M;
 extern b2World * world;
 extern b2Body * toDestroy;
 extern b2Body * myPlayer;
+extern b2Body * myGun;
 extern b2Body * gameFloor;
 extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
 
+void init_b2d(void);
 void addObstacles(void);
 void addFoot(int);
 b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&);

@@ -14,8 +14,8 @@ static const float gravity = -0.5f;
 #define PLAYER 0
 #define GUN 1
 
-static const float D2R = 180.0f/(pi);
-static const float R2D = (pi)/180.0f;
+static const float R2D = 180.0f/(pi);
+static const float D2R = (pi)/180.0f;
 
 static const float player_width = 15.0f;
 static const float player_height = 20.0f;
@@ -30,5 +30,30 @@ static const int min_width = 300;
 static const int min_height = 200;
 static const int max_width = 800;
 static const int max_height = 600;
+
+void inline toggle (int &a)
+{
+		  if (a == 0)
+		  {
+					 a = 1;
+		  }
+		  else
+		  {
+					 a = 0;
+		  }
+}
+
+void inline toggle (bool &a)
+{
+//		  Log("toggling a from %s to %s\n", a ? (char *)"true" : (char *)"false", a ? (char *)"false" : (char *)"true");
+		  if (!a)
+		  {
+					 a = true;
+		  }
+		  else
+		  {
+					 a = false;
+		  }
+}
 
 #endif // const.h

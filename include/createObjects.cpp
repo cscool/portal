@@ -5,11 +5,11 @@ using namespace std;
 void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft)
 {
 		  Log("in createPortal, got angle = %.2f\n", angle);
-		  if (p1 && isleft)
+		  if (p1 && isleft == 1)
 		  {
 					 world->DestroyBody(p1);
 		  }
-		  if (p2 && !isleft)
+		  if (p2 && isleft != 1)
 		  {
 					 world->DestroyBody(p2);
 		  }
@@ -58,6 +58,7 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 		  if (udata)
 		  {
 					 body->SetUserData((void*)udata);
+					 Log("creating %s\n", udata);
 					 if (udata == (char *)("platform"))
 					 {
 								//Log("it is a platform , setting initial velocity\n");
@@ -65,9 +66,22 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 					 }
 					 if (contains(udata, (const char *)"bullet"))
 					 {
-								//Log("it is a platform , setting initial velocity\n");
+								//Log("it is a bullet, setting initial velocity\n");
 								body->SetGravityScale(0);
-								body->SetLinearVelocity(b2Vec2((float)player_direction * 19.0f, 0.0f));
+								float angle = myGun->GetAngle() * R2D;
+								/*
+								float inverseAngle;
+								if( angle <= 180 )
+										  inverseAngle = (180 - angle);
+								else if( angle <= 270 )
+										  inverseAngle = (360 - angle - 180);
+								else
+										  inverseAngle = 0;
+										  */
+								b2Vec2 a((float)(cos(myGun->GetAngle())), (float)(sin(myGun->GetAngle())));
+								body->SetLinearVelocity(19.0f * a);
+								b2Vec2 p((float)(myGun->GetPosition().x + 4 * player_direction), (float)(myGun->GetPosition().y));
+								body->SetTransform(p, myGun->GetAngle());
 					 }
 		  }
 		  body->CreateFixture(&fixturedef);
@@ -76,50 +90,75 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 
 b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
 {
-	b2BodyDef bodydef;
-	bodydef.position.Set(x*P2M, y*P2M);
-	bodydef.type = b2_dynamicBody;
-	bodydef.gravityScale = 1.0f;
-	bodydef.fixedRotation = true;
-	b2Body* body = world->CreateBody(&bodydef);
-	gun = world->CreateBody(&bodydef);
-	b2PolygonShape shape;
-	b2PolygonShape shape2;
-	shape.SetAsBox(P2M*w/2.0,P2M*h/2.0);
-	shape2.SetAsBox(P2M*w/2.0, P2M*h/4.0);
+		  b2Body* foot;
+		  b2BodyDef bodydef;
+		  bodydef.position.Set(x*P2M, y*P2M);
+		  bodydef.type = b2_dynamicBody;
+		  bodydef.gravityScale = 1.0f;
+		  bodydef.fixedRotation = true;
+		  b2Body* body = world->CreateBody(&bodydef);
+		  gun = world->CreateBody(&bodydef);
+		  b2PolygonShape shape; // body
+		  b2PolygonShape shape2; // gun
+		  b2PolygonShape shape3; // foot
+		  shape.SetAsBox(P2M*w/2.0f,P2M*h/1.0f);
+		  shape2.SetAsBox(P2M*w/1.3f, P2M*h/4.0f);
+		  shape3.SetAsBox(P2M*w/4.0, P2M*h/3.5);
 
-	b2FixtureDef fixturedef;
+		  b2FixtureDef fixturedef;
 
-	fixturedef.shape = &shape;
-	fixturedef.density = 1.0;
-	body->CreateFixture(&fixturedef);
+		  fixturedef.shape = &shape;
+		  fixturedef.density = 1.0;
+		  body->CreateFixture(&fixturedef);
 
-	fixturedef.shape = &shape2;
-	fixturedef.isSensor = true;
-	gun->CreateFixture( &fixturedef );
+		  fixturedef.shape = &shape2;
+		  fixturedef.isSensor = true;
+		  gun->CreateFixture( &fixturedef );
+		  gun->SetUserData((void *)((char *)"gun"));
 
-	b2RevoluteJointDef revoluteJointDef;
-	revoluteJointDef.bodyA = body;
-	revoluteJointDef.bodyB = gun;
-	revoluteJointDef.collideConnected = false;
-	revoluteJointDef.localAnchorA.Set(0, 0);
-	revoluteJointDef.localAnchorB.Set(0, 0);
+		  foot = world->CreateBody(&bodydef);
+		  fixturedef.shape = &shape3;
+		  fixturedef.isSensor = true;
+		  foot->CreateFixture( &fixturedef );
+		  foot->SetUserData((void *)((char *)"foot"));
 
-	b2RevoluteJoint* m_joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef);
+		  b2RevoluteJointDef revoluteJointDef2;
+		  revoluteJointDef2.bodyA = body;
+		  revoluteJointDef2.bodyB = foot;
+		  revoluteJointDef2.collideConnected = false;
+		  /*
+		  revoluteJointDef2.localAnchorB.Set(0.0f, 0.0f);
+		  revoluteJointDef2.localAnchorA.Set(0.0f, 0.0f);
+		  */
+		  revoluteJointDef2.localAnchorA.Set(0.0f, 0.0f);
+		  revoluteJointDef2.localAnchorB.Set(0.0f, -1*(P2M*h/1.0f));
 
-	return body;
+		  //b2RevoluteJoint* f_joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef2);
+		  world->CreateJoint(&revoluteJointDef2);
+
+		  b2RevoluteJointDef revoluteJointDef;
+		  revoluteJointDef.bodyA = body;
+		  revoluteJointDef.bodyB = gun;
+		  revoluteJointDef.collideConnected = false;
+		  revoluteJointDef.localAnchorA.Set(0, 0);
+		  revoluteJointDef.localAnchorB.Set(0, 0);
+
+		  //b2RevoluteJoint* m_joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef);
+		  world->CreateJoint(&revoluteJointDef);
+
+		  return body;
 }
 
 void addFoot(int h)
 {
-	b2PolygonShape shape;
-	shape.SetAsBox(P2M*40, P2M*40, b2Vec2(0,(h/2)), 0);
+		  b2PolygonShape shape;
+		  shape.SetAsBox(P2M*40, P2M*40, b2Vec2(0,(h/2)), 0);
 
-	b2FixtureDef fixturedef;
-	fixturedef.shape = &shape;
-	fixturedef.density = 0.0f;
-	fixturedef.isSensor = true;
-	myPlayer->CreateFixture(&fixturedef);
+		  b2FixtureDef fixturedef;
+		  fixturedef.shape = &shape;
+		  fixturedef.density = 0.0f;
+		  fixturedef.isSensor = true;
+		  myPlayer->CreateFixture(&fixturedef);
 }
 
 void addObstacles()
@@ -138,5 +177,5 @@ void addObstacles()
 
 		  b2Body * awall;
 		  awall = addRect(2000, onFloor/2.0f, 50, 250, 0.7f, 0.7f, 2, (char *)"angled wall portalable");
-		  awall->SetTransform((awall->GetWorldCenter()), 45.0f);
+		  awall->SetTransform((awall->GetPosition()), 45.0f);
 }
