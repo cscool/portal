@@ -8,6 +8,7 @@ void init_opengl(void)
 		  glOrtho(0, xres, yres, 0, -1, 1);
 		  glMatrixMode(GL_MODELVIEW);
 		  glClearColor(0,0,0,1);
+		  /*
 		  glColor3f(1.0f,1.0f,1.0f);
 		  glEnable(GL_TEXTURE_2D);
 		  glPushMatrix();
@@ -18,9 +19,9 @@ void init_opengl(void)
 		  glTexCoord2f(1.0f, 0.0f); //glVertex2i( wid, wid);
 		  glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid,-wid);
 		  glEnd();
-		  glDisable(GL_TEXTURE_2D);
 		  glPopMatrix();
 		  glDisable(GL_TEXTURE_2D);
+		  */
 }
 
 void init_images(void)

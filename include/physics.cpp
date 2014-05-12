@@ -22,22 +22,27 @@ void moveBullet (b2Body * p, const float lmax, const float rmax)
 
 void doPortal(b2Body * o)
 {
+		  Log("pos of p1:\n\t(%.2f, %.2f)\n", p1->GetPosition().x, p1->GetPosition().y);
+		  Log("pos of p2:\n\t(%.2f, %.2f)\n", p2->GetPosition().x, p2->GetPosition().y);
+		  Log("destination: %s\n", p_dest);
 		  if (contains(p_dest, (char *)"p1"))
 		  {
-					 b2Vec2 v((p1_dir.x * o->GetLinearVelocity().x), (p1_dir.y * o->GetLinearVelocity().y));
-					 o->SetLinearVelocity((1.0f/getMagnitude(p1_dir)) * v);
-					 o->SetTransform((p1->GetPosition() + (5.5f * o->GetLinearVelocity())), 0.0f);
+//					 b2Vec2 v((p1_dir.x * o->GetLinearVelocity().x), (p1_dir.y * o->GetLinearVelocity().y));
+//					 o->SetLinearVelocity((1.0f/getMagnitude(p1_dir)) * v);
+					 o->SetTransform((p1->GetPosition())/* + (50.0f * o->GetLinearVelocity()))*/, 0.0f);
 		  }
 		  else
 		  {
-					 b2Vec2 v((p2_dir.x * o->GetLinearVelocity().x), (p2_dir.y * o->GetLinearVelocity().y));
-					 o->SetLinearVelocity((1.0f/getMagnitude(p2_dir)) * v);
-					 o->SetTransform((p2->GetPosition() + (5.5f * o->GetLinearVelocity())), 0.0f);
+//					 b2Vec2 v((p2_dir.x * o->GetLinearVelocity().x), (p2_dir.y * o->GetLinearVelocity().y));
+//					 o->SetLinearVelocity((1.0f/getMagnitude(p2_dir)) * v);
+					 o->SetTransform((p2->GetPosition())/* + (50.0f * o->GetLinearVelocity()))*/, 0.0f);
 		  }
 }
 
 void physics (void)
 {
+		  static b2Body * b1 = NULL;
+		  static b2Body * b2 = NULL;
 		  static b2Vec2 vel_old;
 		  float angle = myGun->GetAngle() * R2D;
 		  float inverseAngle;
@@ -63,10 +68,30 @@ void physics (void)
 										  if (contains(((const char *)(toDestroy->GetUserData())), (const char *)"bullet"))
 										  {
 													 bullet_ct --;
+													 if (toDestroy == b1)
+													 {
+																world->DestroyBody(b1);
+																toDestroy = NULL;
+																b1 = NULL;
+													 }
+													 else
+													 {
+																world->DestroyBody(b2);
+																toDestroy = NULL;
+																b2 = NULL;
+													 }
+										  }
+										  else
+										  {
+													 world->DestroyBody(toDestroy);
+													 toDestroy = NULL;
 										  }
 								}
-								world->DestroyBody(toDestroy);
-								toDestroy = NULL;
+								else
+								{
+										  world->DestroyBody(toDestroy);
+										  toDestroy = NULL;
+								}
 					 }
 					 b2Vec2 vel;
 					 if (fix_vel)
@@ -82,11 +107,11 @@ void physics (void)
 								/* rotate gun up */
 								if(angle < 90.0f && angle > -87.0f)
 								{
-										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() - 1.5f*D2R);
+										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() - 3.0f*D2R);
 								}
 								else if(angle > 90.0f && angle < 267.0f)
 								{
-										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() + 1.5f*D2R);
+										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() + 3.0f*D2R);
 								}
 					 }
 					 if (keys[XK_Down] == 1 || keys[XK_s])
@@ -94,11 +119,11 @@ void physics (void)
 								/* rotate gun down */
 								if(angle < 87.0f && angle > -90.0f)
 								{
-										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() + 3*D2R);
+										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() + 3.0f*D2R);
 								}
 								else if(angle > 93.0f && angle < 270.0f)
 								{
-										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() - 3*D2R);
+										  myGun->SetTransform(myGun->GetPosition(), myGun->GetAngle() - 3.0f*D2R);
 								}
 					 }
 					 if (keys[XK_Left] == 1 || keys[XK_a])
@@ -176,13 +201,14 @@ void physics (void)
 					 {
 								vel.x *= 0.75f;
 					 }
-					 if (keys[XK_x] || keys[XK_slash] || keys[XK_z] || keys[XK_period])
+					 if (keys[XK_x] || keys[XK_slash] || keys[XK_z] || keys[XK_period] || keys[XK_e] || keys[XK_q])
 					 {
 								Log("portal key pressed\n");
 								if (timer < 1)
 								{
-										  bullet_ct ++;
+										  /*
 										  int i = 0;
+										  bullet_ct ++;
 										  if (bullet_ct > 2)
 										  {
 													 b2Body* tmp = world->GetBodyList();
@@ -219,16 +245,33 @@ void physics (void)
 																}
 													 }
 										  }
+										  */
 										  /* create new body and small square fixture */
-										  if (keys[XK_z] || keys[XK_period])
+										  if (keys[XK_z] || keys[XK_period] || keys[XK_q])
 										  {
 													 //													 Log("left portal\n");
-													 addRect(M2P*myGun->GetPosition().x, M2P*myGun->GetPosition().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet left"); // make a bullet
+													 Log("&b1 = %p\n", b1);
+													 if (b1)
+													 {
+																world->DestroyBody(b1);
+																b1 = NULL;
+																Log("&b1 = %p\n", b1);
+													 }
+													 b1 = (b2Body *)(addRect(M2P*myGun->GetPosition().x, M2P*myGun->GetPosition().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet left")); // make a bullet
+													 Log("&b1 = %p\n", b1);
 										  }
 										  else
 										  {
+													 Log("&b2 = %p\n", b2);
 													 //													 Log("right portal\n");
-													 addRect(M2P*myGun->GetPosition().x, M2P*myGun->GetPosition().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet right"); // make a bullet
+													 if (b2)
+													 {
+																world->DestroyBody(b2);
+																b2 = NULL;
+																Log("&b2 = %p\n", b2);
+													 }
+													 b2 = (b2Body *)(addRect(M2P*myGun->GetPosition().x, M2P*myGun->GetPosition().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet right")); // make a bullet
+													 Log("&b2 = %p\n", b2);
 										  }
 										  //										  Log("done making portal\n");
 										  timer = 10; // delay next shot
@@ -238,18 +281,20 @@ void physics (void)
 										  timer--;
 								}
 					 }
+					 /*
 					 if (fix_vel)
 					 {
 								Log("in physics fixing player velocity\n");
-								Log("\tmod_vel.x = %.2f\tmod_vel.y = %.2f\n\tvel.x = %.2f\tvel.y = %.2f\n", mod_vel.x, mod_vel.y, vel.x, vel.y);
+//								Log("\tmod_vel.x = %.2f\tmod_vel.y = %.2f\n\tvel.x = %.2f\tvel.y = %.2f\n", mod_vel.x, mod_vel.y, vel.x, vel.y);
 								b2Vec2 vel2(mod_vel.x + vel.x, mod_vel.y + vel.y);
-								Log("applying vel2.x = %.2f, vel2.y = %.2f\n", vel2.x, vel2.y);
+//								Log("applying vel2.x = %.2f, vel2.y = %.2f\n", vel2.x, vel2.y);
 								myPlayer->SetLinearVelocity(vel2);
 								vel_old = vel;
 					 }
 					 else
+					 */
 					 {
-								Log("applying vel.x = %.2f, vel.y = %.2f\n", vel.x, vel.y);
+//								Log("applying vel.x = %.2f, vel.y = %.2f\n", vel.x, vel.y);
 								myPlayer->SetLinearVelocity(vel);
 					 }
 					 //					 Log("player velocity set\n");

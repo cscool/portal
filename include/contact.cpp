@@ -100,28 +100,31 @@ void contactListener::BeginContact (b2Contact * contact)
 								}
 								toDestroy = (b2Body *)(contact->GetFixtureA()->GetBody());
 					 }
-					 else if (contains(ud1, (const char *)"isportal") && !p_contacting && p1 && p2)
+					 else if (contains(ud1, (const char *)"isportal") && !p_contacting)
 					 {
 								Log("something hit a portal!\n");
-								if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
+								if (p1 && p2)
 								{
-										  Log("its a dynamic object\n");
-										  if (contains (ud1, (const char *)"left"))
+										  if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
 										  {
-													 p_dest = (char *)"p2";
+													 Log("its a dynamic object\n");
+													 if (contains (ud1, (const char *)"left"))
+													 {
+																p_dest = (char *)"p2";
+													 }
+													 else if (contains (ud1, (const char *)"right"))
+													 {
+																p_dest = (char *)"p1";
+													 }
+													 p_obj = (b2Body *)(contact->GetFixtureB()->GetBody());
+													 p_vel = (b2Vec2)(contact->GetFixtureB()->GetBody()->GetLinearVelocity());
+													 //p_contacting = 1;
 										  }
-										  else if (contains (ud1, (const char *)"right"))
+										  else
 										  {
-													 p_dest = (char *)"p1";
+													 Log("not a dynamic object, don't portal\n");
 										  }
-										  p_obj = (b2Body *)(contact->GetFixtureB()->GetBody());
-										  p_vel = (b2Vec2)(contact->GetFixtureB()->GetBody()->GetLinearVelocity());
 								}
-								else
-								{
-										  Log("not a dynamic object, don't portal\n");
-								}
-								p_contacting = 1;
 					 }
 		  }
 		  ud1 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
@@ -211,28 +214,31 @@ void contactListener::BeginContact (b2Contact * contact)
 								}
 								toDestroy = (b2Body *)(contact->GetFixtureB()->GetBody());
 					 }
-					 else if (contains(ud1, (const char *)"isportal") && !p_contacting && p1 && p2)
+					 else if (contains(ud1, (const char *)"isportal") && !p_contacting)
 					 {
 								Log("something hit a portal!\n");
-								if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
+								if (p1 && p2)
 								{
-										  Log("its a dynamic object\n");
-										  if (contains (ud1, (const char *)"left"))
+										  if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
 										  {
-													 p_dest = (char *)"p2";
-										  }
-										  else if (contains (ud1, (const char *)"right"))
-										  {
-													 p_dest = (char *)"p1";
-										  }
-										  p_obj = (b2Body *)(contact->GetFixtureA()->GetBody());
-										  p_vel = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetLinearVelocity());
+													 Log("its a dynamic object\n");
+													 if (contains (ud1, (const char *)"left"))
+													 {
+																p_dest = (char *)"p2";
+													 }
+													 else if (contains (ud1, (const char *)"right"))
+													 {
+																p_dest = (char *)"p1";
+													 }
+													 p_obj = (b2Body *)(contact->GetFixtureA()->GetBody());
+													 p_vel = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetLinearVelocity());
 
-										  p_contacting = 1;
-								}
-								else
-								{
-										  Log("not a dynamic object, don't portal\n");
+													 //													 p_contacting = 1;
+										  }
+										  else
+										  {
+													 Log("not a dynamic object, don't portal\n");
+										  }
 								}
 					 }
 		  }
@@ -270,9 +276,25 @@ void contactListener::EndContact (b2Contact * contact)
 					 }
 					 if (contains(ud1, (const char *)"isportal") && p_contacting)
 					 {
-								if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
+								if (p_dest == (char *)"p1")
 								{
-										  p_contacting = 0;
+										  if ((contact->GetFixtureA()->GetBody()) == p1)
+										  {
+													 if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
+													 {
+																p_contacting = 0;
+													 }
+										  }
+								}
+								else if (p_dest == (char *)"p2")
+								{
+										  if ((contact->GetFixtureA()->GetBody()) == p2)
+										  {
+													 if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
+													 {
+																p_contacting = 0;
+													 }
+										  }
 								}
 					 }
 					 if (contains(ud1, (const char *)"foot"))
@@ -318,9 +340,25 @@ void contactListener::EndContact (b2Contact * contact)
 					 }
 					 if (contains(ud1, (const char *)"isportal") && p_contacting)
 					 {
-								if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
+								if (p_dest == (char *)"p1")
 								{
-										  p_contacting = 0;
+										  if ((contact->GetFixtureB()->GetBody()) == p1)
+										  {
+													 if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
+													 {
+																p_contacting = 0;
+													 }
+										  }
+								}
+								else if (p_dest == (char *)"p2")
+								{
+										  if ((contact->GetFixtureB()->GetBody()) == p2)
+										  {
+													 if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
+													 {
+																p_contacting = 0;
+													 }
+										  }
 								}
 					 }
 					 if (contains(ud1, (const char *)"foot"))

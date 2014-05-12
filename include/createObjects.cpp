@@ -83,6 +83,15 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								b2Vec2 p((float)(myGun->GetPosition().x + 4 * player_direction), (float)(myGun->GetPosition().y));
 								body->SetTransform(p, myGun->GetAngle());
 					 }
+					 if (contains(udata, (const char *)"gun"))
+					 {
+								body->SetGravityScale(0);
+					 }
+					 if (contains(udata, (const char *)"isportal"))
+					 {
+								Log("setting portal fixtures to be sensors\n");
+								fixturedef.isSensor = true;
+					 }
 		  }
 		  body->CreateFixture(&fixturedef);
 		  return body;

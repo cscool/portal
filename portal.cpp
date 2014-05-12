@@ -73,6 +73,7 @@ b2Body * gameFloor;
 b2Body * platform;
 b2Body * p1;
 b2Body * p2;
+b2Body * mine;
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;
@@ -137,6 +138,7 @@ int main(void)
 										  world->Step(1.0/30.0,8,3);
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
+										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
 								}
 					 }
 					 else if(pauseGame)
@@ -287,6 +289,10 @@ void init_b2d(void)
 		  platform = addRect(0.5f*xres, 0.33f*yres, 250, 30, 0.7f, 0.9f, 3, (char *)"platform"); // platform
 		  addObstacles();
 		  myPlayer = addPlayer(50.0f, 50.0f, 60.0f, 100.0f, world, myGun);
+		  //p1 = addRect(700.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
+		  //p2 = addRect(1200.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");
+
+		  //mine = addRect(1200.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"mine");
 }
 
 void step(void)

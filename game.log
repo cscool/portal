@@ -1,0 +1,1781 @@
+creating floor portalable
+creating left wall portalable
+creating right wall portalable
+creating platform
+creating angled wall portalable
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.65, 2.04)
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.71, 2.07)
+current player position:
+	(2.74, 2.10)
+current player position:
+	(2.75, 2.14)
+current player position:
+	(2.76, 2.20)
+current player position:
+	(2.76, 2.27)
+current player position:
+	(2.76, 2.34)
+current player position:
+	(2.76, 2.43)
+current player position:
+	(2.76, 2.53)
+current player position:
+	(2.76, 2.64)
+current player position:
+	(2.76, 2.77)
+current player position:
+	(2.76, 2.90)
+current player position:
+	(2.76, 3.04)
+current player position:
+	(2.76, 3.20)
+current player position:
+	(2.76, 3.37)
+current player position:
+	(2.76, 3.54)
+current player position:
+	(2.76, 3.73)
+current player position:
+	(2.76, 3.93)
+current player position:
+	(2.76, 4.14)
+current player position:
+	(2.76, 4.37)
+current player position:
+	(2.76, 4.60)
+current player position:
+	(2.76, 4.84)
+current player position:
+	(2.76, 5.10)
+current player position:
+	(2.76, 5.37)
+current player position:
+	(2.76, 5.64)
+current player position:
+	(2.76, 5.93)
+current player position:
+	(2.76, 6.23)
+current player position:
+	(2.76, 6.54)
+current player position:
+	(2.76, 6.87)
+current player position:
+	(2.76, 7.20)
+current player position:
+	(2.76, 7.54)
+current player position:
+	(2.76, 7.90)
+current player position:
+	(2.76, 8.27)
+current player position:
+	(2.79, 8.64)
+current player position:
+	(2.83, 9.03)
+current player position:
+	(2.90, 9.43)
+current player position:
+	(2.98, 9.84)
+current player position:
+	(3.09, 10.27)
+current player position:
+	(3.22, 10.70)
+current player position:
+	(3.38, 11.14)
+current player position:
+	(3.55, 11.60)
+current player position:
+	(3.75, 12.07)
+current player position:
+	(3.97, 12.54)
+current player position:
+	(4.21, 13.03)
+current player position:
+	(4.47, 13.53)
+current player position:
+	(4.75, 14.04)
+foot contacted something ( B ):
+	hit floor portalable
+current player position:
+	(5.06, 14.57)
+current player position:
+	(5.38, 15.10)
+current player position:
+	(5.58, 15.24)
+current player position:
+	(5.79, 15.24)
+current player position:
+	(6.04, 15.24)
+current player position:
+	(6.31, 15.24)
+current player position:
+	(6.59, 15.24)
+current player position:
+	(6.89, 15.24)
+current player position:
+	(7.21, 15.24)
+current player position:
+	(7.54, 15.24)
+current player position:
+	(7.89, 15.24)
+current player position:
+	(8.26, 15.24)
+current player position:
+	(8.65, 15.24)
+current player position:
+	(9.06, 15.24)
+current player position:
+	(9.48, 15.24)
+current player position:
+	(9.92, 15.24)
+current player position:
+	(10.38, 15.24)
+current player position:
+	(10.85, 15.24)
+current player position:
+	(11.25, 15.24)
+current player position:
+	(11.57, 15.24)
+current player position:
+	(11.84, 15.24)
+current player position:
+	(12.06, 15.24)
+current player position:
+	(12.25, 15.24)
+current player position:
+	(12.42, 15.24)
+current player position:
+	(12.56, 15.24)
+current player position:
+	(12.68, 15.24)
+current player position:
+	(12.77, 15.24)
+current player position:
+	(12.83, 15.24)
+current player position:
+	(12.87, 15.24)
+current player position:
+	(12.88, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+portal key pressed
+&b1 = (nil)
+creating bullet left
+&b1 = 0x2200c80
+current player position:
+	(12.89, 15.24)
+portal key pressed
+current player position:
+	(12.89, 15.24)
+portal key pressed
+current player position:
+	(12.89, 15.24)
+portal key pressed
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.24)
+current player position:
+	(12.89, 15.07)
+current player position:
+	(12.89, 14.74)
+current player position:
+	(12.89, 14.25)
+current player position:
+	(12.89, 13.60)
+in createPortal, got angle = 0.00
+creating left portal
+creating isportal left
+setting portal fixtures to be sensors
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+current player position:
+	(12.89, 12.96)
+current player position:
+	(12.89, 12.33)
+current player position:
+	(12.89, 11.71)
+current player position:
+	(12.89, 11.10)
+current player position:
+	(12.89, 10.50)
+current player position:
+	(12.89, 9.91)
+current player position:
+	(12.89, 9.33)
+current player position:
+	(12.89, 8.77)
+current player position:
+	(12.89, 8.22)
+current player position:
+	(12.89, 7.67)
+current player position:
+	(12.89, 7.14)
+current player position:
+	(12.89, 6.62)
+current player position:
+	(12.89, 6.11)
+current player position:
+	(12.89, 5.61)
+current player position:
+	(12.89, 5.13)
+current player position:
+	(12.89, 4.65)
+current player position:
+	(12.89, 4.18)
+current player position:
+	(12.89, 3.73)
+current player position:
+	(12.89, 3.29)
+current player position:
+	(12.89, 2.86)
+portal key pressed
+current player position:
+	(12.89, 2.44)
+portal key pressed
+current player position:
+	(12.89, 2.03)
+portal key pressed
+current player position:
+	(12.89, 1.63)
+portal key pressed
+current player position:
+	(12.89, 1.24)
+portal key pressed
+current player position:
+	(12.89, 0.86)
+portal key pressed
+current player position:
+	(12.89, 0.50)
+portal key pressed
+&b2 = (nil)
+creating bullet right
+&b2 = 0x2200d40
+current player position:
+	(12.89, 0.15)
+current player position:
+	(12.89, -0.20)
+current player position:
+	(12.89, -0.53)
+current player position:
+	(12.89, -0.85)
+current player position:
+	(12.89, -1.16)
+current player position:
+	(12.89, -1.46)
+current player position:
+	(12.89, -1.74)
+current player position:
+	(12.89, -2.02)
+current player position:
+	(12.89, -2.29)
+current player position:
+	(12.89, -2.54)
+current player position:
+	(12.89, -2.78)
+current player position:
+	(12.89, -3.01)
+in createPortal, got angle = 0.00
+creating right portal
+creating isportal right
+setting portal fixtures to be sensors
+current player position:
+	(12.89, -3.23)
+current player position:
+	(12.89, -3.44)
+current player position:
+	(12.89, -3.64)
+current player position:
+	(12.89, -3.83)
+current player position:
+	(12.89, -4.01)
+current player position:
+	(12.89, -4.17)
+current player position:
+	(12.89, -4.32)
+current player position:
+	(12.89, -4.47)
+current player position:
+	(12.89, -4.60)
+current player position:
+	(12.89, -4.72)
+current player position:
+	(12.89, -4.83)
+current player position:
+	(12.89, -4.93)
+current player position:
+	(12.89, -5.01)
+current player position:
+	(12.89, -5.09)
+current player position:
+	(12.89, -5.16)
+current player position:
+	(12.89, -5.21)
+current player position:
+	(12.89, -5.25)
+current player position:
+	(12.89, -5.28)
+current player position:
+	(12.89, -5.30)
+current player position:
+	(12.89, -5.31)
+current player position:
+	(12.89, -5.31)
+current player position:
+	(12.89, -5.30)
+current player position:
+	(12.89, -5.28)
+current player position:
+	(12.89, -5.24)
+current player position:
+	(12.89, -5.19)
+current player position:
+	(12.89, -5.14)
+current player position:
+	(12.89, -5.07)
+current player position:
+	(12.89, -4.99)
+current player position:
+	(12.89, -4.90)
+current player position:
+	(12.89, -4.80)
+current player position:
+	(12.89, -4.68)
+current player position:
+	(12.89, -4.56)
+current player position:
+	(12.89, -4.42)
+current player position:
+	(12.89, -4.28)
+current player position:
+	(12.89, -4.12)
+current player position:
+	(12.89, -3.95)
+current player position:
+	(12.89, -3.77)
+current player position:
+	(12.89, -3.58)
+current player position:
+	(12.89, -3.38)
+current player position:
+	(12.89, -3.17)
+current player position:
+	(12.89, -2.94)
+current player position:
+	(12.89, -2.71)
+current player position:
+	(12.89, -2.46)
+current player position:
+	(12.89, -2.21)
+current player position:
+	(12.89, -1.94)
+current player position:
+	(12.89, -1.66)
+current player position:
+	(12.89, -1.37)
+current player position:
+	(12.89, -1.07)
+current player position:
+	(12.89, -0.75)
+current player position:
+	(12.89, -0.43)
+current player position:
+	(12.89, -0.09)
+current player position:
+	(12.89, 0.25)
+current player position:
+	(12.89, 0.61)
+current player position:
+	(12.89, 0.98)
+current player position:
+	(12.89, 1.36)
+current player position:
+	(12.87, 1.75)
+current player position:
+	(12.82, 2.15)
+current player position:
+	(12.76, 2.56)
+current player position:
+	(12.67, 2.99)
+current player position:
+	(12.60, 3.42)
+current player position:
+	(12.54, 3.87)
+current player position:
+	(12.49, 4.32)
+current player position:
+	(12.44, 4.79)
+current player position:
+	(12.41, 5.27)
+current player position:
+	(12.38, 5.76)
+current player position:
+	(12.35, 6.26)
+current player position:
+	(12.33, 6.78)
+current player position:
+	(12.29, 7.30)
+current player position:
+	(12.22, 7.84)
+current player position:
+	(12.14, 8.38)
+current player position:
+	(12.03, 8.94)
+current player position:
+	(11.90, 9.51)
+current player position:
+	(11.75, 10.09)
+current player position:
+	(11.57, 10.68)
+current player position:
+	(11.38, 11.28)
+current player position:
+	(11.16, 11.89)
+current player position:
+	(10.92, 12.52)
+current player position:
+	(10.66, 13.15)
+current player position:
+	(10.38, 13.80)
+current player position:
+	(10.07, 14.45)
+foot contacted something ( B ):
+	hit floor portalable
+current player position:
+	(9.75, 15.12)
+current player position:
+	(9.61, 15.24)
+current player position:
+	(9.46, 15.24)
+current player position:
+	(9.28, 15.24)
+current player position:
+	(9.10, 15.24)
+current player position:
+	(8.90, 15.24)
+current player position:
+	(8.69, 15.24)
+current player position:
+	(8.46, 15.24)
+current player position:
+	(8.21, 15.24)
+current player position:
+	(7.94, 15.24)
+current player position:
+	(7.65, 15.24)
+current player position:
+	(7.35, 15.24)
+current player position:
+	(7.03, 15.24)
+current player position:
+	(6.69, 15.24)
+current player position:
+	(6.33, 15.24)
+current player position:
+	(6.04, 15.24)
+current player position:
+	(5.80, 15.24)
+current player position:
+	(5.60, 15.24)
+current player position:
+	(5.44, 15.24)
+current player position:
+	(5.31, 15.24)
+current player position:
+	(5.20, 15.24)
+current player position:
+	(5.12, 15.24)
+current player position:
+	(5.05, 15.24)
+current player position:
+	(5.00, 15.24)
+current player position:
+	(4.96, 15.24)
+current player position:
+	(4.93, 15.24)
+current player position:
+	(4.91, 15.24)
+current player position:
+	(4.90, 15.24)
+current player position:
+	(4.90, 15.24)
+current player position:
+	(4.90, 15.24)
+current player position:
+	(4.90, 15.24)
+current player position:
+	(4.90, 15.24)
+current player position:
+	(4.90, 15.24)
+current player position:
+	(4.88, 15.24)
+current player position:
+	(4.84, 15.24)
+current player position:
+	(4.79, 15.24)
+current player position:
+	(4.72, 15.24)
+current player position:
+	(4.63, 15.24)
+current player position:
+	(4.52, 15.24)
+current player position:
+	(4.40, 15.24)
+current player position:
+	(4.26, 15.24)
+current player position:
+	(4.10, 15.24)
+something hit a portal!
+its a dynamic object
+current player position:
+	(3.92, 15.24)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+current player position:
+	(3.09, 11.52)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: 
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+current player position:
+	(2.76, 10.10)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.32, 3.37)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( A ):
+	stopped hitting isportal left
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.29, 11.17)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.43, 12.24)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.47, 9.34)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 10.89)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 8.35)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 10.17)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.84)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 9.81)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.59)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 9.65)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.49)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.48, 9.59)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.48, 7.47)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.48, 9.60)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.48, 7.50)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.48, 9.65)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+current player position:
+	(2.48, 7.56)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 9.71)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.62)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 9.79)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.70)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 9.87)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.79)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 9.95)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.87)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 10.04)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.48, 7.96)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.48, 10.12)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.49, 8.04)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.50, 10.21)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.52, 8.13)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.53, 10.30)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.55, 8.22)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.56, 10.39)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.57, 8.31)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.59, 10.47)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.60, 8.40)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.62, 10.56)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.65, 8.48)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( A ):
+	stopped hitting isportal left
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.67, 10.65)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.69, 8.57)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.71, 10.74)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.74, 8.66)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 10.83)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.79, 8.75)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.83, 10.92)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.88, 8.84)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.94, 11.00)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.00, 8.93)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.07, 11.09)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.15, 9.01)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.21, 11.18)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.25, 9.10)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.28, 11.27)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.30, 9.19)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.32, 11.36)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.33, 9.28)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.34, 11.45)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.35, 9.37)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.36, 11.53)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.36, 9.45)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.36, 11.62)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.28, 9.54)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(3.16, 11.71)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(3.00, 9.63)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.84, 11.80)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.86, 11.08)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.85, 12.32)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.85, 11.97)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.84, 13.00)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.84, 12.88)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.83, 13.81)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.82, 13.90)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.81, 14.76)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.81, 15.01)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.77, 15.24)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 15.08)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 15.07)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.92)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.94)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.81)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.86)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.75)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.82)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.73)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.82)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.76)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.87)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.83)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.97)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.95)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 15.10)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 15.10)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 15.24)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 15.06)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 15.05)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.90)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p1
+foot stopped contacting something ( B ):
+	stopped hitting floor portalable
+something hit a portal!
+its a dynamic object
+foot contacted something ( B ):
+	hit gun
+current player position:
+	(2.76, 14.92)
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(1.38, 0.50)
+destination: p2
+foot contacted something ( B ):
+	hit floor portalable
+something hit a portal!
+its a dynamic object
+foot stopped contacting something ( B ):
+	stopped hitting gun
+current player position:
+	(2.76, 14.79)
+calling XDestroyWindow
+calling XCloseDisplay
+done with cleanupXWindows
