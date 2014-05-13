@@ -139,6 +139,7 @@ int main(void)
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
 										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+										  Log("p_contacting = %d\n", p_contacting);
 								}
 					 }
 					 else if(pauseGame)
@@ -254,6 +255,13 @@ void check_keys(XEvent * e)
 										  }
 										  return;
 								}
+								/*
+								if (key == XK_t)
+								{
+										  b2Vec2 a(myPlayer->GetPosition().x - 10.0f, myPlayer->GetPosition().y - 10.0f);
+										  myPlayer->SetTransform(a, 0.0f);
+								}
+								*/
 					 }
 					 else
 					 {

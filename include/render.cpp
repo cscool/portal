@@ -300,7 +300,7 @@ void render(void)
 		  if (p_dest)
 		  {
 					 doPortal(p_obj);
-					 p_dest = (char *)"";
+					 p_dest = NULL;
 		  }
 		  drawPlayer();
 		  camera();

@@ -1,0 +1,18 @@
+
+current player position:
+	(3.84, 15.24)
+p_contacting = 0
+something hit a portal!
+its a dynamic object
+current player position:
+	(3.33, 15.24)
+p_contacting = 1
+pos of p1:
+	(1.38, 15.23)
+pos of p2:
+	(318.62, -10.80)
+destination: p2
+something stopped hitting a portal
+current player position:
+	(67.66, 9.90)
+p_contacting = 0

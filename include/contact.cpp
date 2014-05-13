@@ -118,7 +118,7 @@ void contactListener::BeginContact (b2Contact * contact)
 													 }
 													 p_obj = (b2Body *)(contact->GetFixtureB()->GetBody());
 													 p_vel = (b2Vec2)(contact->GetFixtureB()->GetBody()->GetLinearVelocity());
-													 //p_contacting = 1;
+													 p_contacting = 1;
 										  }
 										  else
 										  {
@@ -233,7 +233,7 @@ void contactListener::BeginContact (b2Contact * contact)
 													 p_obj = (b2Body *)(contact->GetFixtureA()->GetBody());
 													 p_vel = (b2Vec2)(contact->GetFixtureA()->GetBody()->GetLinearVelocity());
 
-													 //													 p_contacting = 1;
+													 													 p_contacting = 1;
 										  }
 										  else
 										  {
@@ -274,10 +274,11 @@ void contactListener::EndContact (b2Contact * contact)
 								//								Log("bullet hit something\n");
 								toDestroy = (b2Body *)(contact->GetFixtureA()->GetBody());
 					 }
-					 if (contains(ud1, (const char *)"isportal") && p_contacting)
+					 if (contains(ud1, (const char *)"isportal") && p_contacting == 1)
 					 {
-								if (p_dest == (char *)"p1")
-								{
+								Log("something stopped hitting a portal\n");
+//								if (p_dest == (char *)"p1")
+//								{
 										  if ((contact->GetFixtureA()->GetBody()) == p1)
 										  {
 													 if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
@@ -285,9 +286,9 @@ void contactListener::EndContact (b2Contact * contact)
 																p_contacting = 0;
 													 }
 										  }
-								}
-								else if (p_dest == (char *)"p2")
-								{
+//								}
+//								else if (p_dest == (char *)"p2")
+//								{
 										  if ((contact->GetFixtureA()->GetBody()) == p2)
 										  {
 													 if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == dyn)
@@ -295,7 +296,7 @@ void contactListener::EndContact (b2Contact * contact)
 																p_contacting = 0;
 													 }
 										  }
-								}
+//								}
 					 }
 					 if (contains(ud1, (const char *)"foot"))
 					 {
@@ -338,10 +339,11 @@ void contactListener::EndContact (b2Contact * contact)
 								//								Log("bullet hit something\n");
 								toDestroy = (b2Body *)(contact->GetFixtureB()->GetBody());
 					 }
-					 if (contains(ud1, (const char *)"isportal") && p_contacting)
+					 if (contains(ud1, (const char *)"isportal") && p_contacting == 1)
 					 {
-								if (p_dest == (char *)"p1")
-								{
+								Log("something stopped hitting a portal\n");
+//								if (p_dest == (char *)"p1")
+//								{
 										  if ((contact->GetFixtureB()->GetBody()) == p1)
 										  {
 													 if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
@@ -349,9 +351,9 @@ void contactListener::EndContact (b2Contact * contact)
 																p_contacting = 0;
 													 }
 										  }
-								}
-								else if (p_dest == (char *)"p2")
-								{
+//								}
+//								else if (p_dest == (char *)"p2")
+//								{
 										  if ((contact->GetFixtureB()->GetBody()) == p2)
 										  {
 													 if ((b2BodyType)(contact->GetFixtureA()->GetBody()->GetType()) == dyn)
@@ -359,7 +361,7 @@ void contactListener::EndContact (b2Contact * contact)
 																p_contacting = 0;
 													 }
 										  }
-								}
+//								}
 					 }
 					 if (contains(ud1, (const char *)"foot"))
 					 {

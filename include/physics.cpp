@@ -22,20 +22,20 @@ void moveBullet (b2Body * p, const float lmax, const float rmax)
 
 void doPortal(b2Body * o)
 {
-		  Log("pos of p1:\n\t(%.2f, %.2f)\n", p1->GetPosition().x, p1->GetPosition().y);
-		  Log("pos of p2:\n\t(%.2f, %.2f)\n", p2->GetPosition().x, p2->GetPosition().y);
-		  Log("destination: %s\n", p_dest);
+//		  Log("pos of p1:\n\t(%.2f, %.2f)\n", p1->GetPosition().x, p1->GetPosition().y);
+//		  Log("pos of p2:\n\t(%.2f, %.2f)\n", p2->GetPosition().x, p2->GetPosition().y);
+//		  Log("destination: %s\n", p_dest);
 		  if (contains(p_dest, (char *)"p1"))
 		  {
-//					 b2Vec2 v((p1_dir.x * o->GetLinearVelocity().x), (p1_dir.y * o->GetLinearVelocity().y));
-//					 o->SetLinearVelocity((1.0f/getMagnitude(p1_dir)) * v);
-					 o->SetTransform((p1->GetPosition())/* + (50.0f * o->GetLinearVelocity()))*/, 0.0f);
+					 b2Vec2 v((p1_dir.x * o->GetLinearVelocity().x), (p1_dir.y * o->GetLinearVelocity().y));
+					 o->SetLinearVelocity((1.0f/getMagnitude(p1_dir)) * v);
+					 o->SetTransform((p1->GetPosition()/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 		  }
 		  else
 		  {
-//					 b2Vec2 v((p2_dir.x * o->GetLinearVelocity().x), (p2_dir.y * o->GetLinearVelocity().y));
-//					 o->SetLinearVelocity((1.0f/getMagnitude(p2_dir)) * v);
-					 o->SetTransform((p2->GetPosition())/* + (50.0f * o->GetLinearVelocity()))*/, 0.0f);
+					 b2Vec2 v((p2_dir.x * o->GetLinearVelocity().x), (p2_dir.y * o->GetLinearVelocity().y));
+					 o->SetLinearVelocity((1.0f/getMagnitude(p2_dir)) * v);
+					 o->SetTransform((p2->GetPosition()/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 		  }
 }
 
