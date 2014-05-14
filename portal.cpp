@@ -74,6 +74,7 @@ b2Body * platform;
 b2Body * p1;
 b2Body * p2;
 b2Body * mine;
+b2Body * myDoor;
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;
@@ -294,8 +295,10 @@ void init_b2d(void)
 		  gameFloor->SetAwake(false);
 		  ((b2Body *)(addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);;//left wall
 		  ((b2Body *)(addRect(xres*10, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
+		  addRect(xres*5, -yres, xres*10, 50, 0.7f, 0.2f, 2, (char *)"ceiling portalable"); //ceiling
 		  platform = addRect(0.5f*xres, 0.33f*yres, 250, 30, 0.7f, 0.9f, 3, (char *)"platform"); // platform
 		  addObstacles();
+		  myDoor = addDoor(6*xres, yres-75);
 		  myPlayer = addPlayer(50.0f, 50.0f, 60.0f, 100.0f, world, myGun);
 		  //p1 = addRect(700.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
 		  //p2 = addRect(1200.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");

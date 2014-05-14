@@ -2,6 +2,7 @@
 #include "log.h"
 #include "const.h"
 #include "createObjects.h"
+#include "createDoor.h"
 #include "contains.h"
 #include <cstring>
 #include "Box2D/Box2D.h"

@@ -6,6 +6,7 @@
 #include "log.h"
 #include "const.h"
 #include "createObjects.h"
+#include "createDoor.h"
 #include "contains.h"
 #include "Box2D/Box2D.h"
 
@@ -19,6 +20,7 @@ extern int bullet_ct;
 extern b2Fixture * myPlayerFoot;
 extern b2Body * myPlayer;
 extern b2Body * myGun;
+extern b2Body * myDoor;
 extern const float M2P;
 extern const float P2M;
 extern int keys[];
