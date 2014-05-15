@@ -96,9 +96,9 @@ void physics (void)
 										  toDestroy = NULL;
 								}
 					 }
-					 if(myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.5f*yres) {
+					 if(myDoor->GetPosition().y*M2P <= -1.5*yres) {
 //								doorVel.y = 0.0;
-								myDoor->SetLinearVelocity(-1.0f * myDoor->GetLinearVelocity());
+								myDoor->SetLinearVelocity(-1.0f * doorVel);
 					 }
 					 if (carry)
 					 {
