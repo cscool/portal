@@ -11,7 +11,6 @@
 #include <X11/keysym.h>
 #include <GL/gl.h>
 #include <GL/glx.h>
-#include <GL/gl.h>
 #include <GL/glu.h>
 
 using namespace std;
@@ -26,6 +25,7 @@ extern int player_direction;
 extern int xres;
 extern int yres;
 extern b2Body * p1;
+extern b2Body * mineObject;
 extern b2Body * p2;
 extern int p_isleft;
 extern b2Vec2 p_vel;
@@ -48,6 +48,8 @@ extern Ppmimage * gunRightImage;
 extern GLuint gunRightTexture;
 extern Ppmimage * labratImage;
 extern GLuint labratTexture;
+extern Ppmimage * wallImage;
+extern GLuint wallTexture;
 
 void init_opengl(void);
 void init_images(void);
@@ -57,3 +59,5 @@ void drawPortal(b2Body * p);
 void drawFoot();
 void drawSquare(b2Vec2* points, b2Vec2 center, float angle, int & color);
 void camera();
+void drawMine(void);
+unsigned char *buildAlphaData(Ppmimage *img);

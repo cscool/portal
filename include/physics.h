@@ -6,7 +6,6 @@
 #include "log.h"
 #include "const.h"
 #include "createObjects.h"
-#include "createDoor.h"
 #include "contains.h"
 #include "Box2D/Box2D.h"
 
@@ -21,6 +20,8 @@ extern b2Fixture * myPlayerFoot;
 extern b2Body * myPlayer;
 extern b2Body * myGun;
 extern b2Body * myDoor;
+extern b2Body * carry;
+extern int cwait;
 extern const float M2P;
 extern const float P2M;
 extern int keys[];
@@ -38,3 +39,4 @@ void doPortal(b2Body *);
 void moveBullet (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f);
 float getMagnitude (b2Vec2);
 void movePlatform (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f);
+void moveMine (b2Body * p, const float lmax = -250.0f, const float rmax = 50.0f);

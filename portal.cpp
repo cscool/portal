@@ -21,6 +21,7 @@
 #include "xwin.h"
 #include <const.h>
 #include "contact.h"
+#include "arenas.h"
 #include <timing.h>
 
 using namespace std;
@@ -39,6 +40,8 @@ Ppmimage * gunRightImage = NULL;
 GLuint gunRightTexture;
 Ppmimage * labratImage = NULL;
 GLuint labratTexture;
+Ppmimage * wallImage = NULL;
+GLuint wallTexture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -73,8 +76,10 @@ b2Body * gameFloor;
 b2Body * platform;
 b2Body * p1;
 b2Body * p2;
-b2Body * mine;
+b2Body * mineObject;
 b2Body * myDoor;
+b2Body * carry;
+int cwait = 0;
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;
@@ -139,8 +144,9 @@ int main(void)
 										  world->Step(1.0/30.0,8,3);
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
-										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
-										  Log("p_contacting = %d\n", p_contacting);
+										  Log("carry = %p\n", carry);
+//										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+//										  Log("p_contacting = %d\n", p_contacting);
 								}
 					 }
 					 else if(pauseGame)
@@ -176,6 +182,7 @@ void init(void)
 		  XAllowEvents(dpy, AsyncBoth, CurrentTime);
 		  XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
 		  init_b2d();
+		  makeArena(0);
 }
 
 void check_mouse(XEvent *e)
@@ -256,13 +263,6 @@ void check_keys(XEvent * e)
 										  }
 										  return;
 								}
-								/*
-								if (key == XK_t)
-								{
-										  b2Vec2 a(myPlayer->GetPosition().x - 10.0f, myPlayer->GetPosition().y - 10.0f);
-										  myPlayer->SetTransform(a, 0.0f);
-								}
-								*/
 					 }
 					 else
 					 {
@@ -291,19 +291,8 @@ void init_b2d(void)
 		  world=new b2World(b2Vec2(0.0,10.0f));
 		  toDestroy = NULL;
 		  world->SetContactListener(&contact_handler);
-		  gameFloor = addRect(xres*5, yres-50, xres*10, 50, 0.7f, 0.2f, 2, (char *)"floor portalable");
-		  gameFloor->SetAwake(false);
-		  ((b2Body *)(addRect(0.0f, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);;//left wall
-		  ((b2Body *)(addRect(xres*10, yres/4-150, 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
-		  addRect(xres*5, -yres, xres*10, 50, 0.7f, 0.2f, 2, (char *)"ceiling portalable"); //ceiling
-		  platform = addRect(0.5f*xres, 0.33f*yres, 250, 30, 0.7f, 0.9f, 3, (char *)"platform"); // platform
-		  addObstacles();
 		  myDoor = addDoor(6*xres, yres-75);
-		  myPlayer = addPlayer(50.0f, 50.0f, 60.0f, 100.0f, world, myGun);
-		  //p1 = addRect(700.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal left");
-		  //p2 = addRect(1200.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"isportal right");
-
-		  //mine = addRect(1200.0f, 150.0f, portal_width, portal_height, 0.0f, 0.0f, 2, (char *)"mine");
+		  myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun);
 }
 
 void step(void)

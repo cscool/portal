@@ -22,8 +22,8 @@ extern b2Body * p1;
 extern b2Body * p2;
 
 void init_b2d(void);
-void addObstacles(void);
 void addFoot(int);
 b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&);
 b2Body* addRect(int, int, int, int, float, float, int, char * udata = NULL);
 void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft);
+b2Body* addDoor(float xpos, float ypos);

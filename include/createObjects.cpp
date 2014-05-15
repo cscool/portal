@@ -92,9 +92,56 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								Log("setting portal fixtures to be sensors\n");
 								fixturedef.isSensor = true;
 					 }
+					 if (contains(udata, (const char *)"mine"))
+					 {
+								body->SetLinearVelocity(b2Vec2(0.0f, 5.0f));
+					 }
 		  }
 		  body->CreateFixture(&fixturedef);
 		  return body;
+}
+
+b2Body* addDoor(float xpos, float ypos)
+{
+	float width = 100;
+	float height = 50;
+	b2BodyDef bodydef;
+	bodydef.position.Set(xpos*P2M, ypos*P2M);
+	bodydef.type = b2_staticBody;
+	//bot left
+	b2Body* body = world->CreateBody(&bodydef);
+	b2PolygonShape shape;
+	shape.SetAsBox(P2M*width/2.0, P2M*height/2.0);
+
+	b2FixtureDef fixturedef;
+	fixturedef.shape = &shape;
+	body->CreateFixture(&fixturedef);
+
+	bodydef.position.Set((xpos+200)*P2M, ypos*P2M);
+	//bot right
+	b2Body* body2 = world->CreateBody(&bodydef);
+	body2->CreateFixture(&fixturedef);
+
+	//top left
+	bodydef.position.Set((xpos)*P2M, (-yres+125)*P2M);
+	b2Body* body3 = world->CreateBody(&bodydef);
+	shape.SetAsBox(P2M*width/2.0, P2M*(height*4)/2.0);
+	fixturedef.shape = &shape;
+	body3->CreateFixture(&fixturedef);
+
+	//top right
+	bodydef.position.Set((xpos+200)*P2M, (-yres+125)*P2M);
+	b2Body* body4 = world->CreateBody(&bodydef);
+	body4->CreateFixture(&fixturedef);
+	
+	//door
+	bodydef.position.Set((xpos+100)*P2M, (0.0)*P2M);
+	bodydef.type = b2_kinematicBody;
+	b2Body* body5 = world->CreateBody(&bodydef);
+	shape.SetAsBox(P2M*width/2.0, P2M*(2*yres - 50)/2.0);
+	fixturedef.shape = &shape;
+	body5->CreateFixture(&fixturedef);
+	return body5;
 }
 
 b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
@@ -168,23 +215,4 @@ void addFoot(int h)
 		  fixturedef.density = 0.0f;
 		  fixturedef.isSensor = true;
 		  myPlayer->CreateFixture(&fixturedef);
-}
-
-void addObstacles()
-{
-		  //top of floor is yres-50-25 = yres-75
-		  float onFloor = yres-75;
-		  addRect(800, yres-105, 60, 60, 0.02f, 0.2f, 1);//bottomleft of stack
-		  addRect(865, yres-105, 60, 60, 0.02f, 0.2f, 1);//bottom right
-		  addRect(832.5, yres-170, 60, 60, 0.02f, 0.2f, 1);//top
-
-		  addRect(1200, onFloor-15, 80, 30, 0.7f, 0.2f, 2);// stairs
-		  addRect(1280, onFloor-30, 80, 60, 0.7f, 0.2f, 2);
-		  addRect(1360, onFloor-45, 80, 90, 0.7f, 0.2f, 2);
-		  addRect(1440, onFloor-60, 80, 120, 0.7f, 0.2f, 2);
-		  addRect(1520, onFloor-75, 80, 150, 0.7f, 0.2f, 2);
-
-		  b2Body * awall;
-		  awall = addRect(2000, onFloor/2.0f, 50, 250, 0.7f, 0.7f, 2, (char *)"angled wall portalable");
-		  awall->SetTransform((awall->GetPosition()), 45.0f);
 }

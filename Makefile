@@ -6,7 +6,10 @@ LIBFNT = $(LIB)/libggfonts.so
 LFLAGS = -lrt -lX11 -lGLU -lGL -pthread -lm #-lXrandr
 EFLAGS = -Wall -Wextra
 
-all: log contains contact xwin createObjects createDoor ppm timing physics render portal
+all: log contains contact xwin createObjects ppm timing physics render arenas portal
+
+arenas: $(LOCINC)/arenas.cpp
+	g++ $(LOCINC)/arenas.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/arenas.o
 
 physics: $(LOCINC)/physics.cpp
 	g++ $(LOCINC)/physics.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/physics.o
@@ -23,9 +26,6 @@ timing: $(LOCINC)/timing.c
 createObjects: $(LOCINC)/createObjects.cpp
 	g++ $(LOCINC)/createObjects.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/createObjects.o
 
-createDoor: $(LOCINC)/createDoor.cpp
-	g++ $(LOCINC)/createDoor.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/createDoor.o
-
 contains: $(LOCINC)/contains.cpp
 	g++ $(LOCINC)/contains.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/contains.o
 
@@ -38,8 +38,7 @@ log: $(LOCINC)/log.c
 xwin: $(LOCINC)/xwin.c
 	g++ $(LOCINC)/xwin.c $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/xwin.o
 
-portal: portal.cpp $(LIB)/log.o $(LIB)/xwin.o $(LIB)/contact.o $(LIB)/contains.o $(LIB)/createObjects.o $(LIB)/createDoor.o $(LIB)/timing.o $(LIB)/ppm.o $(LIB)/physics.o $(LIB)/render.o
-	
+portal: portal.cpp $(LIB)/log.o $(LIB)/xwin.o $(LIB)/contact.o $(LIB)/contains.o $(LIB)/createObjects.o $(LIB)/timing.o $(LIB)/ppm.o $(LIB)/physics.o $(LIB)/render.o $(LIB)/arenas.o
 	g++ $(LIB)/*.o portal.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) $(LOCINC)/Box2D/libBox2D.a
 
 clean:

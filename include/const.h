@@ -17,10 +17,10 @@ static const float gravity = -0.5f;
 static const float R2D = 180.0f/(pi);
 static const float D2R = (pi)/180.0f;
 
-static const float player_width = 15.0f;
-static const float player_height = 20.0f;
+static const float player_width = 60.0f;
+static const float player_height = 100.0f;
 
-static const float portal_width = 20.0f;
+static const float portal_width = 10.0f;
 static const float portal_height = 180.0f;
 
 static const float gun_width = 40.0f;
@@ -30,6 +30,8 @@ static const int min_width = 300;
 static const int min_height = 200;
 static const int max_width = 800;
 static const int max_height = 600;
+
+static const float onFloor = -50.0f;
 
 void inline toggle (int &a)
 {

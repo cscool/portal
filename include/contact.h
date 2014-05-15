@@ -2,7 +2,6 @@
 #include "log.h"
 #include "const.h"
 #include "createObjects.h"
-#include "createDoor.h"
 #include "contains.h"
 #include <cstring>
 #include "Box2D/Box2D.h"
@@ -21,6 +20,7 @@ extern int p_contacting;
 extern b2World * world;
 extern b2Body * myPlayer;
 extern b2Body * gameFloor;
+extern b2Body * myDoor;
 extern b2Body * platform;
 extern b2Body * toDestroy;
 extern bool can_jump;

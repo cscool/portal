@@ -8,20 +8,63 @@ void init_opengl(void)
 		  glOrtho(0, xres, yres, 0, -1, 1);
 		  glMatrixMode(GL_MODELVIEW);
 		  glClearColor(0,0,0,1);
-		  /*
 		  glColor3f(1.0f,1.0f,1.0f);
-		  glEnable(GL_TEXTURE_2D);
-		  glPushMatrix();
-		  glBindTexture(GL_TEXTURE_2D, labratTexture);
-		  glBegin(GL_QUADS);
-		  glTexCoord2f(0.0f, 1.0f); //glVertex2i(-wid,-wid);
-		  glTexCoord2f(0.0f, 0.0f); //glVertex2i(-wid, wid);
-		  glTexCoord2f(1.0f, 0.0f); //glVertex2i( wid, wid);
-		  glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid,-wid);
-		  glEnd();
-		  glPopMatrix();
-		  glDisable(GL_TEXTURE_2D);
-		  */
+		  /*
+			  glEnable(GL_TEXTURE_2D);
+			  glPushMatrix();
+			  glBindTexture(GL_TEXTURE_2D, labratTexture);
+			  glBegin(GL_QUADS);
+			  glTexCoord2f(0.0f, 1.0f);
+			  glVertex2i(-5.0f * xres, -5.0f * yres);
+			  glTexCoord2f(0.0f, 0.0f);
+			  glVertex2i(-5.0f * xres, 5.0f * yres);
+			  glTexCoord2f(1.0f, 0.0f);
+			  glVertex2i(5.0f * xres, 5.0f * yres);
+			  glTexCoord2f(1.0f, 1.0f);
+			  glVertex2i(5.0f * xres, -5.0f * yres);
+			  glEnd();
+			  glPopMatrix();
+			  glDisable(GL_TEXTURE_2D);
+			  */
+}
+
+unsigned char *buildAlphaData(Ppmimage *img)
+{
+	//add 4th component to RGB stream...
+	int i;
+	int a,b,c;
+	unsigned char *newdata, *ptr;
+	unsigned char *data = (unsigned char *)img->data;
+	newdata = (unsigned char *)malloc(img->width * img->height * 4);
+	ptr = newdata;
+	for (i=0; i<img->width * img->height * 3; i+=3) {
+		a = *(data+0);
+		b = *(data+1);
+		c = *(data+2);
+		*(ptr+0) = a;
+		*(ptr+1) = b;
+		*(ptr+2) = c;
+		//
+		//get the alpha value
+		//
+		//original code
+		//get largest color component...
+		//*(ptr+3) = (unsigned char)((
+		//		(int)*(ptr+0) +
+		//		(int)*(ptr+1) +
+		//		(int)*(ptr+2)) / 3);
+		//d = a;
+		//if (b >= a && b >= c) d = b;
+		//if (c >= a && c >= b) d = c;
+		//*(ptr+3) = d;
+		//
+		//new code, suggested by Chris Smith, Fall 2013
+		*(ptr+3) = (a|b|c);
+		//
+		ptr += 4;
+		data += 3;
+	}
+	return newdata;
 }
 
 void init_images(void)
@@ -67,6 +110,14 @@ void init_images(void)
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, labratImage->width, labratImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, labratImage->data);
+		  /*
+			  wallImage = ppm6GetImage((char *)"./images/wall-edited.ppm");
+			  glGenTextures(1, &wallTexture);
+			  glBindTexture(GL_TEXTURE_2D, playerRightTexture);
+			  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+			  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+			  glTexImage2D(GL_TEXTURE_2D, 0, 3, wallImage->width, wallImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, wallImage->data);
+			  */
 }
 
 void camera() {
@@ -80,6 +131,22 @@ void camera() {
 		  //glTranslatef(myPlayer->GetPosition().x*M2P, myPlayer->GetPosition().y*M2P, 0);
 		  //glPopMatrix();
 		  gluOrtho2D(posx-xres/zoomScale, posx+xres/zoomScale, posy+yres/zoomScale-adjusty, posy-yres/zoomScale-adjusty);
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
+		  glBindTexture(GL_TEXTURE_2D, labratTexture);
+		  glBegin(GL_QUADS);
+		  glTexCoord2f(0.0f, 0.0f);
+		  glVertex2i(0.0f * xres, -2.0f * yres);
+		  glTexCoord2f(0.0f, 1.0f);
+		  glVertex2i(0.0f * xres, 0.0f * yres);
+		  glTexCoord2f(1.0f, 1.0f);
+		  glVertex2i(3.0f * xres, 0.0f * yres);
+		  glTexCoord2f(1.0f, 0.0f);
+		  glVertex2i(3.0f * xres, -2.0f * yres);
+		  glEnd();
+		  glPopMatrix();
+		  glDisable(GL_TEXTURE_2D);
 		  glMatrixMode(GL_MODELVIEW);
 		  glLoadIdentity();
 }
@@ -139,6 +206,47 @@ void drawPortal(b2Body * p)
 					 glEnd();
 					 tmp = tmp->GetNext();
 		  }
+		  glPopMatrix();
+}
+
+void drawMine(void)
+{
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
+		  glTranslatef(mineObject->GetPosition().x*M2P, mineObject->GetPosition().y*M2P, 0);
+		  glRotatef(mineObject->GetAngle()*180.0/M_PI, 0, 0, 1);
+		  glBindTexture(GL_TEXTURE_2D, mineTexture);
+		  b2Vec2 points[4];
+		  b2Fixture * tmp = mineObject->GetFixtureList();
+		  while (tmp)
+		  {
+					 for(int i=0; i < 4; i++)
+								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+					 glBegin(GL_QUADS);
+					 for(int i = 0; i < 4; i++)
+					 {
+								switch (i)
+								{
+										  case 0:
+													 glTexCoord2f(0.0f, 1.0f); //glVertex2i(-wid,-wid);
+													 break;
+										  case 1:
+													 glTexCoord2f(0.0f, 0.0f); //glVertex2i(-wid, wid);
+													 break;
+										  case 2:
+													 glTexCoord2f(1.0f, 0.0f); //glVertex2i( wid, wid);
+													 break;
+										  case 3:
+													 glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid,-wid);
+													 break;
+								}
+								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 }
+					 glEnd();
+					 tmp = tmp->GetNext();
+		  }
+		  glDisable(GL_TEXTURE_2D);
 		  glPopMatrix();
 }
 
@@ -234,6 +342,7 @@ void render(void)
 		  //		  Log("in render\n");
 		  glClear(GL_COLOR_BUFFER_BIT);
 		  glLoadIdentity();
+		  camera();
 		  b2Vec2 points[4];
 		  b2Body* tmp = world->GetBodyList();
 		  char * ud;
@@ -253,6 +362,12 @@ void render(void)
 								{
 										  //Log("found platform\n");
 										  movePlatform(tmp);
+								}
+								else if (contains(ud, (const char *)("mine")))
+								{
+										  //Log("found mine\n");
+										  moveMine(tmp);
+										  drawMine();
 								}
 								else if (contains(ud, (const char *)"bullet left"))
 								{
@@ -303,6 +418,5 @@ void render(void)
 					 p_dest = NULL;
 		  }
 		  drawPlayer();
-		  camera();
 		  glXSwapBuffers(dpy, win);
 }
