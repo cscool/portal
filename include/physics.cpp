@@ -102,8 +102,16 @@ void physics (void)
 					 }
 					 if (carry)
 					 {
-								b2Vec2 p(myGun->GetPosition().x + player_direction * 8.0f * P2M, myGun->GetPosition().y + -1.0f * sin(myGun->GetAngle()));
+								//								Log("in physics, before transform of carry object\n");
+								//								Log("myPlayer->pos = (%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+								//								Log("carry position = (%.2f, %.2f)\n", carry->GetPosition().x, carry->GetPosition().y);
+								//								Log("myPlayer addr = %p\n", myPlayer);
+								//								Log("carry addr = %p\n", carry);
+								b2Vec2 p(myGun->GetPosition().x + player_direction * 2.0f * player_width * P2M, myGun->GetPosition().y + 4.0f * sin(myGun->GetAngle()));
 								carry->SetTransform(p, 0.0f);
+								//								Log("after transform\n");
+								//								Log("carry addr = %p\n", carry);
+								//								Log("carry position = (%.2f, %.2f)\n", carry->GetPosition().x, carry->GetPosition().y);
 					 }
 					 b2Vec2 vel;
 					 if (fix_vel)
@@ -308,50 +316,77 @@ void physics (void)
 								 * 	carry = dynObj;
 								 * 	carry->SetTransform(myGun->GetPosition.x + 1.0f * P2M);
 								 */
-								if (carry)
-								{
-										  /* drop */
-										  Log("dropped an object\n");
-										  carry = NULL;
-										  cwait = 10;
-								}
-								else
-								{
-										  b2Body * tmp = world->GetBodyList();
-										  b2BodyType dyn = myPlayer->GetType();
-										  while (tmp)
-										  {
-													 if (tmp == myPlayer)
-													 {
-																// do nada
-													 }
-													 else if (tmp == myGun)
-													 {
-																// do nada
-													 }
-													 else if (tmp == b1 || tmp == b2)
-													 {
-																// no grabbing bullets out of the air
-													 }
-													 else if (tmp->GetType() == dyn)
-													 {
-																if (fabs(b2Distance(myGun->GetPosition(), tmp->GetPosition())) < 6.5f)
-																{
-																		  Log("Grabbing something within range\n");
-																		  carry = tmp;
-																}
-													 }
-													 else
-													 {
-																Log("nothing grabable in range\n");
-													 }
-													 tmp = tmp->GetNext();
-										  }
-										  cwait = 10;
-								}
 								if (cwait > 0)
 								{
 										  cwait--;
+								}
+								else
+								{
+										  if (carry)
+										  {
+													 /* drop */
+													 Log("dropped an object\n");
+													 carry->SetGravityScale(1);
+													 carry->SetLinearVelocity(myPlayer->GetLinearVelocity());
+													 carry = NULL;
+													 cwait = 10;
+										  }
+										  else
+										  {
+													 b2Body * tmp = world->GetBodyList();
+													 b2BodyType dyn = myPlayer->GetType();
+													 char * data = NULL;
+													 while (tmp && !carry)
+													 {
+																data = (char *)(tmp->GetUserData());
+																if (tmp == myPlayer)
+																{
+																		  Log("tried to pick up myPlayer\n");
+																		  // do nada
+																}
+																else if (tmp == myGun)
+																{
+																		  Log("tried to pick up myGun\n");
+																		  // do nada
+																}
+																else if (tmp == b1 || tmp == b2)
+																{
+																		  // no grabbing bullets out of the air
+																}
+																else if (tmp->GetType() == dyn)
+																{
+																		  if (data)
+																		  {
+																					 if (contains(data, (const char *)"foot"))
+																					 {
+																								Log("tried to grab own foot\n");
+																								// do nada
+																					 }
+																					 else if (fabs(b2Distance(myGun->GetPosition(), tmp->GetPosition())) < 6.5f)
+																					 {
+																								Log("Grabbing something within range\n");
+																								Log("object has user data as follows:\n\t%s\n", data);
+																								Log("range to object:   %.2f\n", fabs(b2Distance(myGun->GetPosition(), tmp->GetPosition())));
+																								carry = tmp;
+																								carry->SetGravityScale(0);
+																					 }
+																		  }
+																		  else if (fabs(b2Distance(myGun->GetPosition(), tmp->GetPosition())) < 6.5f)
+																		  {
+																					 Log("Grabbing something within range\n");
+																					 Log("range to object:   %.2f\n", fabs(b2Distance(myGun->GetPosition(), tmp->GetPosition())));
+																					 carry = tmp;
+																					 carry->SetGravityScale(0);
+																		  }
+																}
+																else
+																{
+																		  Log("checking for grabable objects...\n");
+																}
+																tmp = tmp->GetNext();
+													 }
+													 cwait = 10;
+										  }
 								}
 					 }
 					 /*

@@ -10,7 +10,7 @@ void contactListener::BeginContact (b2Contact * contact)
 		  b2Vec2 norm;
 		  float angle = 0.0f;
 		  b2BodyType dyn = myPlayer->GetType();
-		  b2BodyType kin = platform->GetType();
+//		  b2BodyType kin = platform->GetType();
 		  //		  b2BodyType stat = gameFloor->GetType();
 		  ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
 		  ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
@@ -43,11 +43,13 @@ void contactListener::BeginContact (b2Contact * contact)
 													 toggle(can_jump);
 										  }
 								}
-								if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == kin)
+/*								
+ *								if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == kin)
 								{
 										  Log("started standing on a kinematic object\n");
 										  fix_vel = 1;
 								}
+								*/
 					 }
 					 else if (contains(ud1, (const char *)"mine"))
 					 {
@@ -191,11 +193,13 @@ void contactListener::BeginContact (b2Contact * contact)
 													 toggle(can_jump);
 										  }
 								}
+								/*
 								if ((b2BodyType)(bodya->GetType()) == kin)
 								{
 										  //										  Log("started standing on a kinematic object\n");
 										  fix_vel = 2;
 								}
+								*/
 					 }
 					 else if (contains(ud1, (const char *)"player"))
 					 {
@@ -331,7 +335,7 @@ void contactListener::BeginContact (b2Contact * contact)
 void contactListener::EndContact (b2Contact * contact)
 {
 		  b2BodyType dyn = myPlayer->GetType();
-		  b2BodyType kin = platform->GetType();
+//		  b2BodyType kin = platform->GetType();
 		  char * ud1;
 		  char * ud2;
 		  ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
@@ -394,11 +398,13 @@ void contactListener::EndContact (b2Contact * contact)
 													 toggle(can_jump);
 										  }
 								}
+								/*
 								if ((b2BodyType)(bodyb->GetType()) == kin)
 								{
 										  Log("stopped standing on a kinematic object\n");
 										  fix_vel = 0;
 								}
+								*/
 					 }
 		  }
 		  ud1 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
@@ -459,11 +465,13 @@ void contactListener::EndContact (b2Contact * contact)
 													 toggle(can_jump);
 										  }
 								}
+								/*
 								if ((b2BodyType)(bodya->GetType()) == kin)
 								{
 										  Log("stopped standing on a kinematic object\n");
 										  fix_vel = 0;
 								}
+								*/
 					 }
 		  }
 }

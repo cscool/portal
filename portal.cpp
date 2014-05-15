@@ -144,7 +144,7 @@ int main(void)
 										  world->Step(1.0/30.0,8,3);
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
-										  Log("carry = %p\n", carry);
+										  //Log("carry = %p\n", carry);
 //										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
 //										  Log("p_contacting = %d\n", p_contacting);
 								}
