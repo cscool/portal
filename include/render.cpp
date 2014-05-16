@@ -383,6 +383,11 @@ void render(void)
 								{
 										  color = 0;
 								}
+								else if (contains(ud, (const char *)"gun"))
+								{
+										  tmp = tmp->GetNext();
+										  continue;
+								}
 								else if (contains(ud, (const char *)"foot"))
 								{
 										  tmp = tmp->GetNext();

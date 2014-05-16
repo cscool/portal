@@ -85,6 +85,7 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 					 }
 					 if (contains(udata, (const char *)"gun"))
 					 {
+								fixturedef.isSensor = true;
 								body->SetGravityScale(0);
 					 }
 					 if (contains(udata, (const char *)"isportal"))
@@ -201,6 +202,8 @@ b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
 
 		  //b2RevoluteJoint* m_joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef);
 		  world->CreateJoint(&revoluteJointDef);
+
+		  myPlayerFoot = foot;
 
 		  return body;
 }

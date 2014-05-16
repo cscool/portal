@@ -52,7 +52,8 @@ b2Body * p_obj;
 b2Vec2 p1_dir;
 b2Vec2 p2_dir;
 char * p_dest;
-int p_contacting = 0;
+int p1_contacting = 0;
+int p2_contacting = 0;
 
 // X Windows variables
 Display * dpy;
@@ -69,7 +70,7 @@ b2World * world;
 b2Body * toDestroy;
 contactListener contact_handler;
 int bullet_ct = 0;
-b2Fixture * myPlayerFoot;
+b2Body * myPlayerFoot;
 b2Body * myPlayer;
 b2Body * myGun;
 b2Body * gameFloor;
@@ -144,9 +145,14 @@ int main(void)
 										  world->Step(1.0/30.0,8,3);
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
+//										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
 										  //Log("carry = %p\n", carry);
-//										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
-//										  Log("p_contacting = %d\n", p_contacting);
+										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
+										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
+										  Log("can_jump = %d\n", can_jump);
+//										  Log("p1_contacting = %d\n", p1_contacting);
+//										  Log("p2_contacting = %d\n", p2_contacting);
 								}
 					 }
 					 else if(pauseGame)
@@ -293,6 +299,7 @@ void init_b2d(void)
 		  world->SetContactListener(&contact_handler);
 		  myDoor = addDoor(6*xres, yres-75);
 		  myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun);
+		  myPlayer->SetUserData((void *)((char *)"player"));
 }
 
 void step(void)
