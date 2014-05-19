@@ -277,7 +277,7 @@ void physics (void)
 					 {
 								if (can_jump)
 								{
-										  float impulse = myPlayer->GetMass() * 5.5f;
+										  float impulse = myPlayer->GetMass() * 7.5f;
 										  myPlayer->ApplyLinearImpulse(b2Vec2(0,-impulse), myPlayer->GetPosition(),true);
 										  vel = myPlayer->GetLinearVelocity();
 										  jcatch = 0;
@@ -392,17 +392,23 @@ void physics (void)
 					 }
 					 if (keys[XK_f])
 					 {
+								cwait = 1;
+					 }
+					 else if (!(keys[XK_f]) && cwait)
+					 {
 								//grab
 								/*
 								 * if there is a dynamic object with dynObj->GetWorldCenter() in range from myGun->GetPosition().x and in angular offset from myGun->GetAngle()
 								 * 	carry = dynObj;
 								 * 	carry->SetTransform(myGun->GetPosition.x + 1.0f * P2M);
 								 */
+								/*
 								if (cwait > 0)
 								{
 										  cwait--;
 								}
-								else
+								*/
+								//else
 								{
 										  if (carry)
 										  {
@@ -411,7 +417,7 @@ void physics (void)
 													 carry->SetGravityScale(1);
 													 carry->SetLinearVelocity(myPlayer->GetLinearVelocity());
 													 carry = NULL;
-													 cwait = 10;
+													 //cwait = 10;
 										  }
 										  else
 										  {
@@ -467,9 +473,10 @@ void physics (void)
 																}
 																tmp = tmp->GetNext();
 													 }
-													 cwait = 10;
+													 //cwait = 10;
 										  }
 								}
+								cwait = 0;
 					 }
 					 /*
 						 if (fix_vel)

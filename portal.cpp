@@ -147,9 +147,9 @@ int main(void)
 										  timeCopy(&timeStart, &timeCurrent);
 //										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
 										  //Log("carry = %p\n", carry);
-										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
-										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
-										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
+//										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+//										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
+//										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
 										  Log("can_jump = %d\n", can_jump);
 //										  Log("p1_contacting = %d\n", p1_contacting);
 //										  Log("p2_contacting = %d\n", p2_contacting);

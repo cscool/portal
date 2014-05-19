@@ -30,86 +30,115 @@ void init_opengl(void)
 
 unsigned char *buildAlphaData(Ppmimage *img)
 {
-	//add 4th component to RGB stream...
-	int i;
-	int a,b,c;
-	unsigned char *newdata, *ptr;
-	unsigned char *data = (unsigned char *)img->data;
-	newdata = (unsigned char *)malloc(img->width * img->height * 4);
-	ptr = newdata;
-	for (i=0; i<img->width * img->height * 3; i+=3) {
-		a = *(data+0);
-		b = *(data+1);
-		c = *(data+2);
-		*(ptr+0) = a;
-		*(ptr+1) = b;
-		*(ptr+2) = c;
-		//
-		//get the alpha value
-		//
-		//original code
-		//get largest color component...
-		//*(ptr+3) = (unsigned char)((
-		//		(int)*(ptr+0) +
-		//		(int)*(ptr+1) +
-		//		(int)*(ptr+2)) / 3);
-		//d = a;
-		//if (b >= a && b >= c) d = b;
-		//if (c >= a && c >= b) d = c;
-		//*(ptr+3) = d;
-		//
-		//new code, suggested by Chris Smith, Fall 2013
-		*(ptr+3) = (a|b|c);
-		//
-		ptr += 4;
-		data += 3;
-	}
-	return newdata;
+		  //add 4th component to RGB stream...
+		  int i;
+		  int a,b,c;
+		  unsigned char *newdata, *ptr;
+		  unsigned char *data = (unsigned char *)img->data;
+		  newdata = (unsigned char *)malloc(img->width * img->height * 4);
+		  ptr = newdata;
+		  for (i=0; i<img->width * img->height * 3; i+=3) {
+					 a = *(data+0);
+					 b = *(data+1);
+					 c = *(data+2);
+					 *(ptr+0) = a;
+					 *(ptr+1) = b;
+					 *(ptr+2) = c;
+					 //
+					 //get the alpha value
+					 //
+					 //original code
+					 //get largest color component...
+					 //*(ptr+3) = (unsigned char)((
+					 //		(int)*(ptr+0) +
+					 //		(int)*(ptr+1) +
+					 //		(int)*(ptr+2)) / 3);
+					 //d = a;
+					 //if (b >= a && b >= c) d = b;
+					 //if (c >= a && c >= b) d = c;
+					 //*(ptr+3) = d;
+					 //
+					 //new code, suggested by Chris Smith, Fall 2013
+					 *(ptr+3) = (a|b|c);
+					 //
+					 ptr += 4;
+					 data += 3;
+		  }
+		  return newdata;
 }
 
 void init_images(void)
 {
-		  mineImage = ppm6GetImage((char *)"./images/mine2.ppm");
-		  glGenTextures(1, &mineTexture);
-		  glBindTexture(GL_TEXTURE_2D, mineTexture);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  glTexImage2D(GL_TEXTURE_2D, 0, 3, mineImage->width, mineImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, mineImage->data);
-
-		  playerLeftImage = ppm6GetImage((char *)"./images/player_left.ppm");
-		  glGenTextures(1, &playerLeftTexture);
-		  glBindTexture(GL_TEXTURE_2D, playerLeftTexture);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  glTexImage2D(GL_TEXTURE_2D, 0, 3, playerLeftImage->width, playerLeftImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, playerLeftImage->data);
-
-		  playerRightImage = ppm6GetImage((char *)"./images/player_right.ppm");
-		  glGenTextures(1, &playerRightTexture);
-		  glBindTexture(GL_TEXTURE_2D, playerRightTexture);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  glTexImage2D(GL_TEXTURE_2D, 0, 3, playerRightImage->width, playerRightImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, playerRightImage->data);
-
-		  gunLeftImage = ppm6GetImage((char *)"./images/gun_left.ppm");
-		  glGenTextures(1, &gunLeftTexture);
-		  glBindTexture(GL_TEXTURE_2D, gunLeftTexture);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  glTexImage2D(GL_TEXTURE_2D, 0, 3, gunLeftImage->width, gunLeftImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, gunLeftImage->data);
-
-		  gunRightImage = ppm6GetImage((char *)"./images/gun_right.ppm");
-		  glGenTextures(1, &gunRightTexture);
-		  glBindTexture(GL_TEXTURE_2D, gunRightTexture);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  glTexImage2D(GL_TEXTURE_2D, 0, 3, gunRightImage->width, gunRightImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, gunRightImage->data);
-
 		  labratImage = ppm6GetImage((char *)"./images/labrat.ppm");
 		  glGenTextures(1, &labratTexture);
 		  glBindTexture(GL_TEXTURE_2D, labratTexture);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, labratImage->width, labratImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, labratImage->data);
+
+		  unsigned char * sdata = NULL;
+		  //glGenTextures(1, &silhouetteTexture);
+		  //glBindTexture(GL_TEXTURE_2D, silhouetteTexture);
+
+		  mineImage = ppm6GetImage((char *)"./images/mine2.ppm");
+		  glGenTextures(1, &mineTexture);
+		  glBindTexture(GL_TEXTURE_2D, mineTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, mineImage->width, mineImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, mineImage->data);
+
+		  //must build a new set of data...
+		  sdata = buildAlphaData(mineImage);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mineImage->width, mineImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  playerLeftImage = ppm6GetImage((char *)"./images/player_left.ppm");
+		  glGenTextures(1, &playerLeftTexture);
+		  glBindTexture(GL_TEXTURE_2D, playerLeftTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, playerLeftImage->width, playerLeftImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, playerLeftImage->data);
+
+		  //must build a new set of data...
+		  sdata = buildAlphaData(playerLeftImage);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, playerLeftImage->width, playerLeftImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  playerRightImage = ppm6GetImage((char *)"./images/player_right.ppm");
+		  glGenTextures(1, &playerRightTexture);
+		  glBindTexture(GL_TEXTURE_2D, playerRightTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, playerRightImage->width, playerRightImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, playerRightImage->data);
+
+		  //must build a new set of data...
+		  sdata = buildAlphaData(playerRightImage);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, playerRightImage->width, playerRightImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  gunLeftImage = ppm6GetImage((char *)"./images/gun_left.ppm");
+		  glGenTextures(1, &gunLeftTexture);
+		  glBindTexture(GL_TEXTURE_2D, gunLeftTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, gunLeftImage->width, gunLeftImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, gunLeftImage->data);
+
+		  //must build a new set of data...
+		  sdata = buildAlphaData(gunLeftImage);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, gunLeftImage->width, gunLeftImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  gunRightImage = ppm6GetImage((char *)"./images/gun_right.ppm");
+		  glGenTextures(1, &gunRightTexture);
+		  glBindTexture(GL_TEXTURE_2D, gunRightTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, gunRightImage->width, gunRightImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, gunRightImage->data);
+
+		  //must build a new set of data...
+		  sdata = buildAlphaData(gunRightImage);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, gunRightImage->width, gunRightImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
 		  /*
 			  wallImage = ppm6GetImage((char *)"./images/wall-edited.ppm");
 			  glGenTextures(1, &wallTexture);
@@ -345,6 +374,8 @@ void render(void)
 		  camera();
 		  b2Vec2 points[4];
 		  b2Body* tmp = world->GetBodyList();
+		  glEnable(GL_ALPHA_TEST);
+		  glAlphaFunc(GL_GREATER, 0.0f);
 		  char * ud;
 		  int color = 0;
 		  while(tmp)
@@ -379,6 +410,7 @@ void render(void)
 										  //					 Log("right bullet\n");
 										  color = 2;
 								}
+								/*
 								else if (contains(ud, (const char *)"wall") || contains(ud, (const char *)"floor") || contains(ud, (const char *)"ceiling"))
 								{
 										  color = 0;
@@ -388,11 +420,17 @@ void render(void)
 										  tmp = tmp->GetNext();
 										  continue;
 								}
+								else if (contains(ud, (const char *)"player"))
+								{
+										  tmp = tmp->GetNext();
+										  continue;
+								}
 								else if (contains(ud, (const char *)"foot"))
 								{
 										  tmp = tmp->GetNext();
 										  continue;
 								}
+								*/
 								else
 								{
 										  color = 3;
@@ -422,6 +460,6 @@ void render(void)
 					 doPortal(p_obj);
 					 p_dest = NULL;
 		  }
-		  drawPlayer();
+		  //drawPlayer();
 		  glXSwapBuffers(dpy, win);
 }

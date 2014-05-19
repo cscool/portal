@@ -176,6 +176,7 @@ b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
 		  foot = world->CreateBody(&bodydef);
 		  fixturedef.shape = &shape3;
 		  fixturedef.isSensor = true;
+		  fixturedef.density = 5.0;
 		  foot->CreateFixture( &fixturedef );
 		  foot->SetUserData((void *)((char *)"foot"));
 
