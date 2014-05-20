@@ -1,5 +1,6 @@
 #pragma once
 #include "log.h"
+#include "arenas.h"
 #include "const.h"
 #include "createObjects.h"
 #include "contains.h"

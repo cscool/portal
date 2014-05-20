@@ -9,9 +9,9 @@ void contactListener::BeginContact (b2Contact * contact)
 		  b2Vec2 pos;
 		  b2Vec2 norm;
 		  float angle = 0.0f;
-		  b2BodyType dyn = myPlayer->GetType();
-		  b2BodyType kin = platform->GetType();
-		  b2BodyType stat = gameFloor->GetType();
+		  b2BodyType dyn = b2_dynamicBody;
+		  b2BodyType kin = b2_kinematicBody;
+		  b2BodyType stat = b2_staticBody;
 		  ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
 		  ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
 		  b2Body * bodya = (b2Body *)(contact->GetFixtureA()->GetBody());
@@ -48,18 +48,22 @@ void contactListener::BeginContact (b2Contact * contact)
 					 if (contains(ud1, (const char *)"mine"))
 					 {
 								//								Log("mine hit something\n");
-								if (ud2)
+								if (bodyb->GetType() == dyn)
 								{
-										  if (bodyb->GetType() == dyn)
-										  {
-													 world->DestroyBody(bodya);
-													 world->DestroyBody(bodyb);
-										  }
+										  world->DestroyBody(bodya);
+										  world->DestroyBody(bodyb);
 								}
 					 }
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								Log("player hit something\n");
+								if (ud2)
+								{
+										  if (contains(ud2, (const char *)"deadly"))
+										  {
+													 //restart();
+										  }
+								}
 								b2ContactEdge * contact = myPlayer->GetContactList();
 								b2BodyType t;
 								int c_count = 0;
@@ -644,9 +648,9 @@ void contactListener::BeginContact (b2Contact * contact)
 
 void contactListener::EndContact (b2Contact * contact)
 {
-		  b2BodyType dyn = myPlayer->GetType();
-		  b2BodyType kin = platform->GetType();
-		  b2BodyType stat = gameFloor->GetType();
+		  b2BodyType dyn = b2_dynamicBody;
+		  b2BodyType kin = b2_kinematicBody;
+		  b2BodyType stat = b2_staticBody;
 		  char * ud1;
 		  char * ud2;
 		  ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());

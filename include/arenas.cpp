@@ -17,6 +17,20 @@ void makeArena(const int n)
 		  }
 }
 
+/*
+void restart(void)
+{
+		  delete world;
+		  world=new b2World(b2Vec2(0.0,10.0f));
+		  toDestroy = NULL;
+		  world->SetContactListener(&contact_handler);
+		  myDoor = addDoor(6*xres, yres-75);
+		  myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun);
+		  myPlayer->SetUserData((void *)((char *)"player"));
+		  makeArena(0);
+}
+*/
+
 void addObstacles(void)
 {
 		  //top of floor is yres-50-25 = yres-75

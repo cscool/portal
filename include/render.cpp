@@ -410,7 +410,6 @@ void render(void)
 										  //					 Log("right bullet\n");
 										  color = 2;
 								}
-								/*
 								else if (contains(ud, (const char *)"wall") || contains(ud, (const char *)"floor") || contains(ud, (const char *)"ceiling"))
 								{
 										  color = 0;
@@ -430,7 +429,6 @@ void render(void)
 										  tmp = tmp->GetNext();
 										  continue;
 								}
-								*/
 								else
 								{
 										  color = 3;
@@ -460,6 +458,6 @@ void render(void)
 					 doPortal(p_obj);
 					 p_dest = NULL;
 		  }
-		  //drawPlayer();
+		  drawPlayer();
 		  glXSwapBuffers(dpy, win);
 }
