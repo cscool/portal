@@ -1,5 +1,6 @@
 #pragma once
 #include "log.h"
+#include "physics.h"
 #include "arenas.h"
 #include "const.h"
 #include "createObjects.h"
@@ -33,4 +34,6 @@ class contactListener : public b2ContactListener
 {
 		  void BeginContact (b2Contact * contact);
 		  void EndContact (b2Contact * contact);
+		  void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
+		  void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
 };

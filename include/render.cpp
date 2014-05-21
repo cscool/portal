@@ -9,23 +9,6 @@ void init_opengl(void)
 		  glMatrixMode(GL_MODELVIEW);
 		  glClearColor(0,0,0,1);
 		  glColor3f(1.0f,1.0f,1.0f);
-		  /*
-			  glEnable(GL_TEXTURE_2D);
-			  glPushMatrix();
-			  glBindTexture(GL_TEXTURE_2D, labratTexture);
-			  glBegin(GL_QUADS);
-			  glTexCoord2f(0.0f, 1.0f);
-			  glVertex2i(-5.0f * xres, -5.0f * yres);
-			  glTexCoord2f(0.0f, 0.0f);
-			  glVertex2i(-5.0f * xres, 5.0f * yres);
-			  glTexCoord2f(1.0f, 0.0f);
-			  glVertex2i(5.0f * xres, 5.0f * yres);
-			  glTexCoord2f(1.0f, 1.0f);
-			  glVertex2i(5.0f * xres, -5.0f * yres);
-			  glEnd();
-			  glPopMatrix();
-			  glDisable(GL_TEXTURE_2D);
-			  */
 }
 
 unsigned char *buildAlphaData(Ppmimage *img)
@@ -44,20 +27,6 @@ unsigned char *buildAlphaData(Ppmimage *img)
 					 *(ptr+0) = a;
 					 *(ptr+1) = b;
 					 *(ptr+2) = c;
-					 //
-					 //get the alpha value
-					 //
-					 //original code
-					 //get largest color component...
-					 //*(ptr+3) = (unsigned char)((
-					 //		(int)*(ptr+0) +
-					 //		(int)*(ptr+1) +
-					 //		(int)*(ptr+2)) / 3);
-					 //d = a;
-					 //if (b >= a && b >= c) d = b;
-					 //if (c >= a && c >= b) d = c;
-					 //*(ptr+3) = d;
-					 //
 					 //new code, suggested by Chris Smith, Fall 2013
 					 *(ptr+3) = (a|b|c);
 					 //
@@ -77,17 +46,13 @@ void init_images(void)
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, labratImage->width, labratImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, labratImage->data);
 
 		  unsigned char * sdata = NULL;
-		  //glGenTextures(1, &silhouetteTexture);
-		  //glBindTexture(GL_TEXTURE_2D, silhouetteTexture);
 
 		  mineImage = ppm6GetImage((char *)"./images/mine2.ppm");
 		  glGenTextures(1, &mineTexture);
 		  glBindTexture(GL_TEXTURE_2D, mineTexture);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, mineImage->width, mineImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, mineImage->data);
 
-		  //must build a new set of data...
 		  sdata = buildAlphaData(mineImage);	
 		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mineImage->width, mineImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
 		  free(sdata);
@@ -97,9 +62,7 @@ void init_images(void)
 		  glBindTexture(GL_TEXTURE_2D, playerLeftTexture);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, playerLeftImage->width, playerLeftImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, playerLeftImage->data);
 
-		  //must build a new set of data...
 		  sdata = buildAlphaData(playerLeftImage);	
 		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, playerLeftImage->width, playerLeftImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
 		  free(sdata);
@@ -109,9 +72,7 @@ void init_images(void)
 		  glBindTexture(GL_TEXTURE_2D, playerRightTexture);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, playerRightImage->width, playerRightImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, playerRightImage->data);
 
-		  //must build a new set of data...
 		  sdata = buildAlphaData(playerRightImage);	
 		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, playerRightImage->width, playerRightImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
 		  free(sdata);
@@ -121,9 +82,7 @@ void init_images(void)
 		  glBindTexture(GL_TEXTURE_2D, gunLeftTexture);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, gunLeftImage->width, gunLeftImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, gunLeftImage->data);
 
-		  //must build a new set of data...
 		  sdata = buildAlphaData(gunLeftImage);	
 		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, gunLeftImage->width, gunLeftImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
 		  free(sdata);
@@ -133,20 +92,30 @@ void init_images(void)
 		  glBindTexture(GL_TEXTURE_2D, gunRightTexture);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
 		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-		  //		  glTexImage2D(GL_TEXTURE_2D, 0, 3, gunRightImage->width, gunRightImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, gunRightImage->data);
 
-		  //must build a new set of data...
 		  sdata = buildAlphaData(gunRightImage);
 		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, gunRightImage->width, gunRightImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
 		  free(sdata);
-		  /*
-			  wallImage = ppm6GetImage((char *)"./images/wall-edited.ppm");
-			  glGenTextures(1, &wallTexture);
-			  glBindTexture(GL_TEXTURE_2D, playerRightTexture);
-			  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
-			  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
-			  glTexImage2D(GL_TEXTURE_2D, 0, 3, wallImage->width, wallImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, wallImage->data);
-			  */
+
+		  wall1Image = ppm6GetImage((char *)"./images/wall1.ppm");
+		  glGenTextures(1, &wall1Texture);
+		  glBindTexture(GL_TEXTURE_2D, wall1Texture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(wall1Image);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, wall1Image->width, wall1Image->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  wall2Image = ppm6GetImage((char *)"./images/wall2.ppm");
+		  glGenTextures(1, &wall2Texture);
+		  glBindTexture(GL_TEXTURE_2D, wall2Texture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(wall2Image);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, wall2Image->width, wall2Image->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
 }
 
 void camera() {
@@ -156,13 +125,23 @@ void camera() {
 		  float posy = myPlayer->GetPosition().y*M2P;
 		  float adjusty = 250;//The higher this is, the more shifted up the camera
 		  float zoomScale = 1.00;//lower scale = zoomed out
-		  //glPushMatrix();
-		  //glTranslatef(myPlayer->GetPosition().x*M2P, myPlayer->GetPosition().y*M2P, 0);
-		  //glPopMatrix();
 		  gluOrtho2D(posx-xres/zoomScale, posx+xres/zoomScale, posy+yres/zoomScale-adjusty, posy-yres/zoomScale-adjusty);
 		  glColor3f(1.0f,1.0f,1.0f);
 		  glEnable(GL_TEXTURE_2D);
 		  glPushMatrix();
+		  glBindTexture(GL_TEXTURE_2D, wall1Texture);
+		  glBegin(GL_QUADS);
+		  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		  glTexCoord2f(0.0f, 0.0f);
+		  glVertex2i(-2.0f * xres, -4.0f * yres);
+		  glTexCoord2f(0.0f, 10.0f);
+		  glVertex2i(-2.0f * xres, 1.0f * yres);
+		  glTexCoord2f(50.0f, 10.0f);
+		  glVertex2i(20.0f * xres, 1.0f * yres);
+		  glTexCoord2f(50.0f, 0.0f);
+		  glVertex2i(20.0f * xres, -4.0f * yres);
+		  /*
 		  glBindTexture(GL_TEXTURE_2D, labratTexture);
 		  glBegin(GL_QUADS);
 		  glTexCoord2f(0.0f, 0.0f);
@@ -173,6 +152,7 @@ void camera() {
 		  glVertex2i(3.0f * xres, 0.0f * yres);
 		  glTexCoord2f(1.0f, 0.0f);
 		  glVertex2i(3.0f * xres, -2.0f * yres);
+		  */
 		  glEnd();
 		  glPopMatrix();
 		  glDisable(GL_TEXTURE_2D);
@@ -399,6 +379,8 @@ void render(void)
 										  //Log("found mine\n");
 										  moveMine(tmp);
 										  drawMine();
+										  tmp = tmp->GetNext();
+										  continue;
 								}
 								else if (contains(ud, (const char *)"bullet left"))
 								{

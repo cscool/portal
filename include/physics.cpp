@@ -2,6 +2,15 @@
 
 using namespace std;
 
+static b2Body * det_a = NULL;
+static b2Body * det_b = NULL;
+
+void detonate (b2Body * a, b2Body * b)
+{
+		  det_a = a;
+		  det_b = b;
+}
+
 void moveBullet (b2Body * p, const float lmax, const float rmax)
 {
 		  b2Vec2 pos = p->GetPosition();
@@ -146,6 +155,13 @@ void physics (void)
 		  }
 		  else
 		  {
+					 if (det_a && det_b)
+					 {
+								world->DestroyBody(det_a);
+								world->DestroyBody(det_b);
+								det_a = NULL;
+								det_b = NULL;
+					 }
 					 if (toDestroy)
 					 {
 								if (toDestroy->GetUserData())
@@ -166,6 +182,10 @@ void physics (void)
 																b2 = NULL;
 													 }
 										  }
+										  else if ((contains(((const char *)(toDestroy->GetUserData())), (const char *)"player")))
+										  {
+													 world->DestroyBody(myPlayer);
+										  }
 										  else
 										  {
 													 world->DestroyBody(toDestroy);
@@ -178,7 +198,7 @@ void physics (void)
 										  toDestroy = NULL;
 								}
 					 }
-					 if(myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.5f*yres) {
+					 if(myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres) {
 								//								doorVel.y = 0.0;
 								myDoor->SetLinearVelocity(-1.0f * myDoor->GetLinearVelocity());
 					 }
@@ -403,11 +423,11 @@ void physics (void)
 								 * 	carry->SetTransform(myGun->GetPosition.x + 1.0f * P2M);
 								 */
 								/*
-								if (cwait > 0)
-								{
-										  cwait--;
-								}
-								*/
+									if (cwait > 0)
+									{
+									cwait--;
+									}
+									*/
 								//else
 								{
 										  if (carry)

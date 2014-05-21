@@ -36,6 +36,7 @@ extern bool can_jump;
 extern int fix_vel;
 extern b2Vec2 mod_vel;
 
+void detonate (b2Body * a, b2Body * b);
 void physics (void);
 void doPortal(b2Body *);
 void moveBullet (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f);

@@ -48,8 +48,10 @@ extern Ppmimage * gunRightImage;
 extern GLuint gunRightTexture;
 extern Ppmimage * labratImage;
 extern GLuint labratTexture;
-extern Ppmimage * wallImage;
-extern GLuint wallTexture;
+extern Ppmimage * wall1Image;
+extern GLuint wall1Texture;
+extern Ppmimage * wall2Image;
+extern GLuint wall2Texture;
 
 void init_opengl(void);
 void init_images(void);

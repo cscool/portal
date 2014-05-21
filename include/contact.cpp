@@ -2,6 +2,8 @@
 
 using namespace std;
 
+const static float C_THRESHOLD = 1500.0f;
+
 void contactListener::BeginContact (b2Contact * contact)
 {
 		  char * ud1;
@@ -39,10 +41,10 @@ void contactListener::BeginContact (b2Contact * contact)
 													 toggle(can_jump);
 										  }
 								}
-								if ((b2BodyType)(contact->GetFixtureB()->GetBody()->GetType()) == kin)
+								if ((b2BodyType)(bodyb->GetType()) == kin)
 								{
 										  Log("started standing on a kinematic object\n");
-										  fix_vel = 1;
+										  fix_vel = 2;
 								}
 					 }
 					 if (contains(ud1, (const char *)"mine"))
@@ -50,45 +52,34 @@ void contactListener::BeginContact (b2Contact * contact)
 								//								Log("mine hit something\n");
 								if (bodyb->GetType() == dyn)
 								{
-										  world->DestroyBody(bodya);
-										  world->DestroyBody(bodyb);
+										  if (ud2)
+										  {
+													 if (!contains(ud2, (const char *)"bullet") && !contains(ud2, (const char *)"gun") && !contains(ud2, (const char *)"player"))
+													 {
+																detonate(bodya, bodyb);
+													 }
+										  }
+										  else
+										  {
+													 detonate(bodya, bodyb);
+										  }
 								}
 					 }
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								Log("player hit something\n");
-								if (ud2)
-								{
-										  if (contains(ud2, (const char *)"deadly"))
-										  {
-													 //restart();
-										  }
-								}
-								b2ContactEdge * contact = myPlayer->GetContactList();
-								b2BodyType t;
+								b2ContactEdge * edges = myPlayer->GetContactList();
+								b2Vec2 normals[4];
+								float impulses[4];
 								int c_count = 0;
-								int kin_count = 0;
-								int stat_count = 0;
-								int dyn_count = 0;
 								char * cdata = NULL;
-								while (contact)
+								while (edges && c_count < 4)
 								{
-										  t = contact->other->GetType();
-										  if (t == dyn)
-										  {
-													 dyn_count++;
-										  }
-										  else if (t == stat)
-										  {
-													 stat_count++;
-										  }
-										  else if (t == kin)
-										  {
-													 kin_count++;
-										  }
-										  c_count++;
 										  Log("contact edge %d, hitting?\n", c_count);
-										  cdata = (char *)(contact->other->GetUserData());
+										  normals[c_count] = contact->GetManifold()->localNormal;
+										  impulses[c_count] = contact->GetManifold()->points[0].normalImpulse;
+										  Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
+										  cdata = (char *)(bodyb->GetUserData());
 										  if (cdata)
 										  {
 													 Log("\t%s\n", cdata);
@@ -97,14 +88,17 @@ void contactListener::BeginContact (b2Contact * contact)
 										  {
 													 Log("\tNo user data found\n");
 										  }
-										  contact = contact->next;
+										  edges = edges->next;
+										  c_count++;
 								}
-								Log("static object count: %d\n", stat_count);
-								Log("dynamic object count: %d\n", dyn_count);
-								Log("kinematic object count: %d\n", kin_count);
-								if (c_count > 1)
+								for (int i = 1; i < c_count; i++)
 								{
-										  Log("contact edge count = %d\n", c_count);
+										  // if (fabs(n1) == fabs(n2))
+										  // 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
+										  // 	OR
+										  // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
+										  // 		toDestroy = myPlayer;
+										  // 		endGame = 1; // death
 								}
 					 }
 					 if (contains(ud1, (const char *)"gun"))
@@ -192,10 +186,6 @@ void contactListener::BeginContact (b2Contact * contact)
 										  }
 								}
 					 }
-					 if (contains(ud1, (const char *)"mine"))
-					 {
-								/* This collision should 'kill' the player, perhaps an explosion animation then destroy player, followed eventually by a splash screen? */
-					 }
 		  }
 		  ud1 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
 		  ud2 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
@@ -228,284 +218,36 @@ void contactListener::BeginContact (b2Contact * contact)
 										  fix_vel = 2;
 								}
 					 }
+					 if (contains(ud1, (const char *)"mine"))
+					 {
+								//								Log("mine hit something\n");
+								if (bodyb->GetType() == dyn)
+								{
+										  detonate(bodya, bodyb);
+								}
+					 }
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								Log("player hit something\n");
-								b2ContactEdge * contact = myPlayer->GetContactList();
-								b2Body * c1;
-								b2Body * c2;
-								b2Body * c3;
-								b2Body * c4;
-								b2Body * d1;
-								b2Body * d2;
-								b2Body * d3;
-								b2Body * d4;
-								b2Body * s1;
-								b2Body * s2;
-								b2Body * s3;
-								b2Body * s4;
-								b2Body * k1;
-								b2Body * k2;
-								b2Body * k3;
-								b2Body * k4;
+								b2ContactEdge * edges = myPlayer->GetContactList();
+								b2Vec2 normals[4];
+								float impulses[4];
 								int c_count = 0;
-								int kin_count = 0;
-								int stat_count = 0;
-								int dyn_count = 0;
+								int pt_ct = 0;
 								char * cdata = NULL;
-								b2BodyType t;
-								while (contact)
+								while (edges && c_count < 4)
 								{
-										  c_count++;
-										  Log("contact edge %d, hitting?\n", c_count);
-										  switch (c_count)
+										  normals[c_count] = contact->GetManifold()->localNormal;
+										  pt_ct = contact->GetManifold()->pointCount;
+										  Log("impulses for contact %d:\n", c_count + 1);
+										  Log("this contact has %d points touching\n", pt_ct);
+										  for (int i = 0; i < pt_ct; i++)
 										  {
-													 case 1:
-																c1 = contact->other;
-																t = c1->GetType();
-																if (t == dyn)
-																{
-																		  dyn_count++;
-																		  switch (dyn_count)
-																		  {
-																					 case 1:
-																								d1 = c1;
-																								break;
-																					 case 2:
-																								d2 = c1;
-																								break;
-																					 case 3:
-																								d3 = c1;
-																								break;
-																					 case 4:
-																								d4 = c1;
-																								break;
-																		  }
-																}
-																else if (t == stat)
-																{
-																		  stat_count++;
-																		  switch (stat_count)
-																		  {
-																					 case 1:
-																								s1 = c1;
-																								break;
-																					 case 2:
-																								s2 = c1;
-																								break;
-																					 case 3:
-																								s3 = c1;
-																								break;
-																					 case 4:
-																								s4 = c1;
-																								break;
-																		  }
-																}
-																else if (t == kin)
-																{
-																		  kin_count++;
-																		  switch (kin_count)
-																		  {
-																					 case 1:
-																								k1 = c1;
-																								break;
-																					 case 2:
-																								k2 = c1;
-																								break;
-																					 case 3:
-																								k3 = c1;
-																								break;
-																					 case 4:
-																								k4 = c1;
-																								break;
-																		  }
-																}
-																break;
-													 case 2:
-																c2 = contact->other;
-																t = c2->GetType();
-																if (t == dyn)
-																{
-																		  dyn_count++;
-																		  switch (dyn_count)
-																		  {
-																					 case 1:
-																								d1 = c2;
-																								break;
-																					 case 2:
-																								d2 = c2;
-																								break;
-																					 case 3:
-																								d3 = c2;
-																								break;
-																					 case 4:
-																								d4 = c2;
-																								break;
-																		  }
-																}
-																else if (t == stat)
-																{
-																		  stat_count++;
-																		  switch (stat_count)
-																		  {
-																					 case 1:
-																								s1 = c2;
-																								break;
-																					 case 2:
-																								s2 = c2;
-																								break;
-																					 case 3:
-																								s3 = c2;
-																								break;
-																					 case 4:
-																								s4 = c2;
-																								break;
-																		  }
-																}
-																else if (t == kin)
-																{
-																		  kin_count++;
-																		  switch (kin_count)
-																		  {
-																					 case 1:
-																								k1 = c2;
-																								break;
-																					 case 2:
-																								k2 = c2;
-																								break;
-																					 case 3:
-																								k3 = c2;
-																								break;
-																					 case 4:
-																								k4 = c2;
-																								break;
-																		  }
-																}
-																break;
-													 case 3:
-																c3 = contact->other;
-																t = c3->GetType();
-																if (t == dyn)
-																{
-																		  dyn_count++;
-																		  switch (dyn_count)
-																		  {
-																					 case 1:
-																								d1 = c3;
-																								break;
-																					 case 2:
-																								d2 = c3;
-																								break;
-																					 case 3:
-																								d3 = c3;
-																								break;
-																					 case 4:
-																								d4 = c3;
-																								break;
-																		  }
-																}
-																else if (t == stat)
-																{
-																		  stat_count++;
-																		  switch (stat_count)
-																		  {
-																					 case 1:
-																								s1 = c3;
-																								break;
-																					 case 2:
-																								s2 = c3;
-																								break;
-																					 case 3:
-																								s3 = c3;
-																								break;
-																					 case 4:
-																								s4 = c3;
-																								break;
-																		  }
-																}
-																else if (t == kin)
-																{
-																		  kin_count++;
-																		  switch (kin_count)
-																		  {
-																					 case 1:
-																								k1 = c3;
-																								break;
-																					 case 2:
-																								k2 = c3;
-																								break;
-																					 case 3:
-																								k3 = c3;
-																								break;
-																					 case 4:
-																								k4 = c3;
-																								break;
-																		  }
-																}
-																break;
-													 case 4:
-																c4 = contact->other;
-																t = c4->GetType();
-																if (t == dyn)
-																{
-																		  dyn_count++;
-																		  switch (dyn_count)
-																		  {
-																					 case 1:
-																								d1 = c4;
-																								break;
-																					 case 2:
-																								d2 = c4;
-																								break;
-																					 case 3:
-																								d3 = c4;
-																								break;
-																					 case 4:
-																								d4 = c4;
-																								break;
-																		  }
-																}
-																else if (t == stat)
-																{
-																		  stat_count++;
-																		  switch (stat_count)
-																		  {
-																					 case 1:
-																								s1 = c4;
-																								break;
-																					 case 2:
-																								s2 = c4;
-																								break;
-																					 case 3:
-																								s3 = c4;
-																								break;
-																					 case 4:
-																								s4 = c4;
-																								break;
-																		  }
-																}
-																else if (t == kin)
-																{
-																		  kin_count++;
-																		  switch (kin_count)
-																		  {
-																					 case 1:
-																								k1 = c4;
-																								break;
-																					 case 2:
-																								k2 = c4;
-																								break;
-																					 case 3:
-																								k3 = c4;
-																								break;
-																					 case 4:
-																								k4 = c4;
-																								break;
-																		  }
-																}
-																break;
+													 Log("\t%.4f\n", contact->GetManifold()->points[i].normalImpulse);
 										  }
-										  cdata = (char *)(contact->other->GetUserData());
+										  //										  impulses[c_count] = contact->GetManifold()->points[1].normalImpulse;
+										  Log("contact edge %d, hitting?\n", c_count + 1);
+										  cdata = (char *)(bodyb->GetUserData());
 										  if (cdata)
 										  {
 													 Log("\t%s\n", cdata);
@@ -514,23 +256,17 @@ void contactListener::BeginContact (b2Contact * contact)
 										  {
 													 Log("\tNo user data found\n");
 										  }
-										  contact = contact->next;
+										  edges = edges->next;
+										  c_count++;
 								}
-								Log("static object count: %d\n", stat_count);
-								Log("dynamic object count: %d\n", dyn_count);
-								Log("kinematic object count: %d\n", kin_count);
-								if (c_count > 1 && kin_count > 0)
+								for (int i = 1; i < c_count; i++)
 								{
-										  Log("contact edge count = %d\n", c_count);
-										  if (kin_count > 2)
-										  {
-													 Log("definitely dead\n");
-													 toDestroy = myPlayer;
-													 return; // special case
-										  }
-										  if (kin_count > 1 && stat_count > 1)
-										  {
-										  }
+										  // if (fabs(n1) == fabs(n2))
+										  // 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
+										  // 	OR
+										  // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
+										  // 		toDestroy = myPlayer;
+										  // 		endGame = 1; // death
 								}
 					 }
 					 if (contains(ud1, (const char *)"mine"))
@@ -776,5 +512,93 @@ void contactListener::EndContact (b2Contact * contact)
 										  fix_vel = 0;
 								}
 					 }
+		  }
+}
+
+
+
+void contactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+{ /* handle pre-solve event */ 
+}
+
+
+
+void contactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
+
+{ /* handle post-solve event */ 
+		  int pt_ct = contact->GetManifold()->pointCount;
+		  Log("\nin post solve\nthis contact has %d points touching\n", pt_ct);
+		  for (int i = 0; i < pt_ct; i++)
+		  {
+					 Log("\t%.4f\n", contact->GetManifold()->points[i].normalImpulse);
+					 if (contact->GetManifold()->points[i].normalImpulse > C_THRESHOLD)
+					 {
+								Log("its kill the following thing!\n");
+								b2Body * bodya = contact->GetFixtureA()->GetBody();
+								b2Body * bodyb = contact->GetFixtureB()->GetBody();
+								if (bodya->GetType() == b2_dynamicBody && (bodyb->GetType() == b2_staticBody || bodyb->GetType() == b2_kinematicBody))
+								{
+										  toDestroy = bodya;
+								}
+								else if (bodyb->GetType() == b2_dynamicBody && (bodya->GetType() == b2_staticBody || bodya->GetType() == b2_kinematicBody))
+								{
+										  toDestroy = bodyb;
+								}
+								else if (bodya->GetType() == b2_dynamicBody && bodyb->GetType() == b2_dynamicBody)
+								{
+										  char * ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
+										  char * ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
+										  if (ud1 && !ud2)
+										  {
+													 toDestroy = bodyb;
+										  }
+										  else if (ud2 && !ud1)
+										  {
+													 toDestroy = bodya;
+										  }
+										  else if (contains(ud1, (char *)"player"))
+										  {
+													 toDestroy = bodya;
+										  }
+										  else if (contains(ud2, (char *)"player"))
+										  {
+													 toDestroy = bodyb;
+										  }
+										  else if (contains(ud1, (char *)"box"))
+										  {
+													 toDestroy = bodya;
+										  }
+										  else if (contains(ud2, (char *)"box"))
+										  {
+													 toDestroy = bodyb;
+										  }
+										  else if (contains(ud1, (char *)"cube"))
+										  {
+													 toDestroy = bodya;
+										  }
+										  else if (contains(ud2, (char *)"cube"))
+										  {
+													 toDestroy = bodyb;
+										  }
+								}
+					 }
+		  }
+		  char * ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
+		  char * ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
+		  if (ud1)
+		  {
+					 Log("user data for body a: %s\n\n", ud1);
+		  }
+		  else
+		  {
+					 Log("no user data for body a\n\n");
+		  }
+		  if (ud2)
+		  {
+					 Log("user data for body b: %s\n\n", ud2);
+		  }
+		  else
+		  {
+					 Log("no user data for body b\n\n");
 		  }
 }

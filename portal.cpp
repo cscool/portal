@@ -40,8 +40,10 @@ Ppmimage * gunRightImage = NULL;
 GLuint gunRightTexture;
 Ppmimage * labratImage = NULL;
 GLuint labratTexture;
-Ppmimage * wallImage = NULL;
-GLuint wallTexture;
+Ppmimage * wall1Image = NULL;
+GLuint wall1Texture;
+Ppmimage * wall2Image = NULL;
+GLuint wall2Texture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -150,7 +152,7 @@ int main(void)
 //										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
 //										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
 //										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
-										  Log("can_jump = %d\n", can_jump);
+//										  Log("can_jump = %d\n", can_jump);
 //										  Log("p1_contacting = %d\n", p1_contacting);
 //										  Log("p2_contacting = %d\n", p2_contacting);
 								}
