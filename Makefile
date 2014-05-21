@@ -9,7 +9,7 @@ EFLAGS = -Wall -Wextra
 all: log contains contact xwin createObjects ppm timing physics render arenas portal
 
 arenas: $(LOCINC)/arenas.cpp
-	g++ $(LOCINC)/arenas.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/arenas.o
+	g++ $(LOCINC)/arenas.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/arenas.o $(LOCINC)/Box2D/libBox2D.a $(LIB)/contact.o
 
 physics: $(LOCINC)/physics.cpp
 	g++ $(LOCINC)/physics.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/physics.o

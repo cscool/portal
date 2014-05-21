@@ -12,16 +12,16 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 
-#include "Box2D/Box2D.h"
-#include "ppm.h"
-#include "render.h"
-#include "physics.h"
-#include "render.h"
-#include "log.h"
-#include "xwin.h"
+#include <Box2D/Box2D.h>
+#include <ppm.h>
+#include <render.h>
+#include <physics.h>
+#include <render.h>
+#include <log.h>
+#include <xwin.h>
 #include <const.h>
-#include "contact.h"
-#include "arenas.h"
+#include <contact.h>
+#include <arenas.h>
 #include <timing.h>
 
 using namespace std;
@@ -70,7 +70,6 @@ const float P2M = 1/M2P;
 //Box2D
 b2World * world;
 b2Body * toDestroy;
-contactListener contact_handler;
 int bullet_ct = 0;
 b2Body * myPlayerFoot;
 b2Body * myPlayer;
@@ -83,6 +82,7 @@ b2Body * mineObject;
 b2Body * myDoor;
 b2Body * carry;
 int cwait = 0;
+//contactListener contact_handler;
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;
@@ -112,7 +112,6 @@ void check_keys(XEvent *);
 void init(void);
 void step(void);
 void check_resize(void);
-void init_b2d(void);
 void cleanup(void);
 
 enum _moveState
@@ -147,6 +146,7 @@ int main(void)
 										  world->Step(1.0/30.0,8,3);
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
+//										  Log("&myPlayer = %p\n", myPlayer);
 //										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
 										  //Log("carry = %p\n", carry);
 //										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
@@ -189,7 +189,8 @@ void init(void)
 		  timeCopy(&timeStart, &timeCurrent);
 		  XAllowEvents(dpy, AsyncBoth, CurrentTime);
 		  XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
-		  init_b2d();
+		  /* move this call to the menu function */
+		  firstInit();
 		  makeArena(0);
 }
 
@@ -292,16 +293,6 @@ void check_keys(XEvent * e)
 								}
 					 }
 		  }
-}
-
-void init_b2d(void)
-{
-		  world=new b2World(b2Vec2(0.0,10.0f));
-		  toDestroy = NULL;
-		  world->SetContactListener(&contact_handler);
-		  myDoor = addDoor(6*xres, yres-75);
-		  myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun);
-		  myPlayer->SetUserData((void *)((char *)"player"));
 }
 
 void step(void)

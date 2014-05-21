@@ -4,6 +4,7 @@
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 #include "log.h"
+#include "arenas.h"
 #include "const.h"
 #include "createObjects.h"
 #include "contains.h"
@@ -36,7 +37,7 @@ extern bool can_jump;
 extern int fix_vel;
 extern b2Vec2 mod_vel;
 
-void detonate (b2Body * a, b2Body * b);
+void detonate (b2Body * a, b2Body * b = NULL);
 void physics (void);
 void doPortal(b2Body *);
 void moveBullet (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f);

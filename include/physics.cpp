@@ -155,18 +155,89 @@ void physics (void)
 		  }
 		  else
 		  {
-					 if (det_a && det_b)
+					 if (det_a)
 					 {
-								world->DestroyBody(det_a);
-								world->DestroyBody(det_b);
-								det_a = NULL;
-								det_b = NULL;
+								char * adata = (char *)(det_a->GetUserData());
+								char * bdata = NULL;
+								if (det_b)
+								{
+										  bdata = (char *)(det_b->GetUserData());
+								}
+								if (adata)
+								{
+										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
+										  {
+													 restart(0);
+													 /*
+													 if (det_b)
+													 {
+																world->DestroyBody(det_b);
+													 }
+													 //										  world->DestroyBody(myGun);
+													 //										  world->DestroyBody(myPlayerFoot);
+													 //										  world->DestroyBody(myPlayer);
+													 det_a = NULL;
+													 det_b = NULL;
+													 pauseGame = true;
+													 return;
+													 */
+													 return;
+										  }
+										  else
+										  {
+													 world->DestroyBody(det_b);
+													 world->DestroyBody(det_a);
+													 det_a = NULL;
+													 det_b = NULL;
+										  }
+								}
+								if (bdata)
+								{
+										  if (contains(bdata, (const char *)"player") || contains(bdata, (const char *)"gun") || contains(bdata, (const char *)"foot"))
+										  {
+													 restart(0);
+													 /*
+													 if (det_a)
+													 {
+																world->DestroyBody(det_a);
+													 }
+													 //										  world->DestroyBody(myGun);
+													 //										  world->DestroyBody(myPlayerFoot);
+													 //										  world->DestroyBody(myPlayer);
+													 det_a = NULL;
+													 det_b = NULL;
+													 pauseGame = true;
+													 return;
+													 */
+													 return;
+										  }
+										  else
+										  {
+													 world->DestroyBody(det_b);
+													 world->DestroyBody(det_a);
+													 det_a = NULL;
+													 det_b = NULL;
+										  }
+								}
+								else
+								{
+										  world->DestroyBody(det_b);
+										  world->DestroyBody(det_a);
+										  det_a = NULL;
+										  det_b = NULL;
+								}
 					 }
 					 if (toDestroy)
 					 {
-								if (toDestroy->GetUserData())
+								char * ddata = (char *)(toDestroy->GetUserData());
+								if (ddata)
 								{
-										  if (contains(((const char *)(toDestroy->GetUserData())), (const char *)"bullet"))
+										  if (contains(ddata, (const char *)"player") || contains(ddata, (const char *)"gun") || contains(ddata, (const char *)"foot"))
+										  {
+													 restart(0);
+													 return;
+										  }
+										  if (contains(ddata, (const char *)"bullet"))
 										  {
 													 bullet_ct --;
 													 if (toDestroy == b1)
@@ -182,7 +253,7 @@ void physics (void)
 																b2 = NULL;
 													 }
 										  }
-										  else if ((contains(((const char *)(toDestroy->GetUserData())), (const char *)"player")))
+										  else if ((contains(ddata, (const char *)"player")))
 										  {
 													 world->DestroyBody(myPlayer);
 										  }

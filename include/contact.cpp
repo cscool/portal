@@ -54,7 +54,11 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if (ud2)
 										  {
-													 if (!contains(ud2, (const char *)"bullet") && !contains(ud2, (const char *)"gun") && !contains(ud2, (const char *)"player"))
+													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
+													 {
+																detonate(myPlayer, bodyb);
+													 }
+													 else if (!contains(ud2, (const char *)"bullet"))
 													 {
 																detonate(bodya, bodyb);
 													 }
@@ -221,9 +225,23 @@ void contactListener::BeginContact (b2Contact * contact)
 					 if (contains(ud1, (const char *)"mine"))
 					 {
 								//								Log("mine hit something\n");
-								if (bodyb->GetType() == dyn)
+								if (bodya->GetType() == dyn)
 								{
-										  detonate(bodya, bodyb);
+										  if (ud2)
+										  {
+													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
+													 {
+																detonate(myPlayer, bodyb);
+													 }
+													 else if (!contains(ud2, (const char *)"bullet"))
+													 {
+																detonate(bodya, bodyb);
+													 }
+										  }
+										  else
+										  {
+													 detonate(bodya, bodyb);
+										  }
 								}
 					 }
 					 if (contains(ud1, (const char *)"player"))
@@ -267,15 +285,6 @@ void contactListener::BeginContact (b2Contact * contact)
 										  // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
 										  // 		toDestroy = myPlayer;
 										  // 		endGame = 1; // death
-								}
-					 }
-					 if (contains(ud1, (const char *)"mine"))
-					 {
-								Log("mine hit something\n");
-								if (bodyb->GetType() == dyn)
-								{
-										  world->DestroyBody(bodya);
-										  world->DestroyBody(bodyb);
 								}
 					 }
 					 if (contains(ud1, (const char *)"gun"))
@@ -556,13 +565,29 @@ void contactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impu
 										  {
 													 toDestroy = bodya;
 										  }
+										  else if (contains(ud1, (char *)"gun"))
+										  {
+													 //detonate(myPlayer);
+										  }
+										  else if (contains(ud2, (char *)"gun"))
+										  {
+													 //detonate(myPlayer);
+										  }
+										  else if (contains(ud1, (char *)"foot"))
+										  {
+													 //detonate(myPlayer);
+										  }
+										  else if (contains(ud2, (char *)"foot"))
+										  {
+													 //detonate(myPlayer);
+										  }
 										  else if (contains(ud1, (char *)"player"))
 										  {
-													 toDestroy = bodya;
+													 //detonate(myPlayer);
 										  }
 										  else if (contains(ud2, (char *)"player"))
 										  {
-													 toDestroy = bodyb;
+													 //detonate(myPlayer);
 										  }
 										  else if (contains(ud1, (char *)"box"))
 										  {
