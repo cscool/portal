@@ -13,6 +13,7 @@ extern int bullet_ct;
 extern b2Body * myPlayerFoot;
 extern b2Body * myPlayer;
 extern b2Body * myGun;
+extern b2Body * myButton;
 extern b2Body * myDoor;
 extern b2Body * gameFloor;
 extern b2Body * platform;

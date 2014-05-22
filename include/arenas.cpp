@@ -18,8 +18,29 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(0.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
 					 ((b2Body *)(addRect(xres*10.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
 
+					 myButton = addRect(5.5f*xres, -28.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 1");
+
 					 addObstacles();
 		  }
+}
+
+void addObstacles(void)
+{
+		  //top of floor is yres-50-25 = yres-75
+		  addRect(xres * 1.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.9f, 0.2f, 1);//bottomleft of stack
+		  addRect(xres * 1.0f + 65.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.9f, 0.2f, 1);//bottom right
+		  addRect(xres * 1.0f + 32.5f, onFloor - 20.0f, 60.0f, 60.0f, 0.9f, 0.2f, 1);//top
+
+		  addStairs();
+
+		  b2Body * awall;
+		  awall = addRect(2500.0f, onFloor - 350.0f, 50.0f, 250.0f, 0.7f, 0.7f, 2, (char *)"angled wall portalable");
+		  awall->SetTransform((awall->GetPosition()), -45.0f);
+		  awall->SetAwake(false);
+		  platform = addRect(4.0f*xres, -0.33f*yres, 250, 30, 0.7f, 0.9f, 3, (char *)"platform"); // platform
+		  mineObject = addRect(1.5f*xres, -0.75f*yres, 150.0f, 150.0f, 0.7f, 0.9f, 3, (char *)"mine deadly"); // mine
+
+		  myDoor = addDoor(6*xres, yres-75);
 }
 
 void firstInit(void)
@@ -44,30 +65,12 @@ void restart(const int & a)
 		  mineObject = NULL;
 		  myDoor = NULL;
 		  carry = NULL;
+		  player_direction = 1;
 		  world=new b2World(b2Vec2(0.0,10.0f));
 		  toDestroy = NULL;
 		  world->SetContactListener(&contact_handler);
 
 		  makeArena(a);
-}
-
-void addObstacles(void)
-{
-		  //top of floor is yres-50-25 = yres-75
-		  addRect(xres * 1.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.02f, 0.2f, 1);//bottomleft of stack
-		  addRect(xres * 1.0f + 65.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.02f, 0.2f, 1);//bottom right
-		  addRect(xres * 1.0f + 32.5f, onFloor - 20.0f, 60.0f, 60.0f, 0.02f, 0.2f, 1);//top
-
-		  addStairs();
-
-		  b2Body * awall;
-		  awall = addRect(2500.0f, onFloor - 350.0f, 50.0f, 250.0f, 0.7f, 0.7f, 2, (char *)"angled wall portalable");
-		  awall->SetTransform((awall->GetPosition()), -45.0f);
-		  awall->SetAwake(false);
-		  platform = addRect(4.0f*xres, -0.33f*yres, 250, 30, 0.7f, 0.9f, 3, (char *)"platform"); // platform
-		  mineObject = addRect(1.5f*xres, -0.75f*yres, 150.0f, 150.0f, 0.7f, 0.9f, 3, (char *)"mine deadly"); // mine
-
-		  myDoor = addDoor(6*xres, yres-75);
 }
 
 void addStairs(void)

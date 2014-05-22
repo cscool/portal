@@ -7,11 +7,7 @@ find the repository at https://github.com/cscool/portal
 
 finish menu!!
 fix crush
-increase dampening on boxes/floor
 decrease dampening for player in air
-link a button to the door
-		  have, on press, move down
-		  use joints?
 anchor portals to kinematic objects with a joint, possibly as a dynamic/kinematic object
 work images, background
 add lasers

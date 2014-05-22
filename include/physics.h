@@ -36,6 +36,8 @@ extern char * p_dest;
 extern bool can_jump;
 extern int fix_vel;
 extern b2Vec2 mod_vel;
+extern int door_is_active;
+extern int button_pressed;
 
 void detonate (b2Body * a, b2Body * b = NULL);
 void physics (void);

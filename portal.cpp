@@ -44,6 +44,10 @@ Ppmimage * wall1Image = NULL;
 GLuint wall1Texture;
 Ppmimage * wall2Image = NULL;
 GLuint wall2Texture;
+Ppmimage * buttonImage = NULL;
+GLuint buttonTexture;
+Ppmimage * buttonDepressedImage = NULL;
+GLuint buttonDepressedTexture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -82,7 +86,9 @@ b2Body * mineObject;
 b2Body * myDoor;
 b2Body * carry;
 int cwait = 0;
-//contactListener contact_handler;
+b2Body * myButton;
+int door_is_active = 0;
+int button_pressed = 0;
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;

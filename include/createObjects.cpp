@@ -150,7 +150,7 @@ b2Body* addDoor(float xpos, float ypos)
 	shape.SetAsBox(P2M*width/2.0, P2M*(2*yres - 50)/2.0);
 	fixturedef.shape = &shape;
 	body5->CreateFixture(&fixturedef);
-	body5->SetUserData((void *)((char *)("door portalable")));
+	body5->SetUserData((void *)((char *)("door 1")));
 	return body5;
 }
 
@@ -162,6 +162,7 @@ b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
 		  bodydef.type = b2_dynamicBody;
 		  bodydef.gravityScale = 1.0f;
 		  bodydef.fixedRotation = true;
+		  bodydef.linearDamping = 0.0f;
 		  b2Body* body = world->CreateBody(&bodydef);
 		  gun = world->CreateBody(&bodydef);
 		  b2PolygonShape shape; // body

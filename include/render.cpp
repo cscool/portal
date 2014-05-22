@@ -47,6 +47,26 @@ void init_images(void)
 
 		  unsigned char * sdata = NULL;
 
+		  buttonDepressedImage = ppm6GetImage((char *)"./images/button1.ppm");
+		  glGenTextures(1, &buttonDepressedTexture);
+		  glBindTexture(GL_TEXTURE_2D, buttonDepressedTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(buttonDepressedImage);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, buttonDepressedImage->width, buttonDepressedImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  buttonImage = ppm6GetImage((char *)"./images/button.ppm");
+		  glGenTextures(1, &buttonTexture);
+		  glBindTexture(GL_TEXTURE_2D, buttonTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(buttonImage);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, buttonImage->width, buttonImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
 		  mineImage = ppm6GetImage((char *)"./images/mine2.ppm");
 		  glGenTextures(1, &mineTexture);
 		  glBindTexture(GL_TEXTURE_2D, mineTexture);
@@ -142,17 +162,17 @@ void camera() {
 		  glTexCoord2f(50.0f, 0.0f);
 		  glVertex2i(20.0f * xres, -4.0f * yres);
 		  /*
-		  glBindTexture(GL_TEXTURE_2D, labratTexture);
-		  glBegin(GL_QUADS);
-		  glTexCoord2f(0.0f, 0.0f);
-		  glVertex2i(0.0f * xres, -2.0f * yres);
-		  glTexCoord2f(0.0f, 1.0f);
-		  glVertex2i(0.0f * xres, 0.0f * yres);
-		  glTexCoord2f(1.0f, 1.0f);
-		  glVertex2i(3.0f * xres, 0.0f * yres);
-		  glTexCoord2f(1.0f, 0.0f);
-		  glVertex2i(3.0f * xres, -2.0f * yres);
-		  */
+			  glBindTexture(GL_TEXTURE_2D, labratTexture);
+			  glBegin(GL_QUADS);
+			  glTexCoord2f(0.0f, 0.0f);
+			  glVertex2i(0.0f * xres, -2.0f * yres);
+			  glTexCoord2f(0.0f, 1.0f);
+			  glVertex2i(0.0f * xres, 0.0f * yres);
+			  glTexCoord2f(1.0f, 1.0f);
+			  glVertex2i(3.0f * xres, 0.0f * yres);
+			  glTexCoord2f(1.0f, 0.0f);
+			  glVertex2i(3.0f * xres, -2.0f * yres);
+			  */
 		  glEnd();
 		  glPopMatrix();
 		  glDisable(GL_TEXTURE_2D);
@@ -215,6 +235,58 @@ void drawPortal(b2Body * p)
 					 glEnd();
 					 tmp = tmp->GetNext();
 		  }
+		  glPopMatrix();
+}
+
+void drawButton(void)
+{
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
+		  b2Vec2 points[4];
+		  b2Fixture * tmp;
+		  if (button_pressed)
+		  {
+					 glTranslatef(myButton->GetPosition().x*M2P, myButton->GetPosition().y*M2P, 0);
+					 glRotatef(myButton->GetAngle()*180.0/M_PI, 0, 0, 1);
+					 glBindTexture(GL_TEXTURE_2D, buttonDepressedTexture);
+					 tmp = myButton->GetFixtureList();
+		  }
+		  else
+		  {
+					 glTranslatef(myButton->GetPosition().x*M2P, myButton->GetPosition().y*M2P, 0);
+					 glRotatef(myButton->GetAngle()*180.0/M_PI, 0, 0, 1);
+					 glBindTexture(GL_TEXTURE_2D, buttonTexture);
+					 tmp = myButton->GetFixtureList();
+		  }
+		  while (tmp)
+		  {
+					 for(int i=0; i < 4; i++)
+								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+					 glBegin(GL_QUADS);
+					 for(int i = 0; i < 4; i++)
+					 {
+								switch (i)
+								{
+										  case 0:
+													 glTexCoord2f(0.0f, 1.0f); //glVertex2i(-wid,-wid);
+													 break;
+										  case 1:
+													 glTexCoord2f(0.0f, 0.0f); //glVertex2i(-wid, wid);
+													 break;
+										  case 2:
+													 glTexCoord2f(1.0f, 0.0f); //glVertex2i( wid, wid);
+													 break;
+										  case 3:
+													 glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid,-wid);
+													 break;
+								}
+								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 }
+					 glEnd();
+					 tmp = tmp->GetNext();
+		  }
+		  glDisable(GL_TEXTURE_2D);
 		  glPopMatrix();
 }
 
@@ -408,6 +480,12 @@ void render(void)
 								}
 								else if (contains(ud, (const char *)"foot"))
 								{
+										  tmp = tmp->GetNext();
+										  continue;
+								}
+								else if (contains(ud, (const char *)"button"))
+								{
+										  drawButton();
 										  tmp = tmp->GetNext();
 										  continue;
 								}

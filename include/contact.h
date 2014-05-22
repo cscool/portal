@@ -29,6 +29,7 @@ extern b2Body * toDestroy;
 extern bool can_jump;
 extern int fix_vel;
 extern b2Vec2 mod_vel;
+extern int button_pressed;
 
 class contactListener : public b2ContactListener
 {

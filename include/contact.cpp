@@ -20,6 +20,16 @@ void contactListener::BeginContact (b2Contact * contact)
 		  b2Body * bodyb = (b2Body *)(contact->GetFixtureB()->GetBody());
 		  if (ud1)
 		  {
+					 if (contains(ud1, (const char *)"button"))
+					 {
+								Log("someone hit the button\n");
+								if ((b2BodyType)(bodyb->GetType()) == dyn)
+								{
+										  Log("\tit was a dynamic object\n");
+										  door_is_active = 1;
+										  button_pressed = 1;
+								}
+					 }
 					 if (contains(ud1, (const char *)"foot"))
 					 {
 								//								Log("foot contacted something ( A ):\n");
@@ -195,6 +205,16 @@ void contactListener::BeginContact (b2Contact * contact)
 		  ud2 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
 		  if (ud1)
 		  {
+					 if (contains(ud1, (const char *)"button"))
+					 {
+								Log("someone hit the button\n");
+								if ((b2BodyType)(bodya->GetType()) == dyn)
+								{
+										  Log("\tit was a dynamic object\n");
+										  door_is_active = 1;
+										  button_pressed = 1;
+								}
+					 }
 					 if (contains(ud1, (const char *)"foot"))
 					 {
 								Log("foot contacted something ( B ):\n");
@@ -404,6 +424,16 @@ void contactListener::EndContact (b2Contact * contact)
 		  b2Body * bodyb = (b2Body *)(contact->GetFixtureB()->GetBody());
 		  if (ud1)
 		  {
+					 if (contains(ud1, (const char *)"button"))
+					 {
+								Log("something stopped hitting the button\n");
+								if ((b2BodyType)(bodyb->GetType()) == dyn)
+								{
+										  Log("\tit was a dynamic object\n");
+										  door_is_active = 0;
+										  button_pressed = 0;
+								}
+					 }
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								//								Log("Player hit something\n");
@@ -465,6 +495,16 @@ void contactListener::EndContact (b2Contact * contact)
 		  ud2 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
 		  if (ud1)
 		  {
+					 if (contains(ud1, (const char *)"button"))
+					 {
+								Log("something stopped hitting the button\n");
+								if ((b2BodyType)(bodya->GetType()) == dyn)
+								{
+										  Log("\tit was a dynamic object\n");
+										  door_is_active = 0;
+										  button_pressed = 0;
+								}
+					 }
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								//								Log("Player hit something\n");

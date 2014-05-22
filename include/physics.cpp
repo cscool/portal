@@ -4,6 +4,7 @@ using namespace std;
 
 static b2Body * det_a = NULL;
 static b2Body * det_b = NULL;
+static const b2Vec2 ZERO_VEC(0.0f, 0.0f);
 
 void detonate (b2Body * a, b2Body * b)
 {
@@ -134,12 +135,15 @@ void doPortal(b2Body * o)
 
 void physics (void)
 {
+		  Log("door_is_active = %d\n", door_is_active);
 		  static b2Body * b1 = NULL;
 		  static b2Body * b2 = NULL;
 		  static b2Vec2 vel_old;
+		  static int timer = 0;
+		  static int jcatch = 0;
 		  float angle = myGun->GetAngle() * R2D;
 		  float inverseAngle;
-		  b2Vec2 doorVel(0.0f, -0.5f*M2P);
+		  static b2Vec2 doorVel(0.0f, -0.5f*M2P);
 		  //cout << angle << endl;
 		  if( angle <= 180 )
 					 inverseAngle = (180 - angle);
@@ -147,14 +151,44 @@ void physics (void)
 					 inverseAngle = (360 - angle - 180);
 		  else
 					 inverseAngle = 0;
-		  static int timer = 0;
-		  static int jcatch = 0;
 		  if (pauseGame)
 		  {
 					 /* do nothing */
 		  }
 		  else
 		  {
+					 if (door_is_active)
+					 {
+								if (!(myDoor->GetLinearVelocity().y))
+								{
+										  myDoor->SetLinearVelocity(doorVel);
+								}
+								else
+								{
+										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
+										  {
+													 doorVel *= -1.0f;
+													 myDoor->SetLinearVelocity(doorVel);
+										  }
+								}
+					 }
+					 else
+					 {
+								if (myDoor->GetLinearVelocity().y)
+								{
+										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
+										  {
+													 doorVel *= -1.0f;
+													 myDoor->SetLinearVelocity(doorVel);
+										  }
+										  if (myDoor->GetPosition().y < 0.1f*P2M && myDoor->GetPosition().y > -0.1f*P2M)
+										  {
+													 myDoor->SetLinearVelocity(ZERO_VEC);
+													 b2Vec2 pos(myDoor->GetPosition().x, 0.0f);
+													 myDoor->SetTransform(pos, 0.0f);
+										  }
+								}
+					 }
 					 if (det_a)
 					 {
 								char * adata = (char *)(det_a->GetUserData());
@@ -169,10 +203,10 @@ void physics (void)
 										  {
 													 restart(0);
 													 /*
-													 if (det_b)
-													 {
-																world->DestroyBody(det_b);
-													 }
+														 if (det_b)
+														 {
+														 world->DestroyBody(det_b);
+														 }
 													 //										  world->DestroyBody(myGun);
 													 //										  world->DestroyBody(myPlayerFoot);
 													 //										  world->DestroyBody(myPlayer);
@@ -197,10 +231,10 @@ void physics (void)
 										  {
 													 restart(0);
 													 /*
-													 if (det_a)
-													 {
-																world->DestroyBody(det_a);
-													 }
+														 if (det_a)
+														 {
+														 world->DestroyBody(det_a);
+														 }
 													 //										  world->DestroyBody(myGun);
 													 //										  world->DestroyBody(myPlayerFoot);
 													 //										  world->DestroyBody(myPlayer);
@@ -268,10 +302,6 @@ void physics (void)
 										  world->DestroyBody(toDestroy);
 										  toDestroy = NULL;
 								}
-					 }
-					 if(myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres) {
-								//								doorVel.y = 0.0;
-								myDoor->SetLinearVelocity(-1.0f * myDoor->GetLinearVelocity());
 					 }
 					 if (carry)
 					 {
@@ -394,12 +424,19 @@ void physics (void)
 					 {
 								vel.x *= 0.75f;
 					 }
-					 if(keys[XK_t]) {
-								//if(myDoor->GetPosition().y <= -yres)
-								/*if(myDoor->GetPosition().y*M2P <= -1.5*yres) {
-								  doorVel.y = 0.5f*M2P;
-								  }*/							 
-								myDoor->SetLinearVelocity(doorVel);
+					 if(keys[XK_t])
+					 {
+								/*
+								//myDoor->SetLinearVelocity(doorVel);
+								if (door_is_active)
+								{
+										  door_is_active = 1;
+								}
+								else
+								{
+										  door_is_active = 0;
+								}
+								*/
 					 }
 					 if (keys[XK_x] || keys[XK_slash] || keys[XK_z] || keys[XK_period] || keys[XK_e] || keys[XK_q])
 					 {
@@ -506,7 +543,8 @@ void physics (void)
 													 /* drop */
 													 Log("dropped an object\n");
 													 carry->SetGravityScale(1);
-													 carry->SetLinearVelocity(myPlayer->GetLinearVelocity());
+													 b2Vec2 v(myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y - 0.1f);
+													 carry->SetLinearVelocity(v);
 													 carry = NULL;
 													 //cwait = 10;
 										  }
