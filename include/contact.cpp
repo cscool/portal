@@ -64,9 +64,10 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if (ud2)
 										  {
-													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
+													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player") || contains(ud2, (const char *)"foot"))
 													 {
-																detonate(myPlayer, bodyb);
+																Log("\tplayer death\n");
+																detonate(myPlayer, bodya);
 													 }
 													 else if (!contains(ud2, (const char *)"bullet"))
 													 {
@@ -82,37 +83,82 @@ void contactListener::BeginContact (b2Contact * contact)
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								Log("player hit something\n");
-								b2ContactEdge * edges = myPlayer->GetContactList();
-								b2Vec2 normals[4];
-								float impulses[4];
-								int c_count = 0;
-								char * cdata = NULL;
-								while (edges && c_count < 4)
+								if (ud2)
 								{
-										  Log("contact edge %d, hitting?\n", c_count);
-										  normals[c_count] = contact->GetManifold()->localNormal;
-										  impulses[c_count] = contact->GetManifold()->points[0].normalImpulse;
-										  Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
-										  cdata = (char *)(bodyb->GetUserData());
-										  if (cdata)
+										  if (contains(ud2, (const char *)"mine"))
 										  {
-													 Log("\t%s\n", cdata);
+													 // do nothing
 										  }
 										  else
 										  {
-													 Log("\tNo user data found\n");
+													 b2ContactEdge * edges = myPlayer->GetContactList();
+													 b2Vec2 normals[4];
+													 float impulses[4];
+													 int c_count = 0;
+													 char * cdata = NULL;
+													 while (edges && c_count < 4)
+													 {
+																Log("contact edge %d, hitting?\n", c_count);
+																normals[c_count] = contact->GetManifold()->localNormal;
+																impulses[c_count] = contact->GetManifold()->points[0].normalImpulse;
+																Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
+																cdata = (char *)(bodyb->GetUserData());
+																if (cdata)
+																{
+																		  Log("\t%s\n", cdata);
+																}
+																else
+																{
+																		  Log("\tNo user data found\n");
+																}
+																edges = edges->next;
+																c_count++;
+													 }
+													 for (int i = 1; i < c_count; i++)
+													 {
+																// if (fabs(n1) == fabs(n2))
+																// 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
+																// 	OR
+																// 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
+																// 		toDestroy = myPlayer;
+																// 		endGame = 1; // death
+													 }
 										  }
-										  edges = edges->next;
-										  c_count++;
 								}
-								for (int i = 1; i < c_count; i++)
+								else
 								{
-										  // if (fabs(n1) == fabs(n2))
-										  // 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
-										  // 	OR
-										  // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
-										  // 		toDestroy = myPlayer;
-										  // 		endGame = 1; // death
+										  b2ContactEdge * edges = myPlayer->GetContactList();
+										  b2Vec2 normals[4];
+										  float impulses[4];
+										  int c_count = 0;
+										  char * cdata = NULL;
+										  while (edges && c_count < 4)
+										  {
+													 Log("contact edge %d, hitting?\n", c_count);
+													 normals[c_count] = contact->GetManifold()->localNormal;
+													 impulses[c_count] = contact->GetManifold()->points[0].normalImpulse;
+													 Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
+													 cdata = (char *)(bodyb->GetUserData());
+													 if (cdata)
+													 {
+																Log("\t%s\n", cdata);
+													 }
+													 else
+													 {
+																Log("\tNo user data found\n");
+													 }
+													 edges = edges->next;
+													 c_count++;
+										  }
+										  for (int i = 1; i < c_count; i++)
+										  {
+													 // if (fabs(n1) == fabs(n2))
+													 // 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
+													 // 	OR
+													 // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
+													 // 		toDestroy = myPlayer;
+													 // 		endGame = 1; // death
+										  }
 								}
 					 }
 					 if (contains(ud1, (const char *)"gun"))
@@ -244,13 +290,14 @@ void contactListener::BeginContact (b2Contact * contact)
 					 }
 					 if (contains(ud1, (const char *)"mine"))
 					 {
-								//								Log("mine hit something\n");
+																Log("mine hit something\n");
 								if (bodya->GetType() == dyn)
 								{
 										  if (ud2)
 										  {
-													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
+													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player") || contains(ud2, (const char *)"foot"))
 													 {
+																Log("\tplayer death\n");
 																detonate(myPlayer, bodyb);
 													 }
 													 else if (!contains(ud2, (const char *)"bullet"))
@@ -267,44 +314,96 @@ void contactListener::BeginContact (b2Contact * contact)
 					 if (contains(ud1, (const char *)"player"))
 					 {
 								Log("player hit something\n");
-								b2ContactEdge * edges = myPlayer->GetContactList();
-								b2Vec2 normals[4];
-								float impulses[4];
-								int c_count = 0;
-								int pt_ct = 0;
-								char * cdata = NULL;
-								while (edges && c_count < 4)
+								if (ud2)
 								{
-										  normals[c_count] = contact->GetManifold()->localNormal;
-										  pt_ct = contact->GetManifold()->pointCount;
-										  Log("impulses for contact %d:\n", c_count + 1);
-										  Log("this contact has %d points touching\n", pt_ct);
-										  for (int i = 0; i < pt_ct; i++)
+										  if (contains(ud2, (const char *)"mine"))
 										  {
-													 Log("\t%.4f\n", contact->GetManifold()->points[i].normalImpulse);
-										  }
-										  //										  impulses[c_count] = contact->GetManifold()->points[1].normalImpulse;
-										  Log("contact edge %d, hitting?\n", c_count + 1);
-										  cdata = (char *)(bodyb->GetUserData());
-										  if (cdata)
-										  {
-													 Log("\t%s\n", cdata);
+													 // do nothing
 										  }
 										  else
 										  {
-													 Log("\tNo user data found\n");
+													 b2ContactEdge * edges = myPlayer->GetContactList();
+													 b2Vec2 normals[4];
+													 float impulses[4];
+													 int c_count = 0;
+													 int pt_ct = 0;
+													 char * cdata = NULL;
+													 while (edges && c_count < 4)
+													 {
+																normals[c_count] = contact->GetManifold()->localNormal;
+																pt_ct = contact->GetManifold()->pointCount;
+																Log("impulses for contact %d:\n", c_count + 1);
+																Log("this contact has %d points touching\n", pt_ct);
+																for (int i = 0; i < pt_ct; i++)
+																{
+																		  Log("\t%.4f\n", contact->GetManifold()->points[i].normalImpulse);
+																}
+																//										  impulses[c_count] = contact->GetManifold()->points[1].normalImpulse;
+																Log("contact edge %d, hitting?\n", c_count + 1);
+																cdata = (char *)(bodyb->GetUserData());
+																if (cdata)
+																{
+																		  Log("\t%s\n", cdata);
+																}
+																else
+																{
+																		  Log("\tNo user data found\n");
+																}
+																edges = edges->next;
+																c_count++;
+													 }
+													 for (int i = 1; i < c_count; i++)
+													 {
+																// if (fabs(n1) == fabs(n2))
+																// 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
+																// 	OR
+																// 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
+																// 		toDestroy = myPlayer;
+																// 		endGame = 1; // death
+													 }
 										  }
-										  edges = edges->next;
-										  c_count++;
 								}
-								for (int i = 1; i < c_count; i++)
+								else
 								{
-										  // if (fabs(n1) == fabs(n2))
-										  // 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
-										  // 	OR
-										  // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
-										  // 		toDestroy = myPlayer;
-										  // 		endGame = 1; // death
+										  b2ContactEdge * edges = myPlayer->GetContactList();
+										  b2Vec2 normals[4];
+										  float impulses[4];
+										  int c_count = 0;
+										  int pt_ct = 0;
+										  char * cdata = NULL;
+										  while (edges && c_count < 4)
+										  {
+													 normals[c_count] = contact->GetManifold()->localNormal;
+													 pt_ct = contact->GetManifold()->pointCount;
+													 Log("impulses for contact %d:\n", c_count + 1);
+													 Log("this contact has %d points touching\n", pt_ct);
+													 for (int i = 0; i < pt_ct; i++)
+													 {
+																Log("\t%.4f\n", contact->GetManifold()->points[i].normalImpulse);
+													 }
+													 //										  impulses[c_count] = contact->GetManifold()->points[1].normalImpulse;
+													 Log("contact edge %d, hitting?\n", c_count + 1);
+													 cdata = (char *)(bodyb->GetUserData());
+													 if (cdata)
+													 {
+																Log("\t%s\n", cdata);
+													 }
+													 else
+													 {
+																Log("\tNo user data found\n");
+													 }
+													 edges = edges->next;
+													 c_count++;
+										  }
+										  for (int i = 1; i < c_count; i++)
+										  {
+													 // if (fabs(n1) == fabs(n2))
+													 // 	if (body1->GetInertia()/magnitude(inertia) == -1.0f * body2->GetInertia()/magnitdue(inertia))
+													 // 	OR
+													 // 	if (contact->GetFixtureA()->GetManifold()->normalImpulse < 1.0f && the other
+													 // 		toDestroy = myPlayer;
+													 // 		endGame = 1; // death
+										  }
 								}
 					 }
 					 if (contains(ud1, (const char *)"gun"))
@@ -397,6 +496,7 @@ void contactListener::BeginContact (b2Contact * contact)
 								/* This collision should 'kill' the player, perhaps an explosion animation then destroy player, followed eventually by a splash screen? */
 					 }
 		  }
+		  /*
 		  if (fix_vel == 1)
 		  {
 					 Log("Fixing player velocity while on platform\n");
@@ -409,6 +509,7 @@ void contactListener::BeginContact (b2Contact * contact)
 					 b2Vec2 v(bodya->GetLinearVelocity().x, bodya->GetLinearVelocity().y);
 					 mod_vel = v;
 		  }
+		  */
 }
 
 void contactListener::EndContact (b2Contact * contact)
@@ -587,10 +688,12 @@ void contactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impu
 								b2Body * bodyb = contact->GetFixtureB()->GetBody();
 								if (bodya->GetType() == b2_dynamicBody && (bodyb->GetType() == b2_staticBody || bodyb->GetType() == b2_kinematicBody))
 								{
+																Log("***default case 1\n");
 										  toDestroy = bodya;
 								}
 								else if (bodyb->GetType() == b2_dynamicBody && (bodya->GetType() == b2_staticBody || bodya->GetType() == b2_kinematicBody))
 								{
+																Log("***default case 2\n");
 										  toDestroy = bodyb;
 								}
 								else if (bodya->GetType() == b2_dynamicBody && bodyb->GetType() == b2_dynamicBody)

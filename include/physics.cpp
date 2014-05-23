@@ -6,6 +6,13 @@ static b2Body * det_a = NULL;
 static b2Body * det_b = NULL;
 static const b2Vec2 ZERO_VEC(0.0f, 0.0f);
 
+void resetDestroyVars(void)
+{
+		  det_a = NULL;
+		  det_b = NULL;
+		  toDestroy = NULL;
+}
+
 void detonate (b2Body * a, b2Body * b)
 {
 		  det_a = a;
@@ -135,7 +142,7 @@ void doPortal(b2Body * o)
 
 void physics (void)
 {
-		  Log("door_is_active = %d\n", door_is_active);
+//		  Log("door_is_active = %d\n", door_is_active);
 		  static b2Body * b1 = NULL;
 		  static b2Body * b2 = NULL;
 		  static b2Vec2 vel_old;
@@ -157,48 +164,61 @@ void physics (void)
 		  }
 		  else
 		  {
+					 Log("game not paused, perform physics\n");
 					 if (door_is_active)
 					 {
-								if (!(myDoor->GetLinearVelocity().y))
+								Log("door_is_active is set\n");
+								//								if (!(myDoor->GetLinearVelocity().y))
+								//								{
+								if (myDoor->GetPosition().y*M2P > -1.5*yres)
 								{
 										  myDoor->SetLinearVelocity(doorVel);
 								}
-								else
+								if (myDoor->GetPosition().y*M2P <= -1.5*yres)
 								{
-										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
-										  {
-													 doorVel *= -1.0f;
-													 myDoor->SetLinearVelocity(doorVel);
-										  }
+										  myDoor->SetLinearVelocity(ZERO_VEC);
+										  b2Vec2 pos(myDoor->GetPosition().x, -1.5f*yres*P2M);
+										  myDoor->SetTransform(pos, 0.0f);
 								}
+								//								}
+								//								else
+								//								{
+								//										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
+								//										  {
+								//													 doorVel *= -1.0f;
+								//													 myDoor->SetLinearVelocity(doorVel);
+								//										  }
+								//								}
 					 }
 					 else
 					 {
-								if (myDoor->GetLinearVelocity().y)
+								Log("door_is_active is NOT set\n");
+								if (myDoor->GetPosition().y*M2P <= -0.1f)
+//								if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P > 0.1f*yres)
 								{
-										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
-										  {
-													 doorVel *= -1.0f;
-													 myDoor->SetLinearVelocity(doorVel);
-										  }
-										  if (myDoor->GetPosition().y < 0.1f*P2M && myDoor->GetPosition().y > -0.1f*P2M)
-										  {
-													 myDoor->SetLinearVelocity(ZERO_VEC);
-													 b2Vec2 pos(myDoor->GetPosition().x, 0.0f);
-													 myDoor->SetTransform(pos, 0.0f);
-										  }
+										  myDoor->SetLinearVelocity(-1.0f * doorVel);
+								}
+								if (myDoor->GetPosition().y < 0.1f*P2M && myDoor->GetPosition().y > -0.1f*P2M)
+								{
+										  myDoor->SetLinearVelocity(ZERO_VEC);
+										  b2Vec2 pos(myDoor->GetPosition().x, 0.0f);
+										  myDoor->SetTransform(pos, 0.0f);
 								}
 					 }
+					 Log("checking for objects to destroy\n");
 					 if (det_a)
 					 {
+								Log("det_a exists!\n");
 								char * adata = (char *)(det_a->GetUserData());
 								char * bdata = NULL;
 								if (det_b)
 								{
+										  Log("det_b exists!\n");
 										  bdata = (char *)(det_b->GetUserData());
 								}
 								if (adata)
 								{
+										  Log("det_a has user data\n");
 										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
 										  {
 													 restart(0);
@@ -227,6 +247,7 @@ void physics (void)
 								}
 								if (bdata)
 								{
+										  Log("det_b has user data\n");
 										  if (contains(bdata, (const char *)"player") || contains(bdata, (const char *)"gun") || contains(bdata, (const char *)"foot"))
 										  {
 													 restart(0);
@@ -263,11 +284,14 @@ void physics (void)
 					 }
 					 if (toDestroy)
 					 {
+								Log("toDestroy exists!\n");
 								char * ddata = (char *)(toDestroy->GetUserData());
 								if (ddata)
 								{
+										  Log("toDestroy has user data\n");
 										  if (contains(ddata, (const char *)"player") || contains(ddata, (const char *)"gun") || contains(ddata, (const char *)"foot"))
 										  {
+													 Log("\nCALLING RESTART WITH TODESTROY\n\n");
 													 restart(0);
 													 return;
 										  }
@@ -394,11 +418,19 @@ void physics (void)
 								}
 								player_direction = 1;
 					 }
+					 /*
+					 if (!can_jump)
+					 {
+								Log("antidamping now\n");
+								b2Vec2 ad(5.5f * (float)(myPlayer->GetLinearVelocity().x), myPlayer->GetLinearVelocity().y);
+								myPlayer->SetLinearVelocity(ad); // anti damping for player in air
+					 }
+					 */
 					 if (keys[XK_space] == 1)
 					 {
 								if (can_jump)
 								{
-										  float impulse = myPlayer->GetMass() * 7.5f;
+										  float impulse = myPlayer->GetMass() * 5.5f;
 										  myPlayer->ApplyLinearImpulse(b2Vec2(0,-impulse), myPlayer->GetPosition(),true);
 										  vel = myPlayer->GetLinearVelocity();
 										  jcatch = 0;
@@ -430,11 +462,11 @@ void physics (void)
 								//myDoor->SetLinearVelocity(doorVel);
 								if (door_is_active)
 								{
-										  door_is_active = 1;
+								door_is_active = 1;
 								}
 								else
 								{
-										  door_is_active = 0;
+								door_is_active = 0;
 								}
 								*/
 					 }

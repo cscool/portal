@@ -4,6 +4,7 @@
 #include "contact.h"
 #include "createObjects.h"
 #include "log.h"
+#include "physics.h"
 
 using namespace std;
 

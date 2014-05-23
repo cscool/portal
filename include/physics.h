@@ -39,6 +39,7 @@ extern b2Vec2 mod_vel;
 extern int door_is_active;
 extern int button_pressed;
 
+void resetDestroyVars(void);
 void detonate (b2Body * a, b2Body * b = NULL);
 void physics (void);
 void doPortal(b2Body *);

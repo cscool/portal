@@ -6,6 +6,7 @@ contactListener contact_handler;
 
 void makeArena(const int &n)
 {
+		  Log("makeArena called, building arena %d\n", n);
 
 		  if (n == 0)
 		  {
@@ -22,6 +23,7 @@ void makeArena(const int &n)
 
 					 addObstacles();
 		  }
+		  Log("done!\n");
 }
 
 void addObstacles(void)
@@ -45,12 +47,14 @@ void addObstacles(void)
 
 void firstInit(void)
 {
+		  Log("initializing world for first game\n");
 		  world=new b2World(b2Vec2(0.0,10.0f));
 		  world->SetContactListener(&contact_handler);
 }
 
 void restart(const int & a)
 {
+		  Log("restart called, destroying and rebuilding world\n");
 		  delete world;
 		  world = NULL;
 		  myPlayer = NULL;
@@ -66,6 +70,8 @@ void restart(const int & a)
 		  myDoor = NULL;
 		  carry = NULL;
 		  player_direction = 1;
+		  resetDestroyVars();
+		  Log("vars resset, rebuilding...\n");
 		  world=new b2World(b2Vec2(0.0,10.0f));
 		  toDestroy = NULL;
 		  world->SetContactListener(&contact_handler);
