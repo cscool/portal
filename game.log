@@ -245,6 +245,469 @@ foot stopped contacting something ( B ):
 	0.0000
 	35.2747
 	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	0.0000
+	0.0000
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+portal key pressed
+&b2 = (nil)
+creating bullet right
+&b2 = 0x2444d00
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+that's not portalable
+	0.0459
+	0.7265
+portal key pressed
+portal key pressed
+portal key pressed
+&b2 = (nil)
+creating bullet right
+&b2 = 0x2444d00
+portal key pressed
+portal key pressed
+portal key pressed
+	0.0000
+in createPortal, got angle = 0.00
+creating right portal
+creating isportal right
+setting portal fixtures to be sensors
+	0.0000
+	0.0000
+	1401.2510
+	0.0000
+	1401.2510
+	0.0000
+	169.1198
+	0.0000
+	169.1198
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	38.8360
+	0.0000
+	37.4125
+	0.0000
+	37.4125
+	0.0000
+	35.2994
+	0.0000
+	35.1772
+	0.0000
+	35.2645
+	0.0000
+	35.2783
+	0.0000
+	35.2755
+	0.0000
+	35.2746
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	0.0000
+	0.0000
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+portal key pressed
+&b1 = (nil)
+creating bullet left
+&b1 = 0x2444dc0
+portal key pressed
+	0.0000
+	0.0000
+in createPortal, got angle = 1.57
+creating left portal
+creating isportal left
+setting portal fixtures to be sensors
+something hit a portal!
+its a dynamic object
+pos of p1:
+	(11.58, -1.39)
+pos of p2:
+	(1.43, -42.76)
+destination: p2
+player/gun/foot portal operation
+foot stopped contacting something ( A ):
+	stopped hitting isportal left
+something stopped hitting a portal
+something stopped hitting p1
+	70.7316
+	0.0000
+	78.8696
+	0.0000
+foot stopped contacting something ( A ):
+	stopped hitting left wall portalable
+	75.5609
+	0.0000
+	74.8716
+	0.0000
+	74.9618
+	0.0000
+foot stopped contacting something ( A ):
+	stopped hitting isportal right
+something stopped hitting a portal
+something stopped hitting p2
+	75.0024
+	0.0000
+	75.0020
+	0.0000
+	4.2685
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+something stopped hitting a portal
+something stopped hitting p2
+something stopped hitting a portal
+something stopped hitting p2
+	0.0000
+	1260.2928
+	1260.2928
+	155.4934
+	155.4934
+	0.0000
+	0.0000
+foot stopped contacting something ( A ):
+	12.9534
+	26.5683
+foot stopped contacting something ( A ):
+	stopped hitting turret
+something hit a portal!
+its a dynamic object
+pos of p1:
+	(11.58, -1.39)
+pos of p2:
+	(1.43, -42.76)
+destination: p2
+player/gun/foot portal operation
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+foot stopped contacting something ( A ):
+	stopped hitting isportal left
+something stopped hitting a portal
+something stopped hitting p1
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+foot stopped contacting something ( A ):
+	stopped hitting left wall portalable
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+foot stopped contacting something ( A ):
+	stopped hitting isportal right
+something stopped hitting a portal
+something stopped hitting p2
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+something stopped hitting a portal
+something stopped hitting p2
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+something stopped hitting a portal
+something stopped hitting p2
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	1260.2928
+	1260.2928
+	155.4934
+	155.4934
+	0.0000
+	0.0000
+	0.0000
+	43.2553
+	43.2553
+	37.8390
+	37.8390
+	35.1256
+	35.1256
+	35.1410
+	35.1410
+	14.6862
+	0.0000
+	35.3801
+	26.0074
+	0.0000
+	35.4836
+	35.4836
+	33.6020
+	0.0000
+	35.5468
+	37.4394
+	0.0000
+	35.6052
+	38.5638
+	0.0000
+	35.6712
+	37.6598
+	0.0000
+	35.7534
+	34.8764
+	0.0000
+	35.8609
+	30.6674
+	0.0000
+	36.0010
+	25.5272
+	0.0000
+	36.1793
+	19.9497
+	0.0000
+	36.3992
+	14.3934
+	0.0000
+	36.6622
+	9.2539
+	0.0000
+	36.9680
+	4.8411
+	0.0000
+	36.3499
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
+	35.2747
 calling XDestroyWindow
 calling XCloseDisplay
 done with cleanupXWindows

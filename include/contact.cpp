@@ -181,6 +181,9 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if (contains(ud2, (const char *)"portalable"))
 										  {
+													 b2Vec2 body_pos = bodyb->GetPosition();
+													 float body_height = getHeight(bodyb);
+													 float portal_space = 1.3*portal_height*P2M;
 													 //										  Log("you shot a portalable object!\n");
 													 pos = (b2Vec2)(bodya->GetPosition());
 													 norm = (b2Vec2)(contact->GetManifold()->localNormal);
@@ -193,11 +196,12 @@ void contactListener::BeginContact (b2Contact * contact)
 																{
 																		  if (p2)
 																		  {
-																					 if (pos.y >= bodyb->GetPosition().y && pos.y >= p2->GetPosition().y)
+																					 b2Vec2 p2_pos = p2->GetPosition();
+																					 if (pos.y >= body_pos.y && pos.y >= p2_pos.y)
 																					 {
-																								if (bodyb->GetPosition().y < p2->GetPosition().y)
+																								if (body_pos.y < p2_pos.y)
 																								{
-																										  if (p2->GetPosition().y + 1.3f*portal_height*P2M > 0.0f)
+																										  if (p2_pos.y + portal_space > 0.0f)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -208,7 +212,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																								else
 																								{
-																										  if (bodyb->GetPosition().y + 1.3f*portal_height*P2M > 0.0f)
+																										  if (body_pos.y + portal_space > 0.0f)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -218,9 +222,9 @@ void contactListener::BeginContact (b2Contact * contact)
 																										  //else dir = 1
 																								}
 																					 }
-																					 else if (pos.y >= bodyb->GetPosition().y && pos.y < p2->GetPosition().y)
+																					 else if (pos.y >= body_pos.y && pos.y < p2_pos.y)
 																					 {
-																								if (p2->GetPosition().y - 1.3f*portal_height*P2M < getHeight(bodyb))
+																								if (p2_pos.y - portal_space < body_height)
 																								{
 																										  // break out, not enough space
 																										  Log("no room for portal, not placing one\n");
@@ -229,9 +233,9 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																								// else dir = 1
 																					 }
-																					 else if (pos.y < bodyb->GetPosition().y && pos.y >= p2->GetPosition().y)
+																					 else if (pos.y < body_pos.y && pos.y >= p2_pos.y)
 																					 {
-																								if (bodyb->GetPosition().y + 1.3f*portal_height*P2M > getHeight(bodyb))
+																								if (body_pos.y + portal_space > body_height)
 																								{
 																										  // break out, not enough space
 																										  Log("no room for portal, not placing one\n");
@@ -245,9 +249,9 @@ void contactListener::BeginContact (b2Contact * contact)
 																					 }
 																					 else
 																					 {
-																								if (bodyb->GetPosition().y > p2->GetPosition().y)
+																								if (body_pos.y > p2_pos.y)
 																								{
-																										  if (p2->GetPosition().y - 1.3f*portal_height*P2M < getHeight(bodyb))
+																										  if (p2_pos.y - portal_space < body_height)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -261,7 +265,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																								else
 																								{
-																										  if (bodyb->GetPosition().y - 1.3f*portal_height*P2M < getHeight(bodyb))
+																										  if (body_pos.y - portal_space < body_height)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -275,7 +279,8 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																					 }
 
-																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p2->GetPosition().y) < 1.3f*portal_height*P2M)
+																					 /* HERE */
+																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p2_pos.y) < portal_space)
 																					 {
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
@@ -285,7 +290,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																		  }
 																		  else
 																		  {
-																					 if (pos.y >= bodyb->GetPosition().y)
+																					 if (pos.y >= body_pos.y)
 																					 {
 																								while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)))
 																								{
@@ -297,7 +302,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																					 }
 																					 else
 																					 {
-																								while (good && (fabs(pos.y*M2P) + portal_height*0.5f) >= (fabs(getHeight(bodyb))))
+																								while (good && (fabs(pos.y*M2P) + portal_height*0.5f) >= (fabs(body_height)))
 																								{
 																										  Log("fixing portal position from y = %.2f", pos.y);
 																										  pos.y += 0.1f * P2M;
@@ -311,11 +316,12 @@ void contactListener::BeginContact (b2Contact * contact)
 																{
 																		  if (p1)
 																		  {
-																					 if (pos.y >= bodyb->GetPosition().y && pos.y >= p1->GetPosition().y)
+																					 b2Vec2 p1_pos = p1->GetPosition();
+																					 if (pos.y >= body_pos.y && pos.y >= p1_pos.y)
 																					 {
-																								if (bodyb->GetPosition().y < p1->GetPosition().y)
+																								if (body_pos.y < p1_pos.y)
 																								{
-																										  if (p1->GetPosition().y + 1.3f*portal_height*P2M > 0.0f)
+																										  if (p1_pos.y + portal_space > 0.0f)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -326,7 +332,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																								else
 																								{
-																										  if (bodyb->GetPosition().y + 1.3f*portal_height*P2M > 0.0f)
+																										  if (body_pos.y + portal_space > 0.0f)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -336,9 +342,9 @@ void contactListener::BeginContact (b2Contact * contact)
 																										  //else dir = 1
 																								}
 																					 }
-																					 else if (pos.y >= bodyb->GetPosition().y && pos.y < p1->GetPosition().y)
+																					 else if (pos.y >= body_pos.y && pos.y < p1_pos.y)
 																					 {
-																								if (p1->GetPosition().y - 1.3f*portal_height*P2M < getHeight(bodyb))
+																								if (p1_pos.y - portal_space < body_height)
 																								{
 																										  // break out, not enough space
 																										  Log("no room for portal, not placing one\n");
@@ -347,9 +353,9 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																								// else dir = 1
 																					 }
-																					 else if (pos.y < bodyb->GetPosition().y && pos.y >= p1->GetPosition().y)
+																					 else if (pos.y < body_pos.y && pos.y >= p1_pos.y)
 																					 {
-																								if (bodyb->GetPosition().y + 1.3f*portal_height*P2M > getHeight(bodyb))
+																								if (body_pos.y + portal_space > body_height)
 																								{
 																										  // break out, not enough space
 																										  Log("no room for portal, not placing one\n");
@@ -363,9 +369,9 @@ void contactListener::BeginContact (b2Contact * contact)
 																					 }
 																					 else
 																					 {
-																								if (bodyb->GetPosition().y > p1->GetPosition().y)
+																								if (body_pos.y > p1_pos.y)
 																								{
-																										  if (p1->GetPosition().y - 1.3f*portal_height*P2M < getHeight(bodyb))
+																										  if (p1_pos.y - portal_space < body_height)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -379,7 +385,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																								else
 																								{
-																										  if (bodyb->GetPosition().y - 1.3f*portal_height*P2M < getHeight(bodyb))
+																										  if (body_pos.y - portal_space < body_height)
 																										  {
 																													 // break out, not enough room to place portal
 																													 Log("no room for portal, not placing one\n");
@@ -393,27 +399,27 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																					 }
 
-																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p1->GetPosition().y) < 1.3f*portal_height*P2M)
+																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p1_pos.y) < portal_space)
 																					 {
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
-																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
 																		  }
 																		  else
 																		  {
-																					 if (pos.y > bodyb->GetPosition().y)
+																					 if (pos.y > body_pos.y)
 																					 {
 																								dir = -1;
 																					 }
 																					 // else dir = 1
-																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - bodyb->GetPosition().y) < 1.3f*portal_height*P2M)
+																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - body_pos.y) < portal_space)
 																					 {
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
-																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
 																		  }
 																}

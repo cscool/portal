@@ -25,6 +25,33 @@ void makeArena(const int &n)
 
 					 addObstacles();
 		  }
+
+		  /* add a bionic goat to frolic through level */
+		  if (n == 1)
+		  {
+					 myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun);
+					 myPlayer->SetUserData((void *)((char *)"player"));
+
+					 gameFloor = addRect(xres * 5.0f, 0.0f, xres*10.0f, 50.0f, 0.7f, 0.2f, 2, (char *)"floor portalable");
+					 gameFloor->SetAwake(false);
+
+					 ((b2Body *)(addRect(0.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
+					 ((b2Body *)(addRect(xres*10.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
+					 addRect(xres * 1.0f + 65.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.9f, 0.2f, 1);//bottom right
+		  }
+		  /* add companion cube */
+		  if (n == 1)
+		  {
+					 myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun);
+					 myPlayer->SetUserData((void *)((char *)"player"));
+
+					 gameFloor = addRect(xres * 5.0f, 0.0f, xres*10.0f, 50.0f, 0.7f, 0.2f, 2, (char *)"floor portalable");
+					 gameFloor->SetAwake(false);
+
+					 ((b2Body *)(addRect(0.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
+					 ((b2Body *)(addRect(xres*10.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
+					 addRect(xres * 1.0f + 65.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.9f, 0.2f, 1);//bottom right
+		  }
 		  Log("done!\n");
 }
 
