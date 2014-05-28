@@ -1,0 +1,2450 @@
+initializing world for first game
+makeArena called, building arena 0
+creating floor portalable
+creating left wall portalable
+creating right wall portalable
+creating button 1
+creating angled wall portalable
+creating platform
+creating mine deadly
+done!
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+foot contacted something ( B ):
+	hit gun
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.51)
+current gun position:
+	(17.50, -20.51)
+current foot position:
+	(17.50, -15.54)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+foot stopped contacting something ( B ):
+	stopped hitting gun
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.50)
+current gun position:
+	(17.50, -20.50)
+current foot position:
+	(17.50, -15.50)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.47)
+current gun position:
+	(17.50, -20.47)
+current foot position:
+	(17.50, -15.47)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.43)
+current gun position:
+	(17.50, -20.43)
+current foot position:
+	(17.50, -15.43)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.37)
+current gun position:
+	(17.50, -20.37)
+current foot position:
+	(17.50, -15.37)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.30)
+current gun position:
+	(17.50, -20.30)
+current foot position:
+	(17.50, -15.30)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.23)
+current gun position:
+	(17.50, -20.23)
+current foot position:
+	(17.50, -15.23)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+current player position:
+	(17.50, -20.14)
+current gun position:
+	(17.50, -20.14)
+current foot position:
+	(17.50, -15.14)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	-0.0000
+	-0.0000
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	0.0000
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	0.0000
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -20.04)
+current gun position:
+	(17.50, -20.04)
+current foot position:
+	(17.50, -15.04)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	22.1979
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	22.7270
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	21.2238
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	20.6883
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.93)
+current gun position:
+	(17.50, -19.93)
+current foot position:
+	(17.50, -14.93)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	1.1415
+	10.8294
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	1.0623
+	9.9645
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	11.4536
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	12.3345
+	0.0000
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.80)
+current gun position:
+	(17.50, -19.80)
+current foot position:
+	(17.50, -14.80)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.9416
+	1.9152
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.9219
+	2.0277
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	3.7558
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	3.6801
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.67)
+current gun position:
+	(17.50, -19.67)
+current foot position:
+	(17.50, -14.67)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.3497
+	1.6324
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.4431
+	1.8303
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	3.6835
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	3.4875
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.53)
+current gun position:
+	(17.50, -19.53)
+current foot position:
+	(17.50, -14.53)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.3145
+	2.7511
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.3606
+	2.7579
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.3378
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.3012
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.37)
+current gun position:
+	(17.50, -19.37)
+current foot position:
+	(17.50, -14.37)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2201
+	3.0631
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2248
+	3.0481
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.6043
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.6195
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.20)
+current gun position:
+	(17.50, -19.20)
+current foot position:
+	(17.50, -14.20)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2381
+	3.0166
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2404
+	3.0065
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.5599
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.5704
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -19.03)
+current gun position:
+	(17.50, -19.03)
+current foot position:
+	(17.50, -14.03)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2701
+	2.9302
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2724
+	2.9277
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4804
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4816
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -18.84)
+current gun position:
+	(17.50, -18.84)
+current foot position:
+	(17.50, -13.84)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2798
+	2.9039
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2815
+	2.9040
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4550
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4534
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -18.64)
+current gun position:
+	(17.50, -18.64)
+current foot position:
+	(17.50, -13.64)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2760
+	2.9128
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2777
+	2.9123
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4613
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4602
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -18.43)
+current gun position:
+	(17.50, -18.43)
+current foot position:
+	(17.50, -13.43)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2750
+	2.9194
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2736
+	2.9211
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4684
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4654
+	0.0094
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -18.20)
+current gun position:
+	(17.50, -18.20)
+current foot position:
+	(17.50, -13.20)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2749
+	2.9193
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2736
+	2.9213
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4683
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4646
+	0.0091
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -17.97)
+current gun position:
+	(17.50, -17.97)
+current foot position:
+	(17.50, -12.97)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2746
+	2.9194
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2736
+	2.9211
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4676
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4643
+	0.0085
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -17.73)
+current gun position:
+	(17.50, -17.73)
+current foot position:
+	(17.50, -12.73)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2744
+	2.9197
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2733
+	2.9215
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4675
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4642
+	0.0086
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -17.47)
+current gun position:
+	(17.50, -17.47)
+current foot position:
+	(17.50, -12.47)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2742
+	2.9201
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2730
+	2.9219
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4675
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4642
+	0.0087
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -17.20)
+current gun position:
+	(17.50, -17.20)
+current foot position:
+	(17.50, -12.20)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2740
+	2.9204
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2728
+	2.9222
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4675
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4641
+	0.0088
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -16.93)
+current gun position:
+	(17.50, -16.93)
+current foot position:
+	(17.50, -11.93)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2739
+	2.9206
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2726
+	2.9225
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4675
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4640
+	0.0089
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -16.64)
+current gun position:
+	(17.50, -16.64)
+current foot position:
+	(17.50, -11.64)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2737
+	2.9209
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2724
+	2.9228
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4675
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4639
+	0.0090
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -16.34)
+current gun position:
+	(17.50, -16.34)
+current foot position:
+	(17.50, -11.34)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2736
+	2.9211
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2723
+	2.9231
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4675
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4639
+	0.0091
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -16.03)
+current gun position:
+	(17.50, -16.03)
+current foot position:
+	(17.50, -11.03)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2734
+	2.9214
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2721
+	2.9233
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4674
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4638
+	0.0091
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.50, -15.70)
+current gun position:
+	(17.50, -15.70)
+current foot position:
+	(17.50, -10.70)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.2733
+	2.9216
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	0.2720
+	2.9236
+no user data for body a
+
+no user data for body b
+
+
+in post solve
+this contact has 1 points touching
+	4.4674
+user data for body a: floor portalable
+
+no user data for body b
+
+
+in post solve
+this contact has 2 points touching
+	4.4638
+	0.0092
+user data for body a: floor portalable
+
+no user data for body b
+
+current player position:
+	(17.48, -15.37)
+current gun position:
+	(17.48, -15.37)
+current foot position:
+	(17.48, -10.37)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(17.43, -15.03)
+current gun position:
+	(17.43, -15.03)
+current foot position:
+	(17.43, -10.03)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(17.36, -14.67)
+current gun position:
+	(17.36, -14.67)
+current foot position:
+	(17.36, -9.67)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(17.26, -14.30)
+current gun position:
+	(17.26, -14.30)
+current foot position:
+	(17.26, -9.30)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(17.18, -13.93)
+current gun position:
+	(17.18, -13.93)
+current foot position:
+	(17.18, -8.93)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(17.09, -13.54)
+current gun position:
+	(17.09, -13.54)
+current foot position:
+	(17.09, -8.54)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(17.02, -13.14)
+current gun position:
+	(17.02, -13.14)
+current foot position:
+	(17.02, -8.14)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.95, -12.73)
+current gun position:
+	(16.95, -12.73)
+current foot position:
+	(16.95, -7.73)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.88, -12.30)
+current gun position:
+	(16.88, -12.30)
+current foot position:
+	(16.88, -7.30)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.82, -11.87)
+current gun position:
+	(16.82, -11.87)
+current foot position:
+	(16.82, -6.87)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.77, -11.43)
+current gun position:
+	(16.77, -11.43)
+current foot position:
+	(16.77, -6.43)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.71, -10.97)
+current gun position:
+	(16.71, -10.97)
+current foot position:
+	(16.71, -5.97)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.66, -10.50)
+current gun position:
+	(16.66, -10.50)
+current foot position:
+	(16.66, -5.50)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.62, -10.03)
+current gun position:
+	(16.62, -10.03)
+current foot position:
+	(16.62, -5.03)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.58, -9.54)
+current gun position:
+	(16.58, -9.54)
+current foot position:
+	(16.58, -4.54)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.54, -9.04)
+current gun position:
+	(16.54, -9.04)
+current foot position:
+	(16.54, -4.04)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.50, -8.53)
+current gun position:
+	(16.50, -8.53)
+current foot position:
+	(16.50, -3.53)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.47, -8.00)
+current gun position:
+	(16.47, -8.00)
+current foot position:
+	(16.47, -3.00)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.44, -7.47)
+current gun position:
+	(16.44, -7.47)
+current foot position:
+	(16.44, -2.47)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.41, -6.93)
+current gun position:
+	(16.41, -6.93)
+current foot position:
+	(16.41, -1.93)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.38, -6.37)
+current gun position:
+	(16.38, -6.37)
+current foot position:
+	(16.38, -1.37)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+player hit something
+contact edge 0, hitting?
+recording impulse for contact 1:
+	0.0000
+	floor portalable
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.35, -5.80)
+current foot position:
+	(16.35, -0.80)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	1260.2928
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+
+in post solve
+this contact has 2 points touching
+	1260.2928
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.36, -5.98)
+current foot position:
+	(16.36, -0.99)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	155.4934
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+
+in post solve
+this contact has 2 points touching
+	155.4934
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.36, -6.12)
+current foot position:
+	(16.36, -1.13)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.27)
+current gun position:
+	(16.37, -6.19)
+current foot position:
+	(16.37, -1.19)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+player hit something
+contact edge 0, hitting?
+recording impulse for contact 1:
+	0.0000
+	floor portalable
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.21)
+current foot position:
+	(16.37, -1.21)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	43.2553
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+
+in post solve
+this contact has 2 points touching
+	43.2553
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.23)
+current foot position:
+	(16.37, -1.23)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	37.8390
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+
+in post solve
+this contact has 2 points touching
+	37.8390
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.25)
+current foot position:
+	(16.37, -1.25)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.1256
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.25)
+current gun position:
+	(16.37, -6.25)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.1410
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+
+in post solve
+this contact has 2 points touching
+	35.1410
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2692
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2805
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2755
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2745
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+
+in post solve
+this contact has 2 points touching
+	35.2747
+	0.0000
+user data for body a: player
+
+user data for body b: floor portalable
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+&b1 = (nil)
+creating bullet left
+&b1 = 0x215ab80
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+portal key pressed
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+creating portal
+pos.y = -6.26
+pos.y = -6.26
+pos.y*M2P = -125.27
+portal_height = 180.00
+onFloor = -50.00
+pos.y*M2P + portal_height = 54.73, >= onFloor - 50?
+fixing portal position from y = -125.27 to -127.27
+
+test:	52.73 >= -100.00?
+fixing portal position from y = -127.27 to -129.27
+
+test:	50.73 >= -100.00?
+fixing portal position from y = -129.27 to -131.27
+
+test:	48.73 >= -100.00?
+fixing portal position from y = -131.27 to -133.27
+
+test:	46.73 >= -100.00?
+fixing portal position from y = -133.27 to -135.27
+
+test:	44.73 >= -100.00?
+fixing portal position from y = -135.27 to -137.27
+
+test:	42.73 >= -100.00?
+fixing portal position from y = -137.27 to -139.27
+
+test:	40.73 >= -100.00?
+fixing portal position from y = -139.27 to -141.27
+
+test:	38.73 >= -100.00?
+fixing portal position from y = -141.27 to -143.27
+
+test:	36.73 >= -100.00?
+fixing portal position from y = -143.27 to -145.27
+
+test:	34.73 >= -100.00?
+fixing portal position from y = -145.27 to -147.27
+
+test:	32.73 >= -100.00?
+fixing portal position from y = -147.27 to -149.27
+
+test:	30.73 >= -100.00?
+fixing portal position from y = -149.27 to -151.27
+
+test:	28.73 >= -100.00?
+fixing portal position from y = -151.27 to -153.27
+
+test:	26.73 >= -100.00?
+fixing portal position from y = -153.27 to -155.27
+
+test:	24.73 >= -100.00?
+fixing portal position from y = -155.27 to -157.27
+
+test:	22.73 >= -100.00?
+fixing portal position from y = -157.27 to -159.27
+
+test:	20.73 >= -100.00?
+fixing portal position from y = -159.27 to -161.27
+
+test:	18.73 >= -100.00?
+fixing portal position from y = -161.27 to -163.27
+
+test:	16.73 >= -100.00?
+fixing portal position from y = -163.27 to -165.27
+
+test:	14.73 >= -100.00?
+fixing portal position from y = -165.27 to -167.27
+
+test:	12.73 >= -100.00?
+fixing portal position from y = -167.27 to -169.27
+
+test:	10.73 >= -100.00?
+fixing portal position from y = -169.27 to -171.27
+
+test:	8.73 >= -100.00?
+fixing portal position from y = -171.27 to -173.27
+
+test:	6.73 >= -100.00?
+fixing portal position from y = -173.27 to -175.27
+
+test:	4.73 >= -100.00?
+fixing portal position from y = -175.27 to -177.27
+
+test:	2.73 >= -100.00?
+fixing portal position from y = -177.27 to -179.27
+
+test:	0.73 >= -100.00?
+fixing portal position from y = -179.27 to -181.27
+
+test:	-1.27 >= -100.00?
+fixing portal position from y = -181.27 to -183.27
+
+test:	-3.27 >= -100.00?
+fixing portal position from y = -183.27 to -185.27
+
+test:	-5.27 >= -100.00?
+fixing portal position from y = -185.27 to -187.27
+
+test:	-7.27 >= -100.00?
+fixing portal position from y = -187.27 to -189.27
+
+test:	-9.27 >= -100.00?
+fixing portal position from y = -189.27 to -191.27
+
+test:	-11.27 >= -100.00?
+fixing portal position from y = -191.27 to -193.27
+
+test:	-13.27 >= -100.00?
+fixing portal position from y = -193.27 to -195.27
+
+test:	-15.27 >= -100.00?
+fixing portal position from y = -195.27 to -197.27
+
+test:	-17.27 >= -100.00?
+fixing portal position from y = -197.27 to -199.27
+
+test:	-19.27 >= -100.00?
+fixing portal position from y = -199.27 to -201.27
+
+test:	-21.27 >= -100.00?
+fixing portal position from y = -201.27 to -203.27
+
+test:	-23.27 >= -100.00?
+fixing portal position from y = -203.27 to -205.27
+
+test:	-25.27 >= -100.00?
+fixing portal position from y = -205.27 to -207.27
+
+test:	-27.27 >= -100.00?
+fixing portal position from y = -207.27 to -209.27
+
+test:	-29.27 >= -100.00?
+fixing portal position from y = -209.27 to -211.27
+
+test:	-31.27 >= -100.00?
+fixing portal position from y = -211.27 to -213.27
+
+test:	-33.27 >= -100.00?
+fixing portal position from y = -213.27 to -215.27
+
+test:	-35.27 >= -100.00?
+fixing portal position from y = -215.27 to -217.27
+
+test:	-37.27 >= -100.00?
+fixing portal position from y = -217.27 to -219.27
+
+test:	-39.27 >= -100.00?
+fixing portal position from y = -219.27 to -221.27
+
+test:	-41.27 >= -100.00?
+fixing portal position from y = -221.27 to -223.27
+
+test:	-43.27 >= -100.00?
+fixing portal position from y = -223.27 to -225.27
+
+test:	-45.27 >= -100.00?
+fixing portal position from y = -225.27 to -227.27
+
+test:	-47.27 >= -100.00?
+fixing portal position from y = -227.27 to -229.27
+
+test:	-49.27 >= -100.00?
+fixing portal position from y = -229.27 to -231.27
+
+test:	-51.27 >= -100.00?
+fixing portal position from y = -231.27 to -233.27
+
+test:	-53.27 >= -100.00?
+fixing portal position from y = -233.27 to -235.27
+
+test:	-55.27 >= -100.00?
+fixing portal position from y = -235.27 to -237.27
+
+test:	-57.27 >= -100.00?
+fixing portal position from y = -237.27 to -239.27
+
+test:	-59.27 >= -100.00?
+fixing portal position from y = -239.27 to -241.27
+
+test:	-61.27 >= -100.00?
+fixing portal position from y = -241.27 to -243.27
+
+test:	-63.27 >= -100.00?
+fixing portal position from y = -243.27 to -245.27
+
+test:	-65.27 >= -100.00?
+fixing portal position from y = -245.27 to -247.27
+
+test:	-67.27 >= -100.00?
+fixing portal position from y = -247.27 to -249.27
+
+test:	-69.27 >= -100.00?
+fixing portal position from y = -249.27 to -251.27
+
+test:	-71.27 >= -100.00?
+fixing portal position from y = -251.27 to -253.27
+
+test:	-73.27 >= -100.00?
+fixing portal position from y = -253.27 to -255.27
+
+test:	-75.27 >= -100.00?
+fixing portal position from y = -255.27 to -257.27
+
+test:	-77.27 >= -100.00?
+fixing portal position from y = -257.27 to -259.27
+
+test:	-79.27 >= -100.00?
+fixing portal position from y = -259.27 to -261.27
+
+test:	-81.27 >= -100.00?
+fixing portal position from y = -261.27 to -263.27
+
+test:	-83.27 >= -100.00?
+fixing portal position from y = -263.27 to -265.27
+
+test:	-85.27 >= -100.00?
+fixing portal position from y = -265.27 to -267.27
+
+test:	-87.27 >= -100.00?
+fixing portal position from y = -267.27 to -269.27
+
+test:	-89.27 >= -100.00?
+fixing portal position from y = -269.27 to -271.27
+
+test:	-91.27 >= -100.00?
+fixing portal position from y = -271.27 to -273.27
+
+test:	-93.27 >= -100.00?
+fixing portal position from y = -273.27 to -275.27
+
+test:	-95.27 >= -100.00?
+fixing portal position from y = -275.27 to -277.27
+
+test:	-97.27 >= -100.00?
+fixing portal position from y = -277.27 to -279.27
+
+test:	-99.27 >= -100.00?
+fixing portal position from y = -279.27 to -281.27
+
+test:	-101.27 >= -100.00?
+
+in post solve
+this contact has 2 points touching
+	0.0000
+	0.0000
+user data for body a: left wall portalable
+
+user data for body b: bullet left
+
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+toDestroy exists!
+toDestroy has user data
+in createPortal, got angle = 0.00
+creating left portal
+creating isportal left
+setting portal fixtures to be sensors
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+game not paused, perform physics
+door_is_active is NOT set
+checking for objects to destroy
+current player position:
+	(16.37, -6.26)
+current gun position:
+	(16.37, -6.26)
+current foot position:
+	(16.37, -1.26)
+calling XDestroyWindow
+calling XCloseDisplay
+done with cleanupXWindows

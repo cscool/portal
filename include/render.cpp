@@ -47,6 +47,46 @@ void init_images(void)
 
 		  unsigned char * sdata = NULL;
 
+		  pwallImage = ppm6GetImage((char *)"./images/portalable.ppm");
+		  glGenTextures(1, &pwallTexture);
+		  glBindTexture(GL_TEXTURE_2D, pwallTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(pwallImage);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, pwallImage->width, pwallImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  npwallImage = ppm6GetImage((char *)"./images/nonportalable.ppm");
+		  glGenTextures(1, &npwallTexture);
+		  glBindTexture(GL_TEXTURE_2D, npwallTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(npwallImage);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, npwallImage->width, npwallImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  p1Image = ppm6GetImage((char *)"./images/p1.ppm");
+		  glGenTextures(1, &p1Texture);
+		  glBindTexture(GL_TEXTURE_2D, p1Texture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(p1Image);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, p1Image->width, p1Image->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
+		  p2Image = ppm6GetImage((char *)"./images/p2.ppm");
+		  glGenTextures(1, &p2Texture);
+		  glBindTexture(GL_TEXTURE_2D, p2Texture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(p2Image);	
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, p2Image->width, p2Image->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
 		  buttonDepressedImage = ppm6GetImage((char *)"./images/button1.ppm");
 		  glGenTextures(1, &buttonDepressedTexture);
 		  glBindTexture(GL_TEXTURE_2D, buttonDepressedTexture);
@@ -211,15 +251,27 @@ void drawSquare(b2Vec2* points, b2Vec2 center, float angle, int & color)
 
 void drawPortal(b2Body * p)
 {
+		  /*
+			  if (contains((char *)(p->GetUserData()), (char *)"left"))
+			  {
+			  glColor3f(0,0,1);
+			  }
+			  else
+			  {
+			  glColor3f(1,0,0);
+			  }
+			  */
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
 		  if (contains((char *)(p->GetUserData()), (char *)"left"))
 		  {
-					 glColor3f(0,0,1);
+					 glBindTexture(GL_TEXTURE_2D, p1Texture);
 		  }
 		  else
 		  {
-					 glColor3f(1,0,0);
+					 glBindTexture(GL_TEXTURE_2D, p2Texture);
 		  }
-		  glPushMatrix();
 		  glTranslatef(p->GetPosition().x*M2P, p->GetPosition().y*M2P, 0.0f);
 		  //		  Log("in drawPortal, angle = %.2f\n", p->GetAngle());
 		  glRotatef((p->GetAngle())*R2D, 0.0f, 0.0f, 1.0f);
@@ -231,11 +283,29 @@ void drawPortal(b2Body * p)
 								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
 					 glBegin(GL_QUADS);
 					 for(int i = 0; i < 4; i++)
+					 {
+								switch (i)
+								{
+										  case 0:
+													 glTexCoord2f(0.0f, 1.0f); //glVertex2i(-wid,-wid);
+													 break;
+										  case 1:
+													 glTexCoord2f(0.0f, 0.0f); //glVertex2i(-wid, wid);
+													 break;
+										  case 2:
+													 glTexCoord2f(1.0f, 0.0f); //glVertex2i( wid, wid);
+													 break;
+										  case 3:
+													 glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid,-wid);
+													 break;
+								}
 								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 }
 					 glEnd();
 					 tmp = tmp->GetNext();
 		  }
 		  glPopMatrix();
+		  glDisable(GL_TEXTURE_2D);
 }
 
 void drawButton(void)
@@ -329,6 +399,127 @@ void drawMine(void)
 		  }
 		  glDisable(GL_TEXTURE_2D);
 		  glPopMatrix();
+}
+
+float getWidth(b2Body *b)
+{
+		  float y1 = ((b2PolygonShape*)b->GetFixtureList()->GetShape())->GetVertex(2).y;
+		  float y2 = ((b2PolygonShape*)b->GetFixtureList()->GetShape())->GetVertex(1).y;
+		  return (fabs(y2-y1));
+}
+
+float getHeight(b2Body *b)
+{
+		  float x1 = ((b2PolygonShape*)b->GetFixtureList()->GetShape())->GetVertex(0).x;
+		  float x2 = ((b2PolygonShape*)b->GetFixtureList()->GetShape())->GetVertex(1).x;
+		  return (fabs(x2-x1));
+}
+
+void drawWall(b2Body * b, const int & n)
+{
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
+		  glTranslatef(b->GetPosition().x*M2P, b->GetPosition().y*M2P, 0);
+		  glRotatef(b->GetAngle()*180.0/M_PI, 0, 0, 1);
+		  if (n == 1)
+		  {
+					 glBindTexture(GL_TEXTURE_2D, pwallTexture);
+		  }
+		  else
+		  {
+					 glBindTexture(GL_TEXTURE_2D, npwallTexture);
+		  }
+		  b2Vec2 points[4];
+		  b2Fixture * tmp = b->GetFixtureList();
+		  /*
+			  glTexCoord2f(0.0f, 0.0f);
+			  glVertex2i(-2.0f * xres, -4.0f * yres);
+			  glTexCoord2f(0.0f, 10.0f);
+			  glVertex2i(-2.0f * xres, 1.0f * yres);
+			  glTexCoord2f(50.0f, 10.0f);
+			  glVertex2i(20.0f * xres, 1.0f * yres);
+			  glTexCoord2f(50.0f, 0.0f);
+			  glVertex2i(20.0f * xres, -4.0f * yres);
+			  */
+		  float wid = getWidth(b);
+		  float hei = getHeight(b);
+		  while (tmp)
+		  {
+					 for(int i=0; i < 4; i++)
+								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+					 glBegin(GL_QUADS);
+					 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+					 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+					 for(int i = 0; i < 4; i++)
+					 {
+								switch (i)
+								{
+										  case 0:
+													 glTexCoord2f(0.0f, 0.1f*hei);
+													 break;
+										  case 1:
+													 glTexCoord2f(0.0f, 0.0f);
+													 break;
+										  case 2:
+													 glTexCoord2f(0.1f*wid, 0.0f);
+													 break;
+										  case 3:
+													 glTexCoord2f(0.1f*wid, 0.1f*hei);
+													 break;
+								}
+								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 }
+					 glEnd();
+					 tmp = tmp->GetNext();
+		  }
+		  glDisable(GL_TEXTURE_2D);
+		  glPopMatrix();
+}
+
+void drawLaser()
+{
+		  b2Joint * joint = turret1->GetJointList()->joint;
+		  b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
+		  float currentRayAngle = revJoint->GetJointAngle();
+		  float rayLength = 25*M2P;
+		  b2Vec2 p1 = turret1->GetPosition();
+		  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
+		  b2RayCastInput input;
+		  input.p1 = p1;
+		  input.p2 = p2;
+		  input.maxFraction = 1;
+
+		  //check every fixture of every body to find closest
+		  float closestFraction = 1; //start with end of line as p2
+		  b2Vec2 intersectionNormal(0,0);
+		  for (b2Body* b = world->GetBodyList(); b; b = b->GetNext()) {
+					 for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext()) {
+
+								b2RayCastOutput output;
+								if ( ! f->RayCast( &output, input, 0 ) )
+										  continue;
+								if ( output.fraction < closestFraction ) {
+										  closestFraction = output.fraction;
+										  intersectionNormal = output.normal;
+								}            
+					 }
+		  }
+
+		  b2Vec2 intersectionPoint = p1 + closestFraction * (p2 - p1);
+
+		  //draw a line
+		  glColor3f(1,0,0); //white
+		  glBegin(GL_LINES);
+		  glVertex2f( p1.x*M2P, p1.y*M2P );
+		  glVertex2f( intersectionPoint.x*M2P, intersectionPoint.y*M2P );
+		  glEnd();
+
+		  //draw a point at the intersection point
+		  glPointSize(5);
+		  glBegin(GL_POINTS);
+		  glVertex2f( intersectionPoint.x*M2P, intersectionPoint.y*M2P );
+		  glEnd();
 }
 
 void drawPlayer(void)
@@ -445,6 +636,9 @@ void render(void)
 								{
 										  //Log("found platform\n");
 										  movePlatform(tmp);
+										  drawWall(tmp, 0);
+										  tmp = tmp->GetNext();
+										  continue;
 								}
 								else if (contains(ud, (const char *)("mine")))
 								{
@@ -458,15 +652,30 @@ void render(void)
 								{
 										  //					 Log("left bullet\n");
 										  color = 1;
+										  drawSquare(points, tmp->GetPosition(), tmp->GetAngle(), color);
+										  tmp = tmp->GetNext();
+										  continue;
 								}
 								else if (contains(ud, (const char *)"bullet right"))
 								{
 										  //					 Log("right bullet\n");
 										  color = 2;
+										  drawSquare(points, tmp->GetPosition(), tmp->GetAngle(), color);
+										  tmp = tmp->GetNext();
+										  continue;
 								}
 								else if (contains(ud, (const char *)"wall") || contains(ud, (const char *)"floor") || contains(ud, (const char *)"ceiling"))
 								{
-										  color = 0;
+										  if (contains(ud, (const char *)"portalable"))
+										  {
+													 drawWall(tmp, 1);
+										  }
+										  else
+										  {
+													 drawWall(tmp, 0);
+										  }
+										  tmp = tmp->GetNext();
+										  continue;
 								}
 								else if (contains(ud, (const char *)"gun"))
 								{
@@ -483,6 +692,11 @@ void render(void)
 										  tmp = tmp->GetNext();
 										  continue;
 								}
+								else if (contains(ud, (const char *)"isportal"))
+								{
+										  tmp = tmp->GetNext();
+										  continue;
+								}
 								else if (contains(ud, (const char *)"button"))
 								{
 										  drawButton();
@@ -491,10 +705,13 @@ void render(void)
 								}
 								else
 								{
-										  color = 3;
+										  drawWall(tmp, 0);
+										  tmp = tmp->GetNext();
+										  continue;
 								}
 					 }
-					 drawSquare(points, tmp->GetPosition(), tmp->GetAngle(), color);
+					 //					 drawSquare(points, tmp->GetPosition(), tmp->GetAngle(), color);
+					 drawWall(tmp, 0);
 					 tmp = tmp->GetNext();
 		  }
 		  //drawFoot();
@@ -519,5 +736,6 @@ void render(void)
 					 p_dest = NULL;
 		  }
 		  drawPlayer();
+		  drawLaser();
 		  glXSwapBuffers(dpy, win);
 }

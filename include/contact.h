@@ -1,5 +1,6 @@
 #pragma once
 #include "log.h"
+#include "render.h"
 #include "physics.h"
 #include "arenas.h"
 #include "const.h"

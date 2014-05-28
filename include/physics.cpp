@@ -142,7 +142,7 @@ void doPortal(b2Body * o)
 
 void physics (void)
 {
-//		  Log("door_is_active = %d\n", door_is_active);
+		  //		  Log("door_is_active = %d\n", door_is_active);
 		  static b2Body * b1 = NULL;
 		  static b2Body * b2 = NULL;
 		  static b2Vec2 vel_old;
@@ -164,10 +164,10 @@ void physics (void)
 		  }
 		  else
 		  {
-					 Log("game not paused, perform physics\n");
+					 //					 Log("game not paused, perform physics\n");
 					 if (door_is_active)
 					 {
-								Log("door_is_active is set\n");
+								//		Log("door_is_active is set\n");
 								//								if (!(myDoor->GetLinearVelocity().y))
 								//								{
 								if (myDoor->GetPosition().y*M2P > -1.5*yres)
@@ -192,9 +192,9 @@ void physics (void)
 					 }
 					 else
 					 {
-								Log("door_is_active is NOT set\n");
+								//			Log("door_is_active is NOT set\n");
 								if (myDoor->GetPosition().y*M2P <= -0.1f)
-//								if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P > 0.1f*yres)
+										  //								if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P > 0.1f*yres)
 								{
 										  myDoor->SetLinearVelocity(-1.0f * doorVel);
 								}
@@ -205,20 +205,20 @@ void physics (void)
 										  myDoor->SetTransform(pos, 0.0f);
 								}
 					 }
-					 Log("checking for objects to destroy\n");
+//					 Log("checking for objects to destroy\n");
 					 if (det_a)
 					 {
-								Log("det_a exists!\n");
+//								Log("det_a exists!\n");
 								char * adata = (char *)(det_a->GetUserData());
 								char * bdata = NULL;
 								if (det_b)
 								{
-										  Log("det_b exists!\n");
+//										  Log("det_b exists!\n");
 										  bdata = (char *)(det_b->GetUserData());
 								}
 								if (adata)
 								{
-										  Log("det_a has user data\n");
+//										  Log("det_a has user data\n");
 										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
 										  {
 													 restart(0);
@@ -247,7 +247,7 @@ void physics (void)
 								}
 								if (bdata)
 								{
-										  Log("det_b has user data\n");
+//										  Log("det_b has user data\n");
 										  if (contains(bdata, (const char *)"player") || contains(bdata, (const char *)"gun") || contains(bdata, (const char *)"foot"))
 										  {
 													 restart(0);
@@ -284,11 +284,11 @@ void physics (void)
 					 }
 					 if (toDestroy)
 					 {
-								Log("toDestroy exists!\n");
+//								Log("toDestroy exists!\n");
 								char * ddata = (char *)(toDestroy->GetUserData());
 								if (ddata)
 								{
-										  Log("toDestroy has user data\n");
+//										  Log("toDestroy has user data\n");
 										  if (contains(ddata, (const char *)"player") || contains(ddata, (const char *)"gun") || contains(ddata, (const char *)"foot"))
 										  {
 													 Log("\nCALLING RESTART WITH TODESTROY\n\n");
@@ -379,21 +379,23 @@ void physics (void)
 								{
 										  myGun->SetTransform(myGun->GetPosition(), inverseAngle*D2R);
 								}
-								if (vel.y == 0.0f)
+								//if (vel.y == 0.0f)
 								{
-										  if (vel.x > -15.0f)
+										  if (vel.x > -20.0f)
 										  {
 													 vel.x += -2.5f;
 										  }
 										  //myPlayer->SetLinearVelocity( vel );
 								}
-								else
-								{
-										  if (vel.x > -15.0f)
-										  {
-													 vel.x += -1.0f;
-										  }
-								}
+								/*
+									else
+									{
+									if (vel.x > -15.0f)
+									{
+									vel.x += -1.0f;
+									}
+									}
+									*/
 								player_direction = -1;
 					 }
 					 if (keys[XK_Right] == 1 || keys[XK_d])
@@ -402,35 +404,38 @@ void physics (void)
 								{
 										  myGun->SetTransform(myGun->GetPosition(), inverseAngle*D2R);
 								}
-								if (vel.y == 0.0f)
+
+								//if (vel.y == 0.0f)
 								{
-										  if (vel.x < 15.0f)
+										  if (vel.x < 20.0f)
 										  {
 													 vel.x += 2.5f;
 										  }
 								}
-								else
-								{
-										  if (vel.x < 15.0f)
-										  {
-													 vel.x += 1.0f;
-										  }
-								}
+								/*
+									else
+									{
+									if (vel.x < 15.0f)
+									{
+									vel.x += 1.0f;
+									}
+									}
+									*/
 								player_direction = 1;
 					 }
 					 /*
-					 if (!can_jump)
-					 {
-								Log("antidamping now\n");
-								b2Vec2 ad(5.5f * (float)(myPlayer->GetLinearVelocity().x), myPlayer->GetLinearVelocity().y);
-								myPlayer->SetLinearVelocity(ad); // anti damping for player in air
-					 }
-					 */
+						 if (!can_jump)
+						 {
+						 Log("antidamping now\n");
+						 b2Vec2 ad(5.5f * (float)(myPlayer->GetLinearVelocity().x), myPlayer->GetLinearVelocity().y);
+						 myPlayer->SetLinearVelocity(ad); // anti damping for player in air
+						 }
+						 */
 					 if (keys[XK_space] == 1)
 					 {
 								if (can_jump)
 								{
-										  float impulse = myPlayer->GetMass() * 5.5f;
+										  float impulse = myPlayerFoot->GetMass() * 5.5f;
 										  myPlayer->ApplyLinearImpulse(b2Vec2(0,-impulse), myPlayer->GetPosition(),true);
 										  vel = myPlayer->GetLinearVelocity();
 										  jcatch = 0;
@@ -611,6 +616,11 @@ void physics (void)
 																								Log("tried to grab own foot\n");
 																								// do nada
 																					 }
+																					 else if (contains(data, (const char *)"turret"))
+																					 {
+																								Log("tried to grab a damn laser turret crazy\n");
+																								// do nada
+																					 }
 																					 else if (fabs(b2Distance(myGun->GetPosition(), tmp->GetPosition())) < 6.5f)
 																					 {
 																								Log("Grabbing something within range\n");
@@ -655,6 +665,12 @@ void physics (void)
 								//								Log("applying vel.x = %.2f, vel.y = %.2f\n", vel.x, vel.y);
 								myPlayer->SetLinearVelocity(vel);
 					 }
+					 b2Joint * joint = turret1->GetJointList()->joint;
+					 b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
+					 if(revJoint->GetJointAngle()*R2D >= 125.0)
+								turret1->SetAngularVelocity(-0.25);
+					 if(revJoint->GetJointAngle()*R2D <= 35.0)
+								turret1->SetAngularVelocity(0.25);
 					 //					 Log("player velocity set\n");
 		  }
 }
@@ -663,13 +679,13 @@ void moveMine (b2Body * p, const float lmax, const float rmax)
 {
 		  b2Vec2 pos = p->GetPosition();
 		  //		  Log("pos.x = %.2f, rmax = %.2f, lmax = %.2f\n", pos.x, rmax, lmax);
-		  if (pos.y-(50.0f*P2M) >= (rmax*P2M))
+		  if (pos.y*M2P + (50.0f) >= (rmax))
 		  {
 					 b2Vec2 vel = p->GetLinearVelocity();
 					 vel.y *= (-1.0f);
 					 p->SetLinearVelocity(vel);
 		  }
-		  else if (pos.y+(50.0f*P2M) <= (lmax*P2M))
+		  else if (pos.y*M2P - (50.0f) <= (lmax))
 		  {
 					 b2Vec2 vel = p->GetLinearVelocity();
 					 vel.y *= (-1.0f);

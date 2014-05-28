@@ -21,6 +21,7 @@ extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
 extern b2Body * mineObject;
+extern b2Body * turret1;
 
 void makeArena(const int & n);
 void addObstacles(void);

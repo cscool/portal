@@ -46,4 +46,4 @@ void doPortal(b2Body *);
 void moveBullet (b2Body * p, const float lmax = -243.0f, const float rmax = 338.5f);
 float getMagnitude (b2Vec2);
 void movePlatform (b2Body * p, const float lmax = 80.0f, const float rmax = 220.0f);
-void moveMine (b2Body * p, const float lmax = -250.0f, const float rmax = 50.0f);
+void moveMine (b2Body * p, const float lmax = -550.0f, const float rmax = 150.0f);

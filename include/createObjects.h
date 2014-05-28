@@ -21,7 +21,9 @@ extern b2Body * gameFloor;
 extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
+extern b2Body * turret1;
 
+b2Body* addTurret(int, int, int, int, b2World *);
 void init_b2d(void);
 void addFoot(int);
 b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&);

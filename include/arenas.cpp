@@ -20,6 +20,8 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(xres*10.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
 
 					 myButton = addRect(5.5f*xres, -28.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 1");
+					 turret1 = addTurret(0.0f, -yres, 50.0f, 100.0f, world);
+					 turret1->SetUserData((void *)((char *)"turret"));
 
 					 addObstacles();
 		  }

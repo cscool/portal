@@ -70,14 +70,14 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								body->SetGravityScale(0);
 								float angle = myGun->GetAngle() * R2D;
 								/*
-								float inverseAngle;
-								if( angle <= 180 )
-										  inverseAngle = (180 - angle);
-								else if( angle <= 270 )
-										  inverseAngle = (360 - angle - 180);
-								else
-										  inverseAngle = 0;
-										  */
+									float inverseAngle;
+									if( angle <= 180 )
+									inverseAngle = (180 - angle);
+									else if( angle <= 270 )
+									inverseAngle = (360 - angle - 180);
+									else
+									inverseAngle = 0;
+									*/
 								b2Vec2 a((float)(cos(myGun->GetAngle())), (float)(sin(myGun->GetAngle())));
 								body->SetLinearVelocity(19.0f * a);
 								b2Vec2 p((float)(myGun->GetPosition().x + 4 * player_direction), (float)(myGun->GetPosition().y));
@@ -104,54 +104,99 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 
 b2Body* addDoor(float xpos, float ypos)
 {
-	float width = 100;
-	float height = 50;
-	b2BodyDef bodydef;
-	bodydef.position.Set(xpos*P2M, ypos*P2M);
-	bodydef.type = b2_staticBody;
-	b2PolygonShape shape;
-	b2FixtureDef fixturedef;
-	/*
-	//bot left
-	b2Body* body = world->CreateBody(&bodydef);
-	shape.SetAsBox(P2M*width/2.0, P2M*height/2.0);
+		  float width = 100;
+		  float height = 50;
+		  b2BodyDef bodydef;
+		  bodydef.position.Set(xpos*P2M, ypos*P2M);
+		  bodydef.type = b2_staticBody;
+		  b2PolygonShape shape;
+		  b2FixtureDef fixturedef;
+		  /*
+		  //bot left
+		  b2Body* body = world->CreateBody(&bodydef);
+		  shape.SetAsBox(P2M*width/2.0, P2M*height/2.0);
 
-	fixturedef.shape = &shape;
-	body->CreateFixture(&fixturedef);
+		  fixturedef.shape = &shape;
+		  body->CreateFixture(&fixturedef);
 
-	bodydef.position.Set((xpos+200)*P2M, ypos*P2M);
-	//bot right
-	b2Body* body2 = world->CreateBody(&bodydef);
-	body2->CreateFixture(&fixturedef);
-	*/
+		  bodydef.position.Set((xpos+200)*P2M, ypos*P2M);
+		  //bot right
+		  b2Body* body2 = world->CreateBody(&bodydef);
+		  body2->CreateFixture(&fixturedef);
+		  */
 
-	//top left
-	bodydef.position.Set((xpos)*P2M, (-yres+125)*P2M);
-	b2Body* body3 = world->CreateBody(&bodydef);
-	shape.SetAsBox(P2M*width/2.0, P2M*(height*4)/2.0);
-	fixturedef.shape = &shape;
-	body3->CreateFixture(&fixturedef);
+		  //top left
+		  bodydef.position.Set((xpos)*P2M, (-yres+125)*P2M);
+		  b2Body* body3 = world->CreateBody(&bodydef);
+		  shape.SetAsBox(P2M*width/2.0, P2M*(height*4)/2.0);
+		  fixturedef.shape = &shape;
+		  body3->CreateFixture(&fixturedef);
 
-	//top right
-	bodydef.position.Set((xpos+200)*P2M, (-yres+125)*P2M);
-	b2Body* body4 = world->CreateBody(&bodydef);
-	body4->CreateFixture(&fixturedef);
+		  //top right
+		  bodydef.position.Set((xpos+200)*P2M, (-yres+125)*P2M);
+		  b2Body* body4 = world->CreateBody(&bodydef);
+		  body4->CreateFixture(&fixturedef);
 
-	//top
-	bodydef.position.Set((xpos+100)*P2M, (-yres+62.5f)*P2M);
-	shape.SetAsBox(P2M*width*3.0f/2.0, P2M*(height)*1.5f/2.0);
-	b2Body* body6 = world->CreateBody(&bodydef);
-	body6->CreateFixture(&fixturedef);
-	
-	//door
-	bodydef.position.Set((xpos+100)*P2M, (0.0)*P2M);
-	bodydef.type = b2_kinematicBody;
-	b2Body* body5 = world->CreateBody(&bodydef);
-	shape.SetAsBox(P2M*width/2.0, P2M*(2*yres - 50)/2.0);
-	fixturedef.shape = &shape;
-	body5->CreateFixture(&fixturedef);
-	body5->SetUserData((void *)((char *)("door 1")));
-	return body5;
+		  //top
+		  bodydef.position.Set((xpos+100)*P2M, (-yres+62.5f)*P2M);
+		  shape.SetAsBox(P2M*width*3.0f/2.0, P2M*(height)*1.5f/2.0);
+		  b2Body* body6 = world->CreateBody(&bodydef);
+		  body6->CreateFixture(&fixturedef);
+
+		  //door
+		  bodydef.position.Set((xpos+100)*P2M, (0.0)*P2M);
+		  bodydef.type = b2_kinematicBody;
+		  b2Body* body5 = world->CreateBody(&bodydef);
+		  shape.SetAsBox(P2M*width/2.0, P2M*(2*yres - 50)/2.0);
+		  fixturedef.shape = &shape;
+		  body5->CreateFixture(&fixturedef);
+		  body5->SetUserData((void *)((char *)("door 1")));
+		  return body5;
+}
+
+b2Body* addTurret(int x, int y, int w, int h, b2World * world)
+{
+		  b2BodyDef bodydef;
+		  bodydef.position.Set(x*P2M+3, y*P2M);
+		  bodydef.type = b2_staticBody;
+		  bodydef.gravityScale = 0.0f;
+		  //bodydef.linearDamping = 0.0f;
+		  bodydef.angle = 45*D2R;
+		  b2Body* turretBase = world->CreateBody(&bodydef);
+		  bodydef.type = b2_dynamicBody;
+		  bodydef.angularVelocity = 1.0f;
+		  bodydef.angle = 90*D2R;
+		  bodydef.fixedRotation = false;
+		  b2Body* turret = world->CreateBody(&bodydef);
+		  b2PolygonShape shape; // base
+		  b2PolygonShape shape2; // gun
+		  b2Vec2 pos(0.0, 0.0);
+		  //shape.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 45*D2R );
+		  //shape2.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 90*D2R);
+		  shape.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 0);
+		  shape2.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 0);
+
+		  b2FixtureDef fixturedef;
+
+		  fixturedef.shape = &shape;
+		  fixturedef.density = 0.0f;
+		  turretBase->CreateFixture(&fixturedef);
+
+		  fixturedef.shape = &shape2;
+		  //fixturedef.isSensor = true;
+		  turret->CreateFixture( &fixturedef );
+		  //turret->SetUserData((void *)((char *)"gun"));
+
+		  b2RevoluteJointDef revoluteJointDef2;
+		  revoluteJointDef2.bodyA = turretBase;
+		  revoluteJointDef2.bodyB = turret;
+		  revoluteJointDef2.collideConnected = false;
+		  revoluteJointDef2.localAnchorA.Set(0.0f, P2M*(-h)/2.0f);
+		  revoluteJointDef2.localAnchorB.Set(0.0f, P2M*h/2.0f);
+
+
+		  world->CreateJoint(&revoluteJointDef2);
+		  return turret;
 }
 
 b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
@@ -186,7 +231,7 @@ b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
 		  foot = world->CreateBody(&bodydef);
 		  fixturedef.shape = &shape3;
 		  fixturedef.isSensor = true;
-		  fixturedef.density = 2.5f;
+		  fixturedef.density = 15.0f;
 		  foot->CreateFixture( &fixturedef );
 		  foot->SetUserData((void *)((char *)"foot"));
 
@@ -195,9 +240,9 @@ b2Body* addPlayer(int x, int y, int w, int h, b2World * world, b2Body*& gun)
 		  revoluteJointDef2.bodyB = foot;
 		  revoluteJointDef2.collideConnected = false;
 		  /*
-		  revoluteJointDef2.localAnchorB.Set(0.0f, 0.0f);
-		  revoluteJointDef2.localAnchorA.Set(0.0f, 0.0f);
-		  */
+			  revoluteJointDef2.localAnchorB.Set(0.0f, 0.0f);
+			  revoluteJointDef2.localAnchorA.Set(0.0f, 0.0f);
+			  */
 		  revoluteJointDef2.localAnchorA.Set(0.0f, 0.0f);
 		  revoluteJointDef2.localAnchorB.Set(0.0f, -1*(P2M*h/1.0f));
 

@@ -1,25 +1,250 @@
+initializing world for first game
+makeArena called, building arena 0
 creating floor portalable
 creating left wall portalable
 creating right wall portalable
-creating mine deadly
+creating button 1
 creating angled wall portalable
+creating platform
+creating mine deadly
+done!
 foot contacted something ( B ):
 	hit gun
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	10.0000
+	0.0000
 foot stopped contacting something ( B ):
 	stopped hitting gun
-foot stopped contacting something ( A ):
-	stopped hitting floor portalable
-foot stopped contacting something ( A ):
-foot stopped contacting something ( A ):
-foot stopped contacting something ( A ):
-foot stopped contacting something ( A ):
-	stopped hitting floor portalable
-foot stopped contacting something ( A ):
-	stopped hitting mine deadly
-foot contacted something ( B ):
-foot stopped contacting something ( B ):
-foot stopped contacting something ( A ):
-	stopped hitting floor portalable
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	-0.0000
+	-0.0000
+	0.0000
+	0.0000
+	0.0000
+	22.1979
+	0.0000
+	22.7270
+	21.2238
+	20.6883
+	1.1415
+	10.8294
+	1.0623
+	9.9645
+	0.0000
+	11.4536
+	12.3345
+	0.0000
+	0.9416
+	1.9152
+	0.9219
+	2.0277
+	3.7558
+	3.6801
+	0.3497
+	1.6324
+	0.4431
+	1.8303
+	3.6835
+	3.4875
+	0.3145
+	2.7511
+	0.3606
+	2.7579
+	4.3378
+	4.3012
+	0.2201
+	3.0631
+	0.2248
+	3.0481
+	4.6043
+	4.6195
+	0.2381
+	3.0166
+	0.2404
+	3.0065
+	4.5599
+	4.5704
+	0.2701
+	2.9302
+	0.2724
+	2.9277
+	4.4804
+	4.4816
+	0.2798
+	2.9039
+	0.2815
+	2.9040
+	4.4550
+	4.4534
+	0.2760
+	2.9128
+	0.2777
+	2.9123
+	4.4613
+	4.4602
+	0.2750
+	2.9194
+	0.2736
+	2.9211
+	4.4684
+	4.4654
+	0.0094
+	0.2749
+	2.9193
+	0.2736
+	2.9213
+	4.4683
+	4.4646
+	0.0091
+	0.2746
+	2.9194
+	0.2736
+	2.9211
+	4.4676
+	4.4643
+	0.0085
+	0.2744
+	2.9197
+	0.2733
+	2.9215
+	4.4675
+	4.4642
+	0.0086
+	0.2742
+	2.9201
+	0.2730
+	2.9219
+	4.4675
+	4.4642
+	0.0087
+	0.2740
+	2.9204
+	0.2728
+	2.9222
+	4.4675
+	4.4641
+	0.0088
+	0.2739
+	2.9206
+	0.2726
+	2.9225
+	4.4675
+	4.4640
+	0.0089
+	0.2737
+	2.9209
+	0.2724
+	2.9228
+	4.4675
+	4.4639
+	0.0090
+	0.2736
+	2.9211
+	0.2723
+	2.9231
+	4.4675
+	4.4639
+	0.0091
+	0.2734
+	2.9214
+	0.2721
+	2.9233
+	4.4674
+	4.4638
+	0.0091
+	0.2733
+	2.9216
+	0.2720
+	2.9236
+	4.4674
+	4.4638
+	0.0092
+	0.0000
+	0.0000
+	1260.2928
+	0.0000
+	1260.2928
+	0.0000
+	155.4934
+	0.0000
+	155.4934
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	0.0000
+	43.2553
+	0.0000
+	43.2553
+	0.0000
+	37.8390
+	0.0000
+	37.8390
+	0.0000
+	35.1256
+	0.0000
+	35.1410
+	0.0000
+	35.1410
+	0.0000
+	35.2692
+	0.0000
+	35.2805
+	0.0000
+	35.2755
+	0.0000
+	35.2745
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
+	35.2747
+	0.0000
 calling XDestroyWindow
 calling XCloseDisplay
 done with cleanupXWindows
