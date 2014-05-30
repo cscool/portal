@@ -27,7 +27,7 @@ void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft)
 		  }
 }
 
-b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * udata)
+b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * udata, float angle)
 {
 		  //bodydef (pos, type)
 
@@ -48,6 +48,7 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 		  bodydef.linearDamping = d;
 		  bodydef.fixedRotation = false;
 		  b2Body* body = world->CreateBody(&bodydef);
+		  body->SetTransform(body->GetPosition(), angle*D2R);
 		  b2PolygonShape shape;
 		  shape.SetAsBox(P2M*w/2.0, P2M*h/2.0);
 
@@ -165,7 +166,7 @@ b2Body* addTurret(int x, int y, int w, int h, b2World * world)
 		  b2Body* turretBase = world->CreateBody(&bodydef);
 		  bodydef.type = b2_dynamicBody;
 		  bodydef.angularVelocity = 1.0f;
-		  bodydef.angle = 90*D2R;
+		  bodydef.angle = 190*D2R;
 		  bodydef.fixedRotation = false;
 		  b2Body* turret = world->CreateBody(&bodydef);
 		  b2PolygonShape shape; // base

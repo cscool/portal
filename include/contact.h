@@ -15,6 +15,8 @@ extern b2Vec2 p_pos;
 extern float p_angle;
 extern int p_isleft;
 extern b2Vec2 p_vel;
+extern b2Vec2 p2_vel;
+extern b2Vec2 p3_vel;
 extern b2Vec2 p1_dir;
 extern b2Vec2 p2_dir;
 extern b2Body * p_obj;

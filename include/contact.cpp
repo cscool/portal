@@ -24,10 +24,10 @@ void contactListener::BeginContact (b2Contact * contact)
 		  {
 					 if (contains(ud1, (const char *)"button"))
 					 {
-					//			Log("someone hit the button\n");
+								//			Log("someone hit the button\n");
 								if ((b2BodyType)(bodyb->GetType()) == dyn)
 								{
-					//					  Log("\tit was a dynamic object\n");
+										  //					  Log("\tit was a dynamic object\n");
 										  door_is_active = 1;
 										  button_pressed = 1;
 								}
@@ -55,7 +55,7 @@ void contactListener::BeginContact (b2Contact * contact)
 								}
 								if ((b2BodyType)(bodyb->GetType()) == kin)
 								{
-					//					  Log("started standing on a kinematic object\n");
+										  //					  Log("started standing on a kinematic object\n");
 										  fix_vel = 2;
 								}
 					 }
@@ -88,7 +88,7 @@ void contactListener::BeginContact (b2Contact * contact)
 					 }
 					 if (contains(ud1, (const char *)"player"))
 					 {
-//								Log("player hit something\n");
+								//								Log("player hit something\n");
 								if (ud2)
 								{
 										  if (contains(ud2, (const char *)"mine"))
@@ -104,18 +104,18 @@ void contactListener::BeginContact (b2Contact * contact)
 													 char * cdata = NULL;
 													 while (edges && c_count < 4)
 													 {
-//																Log("contact edge %d, hitting?\n", c_count);
+																//																Log("contact edge %d, hitting?\n", c_count);
 																normals[c_count] = contact->GetManifold()->localNormal;
 																impulses[c_count] = contact->GetManifold()->points[0].normalImpulse;
-//																Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
+																//																Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
 																cdata = (char *)(bodyb->GetUserData());
 																if (cdata)
 																{
-//																		  Log("\t%s\n", cdata);
+																		  //																		  Log("\t%s\n", cdata);
 																}
 																else
 																{
-//																		  Log("\tNo user data found\n");
+																		  //																		  Log("\tNo user data found\n");
 																}
 																edges = edges->next;
 																c_count++;
@@ -140,18 +140,18 @@ void contactListener::BeginContact (b2Contact * contact)
 										  char * cdata = NULL;
 										  while (edges && c_count < 4)
 										  {
-//													 Log("contact edge %d, hitting?\n", c_count);
+													 //													 Log("contact edge %d, hitting?\n", c_count);
 													 normals[c_count] = contact->GetManifold()->localNormal;
 													 impulses[c_count] = contact->GetManifold()->points[0].normalImpulse;
-//													 Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
+													 //													 Log("recording impulse for contact %d:\n\t%.4f\n", c_count+1, impulses[c_count]);
 													 cdata = (char *)(bodyb->GetUserData());
 													 if (cdata)
 													 {
-//																Log("\t%s\n", cdata);
+																//																Log("\t%s\n", cdata);
 													 }
 													 else
 													 {
-//																Log("\tNo user data found\n");
+																//																Log("\tNo user data found\n");
 													 }
 													 edges = edges->next;
 													 c_count++;
@@ -190,8 +190,8 @@ void contactListener::BeginContact (b2Contact * contact)
 													 if (!contains(ud2, (const char *)"floor"))
 													 {
 																angle = (float)(bodyb->GetAngle());
-//																Log("pos.y = %.2f\npos.y*M2P = %.2f\nportal_height = %.2f\nonFloor = %.2f\n", pos.y, pos.y*M2P, portal_height, onFloor);
-//																Log("pos.y*M2P + portal_height = %.2f, >= onFloor - 50?\n", (pos.y*M2P + portal_height));
+																//																Log("pos.y = %.2f\npos.y*M2P = %.2f\nportal_height = %.2f\nonFloor = %.2f\n", pos.y, pos.y*M2P, portal_height, onFloor);
+																//																Log("pos.y*M2P + portal_height = %.2f, >= onFloor - 50?\n", (pos.y*M2P + portal_height));
 																if (contains(ud1, (const char *)"left"))
 																{
 																		  if (p2)
@@ -285,7 +285,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
-//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+																								//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
 																		  }
 																		  else
@@ -297,7 +297,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																										  Log("fixing portal position from y = %.2f", pos.y);
 																										  pos.y -= 0.1f * P2M;
 																										  Log(" to %.2f\n", pos.y);
-//																										  Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+																										  //																										  Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																								}
 																					 }
 																					 else
@@ -307,7 +307,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																										  Log("fixing portal position from y = %.2f", pos.y);
 																										  pos.y += 0.1f * P2M;
 																										  Log(" to %.2f\n", pos.y);
-//																										  Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+																										  //																										  Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																								}
 																					 }
 																		  }
@@ -404,7 +404,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
-//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+																								//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
 																		  }
 																		  else
@@ -419,7 +419,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
-//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+																								//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
 																		  }
 																}
@@ -446,13 +446,37 @@ void contactListener::BeginContact (b2Contact * contact)
 																{
 																		  //													 Log("storing left portal data with angle = %.2f\n", angle);
 																		  p_isleft = 1;
-																		  p1_dir = norm;
+																		  /*
+																		  if (contains(ud1, (const char *)"top"))
+																		  {
+																					 p1_dir.x = sinf((angle - 180.0f) * D2R);
+																					 p1_dir.y = cosf((angle - 180.0f) * D2R);
+																		  }
+																		  else
+																		  {
+																					 p1_dir.x = sinf((angle + 180.0f) * D2R);
+																					 p1_dir.y = cosf((angle + 180.0f) * D2R);
+																		  }
+																		  */
+																		  Log("angle = %.2f\n", angle);
 																}
 																else
 																{
 																		  //													 Log("storing right portal data with angle = %.2f\n", angle);
 																		  p_isleft = 0;
-																		  p2_dir = norm;
+																		  /*
+																		  if (contains(ud1, (const char *)"top"))
+																		  {
+																					 p2_dir.x = sinf((angle - 180.0f) * D2R);
+																					 p2_dir.y = cosf((angle - 180.0f) * D2R);
+																		  }
+																		  else
+																		  {
+																					 p2_dir.x = sinf((angle + 180.0f) * D2R);
+																					 p2_dir.y = cosf((angle + 180.0f) * D2R);
+																		  }
+																		  */
+																		  Log("angle = %.2f\n", angle);
 																}
 																/*
 																	if (fabs(pos.y) < (portal_height * P2M))
@@ -483,7 +507,10 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if ((b2BodyType)(bodyb->GetType()) == dyn)
 										  {
-													 Log("its a dynamic object\n");
+													 Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+													 Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
+													 Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
+													 Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
 													 if (contains (ud1, (const char *)"left"))
 													 {
 																p_dest = (char *)"p2";
@@ -733,10 +760,10 @@ void contactListener::BeginContact (b2Contact * contact)
 																										  Log("721\n");
 																										  good = false;
 																								}
-																										  else
-																										  {
-																													 dir = -1;
-																										  }
+																								else
+																								{
+																										  dir = -1;
+																								}
 																								// else dir = 1
 																					 }
 																					 else if (pos.y < bodya->GetPosition().y && pos.y >= p2->GetPosition().y)
@@ -785,16 +812,20 @@ void contactListener::BeginContact (b2Contact * contact)
 																								}
 																					 }
 
-																					 while (good && fabs(p2->GetPosition().y - pos.y) < 1.1*portal_height*P2M)/*(fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p2->GetPosition().y) < 2.0f*portal_height*P2M)*/
+																					 
+																					 //while (good && fabs(p2->GetPosition().y - pos.y) < 1.1*portal_height*P2M)/*(fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p2->GetPosition().y) < 2.0f*portal_height*P2M)*/
+																					 /*
 																					 {
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
 																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
+																					 */
 																		  }
 																		  else
 																		  {
+																								/*
 																					 if (pos.y >= bodya->GetPosition().y)
 																					 {
 																								while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)))
@@ -815,6 +846,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																										  Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																								}
 																					 }
+																					 */
 																		  }
 																}
 																else if (contains(ud1, (const char *)"right"))
@@ -919,13 +951,15 @@ void contactListener::BeginContact (b2Contact * contact)
 																					 }
 
 																					 /* removed position tests, only test to see that distance between portal and pos is 1.5*portal_height */
-																					 while (good && fabs((p1->GetPosition().y) - pos.y) < 1.3f*portal_height*P2M)/*(fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p1->GetPosition().y) < 2.0f*portal_height*P2M)*/
+																					 //while (good && fabs((p1->GetPosition().y) - pos.y) < 1.3f*portal_height*P2M)/*(fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - p1->GetPosition().y) < 2.0f*portal_height*P2M)*/
+																					 /*
 																					 {
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
 																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
+																					 */
 																		  }
 																		  else
 																		  {
@@ -934,18 +968,21 @@ void contactListener::BeginContact (b2Contact * contact)
 																								dir = -1;
 																					 }
 																					 // else dir = 1
+																					 /*
 																					 while (good && (fabs(pos.y*M2P) - portal_height*0.5f) <= (fabs(onFloor)) && fabs(pos.y - bodya->GetPosition().y) < 1.3f*portal_height*P2M)
 																					 {
 																								Log("fixing portal position from y = %.2f", pos.y);
 																								pos.y += (float)dir * 0.1f * P2M;
 																								Log(" to %.2f\n", pos.y);
-//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
+																								//																								Log("\ntest:\t%.2f >= %.2f?\n", (pos.y*M2P + portal_height), (onFloor - 50.0f));
 																					 }
+																					 */
 																		  }
 																}
 													 }
 													 else
 													 {
+																/*
 																while (pos.x*M2P - portal_width*0.5f <= 130.0f)
 																{
 																		  Log("fixing portal position\n");
@@ -956,6 +993,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																		  Log("fixing portal position\n");
 																		  pos.x -= 0.1f;
 																}
+																*/
 																angle = pi/2.0f;
 													 }
 													 if (good)
@@ -964,13 +1002,37 @@ void contactListener::BeginContact (b2Contact * contact)
 																{
 																		  //													 Log("storing left portal data with angle = %.2f\n", angle);
 																		  p_isleft = 1;
-																		  p1_dir = norm;
+																		  /*
+																		  if (contains(ud1, (const char *)"top"))
+																		  {
+																					 p1_dir.x = sinf((angle - 180.0f) * D2R);
+																					 p1_dir.y = cosf((angle - 180.0f) * D2R);
+																		  }
+																		  else
+																		  {
+																					 p1_dir.x = sinf((angle + 180.0f) * D2R);
+																					 p1_dir.y = cosf((angle + 180.0f) * D2R);
+																		  }
+																		  */
+																		  Log("angle = %.2f\n", angle);
 																}
 																else
 																{
 																		  //													 Log("storing right portal data with angle = %.2f\n", angle);
 																		  p_isleft = 0;
-																		  p2_dir = norm;
+																		  /*
+																		  if (contains(ud1, (const char *)"top"))
+																		  {
+																					 p2_dir.x = sinf((angle - 180.0f) * D2R);
+																					 p2_dir.y = cosf((angle - 180.0f) * D2R);
+																		  }
+																		  else
+																		  {
+																					 p2_dir.x = sinf((angle + 180.0f) * D2R);
+																					 p2_dir.y = cosf((angle + 180.0f) * D2R);
+																		  }
+																		  */
+																		  Log("angle = %.2f\n", angle);
 																}
 																/*
 																	if (fabs(pos.y) < (portal_height * P2M))
@@ -1001,7 +1063,10 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if ((b2BodyType)(bodya->GetType()) == dyn)
 										  {
-													 Log("its a dynamic object\n");
+													 Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+													 Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
+													 Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
+													 Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
 													 if (contains (ud1, (const char *)"left"))
 													 {
 																p_dest = (char *)"p2";
@@ -1192,6 +1257,18 @@ void contactListener::EndContact (b2Contact * contact)
 
 void contactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 { /* handle pre-solve event */ 
+		  b2Body * bodya = contact->GetFixtureA()->GetBody();
+		  b2Body * bodyb = contact->GetFixtureB()->GetBody();
+		  char * ud1 = (char *)(bodya->GetUserData());
+		  char * ud2 = (char *)(bodyb->GetUserData());
+		  if (ud1 && (contains(ud1, (const char *)"isportal")))
+		  {
+					 Log("in pre solve contact handler, something hit a portal with velocity <%.2f, %.2f>\n", bodya->GetLinearVelocity().x, bodya->GetLinearVelocity().y);
+		  }
+		  if (ud2 && (contains(ud2, (const char *)"isportal")))
+		  {
+					 Log("in pre solve contact handler, something hit a portal with velocity <%.2f, %.2f>\n", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+		  }
 }
 
 
@@ -1200,29 +1277,37 @@ void contactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impu
 
 { /* handle post-solve event */ 
 		  int pt_ct = contact->GetManifold()->pointCount;
-//		  Log("\nin post solve\nthis contact has %d points touching\n", pt_ct);
+		  //		  Log("\nin post solve\nthis contact has %d points touching\n", pt_ct);
+		  b2Body * bodya = contact->GetFixtureA()->GetBody();
+		  b2Body * bodyb = contact->GetFixtureB()->GetBody();
+		  char * ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
+		  char * ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
+		  if (ud1 && (contains(ud1, (const char *)"isportal")))
+		  {
+					 Log("in post solve contact handler, something hit a portal with velocity <%.2f, %.2f>\n", bodya->GetLinearVelocity().x, bodya->GetLinearVelocity().y);
+		  }
+		  if (ud2 && (contains(ud2, (const char *)"isportal")))
+		  {
+					 Log("in post solve contact handler, something hit a portal with velocity <%.2f, %.2f>\n", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+		  }
 		  for (int i = 0; i < pt_ct; i++)
 		  {
 					 Log("\t%.4f\n", contact->GetManifold()->points[i].normalImpulse);
 					 if (contact->GetManifold()->points[i].normalImpulse > C_THRESHOLD)
 					 {
-//								Log("its kill the following thing!\n");
-								b2Body * bodya = contact->GetFixtureA()->GetBody();
-								b2Body * bodyb = contact->GetFixtureB()->GetBody();
+								//								Log("its kill the following thing!\n");
 								if (bodya->GetType() == b2_dynamicBody && (bodyb->GetType() == b2_staticBody || bodyb->GetType() == b2_kinematicBody))
 								{
-//										  Log("***default case 1\n");
+										  //										  Log("***default case 1\n");
 										  toDestroy = bodya;
 								}
 								else if (bodyb->GetType() == b2_dynamicBody && (bodya->GetType() == b2_staticBody || bodya->GetType() == b2_kinematicBody))
 								{
-//										  Log("***default case 2\n");
+										  //										  Log("***default case 2\n");
 										  toDestroy = bodyb;
 								}
 								else if (bodya->GetType() == b2_dynamicBody && bodyb->GetType() == b2_dynamicBody)
 								{
-										  char * ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
-										  char * ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
 										  if (ud1 && !ud2)
 										  {
 													 toDestroy = bodyb;
@@ -1274,22 +1359,20 @@ void contactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impu
 								}
 					 }
 		  }
-		  char * ud1 = (char *)(contact->GetFixtureA()->GetBody()->GetUserData());
-		  char * ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
 		  if (ud1)
 		  {
-//					 Log("user data for body a: %s\n\n", ud1);
+					 //					 Log("user data for body a: %s\n\n", ud1);
 		  }
 		  else
 		  {
-//					 Log("no user data for body a\n\n");
+					 //					 Log("no user data for body a\n\n");
 		  }
 		  if (ud2)
 		  {
-//					 Log("user data for body b: %s\n\n", ud2);
+					 //					 Log("user data for body b: %s\n\n", ud2);
 		  }
 		  else
 		  {
-//					 Log("no user data for body b\n\n");
+					 //					 Log("no user data for body b\n\n");
 		  }
 }

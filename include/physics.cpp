@@ -51,21 +51,21 @@ void doPortal(b2Body * o)
 								fix->SetSensor(true);
 								fix = fix->GetNext();
 					 }
-					 o->SetType(b2_staticBody);
-					 o->SetActive(false);
+//					 o->SetType(b2_staticBody);
+//					 o->SetActive(false);
 					 if (contains(p_dest, (char *)"p1"))
 					 {
-								b2Vec2 v((p1_dir.x * o->GetLinearVelocity().x), (p1_dir.y * o->GetLinearVelocity().y));
-								o->SetLinearVelocity((2.0f/getMagnitude(p1_dir)) * v);
+								b2Vec2 v((p1_dir.x * getMagnitude(o->GetLinearVelocity())), (p1_dir.y * getMagnitude(o->GetLinearVelocity())));
 								b2Vec2 p(((p1->GetPosition().x) + (/*player_width/ */2.0f * P2M)), (p1->GetPosition().y - (/*player_height/ */2.0f * P2M)));
 								o->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
+								o->SetLinearVelocity(4.5f * v);
 					 }
 					 else
 					 {
-								b2Vec2 v((p2_dir.x * o->GetLinearVelocity().x), (p2_dir.y * o->GetLinearVelocity().y));
-								o->SetLinearVelocity((2.0f/getMagnitude(p2_dir)) * v);
+								b2Vec2 v((p2_dir.x * getMagnitude(o->GetLinearVelocity())), (p2_dir.y * getMagnitude(o->GetLinearVelocity())));
 								b2Vec2 p(((p2->GetPosition().x) + (/*player_width/ */2.0f * P2M)), (p2->GetPosition().y - (/*player_height/ */2.0f * P2M)));
 								o->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
+								o->SetLinearVelocity(4.5f * v);
 					 }
 					 fix = o->GetFixtureList();
 					 while (fix)
@@ -73,8 +73,8 @@ void doPortal(b2Body * o)
 								fix->SetSensor(false);
 								fix = fix->GetNext();
 					 }
-					 o->SetType(b2_dynamicBody);
-					 o->SetActive(true);
+//					 o->SetType(b2_dynamicBody);
+//					 o->SetActive(true);
 		  }
 		  else
 		  {
@@ -97,35 +97,135 @@ void doPortal(b2Body * o)
 								fix->SetSensor(true);
 								fix = fix->GetNext();
 					 }
-					 myPlayer->SetType(b2_staticBody);
+//					 myPlayer->SetType(b2_staticBody);
 					 myGun->SetType(b2_staticBody);
 					 myPlayerFoot->SetType(b2_staticBody);
-					 myPlayer->SetActive(false);
+//					 myPlayer->SetActive(false);
 					 if (contains(p_dest, (char *)"p1"))
 					 {
-								b2Vec2 v1((p1_dir.x * myPlayer->GetLinearVelocity().x), (p1_dir.y * myPlayer->GetLinearVelocity().y));
-								b2Vec2 v2((p1_dir.x * myGun->GetLinearVelocity().x), (p1_dir.y * myGun->GetLinearVelocity().y));
-								b2Vec2 v3((p1_dir.x * myPlayerFoot->GetLinearVelocity().x), (p1_dir.y * myPlayerFoot->GetLinearVelocity().y));
-								myPlayer->SetLinearVelocity((2.0f/getMagnitude(p1_dir)) * v1);
-								myGun->SetLinearVelocity((2.0f/getMagnitude(p1_dir)) * v2);
-								myPlayerFoot->SetLinearVelocity((2.0f/getMagnitude(p1_dir)) * v3);
+								Log("p1_dir = <%.2f, %.2f>\n", p1_dir.x, p1_dir.y);
+								Log("p_vel = <%.2f, %.2f>\n", p_vel.x, p_vel.y);
+								Log("p2_vel = <%.2f, %.2f>\n", p2_vel.x, p2_vel.y);
+								Log("p3_vel = <%.2f, %.2f>\n", p3_vel.x, p3_vel.y);
+								if (p1_dir.y == 0.0f)
+								{
+										  p1_dir.y = 0.5f;
+								}
+								if (p1_dir.x == 0.0f)
+								{
+										  p1_dir.x = 0.5f;
+								}
+								Log("player velocity before: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
+								b2Vec2 v1;
+								if (fabs(p2_vel.x) == 0.0f)
+								{
+										  p2_vel.x = 1.0f;
+								}
+								if (fabs(p2_vel.y) == 0.0f)
+								{
+										  p2_vel.y = 1.0f;
+								}
+								if (fabs(p3_vel.x) == 0.0f)
+								{
+										  p3_vel.x = 1.0f;
+								}
+								if (fabs(p3_vel.y) == 0.0f)
+								{
+										  p3_vel.y = 1.0f;
+								}
+								if (fabs((float)(p2_vel.x)) > fabs((float)(p3_vel.x)) && fabs((float)(p2_vel.y)) > fabs((float)(p3_vel.y)))
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p1_dir));
+								}
+								else if (fabs(p3_vel.x) > fabs(p2_vel.x) && fabs(p3_vel.y) > fabs(p2_vel.y))
+								{
+										  v1 = (1.0f * (getMagnitude(p3_vel) * p1_dir));
+								}
+								else if (p3_vel.x == 0.0f && p3_vel.y == 0.0f && (p2_vel.x != 0.0f || p2_vel.y != 0.0f))
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p1_dir));
+								}
+								else if (p2_vel.x == 0.0f && p2_vel.y == 0.0f && (p3_vel.x != 0.0f || p3_vel.y != 0.0f))
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p1_dir));
+								}
+								else
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p1_dir));
+								}
+
+								Log("new v1 = <%.2f, %.2f>\n", v1.x, v1.y);
+
 								b2Vec2 p(((p1->GetPosition().x) + (/*player_width/ */2.0f * P2M)), (p1->GetPosition().y - (/*player_height/ */2.0f * P2M)));
 								myPlayer->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 								myGun->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 								myPlayerFoot->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
+								myPlayer->SetLinearVelocity(4.5f * v1);
+								myGun->SetLinearVelocity(4.5f * v1);
+								myPlayerFoot->SetLinearVelocity(4.5f * v1);
+								Log("player velocity after: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
 					 }
 					 else
 					 {
-								b2Vec2 v1((p2_dir.x * myPlayer->GetLinearVelocity().x), (p2_dir.y * myPlayer->GetLinearVelocity().y));
-								b2Vec2 v2((p2_dir.x * myGun->GetLinearVelocity().x), (p2_dir.y * myGun->GetLinearVelocity().y));
-								b2Vec2 v3((p2_dir.x * myPlayerFoot->GetLinearVelocity().x), (p2_dir.y * myPlayerFoot->GetLinearVelocity().y));
-								myPlayer->SetLinearVelocity((2.0f/getMagnitude(p2_dir)) * v1);
-								myGun->SetLinearVelocity((2.0f/getMagnitude(p2_dir)) * v2);
-								myPlayerFoot->SetLinearVelocity((2.0f/getMagnitude(p2_dir)) * v3);
+								Log("p2_dir = <%.2f, %.2f>\n", p2_dir.x, p2_dir.y);
+								Log("p_vel = <%.2f, %.2f>\n", p_vel.x, p_vel.y);
+								Log("p2_vel = <%.2f, %.2f>\n", p2_vel.x, p2_vel.y);
+								Log("p3_vel = <%.2f, %.2f>\n", p3_vel.x, p3_vel.y);
+								if (p2_dir.y == 0.0f)
+								{
+										  p2_dir.y = 0.5f;
+								}
+								if (p2_dir.x == 0.0f)
+								{
+										  p2_dir.x = 0.5f;
+								}
+								b2Vec2 v1;
+								if (fabs(p2_vel.x) == 0.0f)
+								{
+										  p2_vel.x = 1.0f;
+								}
+								if (fabs(p2_vel.y) == 0.0f)
+								{
+										  p2_vel.y = 1.0f;
+								}
+								if (fabs(p3_vel.x) == 0.0f)
+								{
+										  p3_vel.x = 1.0f;
+								}
+								if (fabs(p3_vel.y) == 0.0f)
+								{
+										  p3_vel.y = 1.0f;
+								}
+								if (fabs((float)(p2_vel.x)) > fabs((float)(p3_vel.x)) && fabs((float)(p2_vel.y)) > fabs((float)(p3_vel.y)))
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p2_dir));
+								}
+								else if (fabs(p3_vel.x) > fabs(p2_vel.x) && fabs(p3_vel.y) > fabs(p2_vel.y))
+								{
+										  v1 = (1.0f * (getMagnitude(p3_vel) * p2_dir));
+								}
+								else if (p3_vel.x == 0.0f && p3_vel.y == 0.0f && (p2_vel.x != 0.0f || p2_vel.y != 0.0f))
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p2_dir));
+								}
+								else if (p2_vel.x == 0.0f && p2_vel.y == 0.0f && (p3_vel.x != 0.0f || p3_vel.y != 0.0f))
+								{
+										  v1 = (1.0f * (getMagnitude(p3_vel) * p2_dir));
+								}
+								else
+								{
+										  v1 = (1.0f * (getMagnitude(p2_vel) * p2_dir));
+								}
+								Log("new v1 = <%.2f, %.2f>\n", v1.x, v1.y);
+								Log("player velocity before: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
 								b2Vec2 p(((p2->GetPosition().x) + (/*player_width/ */2.0f * P2M)), (p2->GetPosition().y - (/*player_height/ */2.0f * P2M)));
 								myPlayer->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 								myGun->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 								myPlayerFoot->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
+								myPlayer->SetLinearVelocity(4.5f * v1);
+								myGun->SetLinearVelocity(4.5f * v1);
+								myPlayerFoot->SetLinearVelocity(4.5f * v1);
+								Log("player velocity after: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
 					 }
 					 fix = myPlayer->GetFixtureList();
 					 while (fix)
@@ -133,10 +233,10 @@ void doPortal(b2Body * o)
 								fix->SetSensor(false);
 								fix = fix->GetNext();
 					 }
-					 myPlayer->SetType(b2_dynamicBody);
+//					 myPlayer->SetType(b2_dynamicBody);
 					 myGun->SetType(b2_dynamicBody);
 					 myPlayerFoot->SetType(b2_dynamicBody);
-					 myPlayer->SetActive(true);
+//					 myPlayer->SetActive(true);
 		  }
 }
 
@@ -435,7 +535,7 @@ void physics (void)
 					 {
 								if (can_jump)
 								{
-										  float impulse = myPlayerFoot->GetMass() * 5.5f;
+										  float impulse = myPlayerFoot->GetMass() * 3.5f;
 										  myPlayer->ApplyLinearImpulse(b2Vec2(0,-impulse), myPlayer->GetPosition(),true);
 										  vel = myPlayer->GetLinearVelocity();
 										  jcatch = 0;
@@ -667,10 +767,10 @@ void physics (void)
 					 }
 					 b2Joint * joint = turret1->GetJointList()->joint;
 					 b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
-					 if(revJoint->GetJointAngle()*R2D >= 125.0)
-								turret1->SetAngularVelocity(-0.25);
-					 if(revJoint->GetJointAngle()*R2D <= 35.0)
-								turret1->SetAngularVelocity(0.25);
+					 if(revJoint->GetJointAngle()*R2D >= 45.0)
+								turret1->SetAngularVelocity(-0.15);
+					 if(revJoint->GetJointAngle()*R2D <= -45.0)
+								turret1->SetAngularVelocity(0.15);
 					 //					 Log("player velocity set\n");
 		  }
 }

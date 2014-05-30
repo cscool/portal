@@ -62,6 +62,8 @@ b2Vec2 p_pos;
 float p_angle = 0.0f;
 int p_isleft = -1;
 b2Vec2 p_vel;
+b2Vec2 p2_vel;
+b2Vec2 p3_vel;
 b2Body * p_obj;
 b2Vec2 p1_dir;
 b2Vec2 p2_dir;
@@ -150,6 +152,9 @@ int main(void)
 								clock_gettime(CLOCK_REALTIME, &timeCurrent);
 								if (timeDiff(&timeStart, &timeCurrent) >= t_limit)
 								{
+										  p3_vel = p2_vel;
+										  p2_vel = p_vel;
+										  p_vel = myPlayer->GetLinearVelocity();
 										  while(XPending(dpy))
 										  {
 													 XNextEvent(dpy, &e);
@@ -161,15 +166,15 @@ int main(void)
 										  world->Step(1.0/30.0,8,3);
 										  world->ClearForces();
 										  timeCopy(&timeStart, &timeCurrent);
-//										  Log("&myPlayer = %p\n", myPlayer);
-//										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
+										  //										  Log("&myPlayer = %p\n", myPlayer);
+										  //										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
 										  //Log("carry = %p\n", carry);
-//										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
-//										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
-//										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
-//										  Log("can_jump = %d\n", can_jump);
-//										  Log("p1_contacting = %d\n", p1_contacting);
-//										  Log("p2_contacting = %d\n", p2_contacting);
+										  //										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+										  //										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
+										  //										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
+										  //										  Log("can_jump = %d\n", can_jump);
+										  //										  Log("p1_contacting = %d\n", p1_contacting);
+										  //										  Log("p2_contacting = %d\n", p2_contacting);
 								}
 					 }
 					 else if(pauseGame)
@@ -243,6 +248,7 @@ void check_mouse(XEvent *e)
 					 //Mouse moved
 					 savex = e->xbutton.x;
 					 savey = e->xbutton.y;
+					 Log("mouse position: (%.2f, %.2f)\n",savex, savey);
 		  }
 }
 

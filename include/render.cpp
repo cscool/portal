@@ -482,7 +482,7 @@ void drawLaser()
 		  b2Joint * joint = turret1->GetJointList()->joint;
 		  b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
 		  float currentRayAngle = revJoint->GetJointAngle();
-		  float rayLength = 25*M2P;
+		  float rayLength = 5*M2P;
 		  b2Vec2 p1 = turret1->GetPosition();
 		  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
 		  b2RayCastInput input;
@@ -500,6 +500,15 @@ void drawLaser()
 								if ( ! f->RayCast( &output, input, 0 ) )
 										  continue;
 								if ( output.fraction < closestFraction ) {
+										  if (b->GetUserData())
+										  {
+//													 Log("laser hitting:\n\t%s\n", (char *)(b->GetUserData()));
+													 if (contains((char *)(b->GetUserData()), (const char *)"player"))
+													 {
+//																Log("kill player with laser\n");
+																													 detonate(myPlayer, mineObject);
+													 }
+										  }
 										  closestFraction = output.fraction;
 										  intersectionNormal = output.normal;
 								}            
