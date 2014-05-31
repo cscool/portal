@@ -56,6 +56,8 @@ Ppmimage * pwallImage = NULL;
 GLuint pwallTexture;
 Ppmimage * npwallImage = NULL;
 GLuint npwallTexture;
+Ppmimage * spikeImage = NULL;
+GLuint spikeTexture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -70,6 +72,8 @@ b2Vec2 p2_dir;
 char * p_dest;
 int p1_contacting = 0;
 int p2_contacting = 0;
+char * p1_in_contact = NULL;
+char * p2_in_contact = NULL;
 
 // X Windows variables
 Display * dpy;
@@ -96,6 +100,8 @@ b2Body * mineObject;
 b2Body * myDoor;
 b2Body * carry;
 b2Body * turret1;
+b2Body * gunEnemy1;
+b2Body * gunEnemy2;
 int cwait = 0;
 b2Body * myButton;
 int door_is_active = 0;
@@ -211,7 +217,7 @@ void init(void)
 		  XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
 		  /* move this call to the menu function */
 		  firstInit();
-		  makeArena(0);
+		  makeArena(3);
 }
 
 void check_mouse(XEvent *e)
@@ -248,7 +254,7 @@ void check_mouse(XEvent *e)
 					 //Mouse moved
 					 savex = e->xbutton.x;
 					 savey = e->xbutton.y;
-					 Log("mouse position: (%.2f, %.2f)\n",savex, savey);
+//					 Log("mouse position: (%.2f, %.2f)\n",savex, savey);
 		  }
 }
 

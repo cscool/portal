@@ -22,6 +22,7 @@ extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
 extern b2Body * turret1;
+extern b2Body * gunEnemy1;
 
 b2Body* addTurret(int, int, int, int, b2World *);
 void init_b2d(void);
@@ -30,3 +31,4 @@ b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&);
 b2Body* addRect(int, int, int, int, float, float, int, char * udata = NULL, float angle = 0.0f);
 void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft);
 b2Body* addDoor(float xpos, float ypos);
+b2Body* addGunEnemy(b2Vec2 position, b2Vec2 area, int left, b2World * world);

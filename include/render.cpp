@@ -47,6 +47,16 @@ void init_images(void)
 
 		  unsigned char * sdata = NULL;
 
+		  spikeImage = ppm6GetImage((char *)"./images/spikes.ppm");
+		  glGenTextures(1, &spikeTexture);
+		  glBindTexture(GL_TEXTURE_2D, spikeTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(spikeImage);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, spikeImage->width, spikeImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
+
 		  pwallImage = ppm6GetImage((char *)"./images/portalable.ppm");
 		  glGenTextures(1, &pwallTexture);
 		  glBindTexture(GL_TEXTURE_2D, pwallTexture);
@@ -194,13 +204,13 @@ void camera() {
 		  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		  glTexCoord2f(0.0f, 0.0f);
-		  glVertex2i(-2.0f * xres, -4.0f * yres);
+		  glVertex2i(-5.0f * xres, -8.0f * yres);
 		  glTexCoord2f(0.0f, 10.0f);
-		  glVertex2i(-2.0f * xres, 1.0f * yres);
+		  glVertex2i(-5.0f * xres, 3.0f * yres);
 		  glTexCoord2f(50.0f, 10.0f);
-		  glVertex2i(20.0f * xres, 1.0f * yres);
+		  glVertex2i(25.0f * xres, 3.0f * yres);
 		  glTexCoord2f(50.0f, 0.0f);
-		  glVertex2i(20.0f * xres, -4.0f * yres);
+		  glVertex2i(25.0f * xres, -8.0f * yres);
 		  /*
 			  glBindTexture(GL_TEXTURE_2D, labratTexture);
 			  glBegin(GL_QUADS);
@@ -360,6 +370,50 @@ void drawButton(void)
 		  glPopMatrix();
 }
 
+void drawSpikes(b2Body * b)
+{
+		  //		  Log("drawing spikes\n");
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
+		  glTranslatef(b->GetPosition().x*M2P, b->GetPosition().y*M2P, 0);
+		  glRotatef(b->GetAngle()*180.0/M_PI, 0, 0, 1);
+		  glBindTexture(GL_TEXTURE_2D, spikeTexture);
+		  b2Vec2 points[4];
+		  b2Fixture * tmp = b->GetFixtureList();
+		  while (tmp)
+		  {
+					 for(int i=0; i < 4; i++)
+								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+					 glBegin(GL_QUADS);
+					 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+					 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+					 for(int i = 0; i < 4; i++)
+					 {
+								switch (i)
+								{
+										  case 0:
+													 glTexCoord2f(0.0f, 1.0f); //glVertex2i(-wid,-wid);
+													 break;
+										  case 1:
+													 glTexCoord2f(0.0f, 0.0f); //glVertex2i(-wid, wid);
+													 break;
+										  case 2:
+													 glTexCoord2f(1.0f, 0.0f); //glVertex2i( wid, wid);
+													 break;
+										  case 3:
+													 glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid,-wid);
+													 break;
+								}
+								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 }
+					 glEnd();
+					 tmp = tmp->GetNext();
+		  }
+		  glDisable(GL_TEXTURE_2D);
+		  glPopMatrix();
+}
+
 void drawMine(void)
 {
 		  glColor3f(1.0f,1.0f,1.0f);
@@ -482,7 +536,7 @@ void drawLaser()
 		  b2Joint * joint = turret1->GetJointList()->joint;
 		  b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
 		  float currentRayAngle = revJoint->GetJointAngle();
-		  float rayLength = 5*M2P;
+		  float rayLength = 15.0f * M2P;
 		  b2Vec2 p1 = turret1->GetPosition();
 		  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
 		  b2RayCastInput input;
@@ -502,11 +556,11 @@ void drawLaser()
 								if ( output.fraction < closestFraction ) {
 										  if (b->GetUserData())
 										  {
-//													 Log("laser hitting:\n\t%s\n", (char *)(b->GetUserData()));
+													 //													 Log("laser hitting:\n\t%s\n", (char *)(b->GetUserData()));
 													 if (contains((char *)(b->GetUserData()), (const char *)"player"))
 													 {
-//																Log("kill player with laser\n");
-																													 detonate(myPlayer, mineObject);
+																//																Log("kill player with laser\n");
+																//detonate(myPlayer, myPlayerFoot);
 													 }
 										  }
 										  closestFraction = output.fraction;
@@ -643,17 +697,23 @@ void render(void)
 					 {
 								if (contains(ud, (const char *)("platform")))
 								{
-										  //Log("found platform\n");
-										  movePlatform(tmp);
-										  drawWall(tmp, 0);
+										  if (platform)
+										  {
+													 //Log("found platform\n");
+													 movePlatform(tmp);
+													 drawWall(tmp, 0);
+										  }
 										  tmp = tmp->GetNext();
 										  continue;
 								}
 								else if (contains(ud, (const char *)("mine")))
 								{
-										  //Log("found mine\n");
-										  moveMine(tmp);
-										  drawMine();
+										  if (mineObject)
+										  {
+													 //Log("found mine\n");
+													 moveMine(tmp);
+													 drawMine();
+										  }
 										  tmp = tmp->GetNext();
 										  continue;
 								}
@@ -683,6 +743,13 @@ void render(void)
 										  {
 													 drawWall(tmp, 0);
 										  }
+										  tmp = tmp->GetNext();
+										  continue;
+								}
+								else if (contains(ud, (const char *)"spike"))
+								{
+										  //										  Log("found spikes, calling draw\n");
+										  drawSpikes(tmp);
 										  tmp = tmp->GetNext();
 										  continue;
 								}
@@ -745,6 +812,60 @@ void render(void)
 					 p_dest = NULL;
 		  }
 		  drawPlayer();
-		  drawLaser();
+		  if (turret1)
+		  {
+					 drawLaser();
+		  }
+		  if (gunEnemy1)
+		  {
+					 drawGunEnemySight(gunEnemy1);
+		  }
+		  if (gunEnemy2)
+		  {
+					 drawGunEnemySight(gunEnemy2);
+		  }
 		  glXSwapBuffers(dpy, win);
+}
+
+void drawGunEnemySight(b2Body * enem)
+{
+		  float currentRayAngle = enem->GetAngle() + 90.0f*D2R;
+		  float rayLength = 1.5*M2P;
+		  b2Vec2 p1 = enem->GetPosition();
+		  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) );
+		  b2RayCastInput input;
+		  input.p1 = p1;
+		  input.p2 = p2;
+		  input.maxFraction = 1;
+
+		  //check every fixture of every body to find closest
+		  float closestFraction = 1; //start with end of line as p2
+		  b2Vec2 intersectionNormal(0,0);
+		  for (b2Body* b = world->GetBodyList(); b; b = b->GetNext()) {
+					 for (b2Fixture* f = b->GetFixtureList(); f; f = f->GetNext()) {
+
+								b2RayCastOutput output;
+								if ( ! f->RayCast( &output, input, 0 ) )
+										  continue;
+								if ( output.fraction < closestFraction ) {
+										  closestFraction = output.fraction;
+										  intersectionNormal = output.normal;
+								}            
+					 }
+		  }
+
+		  b2Vec2 intersectionPoint = p1 + closestFraction * (p2 - p1);
+
+		  //draw a line
+		  glColor3f(0,0,1); //blue
+		  glBegin(GL_LINES);
+		  glVertex2f( p1.x*M2P, p1.y*M2P );
+		  glVertex2f( intersectionPoint.x*M2P, intersectionPoint.y*M2P );
+		  glEnd();
+
+		  //draw a point at the intersection point
+		  glPointSize(5);
+		  glBegin(GL_POINTS);
+		  glVertex2f( intersectionPoint.x*M2P, intersectionPoint.y*M2P );
+		  glEnd();
 }

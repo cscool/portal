@@ -22,6 +22,10 @@ extern b2Body * p1;
 extern b2Body * p2;
 extern b2Body * mineObject;
 extern b2Body * turret1;
+extern b2Body * gunEnemy1;
+extern b2Body * gunEnemy2;
+extern float MINE_RMAX;
+extern float MINE_LMAX;
 
 void makeArena(const int & n);
 void addObstacles(void);

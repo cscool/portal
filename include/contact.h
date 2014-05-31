@@ -33,6 +33,8 @@ extern bool can_jump;
 extern int fix_vel;
 extern b2Vec2 mod_vel;
 extern int button_pressed;
+extern char * p1_in_contact;
+extern char * p2_in_contact;
 
 class contactListener : public b2ContactListener
 {

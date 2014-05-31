@@ -80,7 +80,7 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 									inverseAngle = 0;
 									*/
 								b2Vec2 a((float)(cos(myGun->GetAngle())), (float)(sin(myGun->GetAngle())));
-								body->SetLinearVelocity(19.0f * a);
+								body->SetLinearVelocity(24.0f * a);
 								b2Vec2 p((float)(myGun->GetPosition().x + 4 * player_direction), (float)(myGun->GetPosition().y));
 								body->SetTransform(p, myGun->GetAngle());
 					 }
@@ -96,11 +96,36 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 					 }
 					 if (contains(udata, (const char *)"mine"))
 					 {
-								body->SetLinearVelocity(b2Vec2(0.0f, 5.0f));
+								body->SetLinearVelocity(b2Vec2(0.0f, 15.0f));
 					 }
 		  }
 		  body->CreateFixture(&fixturedef);
 		  return body;
+}
+
+b2Body* addGunEnemy(b2Vec2 position, b2Vec2 area, int left, b2World * world)
+{
+		  b2BodyDef bodydef;
+		  bodydef.position.Set(position.x*P2M, position.y*P2M);
+		  bodydef.type = b2_dynamicBody;
+		  bodydef.gravityScale = 1.0f;
+		  //bodydef.linearDamping = 0.0f;
+		  if (left)
+					 bodydef.angle = 180.0f*D2R;
+		  else
+					 bodydef.angle = 0.0f*D2R;
+		  b2Body* gunEnemy = world->CreateBody(&bodydef);
+		  b2PolygonShape shape; // base
+		  b2Vec2 pos(0.0, 0.0);
+		  //shape.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 45*D2R );
+		  //shape2.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 90*D2R);
+		  shape.SetAsBox(P2M*area.x/2.0f, P2M*area.y/2.0f, pos, 0);
+
+		  b2FixtureDef fixturedef;
+
+		  fixturedef.shape = &shape;
+		  gunEnemy->CreateFixture(&fixturedef);
+		  return gunEnemy;
 }
 
 b2Body* addDoor(float xpos, float ypos)

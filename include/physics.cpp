@@ -13,6 +13,66 @@ void resetDestroyVars(void)
 		  toDestroy = NULL;
 }
 
+float getRMax (const b2Body * m)
+{
+		  Log("in getRMax\n");
+		  char * ud = (char *)(m->GetUserData());
+		  int i = 0;
+		  if (ud)
+		  {
+					 if (contains(ud, (const char *)"rmax="))
+					 {
+								while (*ud != 'r' && *(ud + 1) != 'm' && *(ud + 2) != 'a')
+								{
+										  Log("ud addr = %p\n", &ud);
+										  i++;
+										  ud = ((char *)(m->GetUserData()) + i);
+								}
+								while (*ud != '=')
+								{
+										  Log("ud addr = %p\n", &ud);
+										  i++;
+										  ud = ((char *)(m->GetUserData()) + i);
+								}
+								i++;
+								ud = ((char *)(m->GetUserData()) + i);
+								Log("final ud addr = %p\nud = %s\n", &ud, ud);
+								return (atof(ud));
+					 }
+		  }
+		  return 0.0f;
+}
+
+float getLMax (const b2Body * m)
+{
+		  Log("in getLMax\n");
+		  char * ud = (char *)(m->GetUserData());
+		  int i = 0;
+		  if (ud)
+		  {
+					 if (contains(ud, (const char *)"lmax="))
+					 {
+								while (*ud != 'l' && *(ud + 1) != 'm' && *(ud + 2) != 'a')
+								{
+										  Log("ud addr = %p\n", &ud);
+										  i++;
+										  ud = ((char *)(m->GetUserData()) + i);
+								}
+								while (*ud != '=')
+								{
+										  Log("ud addr = %p\n", &ud);
+										  i++;
+										  ud = ((char *)(m->GetUserData()) + i);
+								}
+								i++;
+								ud = ((char *)(m->GetUserData()) + i);
+								Log("final ud addr = %p\nud = %s\n", &ud, ud);
+								return (atof(ud));
+					 }
+		  }
+		  return 0.0f;
+}
+
 void detonate (b2Body * a, b2Body * b)
 {
 		  det_a = a;
@@ -51,8 +111,8 @@ void doPortal(b2Body * o)
 								fix->SetSensor(true);
 								fix = fix->GetNext();
 					 }
-//					 o->SetType(b2_staticBody);
-//					 o->SetActive(false);
+					 //					 o->SetType(b2_staticBody);
+					 //					 o->SetActive(false);
 					 if (contains(p_dest, (char *)"p1"))
 					 {
 								b2Vec2 v((p1_dir.x * getMagnitude(o->GetLinearVelocity())), (p1_dir.y * getMagnitude(o->GetLinearVelocity())));
@@ -73,8 +133,8 @@ void doPortal(b2Body * o)
 								fix->SetSensor(false);
 								fix = fix->GetNext();
 					 }
-//					 o->SetType(b2_dynamicBody);
-//					 o->SetActive(true);
+					 //					 o->SetType(b2_dynamicBody);
+					 //					 o->SetActive(true);
 		  }
 		  else
 		  {
@@ -97,25 +157,25 @@ void doPortal(b2Body * o)
 								fix->SetSensor(true);
 								fix = fix->GetNext();
 					 }
-//					 myPlayer->SetType(b2_staticBody);
+					 //					 myPlayer->SetType(b2_staticBody);
 					 myGun->SetType(b2_staticBody);
 					 myPlayerFoot->SetType(b2_staticBody);
-//					 myPlayer->SetActive(false);
+					 //					 myPlayer->SetActive(false);
 					 if (contains(p_dest, (char *)"p1"))
 					 {
-								Log("p1_dir = <%.2f, %.2f>\n", p1_dir.x, p1_dir.y);
-								Log("p_vel = <%.2f, %.2f>\n", p_vel.x, p_vel.y);
-								Log("p2_vel = <%.2f, %.2f>\n", p2_vel.x, p2_vel.y);
-								Log("p3_vel = <%.2f, %.2f>\n", p3_vel.x, p3_vel.y);
+								//								Log("p1_dir = <%.2f, %.2f>\n", p1_dir.x, p1_dir.y);
+								//								Log("p_vel = <%.2f, %.2f>\n", p_vel.x, p_vel.y);
+								//								Log("p2_vel = <%.2f, %.2f>\n", p2_vel.x, p2_vel.y);
+								//								Log("p3_vel = <%.2f, %.2f>\n", p3_vel.x, p3_vel.y);
 								if (p1_dir.y == 0.0f)
 								{
-										  p1_dir.y = 0.5f;
+										  p1_dir.y = 0.1f;
 								}
 								if (p1_dir.x == 0.0f)
 								{
-										  p1_dir.x = 0.5f;
+										  p1_dir.x = 0.1f;
 								}
-								Log("player velocity before: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
+								//								Log("player velocity before: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
 								b2Vec2 v1;
 								if (fabs(p2_vel.x) == 0.0f)
 								{
@@ -151,33 +211,51 @@ void doPortal(b2Body * o)
 								}
 								else
 								{
-										  v1 = (1.0f * (getMagnitude(p2_vel) * p1_dir));
+										  v1 = (1.0f * (getMagnitude(p3_vel) * p1_dir));
 								}
 
-								Log("new v1 = <%.2f, %.2f>\n", v1.x, v1.y);
+								//								Log("new v1 = <%.2f, %.2f>\n", v1.x, v1.y);
 
-								b2Vec2 p(((p1->GetPosition().x) + (/*player_width/ */2.0f * P2M)), (p1->GetPosition().y - (/*player_height/ */2.0f * P2M)));
+								b2Vec2 p;
+								if (contains(p1_in_contact, (const char *)"floor"))
+								{
+										  Log("portaling to the floor\n");
+										  p.x = p1->GetPosition().x;
+										  p.y = (p1->GetPosition().y - (2.0f));
+								}
+								else if (contains(p1_in_contact, (const char *)"ceiling"))
+								{
+										  Log("portaling to the ceiling\n");
+										  p.x = p1->GetPosition().x;
+										  p.y = (p1->GetPosition().y + (2.0f));
+								}
+								else
+								{
+										  Log("portaling to unidentified wall\n");
+										  p.x = p1->GetPosition().x;
+										  p.y = p1->GetPosition().y;
+								}
 								myPlayer->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
-								myGun->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
+								myGun->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), myGun->GetAngle());
 								myPlayerFoot->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 								myPlayer->SetLinearVelocity(4.5f * v1);
 								myGun->SetLinearVelocity(4.5f * v1);
 								myPlayerFoot->SetLinearVelocity(4.5f * v1);
-								Log("player velocity after: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
+								//								Log("player velocity after: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
 					 }
 					 else
 					 {
-								Log("p2_dir = <%.2f, %.2f>\n", p2_dir.x, p2_dir.y);
-								Log("p_vel = <%.2f, %.2f>\n", p_vel.x, p_vel.y);
-								Log("p2_vel = <%.2f, %.2f>\n", p2_vel.x, p2_vel.y);
-								Log("p3_vel = <%.2f, %.2f>\n", p3_vel.x, p3_vel.y);
+								//								Log("p2_dir = <%.2f, %.2f>\n", p2_dir.x, p2_dir.y);
+								//								Log("p_vel = <%.2f, %.2f>\n", p_vel.x, p_vel.y);
+								//								Log("p2_vel = <%.2f, %.2f>\n", p2_vel.x, p2_vel.y);
+								//								Log("p3_vel = <%.2f, %.2f>\n", p3_vel.x, p3_vel.y);
 								if (p2_dir.y == 0.0f)
 								{
-										  p2_dir.y = 0.5f;
+										  p2_dir.y = 0.1f;
 								}
 								if (p2_dir.x == 0.0f)
 								{
-										  p2_dir.x = 0.5f;
+										  p2_dir.x = 0.1f;
 								}
 								b2Vec2 v1;
 								if (fabs(p2_vel.x) == 0.0f)
@@ -214,18 +292,36 @@ void doPortal(b2Body * o)
 								}
 								else
 								{
-										  v1 = (1.0f * (getMagnitude(p2_vel) * p2_dir));
+										  v1 = (1.0f * (getMagnitude(p3_vel) * p2_dir));
 								}
-								Log("new v1 = <%.2f, %.2f>\n", v1.x, v1.y);
-								Log("player velocity before: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
-								b2Vec2 p(((p2->GetPosition().x) + (/*player_width/ */2.0f * P2M)), (p2->GetPosition().y - (/*player_height/ */2.0f * P2M)));
+								//								Log("new v1 = <%.2f, %.2f>\n", v1.x, v1.y);
+								//								Log("player velocity before: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
+								b2Vec2 p;
+								if (contains(p2_in_contact, (const char *)"floor"))
+								{
+										  Log("portaling to the floor\n");
+										  p.x = p2->GetPosition().x;
+										  p.y = (p2->GetPosition().y - (2.0f));
+								}
+								else if (contains(p2_in_contact, (const char *)"ceiling"))
+								{
+										  Log("portaling to the ceiling\n");
+										  p.x = p2->GetPosition().x;
+										  p.y = (p2->GetPosition().y + (2.0f));
+								}
+								else
+								{
+										  Log("portaling to unidentified wall\n");
+										  p.x = p2->GetPosition().x;
+										  p.y = p2->GetPosition().y;
+								}
 								myPlayer->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
-								myGun->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
+								myGun->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), myGun->GetAngle());
 								myPlayerFoot->SetTransform((p/* + (0.1f * o->GetLinearVelocity())*/), 0.0f);
 								myPlayer->SetLinearVelocity(4.5f * v1);
 								myGun->SetLinearVelocity(4.5f * v1);
 								myPlayerFoot->SetLinearVelocity(4.5f * v1);
-								Log("player velocity after: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
+								//								Log("player velocity after: <%.2f, %.2f>\n", myPlayer->GetLinearVelocity().x, myPlayer->GetLinearVelocity().y);
 					 }
 					 fix = myPlayer->GetFixtureList();
 					 while (fix)
@@ -233,10 +329,10 @@ void doPortal(b2Body * o)
 								fix->SetSensor(false);
 								fix = fix->GetNext();
 					 }
-//					 myPlayer->SetType(b2_dynamicBody);
+					 //					 myPlayer->SetType(b2_dynamicBody);
 					 myGun->SetType(b2_dynamicBody);
 					 myPlayerFoot->SetType(b2_dynamicBody);
-//					 myPlayer->SetActive(true);
+					 //					 myPlayer->SetActive(true);
 		  }
 }
 
@@ -264,61 +360,64 @@ void physics (void)
 		  }
 		  else
 		  {
-					 //					 Log("game not paused, perform physics\n");
-					 if (door_is_active)
+					 if (myDoor)
 					 {
-								//		Log("door_is_active is set\n");
-								//								if (!(myDoor->GetLinearVelocity().y))
-								//								{
-								if (myDoor->GetPosition().y*M2P > -1.5*yres)
+								//					 Log("game not paused, perform physics\n");
+								if (door_is_active)
 								{
-										  myDoor->SetLinearVelocity(doorVel);
+										  //		Log("door_is_active is set\n");
+										  //								if (!(myDoor->GetLinearVelocity().y))
+										  //								{
+										  if (myDoor->GetPosition().y*M2P > -1.5*yres)
+										  {
+													 myDoor->SetLinearVelocity(doorVel);
+										  }
+										  if (myDoor->GetPosition().y*M2P <= -1.5*yres)
+										  {
+													 myDoor->SetLinearVelocity(ZERO_VEC);
+													 b2Vec2 pos(myDoor->GetPosition().x, -1.5f*yres*P2M);
+													 myDoor->SetTransform(pos, 0.0f);
+										  }
+										  //								}
+										  //								else
+										  //								{
+										  //										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
+										  //										  {
+										  //													 doorVel *= -1.0f;
+										  //													 myDoor->SetLinearVelocity(doorVel);
+										  //										  }
+										  //								}
 								}
-								if (myDoor->GetPosition().y*M2P <= -1.5*yres)
+								else
 								{
-										  myDoor->SetLinearVelocity(ZERO_VEC);
-										  b2Vec2 pos(myDoor->GetPosition().x, -1.5f*yres*P2M);
-										  myDoor->SetTransform(pos, 0.0f);
+										  //			Log("door_is_active is NOT set\n");
+										  if (myDoor->GetPosition().y*M2P <= -0.1f)
+													 //								if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P > 0.1f*yres)
+										  {
+													 myDoor->SetLinearVelocity(-1.0f * doorVel);
+										  }
+										  if (myDoor->GetPosition().y < 0.1f*P2M && myDoor->GetPosition().y > -0.1f*P2M)
+										  {
+													 myDoor->SetLinearVelocity(ZERO_VEC);
+													 b2Vec2 pos(myDoor->GetPosition().x, 0.0f);
+													 myDoor->SetTransform(pos, 0.0f);
+										  }
 								}
-								//								}
-								//								else
-								//								{
-								//										  if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P >= 1.0f*yres)
-								//										  {
-								//													 doorVel *= -1.0f;
-								//													 myDoor->SetLinearVelocity(doorVel);
-								//										  }
-								//								}
 					 }
-					 else
-					 {
-								//			Log("door_is_active is NOT set\n");
-								if (myDoor->GetPosition().y*M2P <= -0.1f)
-										  //								if (myDoor->GetPosition().y*M2P <= -1.5*yres || myDoor->GetPosition().y * M2P > 0.1f*yres)
-								{
-										  myDoor->SetLinearVelocity(-1.0f * doorVel);
-								}
-								if (myDoor->GetPosition().y < 0.1f*P2M && myDoor->GetPosition().y > -0.1f*P2M)
-								{
-										  myDoor->SetLinearVelocity(ZERO_VEC);
-										  b2Vec2 pos(myDoor->GetPosition().x, 0.0f);
-										  myDoor->SetTransform(pos, 0.0f);
-								}
-					 }
-//					 Log("checking for objects to destroy\n");
+					 //					 Log("checking for objects to destroy\n");
 					 if (det_a)
 					 {
-//								Log("det_a exists!\n");
+								//								Log("det_a exists!\n");
 								char * adata = (char *)(det_a->GetUserData());
 								char * bdata = NULL;
 								if (det_b)
 								{
-//										  Log("det_b exists!\n");
+										  //										  Log("det_b exists!\n");
 										  bdata = (char *)(det_b->GetUserData());
 								}
 								if (adata)
 								{
-//										  Log("det_a has user data\n");
+										  //										  Log("det_a has user data\n");
 										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
 										  {
 													 restart(0);
@@ -347,7 +446,7 @@ void physics (void)
 								}
 								if (bdata)
 								{
-//										  Log("det_b has user data\n");
+										  //										  Log("det_b has user data\n");
 										  if (contains(bdata, (const char *)"player") || contains(bdata, (const char *)"gun") || contains(bdata, (const char *)"foot"))
 										  {
 													 restart(0);
@@ -384,11 +483,11 @@ void physics (void)
 					 }
 					 if (toDestroy)
 					 {
-//								Log("toDestroy exists!\n");
+								//								Log("toDestroy exists!\n");
 								char * ddata = (char *)(toDestroy->GetUserData());
 								if (ddata)
 								{
-//										  Log("toDestroy has user data\n");
+										  //										  Log("toDestroy has user data\n");
 										  if (contains(ddata, (const char *)"player") || contains(ddata, (const char *)"gun") || contains(ddata, (const char *)"foot"))
 										  {
 													 Log("\nCALLING RESTART WITH TODESTROY\n\n");
@@ -765,31 +864,35 @@ void physics (void)
 								//								Log("applying vel.x = %.2f, vel.y = %.2f\n", vel.x, vel.y);
 								myPlayer->SetLinearVelocity(vel);
 					 }
-					 b2Joint * joint = turret1->GetJointList()->joint;
-					 b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
-					 if(revJoint->GetJointAngle()*R2D >= 45.0)
-								turret1->SetAngularVelocity(-0.15);
-					 if(revJoint->GetJointAngle()*R2D <= -45.0)
-								turret1->SetAngularVelocity(0.15);
+					 if (turret1)
+					 {
+								b2Joint * joint = turret1->GetJointList()->joint;
+								b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
+								if(revJoint->GetJointAngle()*R2D >= 50.0 * D2R)
+										  turret1->SetAngularVelocity(-0.10);
+								if(revJoint->GetJointAngle()*R2D <= -50.0 * D2R)
+										  turret1->SetAngularVelocity(0.10);
+					 }
 					 //					 Log("player velocity set\n");
 		  }
 }
 
-void moveMine (b2Body * p, const float lmax, const float rmax)
+float MINE_RMAX = -800.0f;
+float MINE_LMAX = 90.0f;
+
+void moveMine (b2Body * p)
 {
 		  b2Vec2 pos = p->GetPosition();
-		  //		  Log("pos.x = %.2f, rmax = %.2f, lmax = %.2f\n", pos.x, rmax, lmax);
-		  if (pos.y*M2P + (50.0f) >= (rmax))
+		  Log("pos.x = %.2f, fabs(rmax) = %.2f, fabs(lmax) = %.2f\n", pos.x, fabs(MINE_RMAX), fabs(MINE_LMAX));
+		  if (fabs(pos.y + (50.0f)) >= fabs(MINE_LMAX))
 		  {
 					 b2Vec2 vel = p->GetLinearVelocity();
-					 vel.y *= (-1.0f);
-					 p->SetLinearVelocity(vel);
+					 p->SetLinearVelocity(-1.0f * vel);
 		  }
-		  else if (pos.y*M2P - (50.0f) <= (lmax))
+		  else if (fabs(pos.y - (50.0f)) <= fabs(MINE_RMAX))
 		  {
 					 b2Vec2 vel = p->GetLinearVelocity();
-					 vel.y *= (-1.0f);
-					 p->SetLinearVelocity(vel);
+					 p->SetLinearVelocity(-1.0f * vel);
 		  }
 		  return;
 }
