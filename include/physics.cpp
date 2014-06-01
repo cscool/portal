@@ -868,7 +868,6 @@ void physics (void)
 					 {
 								b2Joint * joint = turret1->GetJointList()->joint;
 								b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
-								cout << revJoint->GetJointAngle()*R2D << endl;
 								if(revJoint->GetJointAngle()*R2D >= 135.0)
 										  turret1->SetAngularVelocity(-0.10);
 								if(revJoint->GetJointAngle()*R2D <= 35.0)

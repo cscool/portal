@@ -544,12 +544,14 @@ void calcLaser()
 }
 
 
-void drawLaser(b2Vec2 p1, b2Vec2 p2)
+void drawLaser(b2Vec2 point1, b2Vec2 point2)
 {
 	bool isMirror = false;
+	bool isLportal = false;
+	bool isRportal = false;
 	b2RayCastInput input;
-	input.p1 = p1;
-	input.p2 = p2;
+	input.p1 = point1;
+	input.p2 = point2;
 	input.maxFraction = 1;
 
 	//check every fixture of every body to find closest
@@ -565,14 +567,33 @@ void drawLaser(b2Vec2 p1, b2Vec2 p2)
 				if (b->GetUserData())
 				{
 					//													 Log("laser hitting:\n\t%s\n", (char *)(b->GetUserData()));
-					if (contains((char *)(b->GetUserData()), (const char *)"player"))
+					if (contains((char *)(b->GetUserData()), (const char *)"player") || (contains((char *)(b->GetUserData()), (const char *)"gun")))
 					{
 						//																Log("kill player with laser\n");
 						//detonate(myPlayer, myPlayerFoot);
+						isMirror = false;
+						isLportal = false;
+						isRportal = false;
 					}
 					else if (contains((char *)(b->GetUserData()), (const char *)"mirror"))
 					{
 						isMirror = true;
+						isLportal = false;
+						isRportal = false;
+					}
+					else if (contains((char *)(b->GetUserData()), (const char *)"isportal left"))
+					{
+						if(p2)
+							isLportal = true;
+						isMirror = false;
+						isRportal = false;
+					}
+					else if (contains((char *)(b->GetUserData()), (const char *)"isportal right"))
+					{
+						if(p1)
+							isRportal = true;
+						isMirror = false;
+						isLportal = false;
 					}
 				}
 				closestFraction = output.fraction;
@@ -581,12 +602,12 @@ void drawLaser(b2Vec2 p1, b2Vec2 p2)
 		}
 	}
 
-	b2Vec2 intersectionPoint = p1 + closestFraction * (p2 - p1);
+	b2Vec2 intersectionPoint = point1 + closestFraction * (point2 - point1);
 
 	//draw a line
 	glColor3f(1,0,0); //white
 	glBegin(GL_LINES);
-	glVertex2f( p1.x*M2P, p1.y*M2P );
+	glVertex2f( point1.x*M2P, point1.y*M2P );
 	glVertex2f( intersectionPoint.x*M2P, intersectionPoint.y*M2P );
 	glEnd();
 
@@ -603,12 +624,32 @@ void drawLaser(b2Vec2 p1, b2Vec2 p2)
 			return;
 
 		//still some ray left to reflect
-		b2Vec2 remainingRay = (p2 - intersectionPoint);
+		b2Vec2 remainingRay = (point2 - intersectionPoint);
 		b2Vec2 projectedOntoNormal = b2Dot(remainingRay, intersectionNormal) * intersectionNormal;
-		b2Vec2 nextp2 = p2 - 2 * projectedOntoNormal;
+		b2Vec2 nextp2 = point2 - 2 * projectedOntoNormal;
 
 		//recurse
 		drawLaser(intersectionPoint, nextp2);
+	}
+
+	else if(isLportal || isRportal) {
+		b2Vec2 portal1 = p1->GetPosition();
+		b2Vec2 portal2 = p2->GetPosition();
+		if ( closestFraction == 1 )
+			return; //ray hit nothing so we can finish here
+		if ( closestFraction == 0 )
+			return;
+
+		//still some ray left to reflect
+		b2Vec2 remainingRay = (point2 - intersectionPoint);
+		b2Vec2 projectedOntoNormal = b2Dot(remainingRay, intersectionNormal) * intersectionNormal;
+		b2Vec2 nextp2 = point2 - 2 * projectedOntoNormal;
+
+		//recurse
+		if(isLportal)
+			drawLaser(portal2 - (portal1 - intersectionPoint), nextp2);
+		else if(isRportal)
+			drawLaser(portal1 - (portal2 - intersectionPoint), nextp2);
 	}
 }
 
