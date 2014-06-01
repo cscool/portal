@@ -20,6 +20,7 @@ extern Window win;
 extern GLXContext glc;
 extern const float M2P;
 extern const float P2M;
+extern bool normalTesting;
 extern b2Body * myPlayer;
 extern b2Body * myButton;
 extern int player_direction;
