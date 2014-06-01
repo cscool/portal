@@ -218,7 +218,7 @@ void init(void)
 	XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
 	/* move this call to the menu function */
 	firstInit();
-	makeArena(3);
+	makeArena(0);
 }
 
 void check_mouse(XEvent *e)

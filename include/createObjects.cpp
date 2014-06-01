@@ -168,10 +168,31 @@ b2Body* addDoor(float xpos, float ypos)
 	return body5;
 }
 
-b2Body* addTurret(int x, int y, int w, int h, b2World * world)
+b2Body* addMirror(b2Vec2 position, b2Vec2 area, float angle, b2World* world)
 {
 	b2BodyDef bodydef;
-	bodydef.position.Set(x*P2M+3, y*P2M);
+	bodydef.position.Set(position.x*P2M, position.y*P2M);
+	bodydef.type = b2_staticBody;
+	bodydef.angle = angle*D2R;
+	b2Body* mirrorBody = world->CreateBody(&bodydef);
+	
+	b2PolygonShape shape;
+	b2Vec2 pos( 0.0, 0.0);
+	shape.SetAsBox(P2M*area.x/2.0f, P2M*area.y/2.0f, pos, 0);
+
+	b2FixtureDef fixturedef;
+
+	fixturedef.shape = &shape;
+	mirrorBody->CreateFixture( &fixturedef );
+	mirrorBody->SetUserData((void *)((char *)"mirror"));
+
+	return mirrorBody;
+}
+
+b2Body* addTurret(b2Vec2 position, b2Vec2 area, bool left, b2World * world)
+{
+	b2BodyDef bodydef;
+	bodydef.position.Set(position.x*P2M+3, position.y*P2M);
 	bodydef.type = b2_staticBody;
 	bodydef.gravityScale = 0.0f;
 	//bodydef.linearDamping = 0.0f;
@@ -179,7 +200,7 @@ b2Body* addTurret(int x, int y, int w, int h, b2World * world)
 	b2Body* turretBase = world->CreateBody(&bodydef);
 	bodydef.type = b2_dynamicBody;
 	bodydef.angularVelocity = 1.0f;
-	bodydef.angle = 190*D2R;
+	bodydef.angle = 90*D2R;
 	bodydef.fixedRotation = false;
 	b2Body* turret = world->CreateBody(&bodydef);
 	b2PolygonShape shape; // base
@@ -187,8 +208,8 @@ b2Body* addTurret(int x, int y, int w, int h, b2World * world)
 	b2Vec2 pos(0.0, 0.0);
 	//shape.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 45*D2R );
 	//shape2.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 90*D2R);
-	shape.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 0);
-	shape2.SetAsBox(P2M*w/2.0f, P2M*h/2.0f, pos, 0);
+	shape.SetAsBox(P2M*area.x/2.0f, P2M*area.y/2.0f, pos, 0);
+	shape2.SetAsBox(P2M*area.x/2.0f, P2M*area.y/2.0f, pos, 0);
 
 	b2FixtureDef fixturedef;
 
@@ -205,8 +226,8 @@ b2Body* addTurret(int x, int y, int w, int h, b2World * world)
 	revoluteJointDef2.bodyA = turretBase;
 	revoluteJointDef2.bodyB = turret;
 	revoluteJointDef2.collideConnected = false;
-	revoluteJointDef2.localAnchorA.Set(0.0f, P2M*(-h)/2.0f);
-	revoluteJointDef2.localAnchorB.Set(0.0f, P2M*h/2.0f);
+	revoluteJointDef2.localAnchorA.Set(0.0f, P2M*(-area.y)/2.0f);
+	revoluteJointDef2.localAnchorB.Set(0.0f, P2M*area.y/2.0f);
 
 
 	world->CreateJoint(&revoluteJointDef2);

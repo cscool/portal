@@ -531,7 +531,7 @@ void drawWall(b2Body * b, const int & n)
 	glPopMatrix();
 }
 
-void drawLaser()
+void calcLaser()
 {
 	b2Joint * joint = turret1->GetJointList()->joint;
 	b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
@@ -539,6 +539,14 @@ void drawLaser()
 	float rayLength = 15.0f * M2P;
 	b2Vec2 p1 = turret1->GetPosition();
 	b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
+
+	drawLaser( p1, p2);
+}
+
+
+void drawLaser(b2Vec2 p1, b2Vec2 p2)
+{
+	bool isMirror = false;
 	b2RayCastInput input;
 	input.p1 = p1;
 	input.p2 = p2;
@@ -562,6 +570,10 @@ void drawLaser()
 						//																Log("kill player with laser\n");
 						//detonate(myPlayer, myPlayerFoot);
 					}
+					else if (contains((char *)(b->GetUserData()), (const char *)"mirror"))
+					{
+						isMirror = true;
+					}
 				}
 				closestFraction = output.fraction;
 				intersectionNormal = output.normal;
@@ -583,6 +595,21 @@ void drawLaser()
 	glBegin(GL_POINTS);
 	glVertex2f( intersectionPoint.x*M2P, intersectionPoint.y*M2P );
 	glEnd();
+
+	if(isMirror) {
+		if ( closestFraction == 1 )
+			return; //ray hit nothing so we can finish here
+		if ( closestFraction == 0 )
+			return;
+
+		//still some ray left to reflect
+		b2Vec2 remainingRay = (p2 - intersectionPoint);
+		b2Vec2 projectedOntoNormal = b2Dot(remainingRay, intersectionNormal) * intersectionNormal;
+		b2Vec2 nextp2 = p2 - 2 * projectedOntoNormal;
+
+		//recurse
+		drawLaser(intersectionPoint, nextp2);
+	}
 }
 
 void drawGunLaser()
@@ -867,7 +894,7 @@ void render(void)
 	drawPlayer();
 	if (turret1)
 	{
-		drawLaser();
+		calcLaser();
 	}
 	if (gunEnemy1)
 	{
