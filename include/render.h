@@ -6,6 +6,7 @@
 #include "physics.h"
 #include "const.h"
 #include "contains.h"
+#include "turret.h"
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
@@ -30,7 +31,7 @@ extern int yres;
 extern b2Body * p1;
 extern b2Body * mineObject;
 extern b2Body * p2;
-extern b2Body * turret1;
+extern Turret * turrets;
 extern int p_isleft;
 extern b2Vec2 p_vel;
 extern b2Body * p_obj;
@@ -87,7 +88,7 @@ void drawSquare(b2Vec2* points, b2Vec2 center, float angle, int & color);
 void camera();
 void drawMine(void);
 unsigned char *buildAlphaData(Ppmimage *img);
-void calcLaser();
+void calcLaser(Turret);
 void drawLaser(b2Vec2, b2Vec2);
 void drawGunLaser();
 void drawSpikes(b2Body * b);

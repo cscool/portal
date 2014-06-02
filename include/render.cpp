@@ -531,13 +531,13 @@ void drawWall(b2Body * b, const int & n)
 	glPopMatrix();
 }
 
-void calcLaser()
+void calcLaser(Turret turret1)
 {
-	b2Joint * joint = turret1->GetJointList()->joint;
+	b2Joint * joint = turret1.turret->GetJointList()->joint;
 	b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
 	float currentRayAngle = revJoint->GetJointAngle();
 	float rayLength = 15.0f * M2P;
-	b2Vec2 p1 = turret1->GetPosition();
+	b2Vec2 p1 = turret1.turret->GetPosition();
 	b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
 
 	drawLaser( p1, p2);
@@ -933,9 +933,11 @@ void render(void)
 		p_dest = NULL;
 	}
 	drawPlayer();
-	if (turret1)
-	{
-		calcLaser();
+	for(int i = 0; i < 5; i++) {
+		if (turrets[i].turret)
+		{
+			calcLaser(turrets[i]);
+		}
 	}
 	if (gunEnemy1)
 	{

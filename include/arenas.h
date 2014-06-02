@@ -5,6 +5,7 @@
 #include "createObjects.h"
 #include "log.h"
 #include "physics.h"
+#include "turret.h"
 
 using namespace std;
 
@@ -21,9 +22,9 @@ extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
 extern b2Body * mineObject;
-extern b2Body * turret1;
 extern b2Body * gunEnemy1;
 extern b2Body * gunEnemy2;
+extern Turret * turrets;
 extern float MINE_RMAX;
 extern float MINE_LMAX;
 

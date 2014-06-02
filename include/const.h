@@ -20,7 +20,7 @@ static const float D2R = (pi)/180.0f;
 static const float player_width = 60.0f;
 static const float player_height = 100.0f;
 
-static const float portal_width = 50.0f;
+static const float portal_width = 1.0f;
 static const float portal_height = 180.0f;
 
 static const float gun_width = 40.0f;

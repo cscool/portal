@@ -23,6 +23,7 @@
 #include <contact.h>
 #include <arenas.h>
 #include <timing.h>
+#include <turret.h>
 
 using namespace std;
 
@@ -99,13 +100,13 @@ b2Body * p2;
 b2Body * mineObject;
 b2Body * myDoor;
 b2Body * carry;
-b2Body * turret1;
 b2Body * gunEnemy1;
 b2Body * gunEnemy2;
 int cwait = 0;
 b2Body * myButton;
 int door_is_active = 0;
 int button_pressed = 0;
+Turret * turrets = new Turret[5];
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;

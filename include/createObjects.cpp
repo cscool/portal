@@ -189,18 +189,18 @@ b2Body* addMirror(b2Vec2 position, b2Vec2 area, float angle, b2World* world)
 	return mirrorBody;
 }
 
-b2Body* addTurret(b2Vec2 position, b2Vec2 area, bool left, b2World * world)
+b2Body* addTurret(b2Vec2 position, b2Vec2 area, bool left, float baseAngle, float turrAngle, b2World * world)
 {
 	b2BodyDef bodydef;
 	bodydef.position.Set(position.x*P2M+3, position.y*P2M);
 	bodydef.type = b2_staticBody;
 	bodydef.gravityScale = 0.0f;
 	//bodydef.linearDamping = 0.0f;
-	bodydef.angle = 45*D2R;
+	bodydef.angle = baseAngle*D2R;
 	b2Body* turretBase = world->CreateBody(&bodydef);
 	bodydef.type = b2_dynamicBody;
 	bodydef.angularVelocity = 1.0f;
-	bodydef.angle = 90*D2R;
+	bodydef.angle = turrAngle*D2R;
 	bodydef.fixedRotation = false;
 	b2Body* turret = world->CreateBody(&bodydef);
 	b2PolygonShape shape; // base

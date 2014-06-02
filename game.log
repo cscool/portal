@@ -22,10 +22,8 @@ foot contacted something ( B ):
 	7.5848
 	7.5850
 	7.5850
-	10.0000
-	0.0000
-	0.0000
-	0.0000
+	7.0710
+	5.1006
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 foot stopped contacting something ( B ):
 	stopped hitting gun
@@ -306,1464 +304,605 @@ pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 	0.0000
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	22.5224
+	0.0000
+	22.5224
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	43.8813
+	0.0000
+	43.8813
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	41.8641
+	0.0000
+	41.8641
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	39.8350
+	0.0000
+	39.8350
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	37.7939
+	0.0000
+	37.7939
+	0.0000
+	0.0000
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	35.7408
+	0.0000
 	1260.2928
 	0.0000
 	1260.2928
 	0.0000
+	35.7408
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	33.6759
+	0.0000
 	155.4934
 	0.0000
+	33.6759
+	0.0000
 	155.4934
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	31.5991
 	0.0000
+	0.0000
+	0.0000
+	31.5991
 	0.0000
 	0.0000
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	29.5104
+	0.0000
+	29.5104
+	0.0000
 	0.0000
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	27.4099
+	0.0000
 	43.2553
 	0.0000
+	27.4099
+	0.0000
 	43.2553
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	25.2976
+	0.0000
 	37.8390
+	0.0000
+	25.2976
 	0.0000
 	37.8390
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	23.1735
+	0.0000
 	35.1256
 	0.0000
+	23.1735
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.1410
+	21.0376
 	0.0000
 	35.1410
 	0.0000
+	35.1410
+	0.0000
+	21.0376
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	18.8899
+	0.0000
 	35.2692
 	0.0000
+	18.8899
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	16.7306
+	0.0000
 	35.2805
 	0.0000
+	16.7306
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	14.5595
+	0.0000
 	35.2755
 	0.0000
+	14.5595
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	12.3768
+	0.0000
 	35.2745
 	0.0000
+	12.3768
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	10.1825
+	0.0000
+	35.2747
+	0.0000
+	10.1825
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	7.9765
+	0.0000
+	35.2747
+	0.0000
+	7.9765
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	5.7589
+	0.0000
+	35.2747
+	0.0000
+	5.7589
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	3.5297
+	0.0000
+	35.2747
+	0.0000
+	3.5297
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	1.2890
+	0.0000
+	35.2747
+	0.0000
+	1.2890
+	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+	0.0000
+	0.0000
+	35.2747
+	0.0000
+	0.0000
+	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 	35.2747
 	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
 	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 	35.2747
 	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
 	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
+	0.0000
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
+	0.0000
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	4.4674
-	0.2719
-	2.9238
-	0.2733
-	2.9217
-	4.4637
-	0.0092
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	54.5228
-	45.7221
-	104.6230
-	102.5706
-	157.2467
-	167.0168
 	0.0000
 	0.0000
-	41.8465
-	0.0000
-	4.1246
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	17.3273
-	15.3136
-	21.3617
-	22.2197
-	16.6011
-	18.7768
-	37.2638
-	0.0000
-	3.2265
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 	0.0000
 	0.0000
 	0.0000
 	0.0000
-	0.0000
-	0.0000
-	1.0727
-	35.2747
-	0.0000
-	3.0394
-	0.5789
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 	0.0000
 	0.0000
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	6.6885
-	0.0000
-	35.2747
-	0.0000
-	2.6804
-	0.2998
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 	0.0000
 	0.0000
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	2.3052
-	0.0000
-	35.2747
-	0.0000
-	2.6814
-	0.2987
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	0.3488
-	0.3670
-	2.9511
-	0.6630
-	2.5850
-	0.2262
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	1.6848
-	0.1195
-	2.5984
-	1.9961
-	2.6799
-	0.3002
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	1.7827
-	0.0397
-	2.5245
-	2.0955
-	2.6797
-	0.3004
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	1.7541
-	0.0912
-	2.5413
-	2.1016
-	2.6795
-	0.3006
-	35.2747
-	0.0000
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-Grabbing something within range
-range to object:   4.89
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	13.7600
-	0.0000
-	0.0000
-	2.6821
-	0.2980
-	0.0082
-	0.0000
-	35.2747
-	0.0000
-	13.7600
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
-	35.2747
-	0.0000
-pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 	0.0000
 	0.0000
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-foot stopped contacting something ( A ):
-	stopped hitting floor portalable
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3015
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3014
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3014
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3014
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-	2.6787
-	0.3014
-	2.6821
-	0.2980
 pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
-mine hit something
-	0.0000
-	0.0000
-	2.6787
-	0.3014
-	2.6821
-	0.2980
-	2.6787
-	0.3014
-	2.6821
-	0.2980
-	1.6241
-	1.3560
-	2.6821
-	0.2980
-	1.4742
-	1.5059
-	2.6821
-	0.2980
-	1.4872
-	1.4929
-	2.6821
-	0.2980
-	1.4902
-	1.4899
-	2.6821
-	0.2980
-	1.4901
-	1.4900
-	1.5438
-	1.4363
-	1.4901
-	1.4901
-	1.4728
-	1.5073
-	1.4901
-	1.4901
-	1.4901
-	1.4901
-	1.4901
-	1.4901
-	1.4919
-	1.4882
-	1.4901
-	1.4901
-	1.4917
-	1.4885
-	1.4901
-	1.4901
-	1.4916
-	1.4885
-	1.4901
-	1.4901
-	1.4916
-	1.4885
-	1.4901
-	1.4901
-	1.4916
-	1.4885
-	1.4901
-	1.4901
-	1.4916
-	1.4885
-	1.4901
-	1.4901
-	1.4916
-	1.4885
-	1.4901
-	1.4901
-	1.4916
-	1.4885
-	1.4916
-	1.4885
-	1.4916
-	1.4885
-	1.4916
-	1.4885
-	0.0000
-	0.0000
-	1163.3978
-	0.0000
-	1163.3978
-	0.0000
-	146.1262
-	0.0000
-	146.1262
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	18.0278
-	0.0000
-	18.0278
-	0.0000
-	35.1199
-	0.0000
-	35.1199
-	0.0000
-	36.1295
-	0.0000
-	35.3618
-	0.0000
-	35.3618
-	0.0000
-	35.2429
-	0.0000
-	35.2677
-	0.0000
-	35.2756
-	0.0000
-	35.2751
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	84.1794
-	84.1794
-	2.6787
-	0.3015
-	35.2747
-	0.0000
-	4.0173
-	4.0638
-	2.7312
-	0.3073
-	35.2163
-	0.0000
-	1.4916
-	1.4885
-	81.9879
-	81.7446
-	79.2658
-	79.4148
-	2.5043
-	0.2815
-	35.3176
-	0.0000
-	2.6711
-	0.4606
-	4.7164
-	4.6948
-	8.3877
-	8.5288
-	2.6239
-	0.2956
-	35.2327
-	0.0000
-	2.7234
-	0.3594
-	3.3277
-	3.3110
-	6.9224
-	7.0639
-	2.6258
-	0.2956
-	35.2320
-	0.0000
-	2.7233
-	0.3583
-	3.7742
-	3.7575
-	7.4088
-	7.5501
-	2.6257
-	0.2955
-	35.2329
-	0.0000
-	2.7220
-	0.3589
-	3.7991
-	3.7837
-	7.4468
-	7.5880
-	2.6259
-	0.2956
-	35.2336
-	0.0000
-	2.7209
-	0.3591
-	3.8067
-	3.7928
-	7.4663
-	7.6075
-	2.6261
-	0.2956
-	35.2342
-	0.0000
-	2.7199
-	0.3593
-	1.1330
-	1.1257
-	2.0838
-	2.2271
-	2.6271
-	0.2957
-	35.2329
-	0.0000
-	2.7211
-	0.3582
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	2.6795
-	0.3007
-	35.2747
-	0.0000
-	2.6792
-	0.3009
-dropped an object
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	2.6794
-	0.3008
-	35.2747
-	0.0000
-	2.6793
-	0.3009
-	0.0000
-	0.0000
-	2.6793
-	0.3009
-	2.6794
-	0.3008
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	2.6791
-	0.3010
-	2.6795
-	0.3006
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	2.6791
-	0.3010
-	2.6795
-	0.3006
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	2.6791
-	0.3011
-	2.6795
-	0.3006
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	2.6791
-	0.3011
-	2.6796
-	0.3006
-	35.2747
-	0.0000
-	75.7967
-	75.8528
-	2.5045
-	0.3292
-	0.0000
-	307.0231
-	3.3451
-	0.0000
-	35.2747
-	0.0000
-	2.2499
-	2.4276
-	0.2802
-	2.5180
-	3.5716
-	1.2269
-	3.3091
-	0.0000
-	35.2747
-	0.0000
-	0.5953
-	0.7734
-	0.2818
-	2.5187
-	1.6733
-	0.0000
-	2.1467
-	0.9727
-	35.2747
-	0.0000
-	93.8851
-	93.9387
-	118.6896
-	118.7451
-	2.4680
-	0.2754
-	35.3408
-	0.0000
-	0.0000
-	187.8840
-	2.2871
-	0.9061
-	0.0000
-	187.8840
-	2.2871
-	160.1116
-	159.0740
-	147.1655
-	147.3870
-	2.2917
-	0.2444
-	35.6821
-	0.0000
-	0.0000
-	320.2819
-	2.6236
-	0.0000
-	320.2819
-	2.6236
-	154.2197
-	152.8457
-	141.3306
-	141.6322
-	0.2461
-	2.1918
-	35.6518
-	0.0000
-	308.2332
-	2.5511
-	0.0000
-	308.2332
-	2.5511
-	113.1989
-	111.9623
-	103.9090
-	104.1173
-	0.2895
-	2.4487
-	35.5800
-	0.0000
-	225.9125
-	2.3395
-	0.0000
-	225.9125
-	2.3395
-	57.2563
-	56.7581
-	53.9621
-	53.0596
-	0.9737
-	37.6476
-	0.0000
-	113.6247
-	2.3579
-	0.0000
-	113.6247
-	2.3579
-	5.9217
-	5.8139
-	6.7709
-	5.5352
-	1.1930
-	37.9275
-	0.0000
-	10.6605
-	2.1414
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	0.2893
-	2.7515
-	35.2747
-	0.0000
-	0.3881
-	0.0000
-	1.8701
-	0.0000
-	0.0000
-	0.3021
-	2.6780
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	1.1301
-	2.9964
-	0.0000
-	0.0000
-	0.3013
-	2.6788
-	35.2747
-	0.0000
-	0.0000
-	1.4918
-	0.7155
-	2.2637
-	0.0000
-	0.0000
-	0.3012
-	2.6790
-	35.2747
-	0.0000
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	0.3012
-	2.6790
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	0.3012
-	2.6790
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	0.3012
-	2.6790
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	0.3012
-	2.6790
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	0.5117
-	2.4685
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4692
-	1.5110
-	-0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.5070
-	1.4732
-	-0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4917
-	1.4884
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4905
-	1.4896
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4907
-	1.4894
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4908
-	1.4894
-	-0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4908
-	1.4894
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	1.4908
-	1.4894
-	35.2747
-	0.0000
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-checking for grabable objects...
-Grabbing something within range
-range to object:   4.68
-	0.0000
-	0.0000
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	1.5584
-	0.7156
-	2.2635
-	35.2747
-	0.0000
-	0.0000
-	1.5584
-	0.7156
-	0.7367
-	0.0000
-	0.0000
-	0.9254
-	1.6048
-	0.0000
-	2.1610
-	35.2747
-	0.0000
-	1.6048
-	0.0000
-	2.1610
-	0.7585
-	0.0548
-	0.0000
-	1.0064
-	0.0000
-	2.0041
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	2.0041
-	0.7398
-	0.0426
-	0.0000
-	0.9621
-	0.0000
-	0.0000
-	1.9981
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	1.9981
-	0.0000
-	0.2271
-	0.0000
-	0.0000
-	0.0000
-	0.0000
-	1.1570
-	2.2916
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	1.1570
-	0.3123
-	0.0000
-	0.0000
-	0.4672
-	1.3999
-	0.0000
-	1.8092
-	35.2747
-	0.0000
-	1.3999
-	0.0000
-	1.8092
-	0.7790
-	0.0000
-	0.0000
-	1.1028
-	0.0000
-	2.0320
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	2.0320
-	0.0000
-	0.0523
-	0.0625
-	0.0000
-	0.0927
-	0.0000
-	0.0000
-	1.4723
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	1.4723
-	0.0000
-	0.0540
-	0.0000
-	0.0028
-	0.0000
-	0.0000
-	1.1240
-	2.8295
-	35.2747
-	0.0000
-	0.0000
-	0.0000
-	1.1240
-	0.0849
-	0.0000
-	0.0000
-	0.1382
-	1.9546
-	0.0000
-	1.8479
-	1.9546
-	0.0000
-	1.8479
-	0.0000
-	0.0598
-	0.0000
-	0.0000
-	0.0943
-	0.0000
-	1.2675
-	2.7390
-	35.2747
-	0.0000
-	0.0943
-	0.0000
-	1.2675
-	0.0000
-	0.0041
-	1.9357
-	0.0000
-	1.9028
-	35.2747
-	0.0000
-	0.0000
-	0.0042
-	0.0000
-	0.0000
-	1.1409
-	3.0010
-	35.2747
-	0.0000
-	0.0000
-	0.0042
-	0.0000
-	1.4485
-	0.7209
-	2.2595
-	35.2747
-	0.0000
-	0.0000
-	0.0042
-	0.0000
-	1.5451
-	0.7211
-	2.2593
-	35.2747
-	0.0000
-	0.0000
-	0.0042
-	0.0000
-	1.5452
-	0.7210
-	2.2592
-	35.2747
-	0.0000
-	0.0000
-	0.0042
-	0.0000
-	1.5452
-	0.7210
-	2.2591
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	-0.0000
-	1.5452
-	0.7210
-	2.2591
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2590
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2590
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2590
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	-0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	0.0000
-	1.5453
-	0.7209
-	2.2589
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	35.2747
-	0.0000
-	0.0000
-	0.0041
-	35.2747
-	0.0000
-	0.0000
-	0.0040
-	35.2747
-	0.0000
-dropped an object
-	0.0000
-	2.1793
-	35.2747
-	0.0000
-	0.2758
-	2.6117
-	35.2747
-	0.0000
-	0.3108
-	2.6694
-	35.2747
-	0.0000
-	0.3071
-	2.6731
-	35.2747
-	0.0000
-	0.3071
-	2.6731
-	0.3019
-	2.6782
-	35.2747
-	0.0000
-	0.3018
-	2.6783
-	35.2747
-	0.0000
-	0.3017
-	2.6784
-	35.2747
-	0.0000
-	0.3017
-	2.6784
-	35.2747
-	0.0000
-	0.3016
-	2.6785
-	35.2747
-	0.0000
-	0.3016
-	2.6785
-	35.2747
-	0.0000
-	0.3016
-	2.6786
-	35.2747
-	0.0000
-	0.3016
-	2.6786
-	35.2747
-	0.0000
-	0.3015
-	2.6786
-	35.2747
-	0.0000
-	0.3015
-	2.6786
-	35.2747
-	0.0000
-	0.3015
-	2.6786
-	35.2747
-	0.0000
-	0.3015
-	2.6786
-	35.2747
-	0.0000
-	0.3015
-	2.6786
-	35.2747
-	0.0000
-	0.6503
-	2.3298
-	35.2747
-	0.0000
-	1.4680
-	1.5121
-	35.2747
-	0.0000
-	1.5038
-	1.4764
-	35.2747
-	0.0000
-	1.4909
-	1.4892
-	35.2747
-	0.0000
-	1.4899
-	1.4903
-	35.2747
-	0.0000
-	1.4900
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	1.4901
-	1.4901
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
-	35.2747
-	0.0000
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
+pos.x = 48.00, fabs(rmax) = 800.00, fabs(lmax) = 90.00
 calling XDestroyWindow
 calling XCloseDisplay
 done with cleanupXWindows

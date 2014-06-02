@@ -3,6 +3,7 @@
 #include "log.h"
 #include "const.h"
 #include "contains.h"
+#include "turret.h"
 
 using namespace std;
 
@@ -21,10 +22,10 @@ extern b2Body * gameFloor;
 extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
-extern b2Body * turret1;
 extern b2Body * gunEnemy1;
+extern Turret turret1;
 
-b2Body* addTurret(b2Vec2, b2Vec2, bool, b2World *);
+b2Body* addTurret(b2Vec2, b2Vec2, bool, float, float, b2World *);
 void init_b2d(void);
 void addFoot(int);
 b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&);

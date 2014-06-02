@@ -9,6 +9,7 @@
 #include "createObjects.h"
 #include "contains.h"
 #include "Box2D/Box2D.h"
+#include "turret.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ extern b2Body * myPlayer;
 extern b2Body * myGun;
 extern b2Body * myDoor;
 extern b2Body * carry;
+extern Turret * turrets;
 extern int cwait;
 extern const float M2P;
 extern const float P2M;

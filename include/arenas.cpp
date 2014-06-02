@@ -24,8 +24,11 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(xres*10.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable", 180.0f)))->SetAwake(false);//right wall
 
 					 myButton = addRect(5.5f*xres, -28.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 1");
-					 turret1 = addTurret(b2Vec2(0.0f, -yres), b2Vec2(50.0f, 100.0f), false, world);
-					 turret1->SetUserData((void *)((char *)"turret"));
+					 turrets[0].turret = addTurret(b2Vec2(0.0f, -yres), b2Vec2(50.0f, 100.0f), false, 45.0f, 90.0f, world);
+					 turrets[0].turret->SetUserData((void *)((char *)"turret"));
+					 turrets[0].max_angle = 135.0f;
+					 turrets[0].min_angle = 45.0f;
+					 turrets[0].angleSpeed = 0.10f;
 					 gunEnemy1 = addGunEnemy(b2Vec2(xres*8.0f, -64.0f), b2Vec2(75, 125), 0, world);
 					 gunEnemy2 = addGunEnemy(b2Vec2(xres*9.0f, -64.0f), b2Vec2(75, 125), 1, world);
 					 addMirror(b2Vec2(2.0f*xres, -0.75f*yres), b2Vec2(40.0f, 150.0f), 0.0f, world);
@@ -82,8 +85,8 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(2500.0f, (-1.1f*yres), 50.0f, yres*2.2f, 0.0f, 0.2f, 2, (char *)"wall 5 portalable")))->SetAwake(false);// wall 5
 					 ((b2Body *)(addRect(3475.0f, (-1.8f*yres), 300.0f, 50.0f, 0.0f, 0.2f, 2, (char *)"floor 3")))->SetAwake(false);// floor 3
 					 ((b2Body *)(addRect(3600.0f, (-2.1f*yres), 50.0f, yres*1.25f, 0.0f, 0.2f, 2, (char *)"wall 6 portalable")))->SetAwake(false);// wall 6
-					 turret1 = addTurret(b2Vec2(2500.0f, -0.4 * yres), b2Vec2(50.0f, 100.0f), false, world);
-					 turret1->SetUserData((void *)((char *)"turret"));
+					 turrets[0].turret = addTurret(b2Vec2(2500.0f, -0.4 * yres), b2Vec2(50.0f, 100.0f), false, 45.0f, 90.0f, world);
+					 turrets[0].turret->SetUserData((void *)((char *)"turret"));
 					 ((b2Body *)(addRect(4750.0f, (-2.8f*yres), 2900.0f, 50.0f, 0.0f, 0.2f, 2, (char *)"ceiling 3 portalable")))->SetAwake(false);// ceiling 3
 					 ((b2Body *)(addRect(4900.0f, (-1.6f*yres), 900.0f, 50.0f, 0.0f, 0.2f, 2, (char *)"right floor 3 portalable")))->SetAwake(false);// right floor 3
 					 mineObject = addRect(4300, -2.2f*yres, 150.0f, 150.0f, 0.7f, 0.9f, 3, (char *)"mine deadly"); // mine
