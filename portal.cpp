@@ -296,6 +296,22 @@ void check_keys(XEvent * e)
 				else
 					normalTesting = true;
 			}
+			if (key == XK_0)
+			{
+				restart(0);
+			}
+			if(key == XK_1)
+			{
+				restart(1);
+			}
+			if(key == XK_2)
+			{
+				restart(2);
+			}
+			if(key == XK_3)
+			{
+				restart(3);
+			}
 			if (key == XK_p)
 			{
 				if(pauseGame)
