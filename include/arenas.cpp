@@ -31,7 +31,7 @@ void makeArena(const int &n)
 					 turrets[0].angleSpeed = 0.10f;
 					 gunEnemy1 = addGunEnemy(b2Vec2(xres*8.0f, -64.0f), b2Vec2(75, 125), 0, world);
 					 gunEnemy2 = addGunEnemy(b2Vec2(xres*9.0f, -64.0f), b2Vec2(75, 125), 1, world);
-					 addMirror(b2Vec2(2.0f*xres, -0.75f*yres), b2Vec2(40.0f, 150.0f), 0.0f, world);
+					 addMirror(b2Vec2(2.0f*xres, -yres), b2Vec2(40.0f, 150.0f), 0.0f, world);
 
 					 addObstacles();
 		  }
@@ -48,6 +48,17 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(0.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
 					 ((b2Body *)(addRect(xres*10.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
 					 addRect(xres * 1.0f + 65.0f, onFloor - 15.0f, 60.0f, 60.0f, 0.9f, 0.2f, 1);//bottom right
+					 turrets[0].turret = addTurret(b2Vec2(0.0f, -yres), b2Vec2(50.0f, 100.0f), false, 45.0f, 90.0f, world);
+					 turrets[0].turret->SetUserData((void *)((char *)"turret"));
+					 turrets[0].max_angle = 135.0f;
+					 turrets[0].min_angle = 45.0f;
+					 turrets[0].angleSpeed = 0.10f;
+					 turrets[1].turret = addTurret(b2Vec2(xres*2-100, -yres), b2Vec2(50.0f, 100.0f), false, -45.0f, -90.0f, world);
+					 turrets[1].turret->SetUserData((void *)((char *)"turret"));
+					 turrets[1].max_angle = -45.0f;
+					 turrets[1].min_angle = -135.0f;
+					 turrets[1].angleSpeed = 0.10f;
+					 ((b2Body *)(addRect(xres*2, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable", 180.0f)))->SetAwake(false);//right wall
 		  }
 		  /* add companion cube */
 		  if (n == 2)
@@ -137,6 +148,10 @@ void restart(const int & a)
 		  myPlayer = NULL;
 		  myPlayerFoot = NULL;
 		  myGun = NULL;
+          gunEnemy1 = NULL;
+          gunEnemy2 = NULL;
+          for(int i = 0; i < 5; i++)
+              turrets[i].turret = NULL;
 		  p_dest = NULL;
 		  p_obj = NULL;
 		  gameFloor = NULL;
