@@ -22,13 +22,6 @@ void contactListener::BeginContact (b2Contact * contact)
 		  int dir = 1;
 		  if (ud1)
 		  {
-					 if (contains(ud1, (const char *)"end"))
-					 {
-								if (contains(ud2, (const char *)"player") || contains(ud2, (const char *)"gun"))
-								{
-										  level_complete = true;
-								}
-					 }
 					 if (contains(ud1, (const char *)"button"))
 					 {
 								//			Log("someone hit the button\n");
@@ -66,40 +59,30 @@ void contactListener::BeginContact (b2Contact * contact)
 										  fix_vel = 2;
 								}
 					 }
-					 if (contains(ud1, (const char *)"deadly"))
+					 if (contains(ud1, (const char *)"mine"))
 					 {
-								if (contains(ud1, (const char *)"mine"))
+								//								Log("mine hit something\n");
+								if (bodyb->GetType() == dyn)
 								{
-										  //								Log("mine hit something\n");
-										  if (bodyb->GetType() == dyn)
+										  if (ud2)
 										  {
-													 if (ud2)
+													 if (contains(ud2, (const char *)"foot"))
 													 {
-																if (contains(ud2, (const char *)"foot"))
-																{
-																		  Log("foot hit mine, ignore\n");
-																}
-																if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
-																{
-																		  Log("\tplayer death\n");
-																		  detonate(myPlayer, bodya);
-																}
-																else if (!contains(ud2, (const char *)"bullet"))
-																{
-																		  detonate(bodya, bodyb);
-																}
+																Log("foot hit mine, ignore\n");
 													 }
-													 else
+													 if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
+													 {
+																Log("\tplayer death\n");
+																detonate(myPlayer, bodya);
+													 }
+													 else if (!contains(ud2, (const char *)"bullet"))
 													 {
 																detonate(bodya, bodyb);
 													 }
 										  }
-								}
-								else
-								{
-										  if (bodyb->GetType() == dyn)
+										  else
 										  {
-													 toDestroy = bodyb;
+													 detonate(bodya, bodyb);
 										  }
 								}
 					 }
@@ -1166,17 +1149,7 @@ void contactListener::EndContact (b2Contact * contact)
 					 if (contains(ud1, (const char *)"bullet"))
 					 {
 								//								Log("bullet hit something\n");
-								if (ud2)
-								{
-										  if (!contains(ud2, (const char *)"player") && !contains(ud2, (const char *)"gun") && !contains(ud2, (const char *)"foot"))
-										  {
-													 toDestroy = bodya;
-										  }
-								}
-								else
-								{
-										  toDestroy = bodya;
-								}
+								toDestroy = bodya;
 					 }
 					 if (contains(ud1, (const char *)"isportal"))
 					 {
@@ -1247,17 +1220,7 @@ void contactListener::EndContact (b2Contact * contact)
 					 if (contains(ud1, (const char *)"bullet"))
 					 {
 								//								Log("bullet hit something\n");
-								if (ud2)
-								{
-										  if (!contains(ud2, (const char *)"player") && !contains(ud2, (const char *)"gun") && !contains(ud2, (const char *)"foot"))
-										  {
-													 toDestroy = bodyb;
-										  }
-								}
-								else
-								{
-										  toDestroy = bodyb;
-								}
+								toDestroy = bodyb;
 					 }
 					 if (contains(ud1, (const char *)"isportal"))
 					 {

@@ -33,6 +33,8 @@ static const int max_height = 600;
 
 static const float onFloor = -50.0f;
 
+static const b2Vec2 ZERO_VEC(0.0f, 0.0f);
+
 void inline toggle (int &a)
 {
 		  if (a == 0)

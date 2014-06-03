@@ -28,6 +28,7 @@ extern b2Body * myDoor;
 extern b2Body * carry;
 extern Turret * turrets;
 extern int cwait;
+extern int current_arena;
 extern const float M2P;
 extern const float P2M;
 extern int keys[];

@@ -6,6 +6,9 @@
 #include "log.h"
 #include "physics.h"
 #include "turret.h"
+#include "button.h"
+#include "door.h"
+#include <mine.h>
 
 using namespace std;
 
@@ -25,8 +28,9 @@ extern b2Body * mineObject;
 extern b2Body * gunEnemy1;
 extern b2Body * gunEnemy2;
 extern Turret * turrets;
-extern float MINE_RMAX;
-extern float MINE_LMAX;
+extern Button * buttons;
+extern Door * doors;
+extern Mine * mines;
 
 void makeArena(const int & n);
 void addObstacles(void);

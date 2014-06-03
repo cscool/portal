@@ -4,6 +4,7 @@ using namespace std;
 
 static b2Body * det_a = NULL;
 static b2Body * det_b = NULL;
+static const b2Vec2 ZERO_VEC(0.0f, 0.0f);
 
 void resetDestroyVars(void)
 {
@@ -101,6 +102,7 @@ void doPortal(b2Body * o)
 		  Log("pos of p1:\n\t(%.2f, %.2f)\n", p1->GetPosition().x, p1->GetPosition().y);
 		  Log("pos of p2:\n\t(%.2f, %.2f)\n", p2->GetPosition().x, p2->GetPosition().y);
 		  Log("destination: %s\n", p_dest);
+		  b2Vec2 v1;
 		  if (o != myPlayer && o != myGun && o != myPlayerFoot)
 		  {
 					 Log("doing normal portal operation\n");
@@ -160,7 +162,6 @@ void doPortal(b2Body * o)
 					 myGun->SetType(b2_staticBody);
 					 myPlayerFoot->SetType(b2_staticBody);
 					 //					 myPlayer->SetActive(false);
-					 b2Vec2 v1;
 					 if (contains(p_dest, (char *)"p1"))
 					 {
 								b2Vec2 p;
@@ -305,28 +306,28 @@ void physics (void)
 					 //					 Log("checking for objects to destroy\n");
 					 if (det_a)
 					 {
+								//								Log("det_a exists!\n");
+								char * adata = (char *)(det_a->GetUserData());
+								char * bdata = NULL;
 								if (det_a == carry)
 								{
 										  carry = NULL;
 								}
-								//								Log("det_a exists!\n");
-								char * adata = (char *)(det_a->GetUserData());
-								char * bdata = NULL;
 								if (det_b)
 								{
-										  //										  Log("det_b exists!\n");
-										  bdata = (char *)(det_b->GetUserData());
 										  if (det_b == carry)
 										  {
 													 carry = NULL;
 										  }
+										  //										  Log("det_b exists!\n");
+										  bdata = (char *)(det_b->GetUserData());
 								}
 								if (adata)
 								{
 										  //										  Log("det_a has user data\n");
 										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
 										  {
-													 restart(0);
+													 restart(current_arena);
 													 /*
 														 if (det_b)
 														 {
@@ -401,7 +402,7 @@ void physics (void)
 										  if (contains(ddata, (const char *)"player") || contains(ddata, (const char *)"gun") || contains(ddata, (const char *)"foot"))
 										  {
 													 Log("\nCALLING RESTART WITH TODESTROY\n\n");
-													 restart(current_arena);
+													 restart(0);
 													 return;
 										  }
 										  if (contains(ddata, (const char *)"bullet"))
@@ -589,37 +590,47 @@ void physics (void)
 								Log("portal key pressed\n");
 								if (timer < 1)
 								{
-										  /* do raycast, get norm of dest, save for future reference */
-										  float currentRayAngle = myGun->GetAngle() + 90.0f*D2R;
-										  float rayLength = 15.0f * M2P;
-										  b2Vec2 p1 = myGun->GetPosition();
-										  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle));
-										  b2RayCastInput input;
-										  input.p1 = p1;
-										  input.p2 = p2;
-										  input.maxFraction = 1;
-
-										  float closestFraction = 1; //start with end of line as p2
-										  b2Vec2 intersectionNormal(0,0);
-										  b2RayCastOutput output;
-										  bool cont = true;
-										  for (b2Body* b = world->GetBodyList(); b && cont; b = b->GetNext())
-										  {
-													 for (b2Fixture* f = b->GetFixtureList(); f && cont; f = f->GetNext())
-													 {
-
-																if ( ! f->RayCast( &output, input, 0 ) )
-																{
-																		  continue;
-																}
-																if ( output.fraction < closestFraction )
-																{
-																		  closestFraction = output.fraction;
-																		  intersectionNormal = output.normal;
-																		  cont = false;
-																}            
-													 }
-										  }
+										  /*
+											  int i = 0;
+											  bullet_ct ++;
+											  if (bullet_ct > 2)
+											  {
+											  b2Body* tmp = world->GetBodyList();
+											  char * ud;
+											  while(tmp)
+											  {
+											  ud = (char *)(tmp->GetUserData());
+											  if (ud)
+											  {
+											  if (contains(ud, (const char *)"bullet"))
+											  {
+											  if (i == 0)
+											  {
+											  tmp = tmp->GetNext();
+											  i++;
+											  continue;
+											  }
+											  else
+											  {
+											  world->DestroyBody(tmp);
+											  tmp = NULL;
+											  break;
+											  bullet_ct--;
+											  }
+											  }
+											  else
+											  {
+											  tmp = tmp->GetNext();
+											  }
+											  }
+											  else
+											  {
+											  tmp = tmp->GetNext();
+											  }
+											  }
+											  }
+											  */
+										  /* create new body and small square fixture */
 										  if (keys[XK_z] || keys[XK_period] || keys[XK_q])
 										  {
 													 //													 Log("left portal\n");
@@ -631,7 +642,6 @@ void physics (void)
 																Log("&b1 = %p\n", b1);
 													 }
 													 b1 = (b2Body *)(addRect(M2P*myGun->GetPosition().x, M2P*myGun->GetPosition().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet left")); // make a bullet
-													 p1_dir = output.normal;
 													 Log("&b1 = %p\n", b1);
 										  }
 										  else
@@ -645,11 +655,10 @@ void physics (void)
 																Log("&b2 = %p\n", b2);
 													 }
 													 b2 = (b2Body *)(addRect(M2P*myGun->GetPosition().x, M2P*myGun->GetPosition().y, 5, 5, 0.0f, 0.0f, 1, (char *)"bullet right")); // make a bullet
-													 p2_dir = output.normal;
 													 Log("&b2 = %p\n", b2);
 										  }
 										  //										  Log("done making portal\n");
-										  timer = 8; // delay next shot
+										  timer = 10; // delay next shot
 								}
 								if (timer > 0)
 								{

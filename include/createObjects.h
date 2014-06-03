@@ -4,6 +4,9 @@
 #include "const.h"
 #include "contains.h"
 #include "turret.h"
+#include "button.h"
+#include "door.h"
+#include <mine.h>
 
 using namespace std;
 
@@ -28,7 +31,7 @@ extern Turret turret1;
 b2Body* addTurret(b2Vec2, b2Vec2, bool, float, float, b2World *);
 void init_b2d(void);
 void addFoot(int);
-b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&);
+b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&, b2Body *&);
 b2Body* addRect(int, int, int, int, float, float, int, char * udata = NULL, float angle = 0.0f);
 b2Body* addMirror(b2Vec2, b2Vec2, float, b2World* world);
 void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft);
