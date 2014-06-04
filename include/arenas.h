@@ -8,7 +8,10 @@
 #include "turret.h"
 #include "button.h"
 #include "door.h"
+#include "goat.h"
 #include <mine.h>
+#include <movingPlatform.h>
+#include <lens.h>
 
 using namespace std;
 
@@ -24,13 +27,15 @@ extern b2Body * gameFloor;
 extern b2Body * platform;
 extern b2Body * p1;
 extern b2Body * p2;
-extern b2Body * mineObject;
 extern b2Body * gunEnemy1;
 extern b2Body * gunEnemy2;
 extern Turret * turrets;
 extern Button * buttons;
+extern Platform * platforms;
 extern Door * doors;
 extern Mine * mines;
+extern Goat * goats;
+extern Lens * lens;
 
 void makeArena(const int & n);
 void addObstacles(void);

@@ -28,11 +28,12 @@ extern b2Body * p2;
 extern b2Body * gunEnemy1;
 extern Turret turret1;
 
-b2Body* addTurret(b2Vec2, b2Vec2, bool, float, float, b2World *);
+b2Body* addMovingPlatform(b2Vec2, b2Vec2, b2World* world);
+b2Body* addTurret(b2Vec2, b2Vec2, bool, float, float, b2World *, float vel = 1.0f);
 void init_b2d(void);
 void addFoot(int);
 b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&, b2Body *&);
-b2Body* addRect(int, int, int, int, float, float, int, char * udata = NULL, float angle = 0.0f);
+b2Body* addRect(int, int, int, int, float, float, int, char * udata = NULL, float angle = 0.0f, b2Body * src = NULL);
 b2Body* addMirror(b2Vec2, b2Vec2, float, b2World* world);
 void createPortal (const b2Vec2 &pos, const float &angle, const int &isleft);
 b2Body* addDoor(float xpos, float ypos);

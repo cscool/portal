@@ -7,12 +7,17 @@
 #include "const.h"
 #include "contains.h"
 #include "turret.h"
+#include "door.h"
+#include "goat.h"
+#include "button.h"
+#include "mine.h"
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 #include <X11/keysym.h>
 #include <GL/gl.h>
 #include <GL/glx.h>
 #include <GL/glu.h>
+#include <lens.h>
 
 using namespace std;
 
@@ -23,13 +28,10 @@ extern const float M2P;
 extern const float P2M;
 extern bool normalTesting;
 extern b2Body * myPlayer;
-extern b2Body * myButton;
 extern int player_direction;
-extern int button_pressed;
 extern int xres;
 extern int yres;
 extern b2Body * p1;
-extern b2Body * mineObject;
 extern b2Body * p2;
 extern Turret * turrets;
 extern int p_isleft;
@@ -41,10 +43,23 @@ extern b2Vec2 p_pos;
 extern float p_angle;
 extern b2Body * gunEnemy1;
 extern b2Body * gunEnemy2;
+extern Goat * goats;
+extern Lens * lens;
+
 extern GLuint silhouetteTexture;
+
+extern Ppmimage * turretEnemyImage;
+extern GLuint turretEnemyTexture;
+extern Ppmimage * turretEnemyRightImage;
+extern GLuint turretEnemyRightTexture;
+extern Ppmimage * mirrorImage;
+extern GLuint mirrorTexture;
+extern Ppmimage * lensImage;
+extern GLuint lensTexture;
+extern Ppmimage * goatImage;
+extern GLuint goatTexture;
 extern Ppmimage * mineImage;
 extern GLuint mineTexture;
-
 extern Ppmimage * playerLeftImage;
 extern GLuint playerLeftTexture;
 extern Ppmimage * playerRightImage;
@@ -73,7 +88,20 @@ extern Ppmimage * npwallImage;
 extern GLuint npwallTexture;
 extern Ppmimage * spikeImage;
 extern GLuint spikeTexture;
+extern Ppmimage * pauseMenuImage;
+extern GLuint pauseMenuTexture;
+extern Ppmimage * mainMenuImage;
+extern GLuint mainMenuTexture;
+extern Ppmimage * cCubeImage;
+extern GLuint cCubeTexture;
+extern Ppmimage * goatRightImage;
+extern GLuint goatRightTexture;
+extern int state;
 
+void drawEnemy(b2Body * b);
+void drawGoat(b2Body * g);
+void drawCompanion(b2Body * b);
+void drawMenu();
 float getWidth(b2Body *b);
 float getHeight(b2Body *b);
 void drawWall(b2Body * b, const int & n);
@@ -83,10 +111,10 @@ void render(void);
 void drawPlayer();
 void drawPortal(b2Body * p);
 void drawFoot();
-void drawButton(void);
+void drawButton(Button);
 void drawSquare(b2Vec2* points, b2Vec2 center, float angle, int & color);
 void camera();
-void drawMine(void);
+void drawMine(Mine);
 unsigned char *buildAlphaData(Ppmimage *img);
 void calcLaser(Turret);
 void drawLaser(b2Vec2, b2Vec2);

@@ -27,11 +27,29 @@
 #include <button.h>
 #include <door.h>
 #include <mine.h>
+#include <lens.h>
+#include <movingPlatform.h>
 
 using namespace std;
 
 //PPM Images
+Ppmimage * turretEnemyImage = NULL;
+GLuint turretEnemyTexture;
+Ppmimage * turretEnemyRightImage = NULL;
+GLuint turretEnemyRightTexture;
 GLuint silhouetteTexture;
+Ppmimage * mirrorImage = NULL;
+GLuint mirrorTexture;
+Ppmimage * lensImage = NULL;
+GLuint lensTexture;
+Ppmimage * goatImage = NULL;
+GLuint goatTexture;
+Ppmimage * goatRightImage = NULL;
+GLuint goatRightTexture;
+Ppmimage * cCubeImage = NULL;
+GLuint cCubeTexture;
+Ppmimage * mainMenuImage = NULL;
+GLuint mainMenuTexture;
 Ppmimage * mineImage = NULL;
 GLuint mineTexture;
 Ppmimage * playerLeftImage = NULL;
@@ -62,6 +80,8 @@ Ppmimage * npwallImage = NULL;
 GLuint npwallTexture;
 Ppmimage * spikeImage = NULL;
 GLuint spikeTexture;
+Ppmimage * pauseMenuImage = NULL;
+GLuint pauseMenuTexture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -100,19 +120,17 @@ b2Body * gameFloor;
 b2Body * platform;
 b2Body * p1;
 b2Body * p2;
-b2Body * mineObject;
-b2Body * myDoor;
 b2Body * carry;
 b2Body * gunEnemy1;
 b2Body * gunEnemy2;
 int cwait = 0;
-b2Body * myButton;
-int door_is_active = 0;
-int button_pressed = 0;
-Turret * turrets = new Turret[5];
-Button * buttons = new Button[5];
-Door * doors = new Door[5];
-Mine * mines = new Mine[5];
+Turret * turrets = new Turret[10];
+Button * buttons = new Button[10];
+Door * doors = new Door[10];
+Mine * mines = new Mine[10];
+Goat * goats = new Goat[10];
+Platform * platforms = new Platform[10];
+Lens * lens = new Lens[10];
 
 //Setup timers
 const double physicsRate = 1.0 / 60.0;
@@ -134,6 +152,7 @@ int fix_vel = 0;
 b2Vec2 mod_vel;
 int current_arena = 0;
 bool level_complete = false;
+int state = 0;
 
 //macros
 #define rnd() (((double)rand())/(double)RAND_MAX)
@@ -160,52 +179,76 @@ int main(void)
 		  init();
 		  XEvent e;
 		  level_complete = false;
-		  current_arena = 0;
 
 		  /* game loop */
 		  while(running)
 		  {
-					 if(!pauseGame)
+					 switch(state)
 					 {
-								clock_gettime(CLOCK_REALTIME, &timeCurrent);
-								if (timeDiff(&timeStart, &timeCurrent) >= t_limit)
-								{
-										  if (level_complete)
+								case 0:
+								case 1:
+										  clock_gettime(CLOCK_REALTIME, &timeCurrent);
+										  if (timeDiff(&timeStart, &timeCurrent) >= t_limit)
 										  {
-													 level_complete = false;
-													 current_arena++;
-													 restart(current_arena);
+													 for (int i = 0; i < 5; i++)
+													 {
+																if (doors[i].door)
+																{
+																		  Log("door %d pos: (%.2f, %.2f)\n", i, doors[i].door->GetPosition().x, doors[i].door->GetPosition().y);
+																}
+																if (mines[i].mine)
+																{
+																		  Log("mine %d pos: (%.2f, %.2f)\n", i, mines[i].mine->GetPosition().x, mines[i].mine->GetPosition().y);
+																}
+													 }
+													 if (level_complete)
+													 {
+																level_complete = false;
+																if (current_arena == 4)
+																{
+																		  state = 0;
+																		  restart(-1);
+																}
+																else
+																{
+																		  current_arena++;
+																		  restart(current_arena);
+																}
+													 }
+													 p3_vel = p2_vel;
+													 p2_vel = p_vel;
+													 p_vel = myPlayer->GetLinearVelocity();
+													 while(XPending(dpy))
+													 {
+																XNextEvent(dpy, &e);
+																check_mouse(&e);
+																check_keys(&e);
+													 }
+													 physics();
+													 render();
+													 world->Step(1.0/30.0,8,3);
+													 world->ClearForces();
+													 timeCopy(&timeStart, &timeCurrent);
+													 //										  Log("&myPlayer = %p\n", myPlayer);
+													 //										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
+													 //Log("carry = %p\n", carry);
+													 //										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
+													 //										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
+													 //										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
+													 //										  Log("can_jump = %d\n", can_jump);
+													 //										  Log("p1_contacting = %d\n", p1_contacting);
+													 //										  Log("p2_contacting = %d\n", p2_contacting);
 										  }
-										  p3_vel = p2_vel;
-										  p2_vel = p_vel;
-										  p_vel = myPlayer->GetLinearVelocity();
+										  break;
+								case 2:
 										  while(XPending(dpy))
 										  {
 													 XNextEvent(dpy, &e);
-													 check_mouse(&e);
 													 check_keys(&e);
+													 check_mouse(&e);
+													 render();
 										  }
-										  physics();
-										  render();
-										  world->Step(1.0/30.0,8,3);
-										  world->ClearForces();
-										  timeCopy(&timeStart, &timeCurrent);
-										  //										  Log("&myPlayer = %p\n", myPlayer);
-										  //										  Log("platform position: (%.2f, %.2f)\n", platform->GetPosition().x, platform->GetPosition().y);
-										  //Log("carry = %p\n", carry);
-										  //										  Log("current player position:\n\t(%.2f, %.2f)\n", myPlayer->GetPosition().x, myPlayer->GetPosition().y);
-										  //										  Log("current gun position:\n\t(%.2f, %.2f)\n", myGun->GetPosition().x, myGun->GetPosition().y);
-										  //										  Log("current foot position:\n\t(%.2f, %.2f)\n", myPlayerFoot->GetPosition().x, myPlayerFoot->GetPosition().y);
-										  //										  Log("can_jump = %d\n", can_jump);
-										  //										  Log("p1_contacting = %d\n", p1_contacting);
-										  //										  Log("p2_contacting = %d\n", p2_contacting);
-								}
-					 }
-					 else if(pauseGame)
-					 {
-								XNextEvent(dpy, &e);
-								check_keys(&e);
-								check_mouse(&e);
+										  break;
 					 }
 		  }
 
@@ -222,20 +265,26 @@ void cleanup(void)
 void init(void)
 {
 		  logOpen();
+		  Log("in init\n");
 		  running = true;
 		  pauseGame = false;
 		  initXWindows();
+		  Log("calling init images\n");
 		  init_images();
+		  Log("calling init opengl\n");
 		  init_opengl();
 		  srand(time(NULL));
 		  clock_gettime(CLOCK_REALTIME, &timePause);
 		  clock_gettime(CLOCK_REALTIME, &timeStart);
 		  timeCopy(&timeStart, &timeCurrent);
+		  Log("setting xvars\n");
 		  XAllowEvents(dpy, AsyncBoth, CurrentTime);
 		  XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
 		  /* move this call to the menu function */
+		  Log("calling first init\n");
 		  firstInit();
-		  makeArena(0);
+		  Log("calling makearena -1\n");
+		  restart(-1);
 }
 
 void check_mouse(XEvent *e)
@@ -278,33 +327,17 @@ void check_mouse(XEvent *e)
 
 void check_keys(XEvent * e)
 {
-		  static int shift=0;
 		  int key = XLookupKeysym(&e->xkey, 0);
-		  if(!pauseGame)
+		  if(state == 1)
 		  {
 					 if (e->type == KeyRelease)
 					 {
 								keys[key]=0;
-								if (key == XK_Shift_L || key == XK_Shift_R)
-								{
-										  shift=0;
-								}
 					 }
 					 if (e->type == KeyPress)
 					 {
-								if (key == XK_Escape)
-								{
-										  running = false;
-										  return;
-								}
-
 								keys[key] = 1;
 
-								if (key == XK_Shift_L || key == XK_Shift_R)
-								{
-										  shift=1;
-										  return;
-								}
 								if (key == XK_n)
 								{
 										  if(normalTesting)
@@ -330,33 +363,62 @@ void check_keys(XEvent * e)
 								}
 								if (key == XK_p)
 								{
-										  if(pauseGame)
-										  {
-													 pauseGame = false;
-										  }
-										  else
-										  {
-													 pauseGame = true;
-										  }
+										  state = 2;
 										  return;
 								}
 					 }
-					 else
+		  }
+		  else if (state == 0)
+		  {
+					 if (key == XK_Escape)
 					 {
+								running = false;
 								return;
 					 }
-					 if (shift)
+					 if (current_arena != -1)
 					 {
-								// run?
+								current_arena = -1;
+								restart(current_arena);
+					 }
+					 if (e->type == KeyPress)
+					 {
+								keys[key] = 1;
+								if (key == XK_s)
+								{
+										  current_arena = 0;
+										  state = 1;
+										  restart(current_arena);
+										  return;
+								}
+					 }
+					 if (e->type == KeyRelease)
+					 {
+								keys[key]=0;
 					 }
 		  }
-		  else
+		  else if (state == 2)
 		  {
 					 if (e->type == KeyPress)
 					 {
 								if (key == XK_p)
 								{
-										  pauseGame = false;
+										  state = 1;
+										  return;
+								}
+								if (key == XK_m)
+								{
+										  state = 0;
+										  return;
+								}
+								if (key == XK_r)
+								{
+										  state = 1;
+										  restart(current_arena);
+										  return;
+								}
+								if (key == XK_Escape)
+								{
+										  running = false;
 										  return;
 								}
 					 }
