@@ -29,7 +29,7 @@ extern b2Body * gunEnemy1;
 extern Turret turret1;
 
 b2Body* addMovingPlatform(b2Vec2, b2Vec2, b2World* world);
-b2Body* addTurret(b2Vec2, b2Vec2, bool, float, float, b2World *, float vel = 1.0f);
+b2Body* addTurret(b2Vec2, b2Vec2, float, float, b2World *, float vel = 1.0f);
 void init_b2d(void);
 void addFoot(int);
 b2Body* addPlayer(int, int, int, int, b2World *, b2Body *&, b2Body *&);

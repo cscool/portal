@@ -7,8 +7,8 @@ typedef struct moving_platform {
     b2Vec2 end;
     b2Vec2 direction;
     float speed;
-    bool active = false;
-    bool angleActive = false;
+    bool active;
+    bool angleActive;
     float maxAngle;
     float minAngle;
     float angleSpeed;

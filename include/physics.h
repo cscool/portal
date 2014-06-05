@@ -60,3 +60,4 @@ void movePlatform (b2Body * p, const float lmax = 80.0f, const float rmax = 220.
 void moveMine (Mine & p);
 float getLMax (const b2Body * m);
 float getRMax (const b2Body * m);
+void clear_keys(void);

@@ -96,6 +96,9 @@ extern Ppmimage * cCubeImage;
 extern GLuint cCubeTexture;
 extern Ppmimage * goatRightImage;
 extern GLuint goatRightTexture;
+extern Ppmimage * dMenuImage;
+extern GLuint dMenuTexture;
+
 extern int state;
 
 void drawEnemy(b2Body * b);

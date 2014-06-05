@@ -4,7 +4,7 @@ using namespace std;
 
 void drawMenu()
 {
-//		  b2Body * menu = addRect(myPlayer->GetPosition().x + 1.0f * xres, myPlayer->GetPosition().y + -1.3f * yres, 1000, 800, 0, 0, 2);
+		  //		  b2Body * menu = addRect(myPlayer->GetPosition().x + 1.0f * xres, myPlayer->GetPosition().y + -1.3f * yres, 1000, 800, 0, 0, 2);
 		  b2Body * menu = addRect(myPlayer->GetPosition().x, myPlayer->GetPosition().y, 1000, 800, 0, 0, 2);
 		  glColor3f(1.0f,1.0f,1.0f);
 		  glEnable(GL_TEXTURE_2D);
@@ -13,6 +13,11 @@ void drawMenu()
 		  if (state == 2)
 		  {
 					 glBindTexture(GL_TEXTURE_2D, pauseMenuTexture);
+					 glTranslatef(myPlayer->GetPosition().x*M2P, myPlayer->GetPosition().y*M2P - 190, 0);
+		  }
+		  else if (state == 3)
+		  {
+					 glBindTexture(GL_TEXTURE_2D, dMenuTexture);
 					 glTranslatef(myPlayer->GetPosition().x*M2P, myPlayer->GetPosition().y*M2P - 190, 0);
 		  }
 		  else
@@ -228,6 +233,16 @@ void init_images(void)
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, labratImage->width, labratImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, labratImage->data);
 
 		  unsigned char * sdata = NULL;
+
+		  dMenuImage = ppm6GetImage((char *)"./images/goMenu.ppm");
+		  glGenTextures(1, &dMenuTexture);
+		  glBindTexture(GL_TEXTURE_2D, dMenuTexture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(dMenuImage);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, dMenuImage->width, dMenuImage->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
 
 		  mirrorImage = ppm6GetImage((char *)"./images/mirror.ppm");
 		  glGenTextures(1, &mirrorTexture);
@@ -805,18 +820,8 @@ void drawCompanion(b2Body * b)
 		  glBindTexture(GL_TEXTURE_2D, cCubeTexture);
 		  b2Vec2 points[4];
 		  b2Fixture * tmp = b->GetFixtureList();
-		  /*
-			  glTexCoord2f(0.0f, 0.0f);
-			  glVertex2i(-2.0f * xres, -4.0f * yres);
-			  glTexCoord2f(0.0f, 10.0f);
-			  glVertex2i(-2.0f * xres, 1.0f * yres);
-			  glTexCoord2f(50.0f, 10.0f);
-			  glVertex2i(20.0f * xres, 1.0f * yres);
-			  glTexCoord2f(50.0f, 0.0f);
-			  glVertex2i(20.0f * xres, -4.0f * yres);
-			  */
-		  float wid = getWidth(b);
-		  float hei = getHeight(b);
+		  //		  float wid = getWidth(b);
+		  //		  float hei = getHeight(b);
 		  while (tmp)
 		  {
 					 for(int i=0; i < 4; i++)
@@ -827,16 +832,16 @@ void drawCompanion(b2Body * b)
 								switch (i)
 								{
 										  case 0:
-													 glTexCoord2f(0.0f, 1.0f);
-													 break;
-										  case 1:
 													 glTexCoord2f(0.0f, 0.0f);
 													 break;
-										  case 2:
+										  case 1:
 													 glTexCoord2f(1.0f, 0.0f);
 													 break;
-										  case 3:
+										  case 2:
 													 glTexCoord2f(1.0f, 1.0f);
+													 break;
+										  case 3:
+													 glTexCoord2f(0.0f, 1.0f);
 													 break;
 								}
 								glVertex2f(points[i].x*M2P, points[i].y*M2P);
@@ -916,7 +921,7 @@ void calcLaser(Turret turret1)
 		  //b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
 		  //float currentRayAngle = revJoint->GetJointAngle();
 		  float currentRayAngle = turret1.turret->GetAngle();
-		  float rayLength = 10.0f * M2P;
+		  float rayLength = turret1.length * M2P;
 		  b2Vec2 p1 = turret1.turret->GetPosition();
 		  //b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
 		  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) );
@@ -951,7 +956,7 @@ void drawLaser(b2Vec2 point1, b2Vec2 point2)
 													 if (contains((char *)(b->GetUserData()), (const char *)"player") || (contains((char *)(b->GetUserData()), (const char *)"gun")))
 													 {
 																//																Log("kill player with laser\n");
-																//																detonate(myPlayer, myPlayerFoot);
+																detonate(myPlayer, myPlayerFoot);
 																isMirror = false;
 																isLportal = false;
 																isRportal = false;
@@ -1384,6 +1389,7 @@ void render(void)
 								}
 								break;
 					 case 2:
+					 case 3:
 								drawMenu();
 								break;
 		  }

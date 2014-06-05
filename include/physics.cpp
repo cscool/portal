@@ -234,6 +234,14 @@ void doPortal(b2Body * o)
 		  }
 }
 
+void clear_keys(void)
+{
+		  for (int i = 0; i < 65536; i++)
+		  {
+					 keys[i] &= 0;
+		  }
+}
+
 void physics (void)
 {
 		  static b2Body * b1 = NULL;
@@ -341,46 +349,27 @@ void physics (void)
 										  //										  Log("det_a has user data\n");
 										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
 										  {
-													 restart(current_arena);
+													 clear_keys();
+													 state = 3;
+//													 restart(current_arena);
 													 return;
 										  }
-										  /*
-											  else
-											  {
-											  world->DestroyBody(det_b);
-											  world->DestroyBody(det_a);
-											  det_a = NULL;
-											  det_b = NULL;
-											  }
-											  */
 								}
 								if (bdata)
 								{
 										  //										  Log("det_b has user data\n");
 										  if (contains(bdata, (const char *)"player") || contains(bdata, (const char *)"gun") || contains(bdata, (const char *)"foot"))
 										  {
-													 restart(current_arena);
+													 clear_keys();
+													 state = 3;
+//													 restart(current_arena);
 													 return;
 										  }
-										  /*
-											  else
-											  {
-											  world->DestroyBody(det_b);
-											  world->DestroyBody(det_a);
-											  det_a = NULL;
-											  det_b = NULL;
-											  }
-											  */
 								}
-								/*
-									else
-									{
-									*/
 								world->DestroyBody(det_b);
 								world->DestroyBody(det_a);
 								det_a = NULL;
 								det_b = NULL;
-								//}
 					 }
 					 if (toDestroy)
 					 {
@@ -396,7 +385,9 @@ void physics (void)
 										  if (contains(ddata, (const char *)"player") || contains(ddata, (const char *)"gun") || contains(ddata, (const char *)"foot"))
 										  {
 													 //													 Log("\nCALLING RESTART WITH TODESTROY\n\n");
-													 restart(current_arena);
+													 clear_keys();
+													 state = 3;
+//													 restart(current_arena);
 													 return;
 										  }
 										  if (contains(ddata, (const char *)"bullet"))

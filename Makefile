@@ -4,12 +4,12 @@ CFLAGS = -I $(INC) -I $(LOCINC) -g -O2
 LIB    = ./lib
 LIBFNT = $(LIB)/libggfonts.so
 LFLAGS = -lrt -lX11 -lGLU -lGL -pthread -lm #-lXrandr
-EFLAGS = -Wall -Wextra
+EFLAGS = -Wall -Wextra -fno-strict-aliasing
 
 all: log contains contact xwin createObjects ppm timing physics render arenas portal
 
 arenas: $(LOCINC)/arenas.cpp
-	g++ $(LOCINC)/arenas.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/arenas.o $(LOCINC)/Box2D/libBox2D.a $(LIB)/contact.o
+	g++ $(LOCINC)/arenas.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/arenas.o
 
 physics: $(LOCINC)/physics.cpp
 	g++ $(LOCINC)/physics.cpp $(CFLAGS) $(EFLAGS) $(LFLAGS) -c -o $(LIB)/physics.o

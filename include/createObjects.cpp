@@ -78,10 +78,10 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 								{
 										  //Log("it is a bullet, setting initial velocity\n");
 										  body->SetGravityScale(0);
-										  float angle = myGun->GetAngle() * R2D;
+//										  float angle = myGun->GetAngle() * R2D;
 										  b2Vec2 a((float)(cos(myGun->GetAngle())), (float)(sin(myGun->GetAngle())));
 										  body->SetLinearVelocity(30.0f * a);
-										  b2Vec2 p((float)(myGun->GetPosition().x + 3.0f * a.x), (float)(myGun->GetPosition().y) + 3.0f * a.y);
+										  b2Vec2 p((float)(myGun->GetPosition().x + 4.0f * a.x), (float)(myGun->GetPosition().y) + 4.0f * a.y);
 										  body->SetTransform(p, myGun->GetAngle());
 								}
 					 }
@@ -112,7 +112,7 @@ b2Body* addGunEnemy(b2Vec2 position, b2Vec2 area, int left, b2World * world)
 		  bodydef.gravityScale = 1.0f;
 		  bodydef.linearDamping = 0.9f;
 		  if (left)
-					 bodydef.angle = 90.0f*D2R;
+					 bodydef.angle = 180.0f*D2R;
 		  else
 					 bodydef.angle = 0.0f*D2R;
 		  b2Body* gunEnemy = world->CreateBody(&bodydef);
@@ -123,7 +123,7 @@ b2Body* addGunEnemy(b2Vec2 position, b2Vec2 area, int left, b2World * world)
 		  b2FixtureDef fixturedef;
 
 		  fixturedef.shape = &shape;
-		  fixturedef.density = 2.0f;
+		  fixturedef.density = 1.5f;
 		  gunEnemy->CreateFixture(&fixturedef);
 		  return gunEnemy;
 }
@@ -137,35 +137,6 @@ b2Body* addDoor(float xpos, float ypos)
 		  bodydef.type = b2_staticBody;
 		  b2PolygonShape shape;
 		  b2FixtureDef fixturedef;
-
-		  /* old
-		  //top left
-		  bodydef.position.Set((xpos)*P2M, (-yres+125)*P2M);
-		  b2Body* body3 = world->CreateBody(&bodydef);
-		  shape.SetAsBox(P2M*width/2.0, P2M*(height*4)/2.0);
-		  fixturedef.shape = &shape;
-		  body3->CreateFixture(&fixturedef);
-
-		  //top right
-		  bodydef.position.Set((xpos+200)*P2M, (-yres+125)*P2M);
-		  b2Body* body4 = world->CreateBody(&bodydef);
-		  body4->CreateFixture(&fixturedef);
-
-		  //top
-		  bodydef.position.Set((xpos+100)*P2M, (-yres+62.5f)*P2M);
-		  shape.SetAsBox(P2M*width*3.0f/2.0, P2M*(height)*1.5f/2.0);
-		  b2Body* body6 = world->CreateBody(&bodydef);
-		  body6->CreateFixture(&fixturedef);
-
-		  //door
-		  bodydef.position.Set((xpos+100)*P2M, (0.0)*P2M);
-		  bodydef.type = b2_kinematicBody;
-		  b2Body* body5 = world->CreateBody(&bodydef);
-		  shape.SetAsBox(P2M*width/2.0, P2M*(2*yres - 50)/2.0);
-		  fixturedef.shape = &shape;
-		  body5->CreateFixture(&fixturedef);
-		  body5->SetUserData((void *)((char *)("door 1")));
-		  */
 
 		  //top left
 		  bodydef.position.Set((xpos)*P2M, (ypos-425)*P2M);
@@ -238,7 +209,7 @@ b2Body* addMirror(b2Vec2 position, b2Vec2 area, float angle, b2World* world)
 		  return mirrorBody;
 }
 
-b2Body* addTurret(b2Vec2 position, b2Vec2 area, bool left, float baseAngle, float turrAngle, b2World * world, float vel)
+b2Body* addTurret(b2Vec2 position, b2Vec2 area, float baseAngle, float turrAngle, b2World * world, float vel)
 {
 		  b2BodyDef bodydef;
 		  bodydef.position.Set(position.x*P2M+3, position.y*P2M);

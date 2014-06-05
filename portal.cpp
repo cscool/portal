@@ -82,6 +82,8 @@ Ppmimage * spikeImage = NULL;
 GLuint spikeTexture;
 Ppmimage * pauseMenuImage = NULL;
 GLuint pauseMenuTexture;
+Ppmimage * dMenuImage = NULL;
+GLuint dMenuTexture;
 
 // portaling vars
 b2Vec2 p_pos;
@@ -162,17 +164,8 @@ int state = 0;
 void check_mouse(XEvent *);
 void check_keys(XEvent *);
 void init(void);
-void step(void);
 void check_resize(void);
 void cleanup(void);
-
-enum _moveState
-{
-		  MS_STOP,
-		  MS_LEFT,
-		  MS_RIGHT,
-};
-_moveState moveState = MS_STOP;
 
 int main(void)
 {
@@ -190,6 +183,7 @@ int main(void)
 										  clock_gettime(CLOCK_REALTIME, &timeCurrent);
 										  if (timeDiff(&timeStart, &timeCurrent) >= t_limit)
 										  {
+													 /*
 													 for (int i = 0; i < 5; i++)
 													 {
 																if (doors[i].door)
@@ -201,11 +195,13 @@ int main(void)
 																		  Log("mine %d pos: (%.2f, %.2f)\n", i, mines[i].mine->GetPosition().x, mines[i].mine->GetPosition().y);
 																}
 													 }
+													 */
 													 if (level_complete)
 													 {
 																level_complete = false;
-																if (current_arena == 4)
+																if (current_arena == 3)
 																{
+//																		  Log("reached end, restarting\n");
 																		  state = 0;
 																		  restart(-1);
 																}
@@ -241,6 +237,7 @@ int main(void)
 										  }
 										  break;
 								case 2:
+								case 3:
 										  while(XPending(dpy))
 										  {
 													 XNextEvent(dpy, &e);
@@ -265,36 +262,31 @@ void cleanup(void)
 void init(void)
 {
 		  logOpen();
-		  Log("in init\n");
+//		  Log("in init\n");
 		  running = true;
 		  pauseGame = false;
 		  initXWindows();
-		  Log("calling init images\n");
+//		  Log("calling init images\n");
 		  init_images();
-		  Log("calling init opengl\n");
+//		  Log("calling init opengl\n");
 		  init_opengl();
 		  srand(time(NULL));
 		  clock_gettime(CLOCK_REALTIME, &timePause);
 		  clock_gettime(CLOCK_REALTIME, &timeStart);
 		  timeCopy(&timeStart, &timeCurrent);
-		  Log("setting xvars\n");
+//		  Log("setting xvars\n");
 		  XAllowEvents(dpy, AsyncBoth, CurrentTime);
 		  XGrabPointer(dpy, win, 1, PointerMotionMask | ButtonPressMask | ButtonReleaseMask, GrabModeAsync, GrabModeAsync, None, None, CurrentTime);
-		  /* move this call to the menu function */
-		  Log("calling first init\n");
+//		  Log("calling first init\n");
 		  firstInit();
-		  Log("calling makearena -1\n");
+//		  Log("calling makearena -1\n");
 		  restart(-1);
 }
 
 void check_mouse(XEvent *e)
 {
-		  //int key = XLookupKeysym(&e->xkey, 0);
-		  //Did the mouse move?
-		  //Was a mouse button clicked?
 		  static int savex = 0;
 		  static int savey = 0;
-		  //
 		  if (e->type == ButtonRelease)
 		  {
 					 if (e->xbutton.button==1)
@@ -423,22 +415,26 @@ void check_keys(XEvent * e)
 								}
 					 }
 		  }
-}
-
-void step(void)
-{
-		  b2Vec2 vel = myPlayer->GetLinearVelocity();
-		  switch (moveState)
+		  else if (state == 3)
 		  {
-					 case MS_LEFT:
-								vel.x = b2Max( vel.x - 0.01f, -1.0f );
-								break;
-					 case MS_STOP:
-								vel.x *=  0.98;
-								break;
-					 case MS_RIGHT:
-								vel.x = b2Min( vel.x + 0.01f,  1.0f );
-								break;
+					 if (e->type == KeyPress)
+					 {
+								if (key == XK_m)
+								{
+										  state = 0;
+										  return;
+								}
+								if (key == XK_r)
+								{
+										  state = 1;
+										  restart(current_arena);
+										  return;
+								}
+								if (key == XK_Escape)
+								{
+										  running = false;
+										  return;
+								}
+					 }
 		  }
-		  myPlayer->SetLinearVelocity( vel );
 }

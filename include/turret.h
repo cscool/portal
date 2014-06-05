@@ -6,5 +6,6 @@ typedef struct laser_turret {
 	float max_angle;
 	float min_angle;
 	float angleSpeed;
+	float length;
 } Turret;
 #endif
