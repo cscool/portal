@@ -2,6 +2,48 @@
 
 using namespace std;
 
+void drawExplode(b2Body * b)
+{
+		  glColor3f(1.0f,1.0f,1.0f);
+		  glEnable(GL_TEXTURE_2D);
+		  glPushMatrix();
+		  glBindTexture(GL_TEXTURE_2D, mine2Texture);
+		  glTranslatef(b->GetPosition().x*M2P, b->GetPosition().y*M2P, 0);
+		  glRotatef(b->GetAngle()*180.0/M_PI, 0, 0, 1);
+		  b2Vec2 points[4];
+		  b2Fixture * tmp = b->GetFixtureList();
+		  while (tmp)
+		  {
+					 for(int i=0; i < 4; i++)
+								points[i] = ((b2PolygonShape*)tmp->GetShape())->GetVertex(i);
+					 glBegin(GL_QUADS);
+					 for(int i = 0; i < 4; i++)
+					 {
+								switch (i)
+								{
+										  case 0:
+													 glTexCoord2f(0.0f, 0.0f); //glVertex2i(-wid,-wid);
+													 break;
+										  case 1:
+													 glTexCoord2f(1.0f, 0.0f); //glVertex2i(-wid, wid);
+													 break;
+										  case 2:
+													 glTexCoord2f(1.0f, 1.0f); //glVertex2i( wid, wid);
+													 break;
+										  case 3:
+													 glTexCoord2f(0.0f, 1.0f); //glVertex2i( wid,-wid);
+													 break;
+								}
+								glVertex2f(points[i].x*M2P, points[i].y*M2P);
+					 }
+					 glEnd();
+					 tmp = tmp->GetNext();
+		  }
+		  glDisable(GL_TEXTURE_2D);
+		  glPopMatrix();
+		  glXSwapBuffers(dpy, win);
+}
+
 void drawMenu()
 {
 		  //		  b2Body * menu = addRect(myPlayer->GetPosition().x + 1.0f * xres, myPlayer->GetPosition().y + -1.3f * yres, 1000, 800, 0, 0, 2);
@@ -233,6 +275,16 @@ void init_images(void)
 		  glTexImage2D(GL_TEXTURE_2D, 0, 3, labratImage->width, labratImage->height, 0, GL_RGB, GL_UNSIGNED_BYTE, labratImage->data);
 
 		  unsigned char * sdata = NULL;
+
+		  mine2Image = ppm6GetImage((char *)"./images/mineBlown.ppm");
+		  glGenTextures(1, &mine2Texture);
+		  glBindTexture(GL_TEXTURE_2D, mine2Texture);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+		  glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+
+		  sdata = buildAlphaData(mine2Image);
+		  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mine2Image->width, mine2Image->height, 0, GL_RGBA, GL_UNSIGNED_BYTE, sdata);
+		  free(sdata);
 
 		  dMenuImage = ppm6GetImage((char *)"./images/goMenu.ppm");
 		  glGenTextures(1, &dMenuTexture);
@@ -921,7 +973,8 @@ void calcLaser(Turret turret1)
 		  //b2RevoluteJoint * revJoint = static_cast<b2RevoluteJoint*>(joint);
 		  //float currentRayAngle = revJoint->GetJointAngle();
 		  float currentRayAngle = turret1.turret->GetAngle();
-		  float rayLength = turret1.length * M2P;
+		  float rayLength = turret1.length;
+		  Log("length = %.2f\n", rayLength);
 		  b2Vec2 p1 = turret1.turret->GetPosition();
 		  //b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) + 45*D2R );
 		  b2Vec2 p2 = p1 + rayLength * b2Vec2( sinf(currentRayAngle), -cosf(currentRayAngle) );
@@ -960,12 +1013,27 @@ void drawLaser(b2Vec2 point1, b2Vec2 point2)
 																isMirror = false;
 																isLportal = false;
 																isRportal = false;
+																if (current_arena == 2)
+																{
+																		  doors[0].active = false;
+																}
+													 }
+													 else if (contains((char *)(b->GetUserData()), (const char *)"lens"))
+													 {
+																if (current_arena == 2)
+																{
+																		  doors[0].active = true;
+																}
 													 }
 													 else if (contains((char *)(b->GetUserData()), (const char *)"mirror"))
 													 {
 																isMirror = true;
 																isLportal = false;
 																isRportal = false;
+																if (current_arena == 2)
+																{
+																		  doors[0].active = false;
+																}
 													 }
 													 else if (contains((char *)(b->GetUserData()), (const char *)"isportal left"))
 													 {
@@ -973,6 +1041,10 @@ void drawLaser(b2Vec2 point1, b2Vec2 point2)
 																		  isLportal = true;
 																isMirror = false;
 																isRportal = false;
+																if (current_arena == 2)
+																{
+																		  doors[0].active = false;
+																}
 													 }
 													 else if (contains((char *)(b->GetUserData()), (const char *)"isportal right"))
 													 {
@@ -980,6 +1052,17 @@ void drawLaser(b2Vec2 point1, b2Vec2 point2)
 																		  isRportal = true;
 																isMirror = false;
 																isLportal = false;
+																if (current_arena == 2)
+																{
+																		  doors[0].active = false;
+																}
+													 }
+													 else
+													 {
+																if (current_arena == 2)
+																{
+																		  doors[0].active = false;
+																}
 													 }
 										  }
 										  closestFraction = output.fraction;

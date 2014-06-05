@@ -349,9 +349,16 @@ void physics (void)
 										  //										  Log("det_a has user data\n");
 										  if (contains(adata, (const char *)"player") || contains(adata, (const char *)"gun") || contains(adata, (const char *)"foot"))
 										  {
+													 if (bdata)
+													 {
+																if (contains(bdata, (const char *)"mine"))
+																{
+																		  drawExplode(det_b);
+																}
+													 }
 													 clear_keys();
 													 state = 3;
-//													 restart(current_arena);
+													 //													 restart(current_arena);
 													 return;
 										  }
 								}
@@ -360,9 +367,16 @@ void physics (void)
 										  //										  Log("det_b has user data\n");
 										  if (contains(bdata, (const char *)"player") || contains(bdata, (const char *)"gun") || contains(bdata, (const char *)"foot"))
 										  {
+													 if (adata)
+													 {
+																if (contains(adata, (const char *)"mine"))
+																{
+																		  drawExplode(det_a);
+																}
+													 }
 													 clear_keys();
 													 state = 3;
-//													 restart(current_arena);
+													 //													 restart(current_arena);
 													 return;
 										  }
 								}
@@ -387,7 +401,7 @@ void physics (void)
 													 //													 Log("\nCALLING RESTART WITH TODESTROY\n\n");
 													 clear_keys();
 													 state = 3;
-//													 restart(current_arena);
+													 //													 restart(current_arena);
 													 return;
 										  }
 										  if (contains(ddata, (const char *)"bullet"))
@@ -665,6 +679,33 @@ void physics (void)
 								}
 					 }
 		  }
+		  if(current_arena == 2) {
+					 arena2();
+					 if(platforms[0].active)
+					 {
+								//						cout << " active " << endl;
+					 }
+					 else
+					 {
+								//						cout << " inactive " << endl;
+					 }
+		  }
+}
+
+void arena2()
+{
+		  for(int i = 1; i < 4; i++) {
+					 if(buttons[i].button) {
+								if(buttons[i].pressed) {
+										  platforms[i-1].active = true;
+										  //								  cout << "Platform active" << endl;
+								}
+								else {
+										  platforms[i-1].active = false;
+										  //								  cout << "Platform not active" << endl;
+								}
+					 }
+		  }
 }
 
 void moveMine (Mine & p)
@@ -704,11 +745,16 @@ void movePlatform2(Platform &plat)
 					 }
 					 plat.platform->SetLinearVelocity(plat.speed * plat.direction);
 					 if(plat.angleActive) {
-								if(plat.platform->GetAngle()*R2D >= plat.maxAngle)
-										  plat.platform->SetAngularVelocity(-plat.angleSpeed);
-								else if(plat.platform->GetAngle()*R2D <= plat.minAngle)
-										  plat.platform->SetAngularVelocity(plat.angleSpeed);
+								if(plat.platform->GetAngle()*R2D > plat.maxAngle)
+										  plat.angleSpeed *= -1.0f;
+								else if(plat.platform->GetAngle()*R2D < plat.minAngle)
+										  plat.angleSpeed *= -1.0f;
+								plat.platform->SetAngularVelocity(plat.angleSpeed);
 					 }
+		  }
+		  else {
+					 plat.platform->SetLinearVelocity(b2Vec2(0.0, 0.0));
+					 plat.platform->SetAngularVelocity(0.0);
 		  }
 }
 

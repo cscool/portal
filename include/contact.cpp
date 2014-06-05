@@ -1,3 +1,12 @@
+/* Ernest Richards
+ * Hw 2/3
+ * ===============
+ * Below is the special handling for collisions in our world.
+ * Most of the work is done in BeginContact and EndContact.
+ * Special cases include collisions with portals, deadly objects, and end-of-level objects.
+ * ===============
+ */
+
 #include "contact.h"
 
 using namespace std;
@@ -18,8 +27,6 @@ void contactListener::BeginContact (b2Contact * contact)
 		  ud2 = (char *)(contact->GetFixtureB()->GetBody()->GetUserData());
 		  b2Body * bodya = (b2Body *)(contact->GetFixtureA()->GetBody());
 		  b2Body * bodyb = (b2Body *)(contact->GetFixtureB()->GetBody());
-//		  bool good = true;
-//		  int dir = 1;
 		  if (ud1)
 		  {
 					 if (contains(ud1, (const char *)"end"))
@@ -98,7 +105,7 @@ void contactListener::BeginContact (b2Contact * contact)
 																}
 																if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player"))
 																{
-																		  Log("\tplayer death\n");
+																		  //																		  Log("\tplayer death\n");
 																		  detonate(myPlayer, bodya);
 																}
 																else if (!contains(ud2, (const char *)"bullet"))
@@ -120,7 +127,7 @@ void contactListener::BeginContact (b2Contact * contact)
 													 {
 																if (contains(ud2, (const char *)"gun") || contains(ud2, (const char *)"player") || contains(ud2, (const char *)"foot"))
 																{
-																		  Log("\tplayer death\n");
+																		  //																		  Log("\tplayer death\n");
 																		  detonate(myPlayer, bodya);
 																}
 													 }
@@ -132,11 +139,7 @@ void contactListener::BeginContact (b2Contact * contact)
 								//								Log("player hit something\n");
 								if (ud2)
 								{
-										  if (contains(ud2, (const char *)"mine"))
-										  {
-													 // do nothing
-										  }
-										  else
+										  if (!contains(ud2, (const char *)"mine"))
 										  {
 													 b2ContactEdge * edges = myPlayer->GetContactList();
 													 b2Vec2 normals[4];
@@ -188,7 +191,6 @@ void contactListener::BeginContact (b2Contact * contact)
 					 {
 								if (contains(ud1, (const char *)"left") || contains(ud1, (const char *)"right"))
 								{
-//										  good = true;
 										  //								Log("bullet hit something\n");
 										  //								Log("FixtureA's user data:\n\t%s\n", ((char *)(contact->GetFixtureA()->GetBody()->GetUserData())));
 										  //								Log("FixtureB's user data:\n\t%s\n", ((char *)(contact->GetFixtureB()->GetBody()->GetUserData())));
@@ -196,9 +198,6 @@ void contactListener::BeginContact (b2Contact * contact)
 										  {
 													 if (contains(ud2, (const char *)"portalable"))
 													 {
-//																b2Vec2 body_pos = bodyb->GetPosition();
-//																float body_height = getHeight(bodyb);
-//																float portal_space = 1.3*portal_height*P2M;
 																//										  Log("you shot a portalable object!\n");
 																pos = (b2Vec2)(bodya->GetPosition());
 																norm = (b2Vec2)(contact->GetManifold()->localNormal);
@@ -383,11 +382,7 @@ void contactListener::BeginContact (b2Contact * contact)
 								Log("player hit something\n");
 								if (ud2)
 								{
-										  if (contains(ud2, (const char *)"mine"))
-										  {
-													 // do nothing
-										  }
-										  else
+										  if (!contains(ud2, (const char *)"mine"))
 										  {
 													 b2ContactEdge * edges = myPlayer->GetContactList();
 													 b2Vec2 normals[4];
@@ -453,7 +448,6 @@ void contactListener::BeginContact (b2Contact * contact)
 					 {
 								if (contains(ud1, (const char *)"left") || contains(ud1, (const char *)"right"))
 								{
-//										  good = true;
 										  //								Log("bullet hit something\n");
 										  //								Log("FixtureA's user data:\n\t%s\n", ((char *)(contact->GetFixtureA()->GetBody()->GetUserData())));
 										  //								Log("FixtureB's user data:\n\t%s\n", ((char *)(contact->GetFixtureB()->GetBody()->GetUserData())));
@@ -790,20 +784,22 @@ void contactListener::PostSolve(b2Contact* contact/*, const b2ContactImpulse* im
 								}
 					 }
 		  }
-		  if (ud1)
-		  {
-					 //					 Log("user data for body a: %s\n\n", ud1);
+		  /*
+			  if (ud1)
+			  {
+		  //					 Log("user data for body a: %s\n\n", ud1);
 		  }
 		  else
 		  {
-					 //					 Log("no user data for body a\n\n");
+		  //					 Log("no user data for body a\n\n");
 		  }
 		  if (ud2)
 		  {
-					 //					 Log("user data for body b: %s\n\n", ud2);
+		  //					 Log("user data for body b: %s\n\n", ud2);
 		  }
 		  else
 		  {
-					 //					 Log("no user data for body b\n\n");
+		  //					 Log("no user data for body b\n\n");
 		  }
+		  */
 }

@@ -10,6 +10,7 @@
 #include "contains.h"
 #include "Box2D/Box2D.h"
 #include "turret.h"
+#include "render.h"
 #include "movingPlatform.h"
 #include <lens.h>
 
@@ -61,3 +62,4 @@ void moveMine (Mine & p);
 float getLMax (const b2Body * m);
 float getRMax (const b2Body * m);
 void clear_keys(void);
+void arena2();

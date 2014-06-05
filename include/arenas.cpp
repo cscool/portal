@@ -57,7 +57,7 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(xres*9.4f, -150.0f, 20.0f, 300.0f, 0.0f, 0.2f, 2, (char *)"end", 180.0f)))->SetAwake(false);// end point
 
 					 addObstacles();
-					 turrets[0].length = 8.0f;
+					 turrets[0].length = 8.0f * M2P;
 		  }
 
 		  /* add a bionic goat to frolic through level */
@@ -105,17 +105,33 @@ void makeArena(const int &n)
 		  /* add companion cube */
 		  if (n == 2)
 		  {
+
 					 current_arena = 2;
 					 myPlayer = addPlayer(350.0f, -350.0f, player_width, player_height, world, myGun, myPlayerFoot);
 					 myPlayer->SetUserData((void *)((char *)"player"));
 
-					 gameFloor = addRect(xres * 2.0f, 0.0f, xres*4.0f, 50.0f, 0.7f, 0.2f, 2, (char *)"floor portalable");
+					 gameFloor = addRect(xres * 2.5f, 0.0f, xres*5.0f, 50.0f, 0.7f, 0.2f, 2, (char *)"floor portalable");
 					 gameFloor->SetAwake(false);
 					 addRect(xres * 1.5f, -yres*5, xres*3.0f, 50.0f, 0.7f, 0.2f, 2, (char *)"ceiling portalable");
 
-					 ((b2Body *)(addRect(0.0f, -2.5*yres, 50, yres*5, 0.0f, 0.2f, 2, (char *)"left wall")))->SetAwake(false);//left wall
-					 ((b2Body *)(addRect(xres*3.0f, -2.5*yres, 50, yres*5, 0.0f, 0.2f, 2, (char *)"right wall")))->SetAwake(false);//right wall
+					 ((b2Body *)(addRect(0.0f, -2.5*yres, 50, yres*5, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
+					 ((b2Body *)(addRect(xres*3.0f, -1750.0f, 100, yres*5.0f, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
 					 ((b2Body *)(addRect(xres*9.4f, -150.0f, 20.0f, 300.0f, 0.0f, 0.2f, 2, (char *)"end", 180.0f)))->SetAwake(false);// end point
+
+					 /*
+						 doors[0].door = addDoor(3.0f*xres - 100, -0.0f*yres + 20);
+						 doors[0].active = 0;
+						 doors[0].max_pos = b2Vec2(3.0f*xres - 100, -1500);
+						 doors[0].min_pos = b2Vec2(3.0*xres - 100, -90);
+						 doors[0].speed = 0.0f;
+						 doors[0].dir = 1.0f/getMagnitude(doors[0].max_pos - doors[0].min_pos) * (doors[0].max_pos - doors[0].min_pos);
+						 */
+					 doors[0].door = addDoor(3.0f*xres - 100, -10.0f*P2M);
+					 doors[0].active = 0;
+					 doors[0].max_pos = b2Vec2((3.0f*xres - 100)*P2M, -1.5f*yres*P2M - 10.0f*P2M);
+					 doors[0].min_pos = b2Vec2((3.0f*xres - 100)*P2M, -45.0f*P2M);
+					 doors[0].speed = 7.5f;
+					 doors[0].dir = 1.0f/getMagnitude(doors[0].max_pos - doors[0].min_pos) * (doors[0].max_pos - doors[0].min_pos);
 
 					 //Lens Box
 					 addRect(200, -yres*4, 400, 50, 0.0f, 0.2f, 2, (char *)"bottom portalable");
@@ -128,12 +144,16 @@ void makeArena(const int &n)
 					 addRect(xres * 1.0f, onFloor - 15.0f, 100.0f, 100.0f, 0.9f, 0.2f, 1);//cube1
 					 addRect(xres * 1.5f, onFloor - 15.0f, 100.0f, 100.0f, 0.9f, 0.2f, 1);//cube2
 
+					 buttons[1].button = addRect(xres * 2.0f, -50.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 2");
+					 buttons[1].pressed = 0;
+
 					 //top left turret
 					 turrets[0].turret = addTurret(b2Vec2(125.0f, -yres*4 + 75), b2Vec2(50.0f, 100.0f), 180.0f, 180.0f, world);
 					 turrets[0].turret->SetUserData((void *)((char *)"turret"));
 					 turrets[0].max_angle = 180.0f;
 					 turrets[0].min_angle = 180.0f;
 					 turrets[0].angleSpeed = 0.0f;
+					 turrets[0].length = 100.0f * M2P;
 
 					 //mirror1
 					 platforms[0].platform = addMovingPlatform(b2Vec2(150, -1.5*yres), b2Vec2(300.0f, 50.0f), world);
@@ -141,10 +161,10 @@ void makeArena(const int &n)
 					 //platforms[0].start = platforms[0].platform->GetPosition();
 					 //platforms[0].end = b2Vec2((150)*P2M, (-2.0f*yres)*P2M);
 					 platforms[0].speed = 0.0f;
-					 platforms[0].active = true;
+					 platforms[0].active = false;
 					 //platforms[0].direction = (1/getMagnitude(platforms[0].end - platforms[0].start)) * (platforms[0].end - platforms[0].start);
 					 platforms[0].angleActive = true;
-					 platforms[0].angleSpeed = 0.15f;
+					 platforms[0].angleSpeed = 0.05f;
 					 platforms[0].platform->SetAngularVelocity(platforms[0].angleSpeed);
 					 platforms[0].maxAngle = 45.0f;
 					 platforms[0].minAngle = 0.0f;
@@ -158,33 +178,33 @@ void makeArena(const int &n)
 					 platforms[1].active = true;
 					 //platforms[1].direction = (1/getMagnitude(platforms[1].end - platforms[1].start)) * (platforms[1].end - platforms[1].start);
 					 platforms[1].angleActive = true;
-					 platforms[1].angleSpeed = 0.15f;
+					 platforms[1].angleSpeed = 0.05f;
 					 platforms[1].platform->SetAngularVelocity(platforms[1].angleSpeed);
 					 platforms[1].maxAngle = 0.0f;
 					 platforms[1].minAngle = -45.0f;
 
 					 //mirror3
-					 platforms[5].platform = addMovingPlatform(b2Vec2(1750, -4.5*yres), b2Vec2(300.0f, 50.0f), world);
-					 platforms[5].platform->SetUserData((void *)((char *)"mirror"));
-					 //platforms[5].start = platforms[5].platform->GetPosition();
+					 platforms[2].platform = addMovingPlatform(b2Vec2(1750, -4.5*yres), b2Vec2(300.0f, 50.0f), world);
+					 platforms[2].platform->SetUserData((void *)((char *)"mirror"));
+					 //platforms[2].start = platforms[2].platform->GetPosition();
 					 //platforms[5].end = b2Vec2((1000)*P2M, (-2.0f*yres)*P2M);
-					 platforms[5].speed = 0.0f;
-					 platforms[5].active = true;
-					 //platforms[5].direction = (1/getMagnitude(platforms[5].end - platforms[5].start)) * (platforms[5].end - platforms[5].start);
-					 platforms[5].angleActive = true;
-					 platforms[5].angleSpeed = 0.15f;
-					 platforms[5].platform->SetAngularVelocity(platforms[5].angleSpeed);
-					 platforms[5].maxAngle = 45.0f;
-					 platforms[5].minAngle = 0.0f;
+					 platforms[2].speed = 0.0f;
+					 platforms[2].active = true;
+					 //platforms[2].direction = (1/getMagnitude(platforms[2].end - platforms[2].start)) * (platforms[2].end - platforms[2].start);
+					 platforms[2].angleActive = true;
+					 platforms[2].angleSpeed = 0.05f;
+					 platforms[2].platform->SetAngularVelocity(platforms[5].angleSpeed);
+					 platforms[2].maxAngle = 45.0f;
+					 platforms[2].minAngle = 0.0f;
 
 					 //updown middle
-					 platforms[2].platform = addMovingPlatform(b2Vec2(600, -1.0*yres), b2Vec2(200.0f, 50.0f), world);
-					 platforms[2].platform->SetUserData((void *)((char *)"moving"));
-					 platforms[2].start = platforms[2].platform->GetPosition();
-					 platforms[2].end = b2Vec2((600)*P2M, (-4.5f*yres)*P2M);
-					 platforms[2].speed = 5.0f;
-					 platforms[2].active = true;
-					 platforms[2].direction = (1/getMagnitude(platforms[2].end - platforms[2].start)) * (platforms[2].end - platforms[2].start);
+					 platforms[5].platform = addMovingPlatform(b2Vec2(600, -1.0*yres), b2Vec2(200.0f, 50.0f), world);
+					 platforms[5].platform->SetUserData((void *)((char *)"moving"));
+					 platforms[5].start = platforms[5].platform->GetPosition();
+					 platforms[5].end = b2Vec2((600)*P2M, (-4.5f*yres)*P2M);
+					 platforms[5].speed = 5.0f;
+					 platforms[5].active = true;
+					 platforms[5].direction = (1/getMagnitude(platforms[5].end - platforms[5].start)) * (platforms[5].end - platforms[5].start);
 
 					 //downup
 					 platforms[3].platform = addMovingPlatform(b2Vec2(800, -4.5*yres), b2Vec2(200.0f, 50.0f), world);
@@ -203,19 +223,19 @@ void makeArena(const int &n)
 					 platforms[4].speed = 5.0f;
 					 platforms[4].active = true;
 					 platforms[4].direction = (1/getMagnitude(platforms[4].end - platforms[4].start)) * (platforms[4].end - platforms[4].start);
-					 platforms[0].active = false;
-					 platforms[0].angleActive = false;
-					 platforms[1].active = false;
-					 platforms[1].angleActive = false;
-					 platforms[2].active = false;
-					 platforms[2].angleActive = false;
-					 platforms[3].active = false;
-					 platforms[3].angleActive = false;
-					 platforms[4].active = false;
-					 platforms[4].angleActive = false;
-					 platforms[5].active = false;
-					 platforms[5].angleActive = false;
-					 turrets[0].length = 8.0f;
+					 /* platforms[0].active = false;
+						 platforms[0].angleActive = false;
+						 platforms[1].active = false;
+						 platforms[1].angleActive = false;
+						 platforms[2].active = false;
+						 platforms[2].angleActive = false;
+						 platforms[3].active = false;
+						 platforms[3].angleActive = false;
+						 platforms[4].active = false;
+						 platforms[4].angleActive = false;
+						 platforms[5].active = false;
+						 platforms[5].angleActive = false;*/
+
 		  }
 		  /* spikes */
 		  if (n == 3)
@@ -250,7 +270,7 @@ void makeArena(const int &n)
 					 turrets[0].turret->SetUserData((void *)((char *)"turret"));
 					 turrets[0].max_angle = 60.0f;
 					 turrets[0].min_angle = 25.0f;
-					 turrets[0].length = 3.0f;
+					 turrets[0].length = 65.0f;
 					 turrets[0].angleSpeed = 0.20f;
 					 ((b2Body *)(addRect(4750.0f, (-2.8f*yres), 2900.0f, 50.0f, 0.0f, 0.2f, 2, (char *)"ceiling 3 portalable")))->SetAwake(false);// ceiling 3
 					 ((b2Body *)(addRect(4900.0f, (-1.6f*yres), 900.0f, 50.0f, 0.0f, 0.2f, 2, (char *)"right floor 3 portalable")))->SetAwake(false);// right floor 3
@@ -259,10 +279,18 @@ void makeArena(const int &n)
 					 mines[0].min_pos = b2Vec2(4450.0f*P2M, -0.15*yres*P2M);
 					 mines[0].dir = 1.0f/getMagnitude(mines[0].min_pos - mines[0].max_pos) * (mines[0].min_pos - mines[0].max_pos);
 					 mines[0].speed = 12.5f;
-					 doors[0].door = addDoor(4700.0f, -2.0f*yres);
+					 /*
+						 doors[0].door = addDoor(4700.0f, -2.0f*yres);
+						 doors[0].active = 0;
+						 doors[0].max_pos = b2Vec2(4700.0f*P2M, -3.3f*yres*P2M);
+						 doors[0].min_pos = b2Vec2(4700.0f*P2M, -1.9f*yres*P2M);
+						 doors[0].speed = 7.5f;
+						 doors[0].dir = 1.0f/getMagnitude(doors[0].max_pos - doors[0].min_pos) * (doors[0].max_pos - doors[0].min_pos);
+						 */
+					 doors[0].door = addDoor(6*xres, -10.0f*P2M);
 					 doors[0].active = 0;
-					 doors[0].max_pos = b2Vec2(4700.0f*P2M, -3.3f*yres*P2M);
-					 doors[0].min_pos = b2Vec2(4700.0f*P2M, -1.9f*yres*P2M);
+					 doors[0].max_pos = b2Vec2(6.0f*xres*P2M, -1.5f*yres*P2M - 10.0f*P2M);
+					 doors[0].min_pos = b2Vec2(6.0f*xres*P2M, -45.0f*P2M);
 					 doors[0].speed = 7.5f;
 					 doors[0].dir = 1.0f/getMagnitude(doors[0].max_pos - doors[0].min_pos) * (doors[0].max_pos - doors[0].min_pos);
 					 ((b2Body *)(addRect(5100.0f, -2.0f*yres, 20.0f, 300.0f, 0.0f, 0.2f, 2, (char *)"end", 180.0f)))->SetAwake(false);// end point
@@ -270,7 +298,6 @@ void makeArena(const int &n)
 					 ((b2Body *)(addRect(xres*8.3f, (-1.4f*yres), 50, yres*2.8f, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
 					 addRect(xres * 8.1f + 65.0f, onFloor - 25.0f, 70.0f, 80.0f, 0.9f, 0.2f, 1);// a block
 					 addRect(xres * 8.1f, onFloor - 25.0f, 80.0f, 70.0f, 0.9f, 0.2f, 1);// another block
-					 turrets[0].length = 8.0f;
 		  }
 		  Log("done!\n");
 }

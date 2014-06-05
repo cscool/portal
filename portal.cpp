@@ -33,6 +33,8 @@
 using namespace std;
 
 //PPM Images
+Ppmimage * mine2Image = NULL;
+GLuint mine2Texture;
 Ppmimage * turretEnemyImage = NULL;
 GLuint turretEnemyTexture;
 Ppmimage * turretEnemyRightImage = NULL;

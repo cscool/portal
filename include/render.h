@@ -98,6 +98,8 @@ extern Ppmimage * goatRightImage;
 extern GLuint goatRightTexture;
 extern Ppmimage * dMenuImage;
 extern GLuint dMenuTexture;
+extern Ppmimage * mine2Image;
+extern GLuint mine2Texture;
 
 extern int state;
 
@@ -124,3 +126,4 @@ void drawLaser(b2Vec2, b2Vec2);
 void drawGunLaser();
 void drawSpikes(b2Body * b);
 void drawGunEnemySight(b2Body *);
+void drawExplode(b2Body * b);
