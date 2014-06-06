@@ -1,0 +1,26 @@
+initializing world for first game
+restart called, destroying and rebuilding world
+makeArena called, building arena -1
+creating floor portalable
+creating ceiling portalable
+creating left wall portalable
+creating right wall portalable
+creating companion cube
+creating cake
+creating elevator
+done!
+foot contacted something ( B ):
+	hit gun
+foot stopped contacting something ( B ):
+	stopped hitting gun
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+foot stopped contacting something ( A ):
+	stopped hitting floor portalable
+calling XDestroyWindow
+calling XCloseDisplay
+done with cleanupXWindows
