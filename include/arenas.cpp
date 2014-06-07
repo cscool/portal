@@ -20,8 +20,9 @@ void makeArena(const int &n)
 		((b2Body *)(addRect(0.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
 		((b2Body *)(addRect(xres*3.0f, (-1.0f*yres), 50, yres*2, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
 		addRect(xres * 1.0f + 65.0f, onFloor - 15.0f, 80.0f, 80.0f, 0.9f, 0.2f, 1, (char *)"companion cube");//bottom right
+		
 		addRect(xres * 1.5f, onFloor - 15.0f, 100.0f, 200.0f, 0.9f, 0.2f, 1, (char *)"cake");//cake
-		addRect(xres * 2.5f, onFloor - 15.0f, 200.0f, 400.0f, 0.9f, 0.2f, 1, (char *)"elevator");//cake
+		addRect(xres * 2.5f, onFloor - 15.0f, 300.0f, 600.0f, 0.9f, 0.2f, 1, (char *)"elevator");//cake
 	}
 
 	if (n == 0)
