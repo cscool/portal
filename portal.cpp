@@ -29,6 +29,7 @@
 #include <mine.h>
 #include <lens.h>
 #include <movingPlatform.h>
+#include <sound.h>
 
 using namespace std;
 
@@ -182,6 +183,7 @@ int main(void)
 		  /* game loop */
 		  while(running)
 		  {
+					 musicHandler();
 					 switch(state)
 					 {
 								case 0:
@@ -261,6 +263,7 @@ int main(void)
 
 void cleanup(void)
 {
+		  stopMusic();
 		  cleanupXWindows();
 		  logClose();
 }

@@ -70,7 +70,7 @@ b2Body* addRect(int x, int y, int w, int h, float f, float d, int dyn, char * ud
 										  body->SetGravityScale(0);
 										  float angle = src->GetAngle() * R2D;
 										  b2Vec2 a((float)(cos(angle)), (float)(angle));
-										  body->SetLinearVelocity(10.0f * a);
+										  body->SetLinearVelocity(25.0f * a);
 										  b2Vec2 p((float)(src->GetPosition().x + 3.0f * a.x), (float)(src->GetPosition().y) + 3.0f * a.y);
 										  body->SetTransform(p, src->GetAngle());
 								}
