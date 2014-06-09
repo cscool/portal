@@ -118,7 +118,8 @@ void makeArena(const int &n)
 
 					 ((b2Body *)(addRect(0.0f, -2.5*yres, 50, yres*5, 0.0f, 0.2f, 2, (char *)"left wall portalable")))->SetAwake(false);//left wall
 					 ((b2Body *)(addRect(xres*3.0f, -1750.0f, 100, yres*5.0f, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
-					 ((b2Body *)(addRect(xres*9.4f, onFloor - 135.0f, 200.0f, 400.0f, 0.0f, 0.2f, 2, (char *)"elevator end")))->SetAwake(false);// end point
+					 ((b2Body *)(addRect(xres*5.0f, -2.5f*yres, 50, yres*5.0f, 0.0f, 0.2f, 2, (char *)"right wall portalable")))->SetAwake(false);//right wall
+					 ((b2Body *)(addRect(xres*4.4f, onFloor - 135.0f, 200.0f, 400.0f, 0.0f, 0.2f, 2, (char *)"elevator end")))->SetAwake(false);// end point
 
 					 doors[0].door = addDoor(3.0f*xres - 100, -10.0f*P2M);
 					 doors[0].active = 0;
@@ -143,10 +144,10 @@ void makeArena(const int &n)
 					 buttons[1].pressed = 0;
 					 buttons[2].button = addRect(xres * 1.75f, -50.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 2");
 					 buttons[2].pressed = 0;
-					 buttons[3].button = addRect(xres * 1.5f, -50.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 2");
-					 buttons[3].pressed = 0;
-					 buttons[4].button = addRect(xres * 1.25f, -50.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 2");
-					 buttons[4].pressed = 0;
+//					 buttons[3].button = addRect(xres * 1.5f, -50.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 2");
+//					 buttons[3].pressed = 0;
+//					 buttons[4].button = addRect(xres * 1.25f, -50.0f, 100.0f, 50.0f, 0.7f, 0.7f, 2, (char *)"button 2");
+//					 buttons[4].pressed = 0;
 
 					 //top left turret
 					 turrets[0].turret = addTurret(b2Vec2(125.0f, -yres*4 + 75), b2Vec2(50.0f, 100.0f), 180.0f, 180.0f, world);
@@ -190,13 +191,14 @@ void makeArena(const int &n)
 					 //platforms[2].start = platforms[2].platform->GetPosition();
 					 //platforms[5].end = b2Vec2((1000)*P2M, (-2.0f*yres)*P2M);
 					 platforms[2].speed = 0.0f;
-					 platforms[2].active = true;
+					 platforms[2].active = false;
 					 //platforms[2].direction = (1/getMagnitude(platforms[2].end - platforms[2].start)) * (platforms[2].end - platforms[2].start);
-					 platforms[2].angleActive = true;
-					 platforms[2].angleSpeed = 0.05f;
+					 platforms[2].angleActive = false;
+					 platforms[2].angleSpeed = 0.0f;
 					 platforms[2].platform->SetAngularVelocity(platforms[5].angleSpeed);
 					 platforms[2].maxAngle = 45.0f;
 					 platforms[2].minAngle = 0.0f;
+					 platforms[2].platform->SetTransform(platforms[2].platform->GetPosition(), 45.0f*D2R);
 
 					 //updown middle
 					 platforms[5].platform = addMovingPlatform(b2Vec2(600, -1.0*yres), b2Vec2(200.0f, 50.0f), world);

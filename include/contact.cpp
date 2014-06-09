@@ -247,22 +247,47 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if ((b2BodyType)(bodyb->GetType()) == dyn)
 										  {
-													 Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
-													 Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
-													 Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
-													 Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
-													 if (contains (ud1, (const char *)"left"))
+													 if (carry)
 													 {
-																p_dest = (char *)"p2";
-																p1_contacting = 1;
+																if (bodyb != carry)
+																{
+																		  Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+																		  Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
+																		  Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
+																		  Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
+																		  if (contains (ud1, (const char *)"left"))
+																		  {
+																					 p_dest = (char *)"p2";
+																					 p1_contacting = 1;
+																		  }
+																		  else if (contains (ud1, (const char *)"right"))
+																		  {
+																					 p_dest = (char *)"p1";
+																					 p2_contacting = 1;
+																		  }
+																		  p_obj = bodyb;
+																		  p_vel = (b2Vec2)(bodyb->GetLinearVelocity());
+																}
+																else
+																{
+																		  Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+																		  Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
+																		  Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
+																		  Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
+																		  if (contains (ud1, (const char *)"left"))
+																		  {
+																					 p_dest = (char *)"p2";
+																					 p1_contacting = 1;
+																		  }
+																		  else if (contains (ud1, (const char *)"right"))
+																		  {
+																					 p_dest = (char *)"p1";
+																					 p2_contacting = 1;
+																		  }
+																		  p_obj = bodyb;
+																		  p_vel = (b2Vec2)(bodyb->GetLinearVelocity());
+																}
 													 }
-													 else if (contains (ud1, (const char *)"right"))
-													 {
-																p_dest = (char *)"p1";
-																p2_contacting = 1;
-													 }
-													 p_obj = bodyb;
-													 p_vel = (b2Vec2)(bodyb->GetLinearVelocity());
 										  }
 										  else
 										  {
@@ -502,22 +527,47 @@ void contactListener::BeginContact (b2Contact * contact)
 								{
 										  if ((b2BodyType)(bodya->GetType()) == dyn)
 										  {
-													 Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
-													 Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
-													 Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
-													 Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
-													 if (contains (ud1, (const char *)"left"))
+													 if (carry)
 													 {
-																p_dest = (char *)"p2";
-																p1_contacting = 1;
+																if (bodya != carry)
+																{
+																		  Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+																		  Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
+																		  Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
+																		  Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
+																		  if (contains (ud1, (const char *)"left"))
+																		  {
+																					 p_dest = (char *)"p2";
+																					 p1_contacting = 1;
+																		  }
+																		  else if (contains (ud1, (const char *)"right"))
+																		  {
+																					 p_dest = (char *)"p1";
+																					 p2_contacting = 1;
+																		  }
+																		  p_obj = bodya;
+																		  p_vel = (b2Vec2)(bodya->GetLinearVelocity());
+																}
 													 }
-													 else if (contains (ud1, (const char *)"right"))
+													 else
 													 {
-																p_dest = (char *)"p1";
-																p2_contacting = 1;
+																		  Log("its a dynamic object\nhas velocity <%.2f, %.2f>", bodyb->GetLinearVelocity().x, bodyb->GetLinearVelocity().y);
+																		  Log("\tp_vel = <%.2f, %.2f>", p_vel.x, p_vel.y);
+																		  Log("\tp2_vel = <%.2f, %.2f>", p2_vel.x, p2_vel.y);
+																		  Log("\tp3_vel = <%.2f, %.2f>", p3_vel.x, p3_vel.y);
+																		  if (contains (ud1, (const char *)"left"))
+																		  {
+																					 p_dest = (char *)"p2";
+																					 p1_contacting = 1;
+																		  }
+																		  else if (contains (ud1, (const char *)"right"))
+																		  {
+																					 p_dest = (char *)"p1";
+																					 p2_contacting = 1;
+																		  }
+																		  p_obj = bodya;
+																		  p_vel = (b2Vec2)(bodya->GetLinearVelocity());
 													 }
-													 p_obj = bodya;
-													 p_vel = (b2Vec2)(bodya->GetLinearVelocity());
 										  }
 										  else
 										  {
